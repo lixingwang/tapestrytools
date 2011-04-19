@@ -1,12 +1,7 @@
 /*******************************************************************************
- * Copyright (c) 2005 Oracle Corporation.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Gerry Kessler - initial API and implementation
+ *    gavingui2011@gmail.com - Beijing China
  *******************************************************************************/ 
 
 package org.eclipse.jst.tapestry.core.internal.project.facet;
@@ -21,7 +16,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
@@ -29,8 +27,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.jst.j2ee.model.IModelProvider;
 import org.eclipse.jst.javaee.web.WebAppVersionType;
 import org.eclipse.jst.tapestry.core.TapestryVersion;
-import org.eclipse.jst.tapestry.core.internal.TapestryCorePlugin;
 import org.eclipse.jst.tapestry.core.internal.Messages;
+import org.eclipse.jst.tapestry.core.internal.TapestryCorePlugin;
 import org.eclipse.jst.tapestry.core.internal.tapestrylibraryregistry.ArchiveFile;
 import org.eclipse.jst.tapestry.core.internal.tapestrylibraryregistry.TapestryLibrary;
 import org.eclipse.osgi.util.NLS;
