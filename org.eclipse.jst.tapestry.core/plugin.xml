@@ -80,6 +80,16 @@
     ******************************************
   -->
   <extension point="org.eclipse.jst.common.project.facet.core.libraryProviders">
+    <provider id="tapestry-user-library-provider" extends="wtp-user-library-provider">
+      <enablement>
+        <with variable="requestingProjectFacet">
+          <test property="org.eclipse.wst.common.project.facet.core.projectFacet" value="jst.tapestry" forcePluginActivation="true"/>
+        </with>
+      </enablement>
+    </provider>
+  </extension>
+  
+  <extension point="org.eclipse.jst.common.project.facet.core.libraryProviders">
     <provider id="tapestry-no-op-library-provider" extends="no-op-library-provider">
       <param name="message" value="%noOpLibraryProviderMessage"/>
       <param name="warning" value="%noOpLibraryProviderWarning"/>
