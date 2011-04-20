@@ -126,14 +126,26 @@ public class TapestryFacetInstallPage extends DataModelWizardPage implements
 
         if (tapestryFacetConfigurationEnabled)
         {
-    		lblTapestryConfig = new Label(composite, SWT.NONE);
+        	lblTapestryServletClassName = new Label(composite, SWT.NONE);
+    		lblTapestryServletClassName
+    				.setText(Messages.TapestryFacetInstallPage_TapestryServletClassNameLabel);
+    		lblTapestryServletClassName.setLayoutData(new GridData(GridData.BEGINNING));
+    
+    		txtTapestryServletClassName = new Text(composite, SWT.BORDER);
+    		txtTapestryServletClassName.setEditable(false);
+    		GridData gd1 = new GridData(GridData.FILL_HORIZONTAL);
+    		gd1.horizontalSpan = 2;
+    		txtTapestryServletClassName.setLayoutData(gd1);
+        	
+        	
+        	lblTapestryConfig = new Label(composite, SWT.NONE);
     		lblTapestryConfig.setText(Messages.TapestryFacetInstallPage_TapestryConfigLabel);
     		lblTapestryConfig.setLayoutData(new GridData(GridData.BEGINNING));
     
     		txtTapestryConfig = new Text(composite, SWT.BORDER);
-    		GridData gd1 = new GridData(GridData.FILL_HORIZONTAL);
-    		gd1.horizontalSpan = 2;
-    		txtTapestryConfig.setLayoutData(gd1);
+    		GridData gd2 = new GridData(GridData.FILL_HORIZONTAL);
+    		gd2.horizontalSpan = 2;
+    		txtTapestryConfig.setLayoutData(gd2);
     
     		lblTapestryServletName = new Label(composite, SWT.NONE);
     		lblTapestryServletName
@@ -141,19 +153,11 @@ public class TapestryFacetInstallPage extends DataModelWizardPage implements
     		lblTapestryServletName.setLayoutData(new GridData(GridData.BEGINNING));
     
     		txtTapestryServletName = new Text(composite, SWT.BORDER);
-    		GridData gd2 = new GridData(GridData.FILL_HORIZONTAL);
-    		gd2.horizontalSpan = 2;
-    		txtTapestryServletName.setLayoutData(gd2);
-    
-    		lblTapestryServletClassName = new Label(composite, SWT.NONE);
-    		lblTapestryServletClassName
-    				.setText(Messages.TapestryFacetInstallPage_TapestryServletClassNameLabel);
-    		lblTapestryServletClassName.setLayoutData(new GridData(GridData.BEGINNING));
-    
-    		txtTapestryServletClassName = new Text(composite, SWT.BORDER);
     		GridData gd2c = new GridData(GridData.FILL_HORIZONTAL);
     		gd2c.horizontalSpan = 2;
-    		txtTapestryServletClassName.setLayoutData(gd2c);
+    		txtTapestryServletName.setLayoutData(gd2c);
+    
+    		
     		
     		lblTapestryServletURLPatterns = new Label(composite, SWT.NULL);
     		lblTapestryServletURLPatterns
