@@ -40,17 +40,17 @@ import org.eclipse.wst.common.frameworks.datamodel.IDataModel;
 @SuppressWarnings("deprecation")
 public abstract class TapestryUtils {
     /**
-	 * The default name for the Faces servlet
+	 * The default name for the Tapestry filter name
 	 */
-	public static final String Tapestry_DEFAULT_SERVLET_NAME = "Faces Servlet"; //$NON-NLS-1$
+	public static final String Tapestry_DEFAULT_SERVLET_NAME = "app"; //$NON-NLS-1$
 	/**
-	 * The default name of the Faces servlet class
+	 * The default parent package for tapestry pages and components
 	 */
-	public static final String Tapestry_SERVLET_CLASS = "javax.faces.webapp.FacesServlet"; //$NON-NLS-1$
+	public static final String Tapestry_SERVLET_CLASS = "WebContent/WEB-INF/web.xml"; //$NON-NLS-1$
 	/**
 	 * The name of the context parameter used for JSF configuration files
 	 */
-	public static final String Tapestry_CONFIG_CONTEXT_PARAM = "javax.faces.CONFIG_FILES"; //$NON-NLS-1$
+	public static final String Tapestry_CONFIG_CONTEXT_PARAM = "tapestry.app-package"; //$NON-NLS-1$
 	
 	/**
 	 * The name of the context parameter used for defining the default JSP file extension
@@ -58,14 +58,14 @@ public abstract class TapestryUtils {
 	public static final String Tapestry_DEFAULT_SUFFIX_CONTEXT_PARAM = "javax.faces.DEFAULT_SUFFIX"; //$NON-NLS-1$
 	
 	/**
-	 * The path to the default application configuration file
+	 * The path of web.xml for dynamic web project
 	 */
-	public static final String Tapestry_DEFAULT_CONFIG_PATH = "/WEB-INF/faces-config.xml";  //$NON-NLS-1$
+	public static final String Tapestry_DEFAULT_CONFIG_PATH = "com.example";  //$NON-NLS-1$
 
 	/**
-	 * Default URL mapping to faces servlet
+	 * The url-pattern of tapestry filter
 	 */
-	public static final String Tapestry_DEFAULT_URL_MAPPING = "/faces/*"; //$NON-NLS-1$
+	public static final String Tapestry_DEFAULT_URL_MAPPING = "/*"; //$NON-NLS-1$
 
 	/**
 	 * the key for implementation libraries in persistent properties
@@ -433,6 +433,16 @@ public abstract class TapestryUtils {
     	}
    		return J2EEUtils.createOrUpdateServletRef((org.eclipse.jst.j2ee.webapplication.WebApp) webApp, displayName, className, (org.eclipse.jst.j2ee.webapplication.Servlet) servlet);
     }
+    
+    protected Object createOrUpdateFilterRef(final Object webApp,
+            final IDataModel config, Object filter)
+    {
+        String displayName = getDisplayName(config);
+        String className = getServletClassname(config);
+    	if(isJavaEE(webApp)) {
+    		return JEEUtils.createOrUpdateFilterRef((org.eclipse.jst.javaee.web.WebApp) webApp, displayName, className, (org.eclipse.jst.javaee.web.Filter) filter);
+    	}else return null;		
+    }
 
     /**
      * Creates servlet-mappings for the servlet for 2.5 WebModules or greated
@@ -451,6 +461,14 @@ public abstract class TapestryUtils {
     	}
     	else {
     		J2EEUtils.setUpURLMappings((org.eclipse.jst.j2ee.webapplication.WebApp) webApp, urlMappingList, (org.eclipse.jst.j2ee.webapplication.Servlet) servlet);
+    	}
+    }
+    
+    protected void setUpURLFilterMappings(final Object webApp,
+            final List<String> urlMappingList, final Object filter)
+    {
+    	if(isJavaEE(webApp)) {
+    		JEEUtils.setUpURLFilterMappings((org.eclipse.jst.javaee.web.WebApp) webApp, urlMappingList, (org.eclipse.jst.javaee.web.Filter) filter);
     	}
     }
 
@@ -502,7 +520,7 @@ public abstract class TapestryUtils {
 	 */
 	protected void setupContextParams(final Object webApp, final IDataModel config) {
         final String paramValue = config.getStringProperty(ITapestryFacetInstallDataModelProperties.CONFIG_PATH);
-        if (paramValue != null && !paramValue.equals(Tapestry_DEFAULT_CONFIG_PATH)) {
+        if (paramValue != null ) {
         	if(isJavaEE(webApp)) {
         		JEEUtils.setupContextParam((org.eclipse.jst.javaee.web.WebApp) webApp, Tapestry_CONFIG_CONTEXT_PARAM, paramValue);
         	}

@@ -66,18 +66,19 @@ import org.eclipse.wst.common.frameworks.datamodel.IDataModel;
     @Override
     public void updateWebApp(Object webApp, IDataModel config)
     {
-        // create or update servlet ref
-        Object servlet = findTapestryServlet(webApp);// check to see
-                                                            // if already
+    	// setup context params
+        setupContextParams(webApp, config);
         
-        servlet = createOrUpdateServletRef(webApp, config, servlet);
-
+        //create or update servlet ref
+        //Object servlet = findTapestryServlet(webApp);
+        // check to see if already
+        //servlet = createOrUpdateServletRef(webApp, config, servlet);
+        
+        Object filter = createOrUpdateFilterRef(webApp, config, null);
         // init mappings
         final List listOfMappings = getServletMappings(config);
-        setUpURLMappings(webApp, listOfMappings, servlet);
+        setUpURLFilterMappings(webApp, listOfMappings, filter);
 
-        // setup context params
-        setupContextParams(webApp, config);
     }
 
     

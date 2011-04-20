@@ -136,17 +136,14 @@ public final class TapestryFacetInstallDelegate implements IDelegate {
 
 		final String libPath = "/WEB-INF/lib/";
 		IPath configPath = resolveConfigPath(project, libPath);
-		final String[] jarList = new String[] { "antlr-2.7.6.jar",
-				"antlr-runtime-3.1.1.jar", "commons-codec-1.3.jar",
-				"commons-fileupload-1.2.jar", "commons-io-1.3.jar",
-				"javassist-3.12.1.GA.jar", "log4j-1.2.14.jar",
-				"slf4j-api-1.6.1.jar", "slf4j-log4j12-1.6.1.jar",
-				"tapestry-beanvalidator-5.2.5.jar", "tapestry-core-5.2.5.jar",
-				"tapestry-func-5.2.5.jar", "tapestry-hibernate-5.2.5.jar",
-				"tapestry-hibernate-core-5.2.5.jar", "tapestry-ioc-5.2.5.jar",
-				"tapestry-jmx-5.2.5.jar", "tapestry-json-5.2.5.jar",
-				"tapestry-spring-5.2.5.jar", "tapestry-test-5.2.5.jar",
-				"tapestry-upload-5.2.5.jar", "tapestry5-annotations-5.2.5.jar" };
+		final String[] jarList = new String[] { "antlr-runtime-3.1.1.jar",
+				"commons-codec-1.3.jar", "javassist-3.9.0.GA.jar",
+				"log4j-1.2.14.jar", "slf4j-api-1.5.2.jar",
+				"slf4j-log4j12-1.5.2.jar", "stax-api-1.0.1.jar",
+				"stax2-api-3.0.1.jar", "tapestry-core-5.1.0.5.jar",
+				"tapestry-ioc-5.1.0.5.jar",
+				"tapestry5-annotations-5.1.0.5.jar",
+				"woodstox-core-asl-4.0.3.jar", };
 		try {
 			// if this path exists
 			if (configPath.toFile().exists()) {// configPath.toFile().exists()

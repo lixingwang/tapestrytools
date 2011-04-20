@@ -19,6 +19,8 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jst.javaee.core.JavaeeFactory;
 import org.eclipse.jst.javaee.core.ParamValue;
 import org.eclipse.jst.javaee.core.UrlPatternType;
+import org.eclipse.jst.javaee.web.Filter;
+import org.eclipse.jst.javaee.web.FilterMapping;
 import org.eclipse.jst.javaee.web.Servlet;
 import org.eclipse.jst.javaee.web.ServletMapping;
 import org.eclipse.jst.javaee.web.WebApp;
@@ -87,6 +89,25 @@ public class JEEUtils {
 		}
 		return servlet;
 	}
+	
+	public static Filter createOrUpdateFilterRef(final WebApp webApp,
+			String displayName, String className, Filter filter) {
+		
+		if (filter == null){			
+			// Create the filter instance and set up the parameters from datamodel
+			filter = WebFactory.eINSTANCE.createFilter();
+			filter.setFilterName(displayName);
+			filter.setFilterClass("org.apache.tapestry5.TapestryFilter");
+			// Add the filter to the web application model
+			webApp.getFilters().add(filter);
+
+		} else {
+			updateFilterMappings(webApp, filter, displayName);
+			filter.setFilterName(displayName);
+		}
+		return filter;
+	}
+
 
     /**
      * Updates servlet mapping
@@ -106,6 +127,17 @@ public class JEEUtils {
         }
     }
     
+    public static void updateFilterMappings(final WebApp webApp,
+            final Filter filter, final String displayName)
+    {
+        // update mappings for new name
+        FilterMapping mapping = findFilterMapping(webApp, filter);
+        if (mapping != null)
+        {
+            mapping.setFilterName(displayName);
+        }
+    }
+    
     /**
      * Finds mapping for given servlet
      * 
@@ -119,6 +151,17 @@ public class JEEUtils {
 			if (mapping.getServletName() != null && 
 					servlet.getServletName() != null &&
 					mapping.getServletName().trim().equals(servlet.getServletName().trim()))
+				return mapping;
+        }
+		return null;
+    }
+    
+    public static FilterMapping findFilterMapping(final WebApp webApp, final Filter filter) {
+		for (Iterator it=webApp.getFilterMappings().iterator();it.hasNext();){
+			FilterMapping mapping = (FilterMapping)it.next();
+			if (mapping.getFilterName() != null && 
+					filter.getFilterName() != null &&
+					mapping.getFilterName().trim().equals(filter.getFilterName().trim()))
 				return mapping;
         }
 		return null;
@@ -157,6 +200,31 @@ public class JEEUtils {
                     urlPattern.setValue(pattern);
                     mapping.getUrlPatterns().add(urlPattern);
                 }
+            }
+        }
+    }
+    
+    public static void setUpURLFilterMappings(final WebApp webApp,
+            final List<String> urlMappingList, final Filter filter)
+    {
+
+        if (urlMappingList.size() > 0)
+        {
+            FilterMapping mapping = findFilterMapping(webApp, filter);
+            if (mapping == null)
+            {
+                mapping = WebFactory.eINSTANCE.createFilterMapping();
+                mapping.setFilterName(filter.getFilterName());
+                webApp.getFilterMappings().add(mapping);
+            }
+            // Add patterns
+            for (final String pattern : urlMappingList)
+            {
+
+                UrlPatternType urlPattern = JavaeeFactory.eINSTANCE
+                        .createUrlPatternType();
+                urlPattern.setValue(pattern);
+                mapping.getUrlPatterns().add(urlPattern);
             }
         }
     }

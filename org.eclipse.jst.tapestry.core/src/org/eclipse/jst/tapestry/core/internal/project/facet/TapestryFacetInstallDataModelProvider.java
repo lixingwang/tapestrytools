@@ -191,12 +191,6 @@ public class TapestryFacetInstallDataModelProvider extends
 				return createErrorStatus(errorMessage);
 			}
 			
-			//FIXME:  check for valid file path also [passedPath.toFile().isFile()] 
-			if (text.toLowerCase().lastIndexOf(".xml") != text.length() - 4) { //$NON-NLS-1$
-				errorMessage = Messages.TapestryFacetInstallDataModelProvider_ValidateConfigFileXML;
-				return createErrorStatus(errorMessage);
-			}
-			
 			// Configuration path must not contain backslashes.
 			// Must use forward slashes instead.
 			if (text.lastIndexOf("\\") >= 0){ //$NON-NLS-1$
