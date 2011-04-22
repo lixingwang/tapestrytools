@@ -69,11 +69,6 @@ import org.eclipse.wst.common.frameworks.datamodel.IDataModel;
     	// setup context params
         setupContextParams(webApp, config);
         
-        //create or update servlet ref
-        //Object servlet = findTapestryServlet(webApp);
-        // check to see if already
-        //servlet = createOrUpdateServletRef(webApp, config, servlet);
-        
         Object filter = createOrUpdateFilterRef(webApp, config, null);
         // init mappings
         final List listOfMappings = getServletMappings(config);

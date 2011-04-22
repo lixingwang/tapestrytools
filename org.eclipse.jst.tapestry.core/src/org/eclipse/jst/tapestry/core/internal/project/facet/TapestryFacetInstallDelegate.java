@@ -9,6 +9,11 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jdt.core.IPackageFragment;
+import org.eclipse.jdt.core.IPackageFragmentRoot;
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jst.common.project.facet.core.libprov.LibraryInstallDelegate;
 import org.eclipse.jst.common.project.facet.core.libprov.LibraryProviderOperationConfig;
 import org.eclipse.jst.j2ee.model.IModelProvider;
@@ -109,7 +114,8 @@ public final class TapestryFacetInstallDelegate implements IDelegate {
 				// Update web model
 				createServletAndModifyWebXML(project, config, monitor,
 						tapestryUtil);
-				// updateWebXmlByJsfVendor(libConfig, project, monitor);
+
+				addTapestryDefaultPackage(project,tapestryUtil);
 			}
 
 			if (monitor != null) {
@@ -177,6 +183,24 @@ public final class TapestryFacetInstallDelegate implements IDelegate {
 					"Exception occured while copying Tapestry jar libraries");
 		}
 
+	}
+	
+	/**
+	 * Add default package for Tapestry web project
+	 * @param project
+	 * @param tapestryUtil
+	 */
+	private void addTapestryDefaultPackage(final IProject project, final TapestryUtils tapestryUtil) {
+	IJavaProject javaProject = JavaCore.create(project);
+	IPackageFragmentRoot[] packageFragmentRoots;
+	try {
+		packageFragmentRoots = javaProject.getAllPackageFragmentRoots();
+		IPackageFragmentRoot packageFragmentRoot = packageFragmentRoots[0];
+		IPackageFragment ipf=packageFragmentRoot.createPackageFragment(tapestryUtil.Tapestry_DEFAULT_CONFIG_PATH, false,null);
+	} catch (JavaModelException e) {
+		e.printStackTrace();
+	}
+	
 	}
 
 	/**
