@@ -5,7 +5,6 @@ import org.eclipse.osgi.util.NLS;
 /**
  * String resource handler.
  * 
- * @author Gerry Kessler - Oracle, Ian Trimble - Oracle
  */
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.jst.tapestry.ui.internal.messages"; //$NON-NLS-1$
@@ -14,6 +13,10 @@ public class Messages extends NLS {
         NLS.initializeMessages(BUNDLE_NAME, Messages.class);
     }
 
+    public static String TapestryPageCreationWizard_PageOneTitle;
+    
+    public static String TapestryPageCreationWizard_PageOneDesc;
+    
     /**
      * see messages.properties
      */
