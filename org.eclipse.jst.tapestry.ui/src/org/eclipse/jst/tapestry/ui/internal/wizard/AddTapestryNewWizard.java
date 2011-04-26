@@ -112,11 +112,6 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 		classContent+="public class "+className+" {\n\n";
 		classContent+="}";
 		aimPackage.createCompilationUnit(className+".java", classContent, false, null);
-		
-		System.out.println(projectName);
-		System.out.println(folderName);
-		System.out.println(packageName);
-		System.out.println(className);
 
 		/*monitor.beginTask("Creating " + className, 2);
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
