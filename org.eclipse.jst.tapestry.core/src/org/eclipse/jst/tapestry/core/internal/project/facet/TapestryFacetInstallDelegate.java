@@ -107,6 +107,7 @@ public final class TapestryFacetInstallDelegate implements IDelegate {
 					.getLibraryProviderOperationConfig();
 
 			if (tapestryFacetConfigurationEnabled) {
+				
 				// Copy Tapestry jar libraries to web project
 				copyTapestryJarLibraires(project, fv, config, monitor,
 						tapestryUtil);
@@ -115,7 +116,7 @@ public final class TapestryFacetInstallDelegate implements IDelegate {
 				createServletAndModifyWebXML(project, config, monitor,
 						tapestryUtil);
 
-				addTapestryDefaultPackage(project,tapestryUtil);
+				addTapestryDefaultPackage(project,config,tapestryUtil);
 			}
 
 			if (monitor != null) {
@@ -190,13 +191,17 @@ public final class TapestryFacetInstallDelegate implements IDelegate {
 	 * @param project
 	 * @param tapestryUtil
 	 */
-	private void addTapestryDefaultPackage(final IProject project, final TapestryUtils tapestryUtil) {
+	private void addTapestryDefaultPackage(final IProject project,final IDataModel config, final TapestryUtils tapestryUtil) {
 	IJavaProject javaProject = JavaCore.create(project);
 	IPackageFragmentRoot[] packageFragmentRoots;
 	try {
 		packageFragmentRoots = javaProject.getAllPackageFragmentRoots();
 		IPackageFragmentRoot packageFragmentRoot = packageFragmentRoots[0];
-		IPackageFragment ipf=packageFragmentRoot.createPackageFragment(tapestryUtil.Tapestry_DEFAULT_CONFIG_PATH, false,null);
+		final String tapestryPackage = config.getStringProperty(ITapestryFacetInstallDataModelProperties.CONFIG_PATH);
+		packageFragmentRoot.createPackageFragment(tapestryPackage, false,null);
+		packageFragmentRoot.createPackageFragment(tapestryPackage+".pages", false,null);
+		packageFragmentRoot.createPackageFragment(tapestryPackage+".components", false,null);
+		packageFragmentRoot.createPackageFragment(tapestryPackage+".services", false,null);
 	} catch (JavaModelException e) {
 		e.printStackTrace();
 	}
