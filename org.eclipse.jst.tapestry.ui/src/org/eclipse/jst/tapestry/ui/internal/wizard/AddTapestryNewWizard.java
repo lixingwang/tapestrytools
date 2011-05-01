@@ -1,17 +1,20 @@
 package org.eclipse.jst.tapestry.ui.internal.wizard;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExecutableExtension;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
@@ -24,7 +27,12 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWizard;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.ide.IDE;
+import org.eclipse.wst.common.componentcore.ComponentCore;
 
 public class AddTapestryNewWizard extends Wizard implements INewWizard,
 		IExecutableExtension {
@@ -58,12 +66,13 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 		final String folderName = page.getFolderName();
 		final String packageName = page.getPackageName();
 		final String className = page.getClassName();
+		final String pageLocation = page.getPageLocation();
 
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor)
 					throws InvocationTargetException {
 				try {
-					doFinish(projectName, folderName, packageName, className,
+					doFinish(projectName, folderName, packageName, className,pageLocation,
 							monitor);
 				} catch (CoreException e) {
 					throw new InvocationTargetException(e);
@@ -92,7 +101,7 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 	 */
 
 	private void doFinish(String projectName, String folderName,
-			String packageName, String className, IProgressMonitor monitor)
+			String packageName, String className,String pageLocation, IProgressMonitor monitor)
 			throws CoreException {
 		IProject project = ProjectUtilities.getProject(projectName);
 		IJavaProject javaProject = JavaCore.create(project);
@@ -107,21 +116,29 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 				break;
 			}
 		}
+		monitor.beginTask("Creating " + className, 3);
 		IPackageFragment aimPackage = src.getPackageFragment(packageName);
 		String classContent="package "+packageName+";\n\n";
 		classContent+="public class "+className+" {\n\n";
 		classContent+="}";
 		aimPackage.createCompilationUnit(className+".java", classContent, false, null);
-
-		/*monitor.beginTask("Creating " + className, 2);
-		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		IResource resource = root.findMember(new Path(containerName));
-		if (!resource.exists() || !(resource instanceof IContainer)) {
-			throwCoreException("Container \"" + containerName
-					+ "\" does not exist.");
+		monitor.worked(1);
+		
+		IFile pageFile = null;
+		if (pageLocation.equals("src")) {
+			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+			pageFile = root.getFile(aimPackage.getPath().append(
+					className + ".tml"));
+		} else {
+			String absolutePath = ComponentCore.createComponent(project)
+					.getRootFolder().getUnderlyingFolder().getRawLocation()
+					.toString();
+			String webContent = absolutePath.substring(absolutePath
+					.lastIndexOf("/"));
+			pageFile = project.getFile(webContent + "/" + className + ".tml");
 		}
-		IContainer container = (IContainer) resource;
-		final IFile file = container.getFile(new Path(fileName));
+		
+		final IFile file = pageFile;
 		try {
 			InputStream stream = openContentStream();
 			if (file.exists()) {
@@ -144,7 +161,7 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 				}
 			}
 		});
-		monitor.worked(1);*/
+		monitor.worked(1);
 
 	}
 
@@ -153,7 +170,9 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 	 */
 
 	private InputStream openContentStream() {
-		String contents = "This is the initial file contents for *.mpe file that should be word-sorted in the Preview page of the multi-page editor";
+		String contents = "<div  xmlns:t=\"http://tapestry.apache.org/schema/tapestry_5_1_0.xsd\"> "+
+		"\n"+
+		"</div>";
 		return new ByteArrayInputStream(contents.getBytes());
 	}
 

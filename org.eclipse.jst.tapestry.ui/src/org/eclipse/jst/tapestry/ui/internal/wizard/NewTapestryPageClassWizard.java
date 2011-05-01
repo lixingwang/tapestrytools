@@ -83,9 +83,14 @@ public class NewTapestryPageClassWizard extends WizardPage {
 	protected Label classLabel;
 	protected Label projectNameLabel;
 	private Combo projectNameCombo;	
+	protected Label pageLocationLabel;
+	private Combo pageLocationCombo;	
 	protected String projectType = J2EEProjectUtilities.DYNAMIC_WEB;
 	private String projectName;
 	private HashMap<String,Object> model = new HashMap<String,Object>();
+	
+	private final String SRC = "Same package with Page class";
+	private final String WEBCONTENT =  "Under WebContent folder";
 
 	private ISelection selection;
 
@@ -120,6 +125,7 @@ public class NewTapestryPageClassWizard extends WizardPage {
 		addSeperator(composite, 3);
 		addPackageGroup(composite);
 		addClassnameGroup(composite);
+		addPageLocationGroup(composite);
 
 		// set the cursor focus
 		//   - to the "Java package" if it is empty
@@ -130,6 +136,26 @@ public class NewTapestryPageClassWizard extends WizardPage {
 			classText.setFocus();
 		}
 		setControl(composite);
+	}
+	/**
+	 * Add package group to composite
+	 */
+	private void addPageLocationGroup(Composite composite) {
+		pageLocationLabel = new Label(composite, SWT.NONE);
+		pageLocationLabel.setText("Page File Location:"); 
+		GridData data = new GridData();
+		pageLocationLabel.setLayoutData(data);
+
+		pageLocationCombo = new Combo(composite, SWT.BORDER | SWT.READ_ONLY);
+		data = new GridData(GridData.FILL_HORIZONTAL);
+		data.widthHint = 300;
+		data.horizontalSpan = 1;
+		pageLocationCombo.setLayoutData(data);
+		
+		pageLocationCombo.setItems(new String[]{SRC,WEBCONTENT});
+		pageLocationCombo.setText(SRC);
+		
+		new Label(composite, SWT.NONE);
 	}
 	/**
 	 * Add classname group to composite
@@ -591,5 +617,9 @@ public class NewTapestryPageClassWizard extends WizardPage {
 	}
 	public String getClassName(){
 		return classText.getText();
+	}
+	public String getPageLocation(){
+		if(pageLocationCombo.getText().equals(SRC)) return "src";
+		else return "webcontent";
 	}
 }
