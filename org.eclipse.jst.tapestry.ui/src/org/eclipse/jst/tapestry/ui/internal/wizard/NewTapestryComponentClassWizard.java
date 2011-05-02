@@ -68,12 +68,12 @@ import org.eclipse.wst.common.componentcore.internal.util.IModuleConstants;
 import org.eclipse.wst.common.frameworks.internal.plugin.WTPCommonPlugin;
 
 /**
- * Tapestry page creation wizard page
+ * Tapestry component creation wizard page
  * 
  * @author gavingui2011@gmail.com - Beijing China
  *
  */
-public class NewTapestryPageClassWizard extends WizardPage {
+public class NewTapestryComponentClassWizard extends WizardPage {
 	private Text folderText;
 	private Button folderButton;
 	protected Text packageText;
@@ -83,14 +83,9 @@ public class NewTapestryPageClassWizard extends WizardPage {
 	protected Label classLabel;
 	protected Label projectNameLabel;
 	private Combo projectNameCombo;	
-	protected Label pageLocationLabel;
-	private Combo pageLocationCombo;	
 	protected String projectType = J2EEProjectUtilities.DYNAMIC_WEB;
 	private String projectName;
 	private HashMap<String,Object> model = new HashMap<String,Object>();
-	
-	private final String SRC = "Same package with Page class";
-	private final String WEBCONTENT =  "Under WebContent folder";
 
 	private ISelection selection;
 
@@ -99,7 +94,7 @@ public class NewTapestryPageClassWizard extends WizardPage {
 	 * 
 	 * @param pageName
 	 */
-	public NewTapestryPageClassWizard(ISelection selection) {
+	public NewTapestryComponentClassWizard(ISelection selection) {
 		super("wizardPage");
 		setTitle(Messages.TapestryPageCreationWizard_PageOneTitle);
 		setDescription(Messages.TapestryPageCreationWizard_PageOneDesc);
@@ -125,7 +120,6 @@ public class NewTapestryPageClassWizard extends WizardPage {
 		addSeperator(composite, 3);
 		addPackageGroup(composite);
 		addClassnameGroup(composite);
-		addPageLocationGroup(composite);
 
 		// set the cursor focus
 		//   - to the "Java package" if it is empty
@@ -138,32 +132,12 @@ public class NewTapestryPageClassWizard extends WizardPage {
 		setControl(composite);
 	}
 	/**
-	 * Add package group to composite
-	 */
-	private void addPageLocationGroup(Composite composite) {
-		pageLocationLabel = new Label(composite, SWT.NONE);
-		pageLocationLabel.setText("Page File Location:"); 
-		GridData data = new GridData();
-		pageLocationLabel.setLayoutData(data);
-
-		pageLocationCombo = new Combo(composite, SWT.BORDER | SWT.READ_ONLY);
-		data = new GridData(GridData.FILL_HORIZONTAL);
-		data.widthHint = 300;
-		data.horizontalSpan = 1;
-		pageLocationCombo.setLayoutData(data);
-		
-		pageLocationCombo.setItems(new String[]{SRC,WEBCONTENT});
-		pageLocationCombo.setText(SRC);
-		
-		new Label(composite, SWT.NONE);
-	}
-	/**
 	 * Add classname group to composite
 	 */
 	private void addClassnameGroup(Composite composite) {
 		// class name
 		classLabel = new Label(composite, SWT.LEFT);
-		classLabel.setText("Page Name:");
+		classLabel.setText("Component Name:");
 		classLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 
 		classText = new Text(composite, SWT.SINGLE | SWT.BORDER);
@@ -617,9 +591,5 @@ public class NewTapestryPageClassWizard extends WizardPage {
 	}
 	public String getClassName(){
 		return classText.getText();
-	}
-	public String getPageLocation(){
-		if(pageLocationCombo.getText().equals(SRC)) return "src";
-		else return "webcontent";
 	}
 }

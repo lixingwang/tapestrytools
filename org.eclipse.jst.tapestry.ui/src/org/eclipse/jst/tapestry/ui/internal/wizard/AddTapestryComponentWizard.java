@@ -35,21 +35,21 @@ import org.eclipse.ui.ide.IDE;
 import org.eclipse.wst.common.componentcore.ComponentCore;
 
 /**
- * Tapestry page file creation wizard
+ * Tapestry component creation wizard
  * 
  * @author gavingui2011@gmail.com - Beijing China
  *
  */
-public class AddTapestryNewWizard extends Wizard implements INewWizard,
+public class AddTapestryComponentWizard extends Wizard implements INewWizard,
 		IExecutableExtension {
 
-	private NewTapestryPageClassWizard page;
+	private NewTapestryComponentClassWizard page;
 	private ISelection selection;
 
 	/**
-	 * Constructor for AddTapestryPageWizard.
+	 * Constructor for AddTapestryComponenetWizard.
 	 */
-	public AddTapestryNewWizard() {
+	public AddTapestryComponentWizard() {
 		super();
 		setNeedsProgressMonitor(true);
 	}
@@ -59,7 +59,7 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 	 */
 
 	public void addPages() {
-		page = new NewTapestryPageClassWizard(selection);
+		page = new NewTapestryComponentClassWizard(selection);
 		addPage(page);
 	}
 
@@ -72,13 +72,12 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 		final String folderName = page.getFolderName();
 		final String packageName = page.getPackageName();
 		final String className = page.getClassName();
-		final String pageLocation = page.getPageLocation();
 
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor)
 					throws InvocationTargetException {
 				try {
-					doFinish(projectName, folderName, packageName, className,pageLocation,
+					doFinish(projectName, folderName, packageName, className,
 							monitor);
 				} catch (CoreException e) {
 					throw new InvocationTargetException(e);
@@ -107,7 +106,7 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 	 */
 
 	private void doFinish(String projectName, String folderName,
-			String packageName, String className,String pageLocation, IProgressMonitor monitor)
+			String packageName, String className, IProgressMonitor monitor)
 			throws CoreException {
 		IProject project = ProjectUtilities.getProject(projectName);
 		IJavaProject javaProject = JavaCore.create(project);
@@ -130,21 +129,9 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 		aimPackage.createCompilationUnit(className+".java", classContent, false, null);
 		monitor.worked(1);
 		
-		IFile pageFile = null;
-		if (pageLocation.equals("src")) {
-			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-			pageFile = root.getFile(aimPackage.getPath().append(
+		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+		final IFile file = root.getFile(aimPackage.getPath().append(
 					className + ".tml"));
-		} else {
-			String absolutePath = ComponentCore.createComponent(project)
-					.getRootFolder().getUnderlyingFolder().getRawLocation()
-					.toString();
-			String webContent = absolutePath.substring(absolutePath
-					.lastIndexOf("/"));
-			pageFile = project.getFile(webContent + "/" + className + ".tml");
-		}
-		
-		final IFile file = pageFile;
 		try {
 			InputStream stream = openContentStream();
 			if (file.exists()) {
@@ -200,8 +187,7 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 
 	public void setInitializationData(IConfigurationElement config,
 			String propertyName, Object data) throws CoreException {
-		// TODO Auto-generated method stub
 
 	}
-
+	
 }
