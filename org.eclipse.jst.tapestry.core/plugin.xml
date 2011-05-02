@@ -32,6 +32,10 @@
  	</action> 
   </extension>
   
+	<extension point="org.eclipse.wst.common.project.facet.ui.images">
+		<image facet="jst.tapestry" path="icons/tapestry.gif"/>
+	</extension>  
+
   <extension
         point="org.eclipse.wst.common.project.facet.core.listeners">
      <listener
