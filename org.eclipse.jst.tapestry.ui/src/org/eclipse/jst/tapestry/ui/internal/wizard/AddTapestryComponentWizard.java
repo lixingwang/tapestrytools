@@ -163,9 +163,11 @@ public class AddTapestryComponentWizard extends Wizard implements INewWizard,
 	 */
 
 	private InputStream openContentStream() {
-		String contents = "<div  xmlns:t=\"http://tapestry.apache.org/schema/tapestry_5_1_0.xsd\"> "+
+		String contents = "<t:container xmlns:t=\"http://tapestry.apache.org/schema/tapestry_5_1_0.xsd\"" +
+				"xmlns:p=\"tapestry:parameter\"" +
+				">"+
 		"\n"+
-		"</div>";
+		"</t:container>";
 		return new ByteArrayInputStream(contents.getBytes());
 	}
 
