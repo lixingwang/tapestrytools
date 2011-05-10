@@ -17,6 +17,10 @@ public class Messages extends NLS {
     
     public static String TapestryPageCreationWizard_PageOneDesc;
     
+    public static String TapestryComponentCreationWizard_PageOneTitle;
+    
+    public static String TapestryComponentCreationWizard_PageOneDesc;
+    
     /**
      * see messages.properties
      */
