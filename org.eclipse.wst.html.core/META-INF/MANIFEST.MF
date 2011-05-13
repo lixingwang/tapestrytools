@@ -1,0 +1,1746 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Bundle-SymbolicName: org.eclipse.wst.html.core; singleton:=true
+Eclipse-SourceReferences: scm:cvs:pserver:dev.eclipse.org:/cvsroot/web
+ tools:sourceediting/plugins/org.eclipse.wst.html.core;tag=v2011011900
+ 04
+Bundle-Activator: org.eclipse.wst.html.core.internal.HTMLCorePlugin
+Require-Bundle: org.eclipse.core.resources;bundle-version="[3.5.0,4.0.
+ 0)",org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)",org.eclip
+ se.wst.common.uriresolver;bundle-version="[1.1.301,1.2.0)",org.eclips
+ e.wst.sse.core;bundle-version="[1.1.500,1.2.0)",org.eclipse.wst.xml.c
+ ore;bundle-version="[1.1.500,1.2.0)",org.eclipse.wst.css.core;bundle-
+ version="[1.1.400,1.2.0)",org.eclipse.core.filebuffers;bundle-version
+ ="[3.5.0,4.0.0)",org.eclipse.wst.common.modulecore;bundle-version="[1
+ .2.0,2.0.0)";resolution:=optional
+Export-Package: org.eclipse.wst.html.core.internal;x-internal:=true,or
+ g.eclipse.wst.html.core.internal.cleanup;x-internal:=true,org.eclipse
+ .wst.html.core.internal.commentelement.handlers;x-internal:=true,org.
+ eclipse.wst.html.core.internal.contentmodel;x-internal:=true,org.ecli
+ pse.wst.html.core.internal.contentmodel.chtml;x-internal:=true,org.ec
+ lipse.wst.html.core.internal.contentmodel.ssi;x-internal:=true,org.ec
+ lipse.wst.html.core.internal.contentproperties;x-internal:=true,org.e
+ clipse.wst.html.core.internal.contenttype;x-internal:=true,org.eclips
+ e.wst.html.core.internal.document;x-internal:=true,org.eclipse.wst.ht
+ ml.core.internal.encoding;x-internal:=true,org.eclipse.wst.html.core.
+ internal.format;x-internal:=true,org.eclipse.wst.html.core.internal.h
+ tmlcss;x-internal:=true,org.eclipse.wst.html.core.internal.modelhandl
+ er;x-internal:=true,org.eclipse.wst.html.core.internal.modelquery;x-i
+ nternal:=true,org.eclipse.wst.html.core.internal.preferences;x-intern
+ al:=true,org.eclipse.wst.html.core.internal.provisional;x-internal:=t
+ rue,org.eclipse.wst.html.core.internal.provisional.contenttype;x-inte
+ rnal:=true,org.eclipse.wst.html.core.internal.provisional.text;x-inte
+ rnal:=true,org.eclipse.wst.html.core.internal.text;x-internal:=true,o
+ rg.eclipse.wst.html.core.internal.validate;x-internal:=true,org.eclip
+ se.wst.html.core.text
+Bundle-Version: 1.1.404.v201101190004
+Bundle-ActivationPolicy: lazy;exclude:="org.eclipse.wst.html.core.inte
+ rnal.contenttype,org.eclipse.wst.html.core.internal.provisional.conte
+ nttype"
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Import-Package: com.ibm.icu.util; version="3.8"
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/TagCMDocImpl.cla
+ ss
+SHA1-Digest: EDTXElO2SEl1FAYXypV0TZ1hRWQ=
+
+Name: org/eclipse/wst/html/core/internal/validate/MessageFactory$NodeT
+ ype.class
+SHA1-Digest: KtB7/7DkL0Ka0l7fQIYuCn+9aPc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSVG.class
+SHA1-Digest: jfFkHKDIgRzRQwLNX/SL+PXfgBw=
+
+Name: org/eclipse/wst/html/core/internal/cleanup/HTMLCleanupProcessorI
+ mpl.class
+SHA1-Digest: jJZd3m+wad917PVbWSLhSR+RfsY=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedCAPTION.class
+SHA1-Digest: MIBGrD1v0V6Y+urxwAEVTsaxUD0=
+
+Name: org/eclipse/wst/html/core/internal/contenttype/HeadParserToken.c
+ lass
+SHA1-Digest: uaHsrtBjemm0Zsj3UyvVRG8EbPI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdAddress.class
+SHA1-Digest: HPEeUXRzdRso7+2+C7pYmmXjjgQ=
+
+Name: org/eclipse/wst/html/core/internal/cleanup/JSPElementNodeCleanup
+ Handler.class
+SHA1-Digest: HWb9v6WsA9dPv9S9iM+c4idR/44=
+
+Name: org/eclipse/wst/html/core/internal/provisional/HTML40Namespace.c
+ lass
+SHA1-Digest: zKripeNveL55PLgxhsRy9GyAEjI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$PPShouldKeepSpace.class
+SHA1-Digest: ENymnxkK3IQtp3O94yk1YKGUdwI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSSIFlastmod.c
+ lass
+SHA1-Digest: mGl3zO7g6NnSwhcYcRgAei4Csco=
+
+Name: org/eclipse/wst/html/core/internal/validate/ModuleCoreSupportDel
+ egate.class
+SHA1-Digest: lYiNc1/3q7lwZolhJ/hvvwERJJM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedP.class
+SHA1-Digest: TXytDt6Z+InWZuNtiCk/tuz31D0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedDIV.cla
+ ss
+SHA1-Digest: 6du+dho3omddE28spUbI6oqoL5k=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedLEGEND.class
+SHA1-Digest: BI3nWgfz3RQeEzL3Pp8ZZiDNYAo=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/ComplexTyp
+ eDefinitionFactory.class
+SHA1-Digest: CMaFu6zlCfa33W95TNkCoRfG4kY=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/ssi/SSICMDocumen
+ tFactory$CMNamespaceImpl.class
+SHA1-Digest: rUF7kIWNopeH2v3gzr9EynAqJ2o=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedBR.class
+SHA1-Digest: GwrRDmJ0ETo+q9HUi6NhrDFb8xk=
+
+Name: org/eclipse/wst/html/core/internal/validate/HTMLValidationAdapte
+ rFactory.class
+SHA1-Digest: WHkRJgCDa5tUCQfSTCMgjx1XdxY=
+
+Name: org/eclipse/wst/html/core/internal/document/DocumentStyleImpl.cl
+ ass
+SHA1-Digest: /sQXRcit7o8zP3vma090/P7OkEc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedOL.clas
+ s
+SHA1-Digest: RSikE5srVXDCXfT5Bvsu2R4f6/M=
+
+Name: org/eclipse/wst/html/core/internal/contentproperties/HTMLContent
+ PropertiesManager$ContentPropertiesManagerJob.class
+SHA1-Digest: mfrsa3qbnnF1t5kmDLvuGG4jFHM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$PPTagInfo.class
+SHA1-Digest: tGTgp/ROSiyMdu2qeP2d24gJ1q0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HTMLAttrDe
+ clImpl.class
+SHA1-Digest: X4m/XHRrzolkbOThtUbcnOOH2RM=
+
+Name: org/eclipse/wst/html/core/internal/contenttype/HTMLResourceEncod
+ ingDetector.class
+SHA1-Digest: dgJjuLy4uSvJMGBgdKORTD1P+ns=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedListIte
+ mContainer.class
+SHA1-Digest: ykCNYY4lksmvBR9rUPFyunaqmoE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CHTMLNames
+ pace.class
+SHA1-Digest: LsErR8Hjf9eJ/HB/HMthXHuJcX8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdDatalist.clas
+ s
+SHA1-Digest: QnHjyQI0G4AwjGn897jl76T2M8c=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/CMAttributeDeclara
+ tionBuddySystem.class
+SHA1-Digest: myr4Lze0VNFOzsphnJDL6ovzAlc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedPcdata.class
+SHA1-Digest: B7WGZNehsNlgAqh5IbI2jAQ4wqU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedSSIFsiz
+ e.class
+SHA1-Digest: kt1vLSybJCdeFmwJFDQK5vhGusg=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedSSIIncl
+ ude.class
+SHA1-Digest: RRyfJ30c18o2XOD+ukhxH7JJ55A=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedDD.class
+SHA1-Digest: ltHrxruDSWytTuwKV66Ulq/K1y0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/DeclCollection$D
+ ualMap.class
+SHA1-Digest: 2Xh6HUWWmhkgkmMSp0nf7xoD1+8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSP21ElementColl
+ ection$JACreator21.class
+SHA1-Digest: VcQUOUc3TgFDPQBsJohxuP2sAnE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSP20ElementColl
+ ection$Ids20.class
+SHA1-Digest: O7zjVPJZXrDOVHVDrecjYGus+dI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CMContentI
+ mpl.class
+SHA1-Digest: 7+CHzmfm0/Ga7g0FXqxVrQJmPeY=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdHeadingContai
+ ner.class
+SHA1-Digest: aV1iG8LvGsvGPU9btxJFnmb7DOo=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedBR.clas
+ s
+SHA1-Digest: VL3feKsYMZ/bWM0+V1oVrR21RvM=
+
+Name: org/eclipse/wst/html/core/internal/validate/NamespaceValidator.c
+ lass
+SHA1-Digest: k3oQ5W7UzQ+6Q5DEuAjHybeKK38=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedDT.class
+SHA1-Digest: bRDGle+GDWWvxzY5w9GvErnfv3c=
+
+Name: org/eclipse/wst/html/core/internal/format/SpaceConverter.class
+SHA1-Digest: DYmF5npVMNP5rALj7mhwWLjz57Q=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSP21Namespace.c
+ lass
+SHA1-Digest: 2GuapgNIJW0cq9iOk5BCKE1ELDI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdTable.class
+SHA1-Digest: 4UY5y4+HJNsV8gB4B4DMOqtqT44=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedPARAM.class
+SHA1-Digest: vBcibdQY8MCjvN7hdM5/pA3rX/E=
+
+Name: org/eclipse/wst/html/core/internal/validate/HTMLElementAncestorV
+ alidator.class
+SHA1-Digest: Klw+pR8P0YdrEPbeC5d64T6M35c=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/DeclCollec
+ tion.class
+SHA1-Digest: JGVNU7kn0rTr4ko0JGpU3v4fhls=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedDIV.class
+SHA1-Digest: PjlZCow0isR9HCb0s9Gf7IC9TUk=
+
+Name: org/eclipse/wst/html/core/internal/cleanup/HTMLCleanupHandlerFac
+ tory.class
+SHA1-Digest: 9gAa5MZd1br62p9L20D4yvQe4FI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdTrContainer.c
+ lass
+SHA1-Digest: 5jYnuG145jCPFwaXYiXRFiWt3oo=
+
+Name: org/eclipse/wst/html/core/internal/format/HTMLFormatProcessorImp
+ l.class
+SHA1-Digest: HS01Lxw3qYHcYnkQRgMMig1RQoM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedSSIExec
+ .class
+SHA1-Digest: FyHU+5oVrKBe31oAfuAO5VCIQfs=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLCMDataType.c
+ lass
+SHA1-Digest: 5Fux86KINbkA2EOh2lgJE9ODzdU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$AbstractElementPropertyProvider.class
+SHA1-Digest: n6kBfB8lNOqoh19bO/X5QYWUjoY=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/URLModelProvider.clas
+ s
+SHA1-Digest: MT5hRw4SEmoySn2/lhSminBwYL8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedTEXTAREA.clas
+ s
+SHA1-Digest: qLQ901TMVcGNY5qzgaAIO3y3Fwc=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/XHTMLAssociationPr
+ ovider.class
+SHA1-Digest: Sspil40akUkERFe0LFpMY/5ASjo=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedDD.clas
+ s
+SHA1-Digest: 2fEbk+KZWqRwsxQVulnAWC7zPD0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedRT.class
+SHA1-Digest: Pg4RF0k1BFVpk25nJqicc2C3TvY=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedFORM.class
+SHA1-Digest: x4oAXJLQ7vfojTgxp9oDhMfspao=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedEmpty.c
+ lass
+SHA1-Digest: H8Eg8X8bY50XITtTHw/440lRKco=
+
+Name: org/eclipse/wst/html/core/internal/format/EmbeddedCSSFormatter.c
+ lass
+SHA1-Digest: 0GQoN9IZsKN/RuURHLh3vg2JB6g=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/DeclCollection$D
+ eclIterator.class
+SHA1-Digest: 0SvEYUexfqYXaGNvvhTc7uLV7f8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedDT.clas
+ s
+SHA1-Digest: axpAwV1LPPKxe6NDvqhBzbeEV/k=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/HTMLModelQueryCMPr
+ ovider.class
+SHA1-Digest: hDePnABEUg/EHeF8qJ+gL4Iu6pw=
+
+Name: org/eclipse/wst/html/core/internal/document/HTMLDocumentTypeRegi
+ stry$HTMLDocumentTypeEntryComparator.class
+SHA1-Digest: sVUQpYZhluK5Kre3lGESlNNa9d8=
+
+Name: org/eclipse/wst/html/core/internal/validate/HTMLSimpleDocumentVa
+ lidator.class
+SHA1-Digest: E9JvAizj3tGtrSsbjI6YY4fDArQ=
+
+Name: org/eclipse/wst/html/core/internal/validate/MessageFactory.class
+SHA1-Digest: uDgz8qt6wRB6EhB/I8zgoylDxjc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedPRE.cla
+ ss
+SHA1-Digest: 253lEtkl1pslUM/CXeRmC5nT45Q=
+
+Name: org/eclipse/wst/html/core/internal/contentproperties/HTMLContent
+ Properties.class
+SHA1-Digest: 8Q8F1gvhsEWfSwV8w/PkgFGnNS8=
+
+Name: org/eclipse/wst/html/core/internal/document/DOMStyleModelImpl.cl
+ ass
+SHA1-Digest: Dn5ACeUeG9YRXveXTRzZbuEcxDI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedHEAD.class
+SHA1-Digest: VZnU77aQp/RAxU0M4evObNZ60Bc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/EntityColl
+ ection.class
+SHA1-Digest: OCsZx9r8CrjQ7DxcvsKbGyVrC20=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedInlineC
+ ontainer.class
+SHA1-Digest: 8ngWbLqUytNSLM3TJ2U2by5Ij30=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JCM20DocImpl.cla
+ ss
+SHA1-Digest: VqZ7bVy89cBBiBpXNwJu/Grx54Q=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/CSSQueryDeclarationDa
+ ta.class
+SHA1-Digest: cBDlYRp2Mft5Rl67oC9hdPasY8M=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CMNamespaceImpl.
+ class
+SHA1-Digest: z/7F3TTusDdevWKeSQHrhYmIAFA=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/ModelQueryAdapterF
+ actoryForEmbeddedHTML.class
+SHA1-Digest: Kc4CpJ0ZXfNtsARGVJzdSZ3pDfM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedFlowCon
+ tainer.class
+SHA1-Digest: 929DhS6ybI+aISYp8QsLEnawvnk=
+
+Name: org/eclipse/wst/html/core/internal/contenttype/HTMLHeadTokenizer
+ .class
+SHA1-Digest: CvVwLXchOJ8vDB2r2SHQOJZ9Z5s=
+
+Name: org/eclipse/wst/html/core/internal/format/HTMLTextFormatter.clas
+ s
+SHA1-Digest: 5pgAqUr3WiExwFOrrP9CmWoMCDI=
+
+Name: org/eclipse/wst/html/core/internal/document/HTMLDocumentTypeEntr
+ y.class
+SHA1-Digest: nIIBMYS6xhXVDH90kG6JWNd3SYA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLEntityDeclIm
+ pl.class
+SHA1-Digest: C77ArwZ0YXmfoaiqfnwjtZz47As=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLCMDataTypeIm
+ pl.class
+SHA1-Digest: 8TYn+bWND/KEKfMjMs0Mv/PwG+M=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSSISet.class
+SHA1-Digest: kggXe74f+AkOr54orfUQpBQ5y74=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedFontStyle.cla
+ ss
+SHA1-Digest: jU8Jss8Vjb2ykcrsAd4MpZ4wOWc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedSSIPrin
+ tenv.class
+SHA1-Digest: o6dXwWxHfvf/M9uhODiFQvR3iyI=
+
+Name: org/eclipse/wst/html/core/internal/HTMLContentBuilder.class
+SHA1-Digest: gKLf9CIwyfH0Metibuv8l5Jjw50=
+
+Name: org/eclipse/wst/html/core/internal/Logger.class
+SHA1-Digest: g1FQc14EKaX6h/VIRnwB3nQkcUI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$DefaultProvider.class
+SHA1-Digest: jeSuJBCAHlsuAJ5j7HLTRuiCJRs=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdHead.class
+SHA1-Digest: O81ziqeqhANKtdg4mbnrK9Cm3nY=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedBASE.class
+SHA1-Digest: v8yc2LghMwHZUPtkuRRKeegX8C4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$PPIsXHTML.class
+SHA1-Digest: 4fNvJWa8VoQ2diTfmUnUKOv4oaw=
+
+Name: org/eclipse/wst/html/core/internal/validate/AbstractErrorInfo.cl
+ ass
+SHA1-Digest: xZ1x1bO++4K0UniU7waFOxc2Jdo=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedFRAMESET.clas
+ s
+SHA1-Digest: uqNUeIZvx3+oWvQfTK2ae1rZgrE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedMENU.class
+SHA1-Digest: usk8WqDQeuQzmfj4UpC7yJHnZqc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedSSIConf
+ ig.class
+SHA1-Digest: cnYX1yTglJcIlc/FfksO/C2xv8I=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSPCMDocument.cl
+ ass
+SHA1-Digest: rIay0VeeBqjm634JvosvMb35FRs=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ ovider.class
+SHA1-Digest: OMyuflm0n0q0JqJbrS9H1g0fPb8=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/CMNamedNodeMapForB
+ uddySystem.class
+SHA1-Digest: /Vtf9peUoKenGBjSfpeTR2WbSkI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/ElementCollectio
+ n$Ids.class
+SHA1-Digest: o8ulnLPjV8R5br1s2vE+bt3EQAE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/ssi/SSICMDocumen
+ tFactory$CMDocImpl$Elements.class
+SHA1-Digest: r+a+cOgMck00CIWG2VG1hNnqxOA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/ssi/SSICMDocumen
+ tFactory$CMDocImpl.class
+SHA1-Digest: eJKsbRssYjxR12cAZHPGY7HvM6E=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/StyleListener.class
+SHA1-Digest: K261srCK6sjHj4RaDWuMW9CCDiA=
+
+Name: org/eclipse/wst/html/core/internal/HTMLCoreMessages.class
+SHA1-Digest: TKBrXqMIaBXGCwXJwM/e3tuBqpA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedMAP.class
+SHA1-Digest: F/5KhzGFpVDw86gZ6SqlgSIGKfw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/ComplexTypeDefin
+ ition.class
+SHA1-Digest: aCG+Im972+sQLvahXXCfldyyKDA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedPRE.class
+SHA1-Digest: 2mdlMWKsU0+VZKTas4bfkT7B5IY=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedPcdata.
+ class
+SHA1-Digest: oWK8uSAGXtyMrY+hH0ueQ5MmsW0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSectioning.cl
+ ass
+SHA1-Digest: xAn+qFqELDxhfQb7luHKvnUUZC0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$PPOmitType.class
+SHA1-Digest: uQcuY+dkBpUpoOWCJ3u93q3u/wo=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedFORM.cl
+ ass
+SHA1-Digest: TS8VKt+SmQFghlclAozAH2rMr68=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedMETA.class
+SHA1-Digest: gQUWuocPJfNQDjWeObSQFZhqhO4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTML5AttributeCo
+ llection.class
+SHA1-Digest: M4Pln4hEbn30UAy9t2cy+v+4/X0=
+
+Name: org/eclipse/wst/html/core/internal/validate/HTMLDocumentContentV
+ alidator$Division.class
+SHA1-Digest: e6k96r47XcRsJU53ZkSNPUz3XtM=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/CMDocumentForBuddy
+ System$Elements.class
+SHA1-Digest: xhLZtGh9sV7mB0v8Hje2WEwQNI8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$PPIsXHTML.class
+SHA1-Digest: 0EzTEwnSwW2SHRXvf53coKLtSQg=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/CMElementDeclarati
+ onBuddySystem.class
+SHA1-Digest: iM/fLqpenABXRkGtycVCB21ppN0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdColumnGroup.c
+ lass
+SHA1-Digest: NwgWV3zMRCFtKqo//e22HM2uTPE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CtdInlineC
+ ontainer.class
+SHA1-Digest: HBOnAajKXUulcNjdaM3PtQrfG/I=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedUL.class
+SHA1-Digest: OU5Eb/G+3Kx67IbrwWwPkRSZBno=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HTMLCMNode
+ .class
+SHA1-Digest: fNvRL3q/m3fFIvsk+fE2c6V9Q+w=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedCANVAS.class
+SHA1-Digest: xxdF9+Gxom0jfjDnSpKxO31qbTo=
+
+Name: org/eclipse/wst/html/core/internal/validate/HTMLAttributeValidat
+ or.class
+SHA1-Digest: 1vlrmMbshKgzWpDwi4KJga1FLhQ=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/HTMLModelQueryImpl
+ .class
+SHA1-Digest: ycIzdWV63fvZ5RgJln78FLQ1STw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedRUBY.class
+SHA1-Digest: wU4xwWq+qbfTmHUUK0nmJNIOo4Q=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedHEAD.cl
+ ass
+SHA1-Digest: fE5ZjwZNfVICIH/BFIK6BBN0RE0=
+
+Name: org/eclipse/wst/html/core/internal/validate/ModuleCoreSupport.cl
+ ass
+SHA1-Digest: IY47nB8ZFCNQByXv1upjspMTL+k=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$PPOmitType.class
+SHA1-Digest: oBoP9gSyPdFLIXa71dI7aPDbVsc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedEmpty.class
+SHA1-Digest: aYrvgJz6tuudgKD5ygfvaTmwJ/I=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$PPTerminators.class
+SHA1-Digest: Zck2OQyODWzSnhaqnxcfdBJPyi4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedNOFRAMES.clas
+ s
+SHA1-Digest: TGKxdSVPskdjfVVfrWDi3YJFBRM=
+
+Name: org/eclipse/wst/html/core/internal/provisional/HTML40Namespace$E
+ lementName.class
+SHA1-Digest: rgILXqBPpg8qdxwuuD58NK8jSqk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/DeclCollec
+ tion$TolerantStringDualMap.class
+SHA1-Digest: jQ71vfqGROilsyN7ucgAfaF2ikA=
+
+Name: org/eclipse/wst/html/core/internal/validate/PrimeValidator.class
+SHA1-Digest: /n+RlSyrhkQ1M2wha+i4kd0Y/s4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedPROGRESS.clas
+ s
+SHA1-Digest: MyIaaaClEthz3AWcvVy+Jak8Q4I=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/DocumentQuery$Inse
+ rtionTarget.class
+SHA1-Digest: IcQoBu223UQCyCVVnXvkMObGPPM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/ElementCol
+ lection.class
+SHA1-Digest: CYm6L/WdjjaDvz1QTD3nlbnw9EU=
+
+Name: org/eclipse/wst/html/core/internal/validate/HTMLSimpleValidator.
+ class
+SHA1-Digest: NY6Hr7oN5q7siCFpoSJiI2zRQjM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/EntityCollection
+ $Ids.class
+SHA1-Digest: gB9yVJL5UvgNRiuYZvYcLauJaXc=
+
+Name: org/eclipse/wst/html/core/internal/validate/SMUtil.class
+SHA1-Digest: stKuFYt1sAZ2jjkKnVeSzIVqVtQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedMARQUEE.class
+SHA1-Digest: QI9O4V9n0+sOTLlFI8mL/5HWbAk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory.class
+SHA1-Digest: FNMuO+fO0Vv2hUXXvcwDJ3MmpN4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CHCMDocImp
+ l.class
+SHA1-Digest: YiVTFwbQsAHJw0sMANHvuEjB7+0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedINPUT.c
+ lass
+SHA1-Digest: fN2z5SyjiiPEbaQVlFg/HY+8Rfw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HTMLElemDe
+ clImpl.class
+SHA1-Digest: AvPeQMs8wTX+ty1h7jNILRK/1OM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedFRAME.class
+SHA1-Digest: XhCXEQiqk9cyV2SQMRnpBhJAS8I=
+
+Name: org/eclipse/wst/html/core/internal/preferences/HTMLCorePreferenc
+ eInitializer.class
+SHA1-Digest: i0iM66zFRzlWURrJSbUESqSw3zI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdRuby.class
+SHA1-Digest: fNAvdJVWEeTmBk3z//AFqqjGlHQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/DeclCollection$T
+ olerantStringDualMap.class
+SHA1-Digest: 07lbnXguxVCIf/rCWp8c4+WseZI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedHR.class
+SHA1-Digest: OwuptCYdNpjSLyaTgx5AZ3fPSvE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$DefaultProvider.class
+SHA1-Digest: jY4URlI9A2LGxRu94PMFbTsgBRY=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CtdHead.cl
+ ass
+SHA1-Digest: FhmoAdMcDDdSFa3jcILwgiCNs68=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/HTMLModelQueryAsso
+ ciationProvider.class
+SHA1-Digest: sbtKPcRxZw87C0aW8fMtLv6TED4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CHTMLNames
+ pace$ElementName.class
+SHA1-Digest: wlezLaPP0uP9IeMqilBh1o01HLQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedBASE.cl
+ ass
+SHA1-Digest: j4AbP8Fndz0PLpxrkQciXlW3oD8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$PPShouldIndentChildSource.class
+SHA1-Digest: h5Qz9mSwaty6RbwYQjPFzF1iP0o=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedTITLE.c
+ lass
+SHA1-Digest: opHi5FOGjY5885RXIbExHI8Yn8M=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSSIExec.class
+SHA1-Digest: PtZFUpu1a/YLZrBf7S9CxGgcjiU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HTMLElemDe
+ clImpl$2.class
+SHA1-Digest: 4dYrOvxEEY4MnzSRiqOAgtSGKaw=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/HTMLDocumentAdapter.c
+ lass
+SHA1-Digest: jbB2iBpORokOY6ALWm2xOOKvaZs=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedUL.clas
+ s
+SHA1-Digest: XLHdRafEE/Up4X3XLLP3d0t6Ys8=
+
+Name: data/htmref.properties
+SHA1-Digest: Q6UldcI7ilVRQW9O+si4G+QDNFU=
+
+Name: about.html
+SHA1-Digest: mUOvxSYxCUot6WW9T8TxmOQUrws=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedMENU.cl
+ ass
+SHA1-Digest: Krpl9gMWsJI2MfDB5TA2BeIvCJc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedIFRAME.class
+SHA1-Digest: pbfxIDFtyecwO4vq4opytiDoXdE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$PPTerminators.class
+SHA1-Digest: zQmrVNDZQ4sfAwHUUHUhXGiXdkI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CMNodeList
+ Impl.class
+SHA1-Digest: xVSF2GtutBX1CQKNuUTjpwZHw4U=
+
+Name: org/eclipse/wst/html/core/internal/contenttype/ContentDescriberF
+ orHTML.class
+SHA1-Digest: Mj/LgiR4aYczmMvCCMIUzU/b0ek=
+
+Name: org/eclipse/wst/html/core/text/IHTMLPartitions.class
+SHA1-Digest: HpM8KIDSatytoGgvDoOOPnIlJs0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSP20ElementColl
+ ection$JACreater20.class
+SHA1-Digest: s1CizuvRp9cAx1pjlkmXz9zdM3U=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSP21ElementColl
+ ection.class
+SHA1-Digest: uP7wC+f4xel+o2abUQUQAMomIVk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdDl.class
+SHA1-Digest: MbhpUg/oEUyLc0FsQoYivFEK/10=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedSSISet.
+ class
+SHA1-Digest: olq2dvtn50F6TB/zZkMLgCnZDxo=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedTEXTARE
+ A.class
+SHA1-Digest: 7CmCGHJ5L8aeEzWF9qL8zbm/ISk=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/CMDocumentForBuddy
+ System.class
+SHA1-Digest: OJi+xTnssm+C1P3NTu8iP6AOgvo=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/ModelQueryAdapterF
+ actoryForHTML.class
+SHA1-Digest: DN1AZCQ2LfQLWhDRnfz/aWUKGJk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedMETA.cl
+ ass
+SHA1-Digest: XDhTuHwoll4k+hxkWWte9NswWLQ=
+
+Name: org/eclipse/wst/html/core/internal/provisional/HTMLFilesPreferen
+ ceNames.class
+SHA1-Digest: qrHbPLWtCvaIWDPrzfZVYumVAYQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedHR.clas
+ s
+SHA1-Digest: Aqmww9RkkbzO2lTnnIDYxM+W1MI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedNOSCRIPT.clas
+ s
+SHA1-Digest: saV3PuQbzVALL1oJNa8VW7CY0ng=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedLABEL.class
+SHA1-Digest: rQt55XyE/XvPRZ7vxsYDfKKHAfc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedAREA.class
+SHA1-Digest: +x6LC5LTBhJtdQ7Jdi7vy7Lpn4c=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedKEYGEN.class
+SHA1-Digest: jn1JH9jVkZTqWkIv+6R3KmxQK4c=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSPElementCollec
+ tion.class
+SHA1-Digest: tKWvKDrQelF5hnu9u5ttK7irkJg=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/ModelQueryAdapterF
+ actoryForHTML$InternalModelStateListener.class
+SHA1-Digest: 37cQO1NNYt2cpfMGrmuBCHMwfUc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdOptionContain
+ er.class
+SHA1-Digest: TOjEcV7alKVCewR95x+0UcFJnt4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSOURCE.class
+SHA1-Digest: HYfyHpc+7wmeGhDPLiJmoT5EFcs=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$PPProhibitedAncestors.class
+SHA1-Digest: uSldU+T6nhCqobircaqX2eW5F2s=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/StyleAttrAdapter.clas
+ s
+SHA1-Digest: oYO2VSqtK+IJf2bF2MbqunbVvmg=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedScripts.class
+SHA1-Digest: iggZbUzhyi32mXRkcvotDUyB/9c=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedCOMMAND.class
+SHA1-Digest: gGvpL6XqQrsDDv1n4Mh9hWVmlag=
+
+Name: org/eclipse/wst/html/core/internal/validate/CompositeValidator.c
+ lass
+SHA1-Digest: zVRfSn94uHOqkkPrQjPeSgFCVhE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedFIGURE.class
+SHA1-Digest: omiY7HXLi3o7eqby3pG2vwYsBRg=
+
+Name: org/eclipse/wst/html/core/internal/contentproperties/HTMLContent
+ PropertiesManager$ResourceChangeListener.class
+SHA1-Digest: RJRUptiKlSK3SlknPeNY4j8qViw=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/AbstractStyleSheetAda
+ pter.class
+SHA1-Digest: po6rSmQabNFJ57MBzxbevgDulJU=
+
+Name: org/eclipse/wst/html/core/internal/validate/HTMLElementContentVa
+ lidator.class
+SHA1-Digest: OUBs4ccs/SjoxutVQTg/jBVuOj0=
+
+Name: org/eclipse/wst/html/core/internal/provisional/HTML50Namespace$E
+ lementName.class
+SHA1-Digest: fBMXUegaQCF69lVwCpHRikjvCzc=
+
+Name: org/eclipse/wst/html/core/internal/contenttype/IntStack.class
+SHA1-Digest: wsroywIhpAbYjNDjczxTEmRGCFY=
+
+Name: org/eclipse/wst/html/core/internal/document/HTMLDocumentTypeAdap
+ terFactory.class
+SHA1-Digest: f0KZHjD3JZ3QHsD3vlNLD8UZyTw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedEMBED.class
+SHA1-Digest: sjiVTxim772byXIrDPLkbEbH/M0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CtdDl.clas
+ s
+SHA1-Digest: Po1PAVcqx2Ocd2u7un7YoeKW4Pg=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSELECT.class
+SHA1-Digest: S0QbiZQZQFRWR0MsTwlJK78vJn0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedIMG.cla
+ ss
+SHA1-Digest: IEOt5SfS/6e4soUBmFU7ET+Ynj0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSUMMARY.class
+SHA1-Digest: HWHBpi8tcOYmYppzEPInV94QCgw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedOBJECT.class
+SHA1-Digest: BXWoj+I8nojPh58isq0oHI8/tpo=
+
+Name: org/eclipse/wst/html/core/internal/modelhandler/EmbeddedHTML.cla
+ ss
+SHA1-Digest: IzWeEiOGb4hmQkIGXNbqA3ycOEQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLAttrDeclImpl
+ .class
+SHA1-Digest: iegXDGTYbMBXHZsyg7mpempCG5E=
+
+Name: org/eclipse/wst/html/core/internal/validate/MessageFactory$Error
+ Table.class
+SHA1-Digest: u21K5visEQ4qPQlhAqO2JE2lc9U=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/DeclCollection.c
+ lass
+SHA1-Digest: gu2IS2E8EfsdxunEKlQkWzHEg/I=
+
+Name: org/eclipse/wst/html/core/internal/encoding/HTMLDocumentCharsetD
+ etector.class
+SHA1-Digest: CnRHr7r7x6RAAiZ97zNiLzbZdLE=
+
+Name: org/eclipse/wst/html/core/internal/validate/NullValidator.class
+SHA1-Digest: hjyqcwnz/XZtkrPoOiGGVKQU6W0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/AttributeC
+ ollection.class
+SHA1-Digest: wbft1DAM8FTS6aLtj9q93OM0keA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedVIDEO.class
+SHA1-Digest: 9X+zSbid4rCH9LZ6Rzlengn9FZA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLPropertyDecl
+ aration.class
+SHA1-Digest: 15b6gkxHS/uWRfORNUtugptXU5s=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/CSSQueryContext.class
+SHA1-Digest: 0Vtzn0dO3R9uDHsb9y1YJKFNCcM=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/HMQUtil.class
+SHA1-Digest: 5iecTBNCGRpQmhFFhoGCaWJhOhU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedPhrase.class
+SHA1-Digest: VYlKiryMkOXyc0Fc+QiafP3rv0w=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/CSSQueryValueData.cla
+ ss
+SHA1-Digest: BPNiGvrliGSrz/OVpLU5VvjHZl4=
+
+Name: org/eclipse/wst/html/core/internal/validate/DocumentPropagatingV
+ alidator.class
+SHA1-Digest: DrfZv7Bd61Ubu8xynhpxdGyOGok=
+
+Name: org/eclipse/wst/html/core/internal/provisional/contenttype/Conte
+ ntTypeFamilyForHTML.class
+SHA1-Digest: 9G2RWrqTYoShe1/Ih0MXRh5iWco=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedINPUT.class
+SHA1-Digest: fLoOe87xXXJs+qpabRRoVlUkyIo=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JCMDocImpl.class
+SHA1-Digest: TPB6wWviU3fqWIkjqORsb12FjAE=
+
+Name: org/eclipse/wst/html/core/internal/format/HTMLFormatterFactory.c
+ lass
+SHA1-Digest: V5GsEzY8fjNTXDArk9wujrhMEDE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/DeclCollec
+ tion$DualMap.class
+SHA1-Digest: AHLZLdTXnOiSk5sZTK4qrBTVuRs=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/URLHelper.class
+SHA1-Digest: 5SMvHyk6Rq+dltq2KExt2SUFmck=
+
+Name: org/eclipse/wst/html/core/internal/provisional/text/IHTMLPartiti
+ onTypes.class
+SHA1-Digest: hSaFk1E664n1Fsy3ZGMliMFUdRI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedTableCell.cla
+ ss
+SHA1-Digest: 2HX3h1xXIp9f8wsIdqSKZd17CNc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CMNamedNod
+ eMapImpl.class
+SHA1-Digest: xT//CUEsgmG3HkSym/ABkumyhuk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedTITLE.class
+SHA1-Digest: PVaGv4sKDl4mNXiPNx9DVdeMIPc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLCMNode.class
+SHA1-Digest: z1XdtGXzlL/02gYP5rtEQPfN/3Y=
+
+Name: org/eclipse/wst/html/core/internal/text/StructuredTextPartitione
+ rForHTML.class
+SHA1-Digest: GTRLZwdC1cvQSQ6/gEYFmDwLurI=
+
+Name: org/eclipse/wst/html/core/internal/modelhandler/ModelHandlerForH
+ TML.class
+SHA1-Digest: SseBjkeV0VkHPbn6EBGauJvO/o0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CHTMLNames
+ pace$EntityName.class
+SHA1-Digest: kzlIJx/9gckrAg18LwKvXr5zWFU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedOUTPUT.class
+SHA1-Digest: //+zH992wqVupAr8i+1aO9D+c1I=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSSIConfig.cla
+ ss
+SHA1-Digest: vOu7PNc78FdfAVSo5Cdrx23Pv/w=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/Tag20ElementColl
+ ection$TACreater20.class
+SHA1-Digest: cJkCVAqpj2BhG+du8JUTUcpuPQ0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLEntityDeclar
+ ation.class
+SHA1-Digest: mpNx9pmytDpar3RsbrJ1d4Ub9Io=
+
+Name: org/eclipse/wst/html/core/internal/provisional/HTML50Namespace.c
+ lass
+SHA1-Digest: cx5As+XOiaNyhIJExsuqDVrESng=
+
+Name: org/eclipse/wst/html/core/internal/HTMLCorePluginResources.prope
+ rties
+SHA1-Digest: QLD957gTXbF6C+suJ+PiGs1s1xk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedDATALIST.clas
+ s
+SHA1-Digest: 9qqpu2yRyiRwfgKQYrPkwjd+UXc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$PPLineBreakHint.class
+SHA1-Digest: 7UYE/KgPoKEF1cELxqibpxJ/sU8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HTMLElemDe
+ clImpl$1.class
+SHA1-Digest: lDF+S8qEOBJOKcMiYJZBA9BCRTk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdFieldset.clas
+ s
+SHA1-Digest: mNrdycvCS5QqcL27uXPBJ0KN9kA=
+
+Name: org/eclipse/wst/html/core/internal/validate/ErrorInfoImpl.class
+SHA1-Digest: +SVUxkuZQAkys0U9xB0EZ7G9dVc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedCOL.class
+SHA1-Digest: Frlik03DHrErLggE5zeAfEQK17c=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedIMG.class
+SHA1-Digest: dSLPdQ+B3A1fCJPrO0KM6c/m2bg=
+
+Name: org/eclipse/wst/html/core/internal/format/HTMLFormatter.class
+SHA1-Digest: ggpgD+5jRKWAgen7kdF05MLzvuQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSPElementCollec
+ tion$2.class
+SHA1-Digest: iAKJ92A48xPF2g3CCJSsjeinhlM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CtdFlowCon
+ tainer.class
+SHA1-Digest: NplmubjvCZhgSM32iBRW0OFWZ3k=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSSIPrintenv.c
+ lass
+SHA1-Digest: GQ/mxQJn8VnOpf9jCj49J50oAHE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HCMDocImpl.class
+SHA1-Digest: 6DcBG0fYhuneIUtkdYI0ExBLTmk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedTableBody.cla
+ ss
+SHA1-Digest: YeNlw3RD8ehc3XbaOQ2Qi8lHl94=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedHTML.class
+SHA1-Digest: DwR//a0eSqrEhRMZVYzAdu3oDN8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CMNodeImpl
+ .class
+SHA1-Digest: tgnmH43aotFm8G3w+RMoxofw9Pg=
+
+Name: org/eclipse/wst/html/core/internal/cleanup/AbstractNodeCleanupHa
+ ndler.class
+SHA1-Digest: +yL3/9xCPS53MsI2uD7cH3nJ3Ls=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CtdLiConta
+ iner.class
+SHA1-Digest: tdrrnFu7yPWsVQuD5fOGd0/Ka3s=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedHeading
+ .class
+SHA1-Digest: MJJvDhTZNEw8A5X1RmqXcmpL5S4=
+
+Name: org/eclipse/wst/html/core/internal/document/HTMLModelParserAdapt
+ erFactory.class
+SHA1-Digest: iNRlsD2w2FE8Np4+pYXlQ6GbgzQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdTableCellCont
+ ainer.class
+SHA1-Digest: 8HuPWWPBP4P3twZnCE9LXpB13Ys=
+
+Name: org/eclipse/wst/html/core/internal/contenttype/ByteReader.class
+SHA1-Digest: 8OaXBGpjDSrji1qUf7tyhxkFzDk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/EntityCollection
+ .class
+SHA1-Digest: H6Ypq0LIASz1ycMo3fJbONIdCjU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JCM21DocImpl.cla
+ ss
+SHA1-Digest: SEP5JU8ZCPdlFUBtTJW48FdmI4s=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedListItemConta
+ iner.class
+SHA1-Digest: asbZ2Jra8YMuRDn8l+YpYpD/08w=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedDL.class
+SHA1-Digest: Jk2ilO/Q4A1BK5/4AfYzUlaynDE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSCRIPT.class
+SHA1-Digest: h02oj7RKBXI0O3pcmZzSvuvTADc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedFlowContainer
+ .class
+SHA1-Digest: gd3wU6LqObQGBKwDILKMffF/7mc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CMGroupImpl.clas
+ s
+SHA1-Digest: XwCQjQafvD/UfcymCiAHp69m7KQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLCMDocument.c
+ lass
+SHA1-Digest: Y7qQA/MBpAfcj8EKptxILpxK5cw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedNOEMBED.class
+SHA1-Digest: TagRF5xFXLMhSxOn+N6wvthzHuk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSP11Namespace.c
+ lass
+SHA1-Digest: YFrDkw0ylUw2Jj0XdlFrQ2+Al60=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedCENTER.class
+SHA1-Digest: yAAQrm4CZ/yDEYZeguNEYlePs4E=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdHtml.class
+SHA1-Digest: wqCb4RupZmGDjGlpPxcP/qHbQ8U=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdNoframesConte
+ nt.class
+SHA1-Digest: E6CqiPyxdxAJ1QNK5yz5sd4hES4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedWBR.class
+SHA1-Digest: zej+FFgu4nznKWOts+0262lQexk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdParamContaine
+ r.class
+SHA1-Digest: p7WTELwWVte+xZQf7rAxGS7brGI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedMETER.class
+SHA1-Digest: 9TBHCstsgFiVb/FYrrm3YU0UV18=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSPElementCollec
+ tion$JACreater$AttrDecl.class
+SHA1-Digest: v5x1XjoX+547ERrVk7D3pslQPS8=
+
+Name: org/eclipse/wst/html/core/internal/cleanup/CSSTextNodeCleanupHan
+ dler.class
+SHA1-Digest: WUMr1fEQtokKtAY1Tlqx5Zd3rvY=
+
+Name: org/eclipse/wst/html/core/internal/provisional/HTMLFormatContrai
+ nts.class
+SHA1-Digest: Fx6Uv7VxYWET9CScxypsph4DRo4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedOPTION.class
+SHA1-Digest: hbqi8tsuD8w9rrxCTwppwb42fgg=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSP20Namespace.c
+ lass
+SHA1-Digest: K/LlxQT74TdbD3A9mBxlaeN+Q+4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$PPIsJSP.class
+SHA1-Digest: bkjLILhceBrR2O6MrpZOQWE3sp4=
+
+Name: org/eclipse/wst/html/core/internal/encoding/HTMLDocumentLoader.c
+ lass
+SHA1-Digest: RTUXqn0usuq0kjDFzn8o/P6z/ME=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSP11Namespace$E
+ lementName.class
+SHA1-Digest: 5ab7LGynmJYwHJ1H+XBgM+693+U=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedSELECT.
+ class
+SHA1-Digest: U0AomL+yRXdO7gd3jgyXjJfNcf8=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/LinkElementAdapter.cl
+ ass
+SHA1-Digest: MMFXDwxXt0ADzR5Y6sFm900oAAQ=
+
+Name: org/eclipse/wst/html/core/internal/contenttype/AbstractResourceE
+ ncodingDetector.class
+SHA1-Digest: AUOWqPsfPo4ePDkkwteAISpX2xc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedCOLGROUP.clas
+ s
+SHA1-Digest: oQmGaMyaAMvb4qERZxwpJXbfDXc=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedInlineContain
+ er.class
+SHA1-Digest: CJNdtnXlRCieHIWn2Ia4UT6ATTU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedISINDEX.class
+SHA1-Digest: mbpkl2aBK3D5keQxgXuDadEmFA4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSPElementCollec
+ tion$ElemDecl.class
+SHA1-Digest: vQX70XqmAXsX0JnEp/FcO6y2YIA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$PPLayoutType.class
+SHA1-Digest: mbtjM30IMlAinxr0h9BsUJt1gS8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ .class
+SHA1-Digest: dVgao/NXB93wbIYW1/02etzFFdU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedDL.clas
+ s
+SHA1-Digest: T0C6vCzynUH8O0iS2QFRug/KRtw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSTYLE.class
+SHA1-Digest: Jr1gkBaYFzUJ8ai9HmRvVI4lg+U=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSPAN.class
+SHA1-Digest: tMRJ5rgUWDym8a+60f9LuaevgJM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$PPLineBreakHint.class
+SHA1-Digest: FeK9hQiDpOt25s67pjgxleCruN4=
+
+Name: org/eclipse/wst/html/core/internal/format/HTMLFormattingUtil.cla
+ ss
+SHA1-Digest: dV/2/mKOsSnhwMQ8Co0W3eF+YhY=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedHEADER.class
+SHA1-Digest: QijXh1S7Ob0Wg/xIh4cDIYPoDCE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedBLOCKQUOTE.cl
+ ass
+SHA1-Digest: Wzb7I6GJoUXSYhzl7e1hcdVg1yQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSP20ElementColl
+ ection.class
+SHA1-Digest: a60UCQ/PHBWnKZSEZSz2jL91DdQ=
+
+Name: org/eclipse/wst/html/core/internal/document/HTMLDocumentTypeRegi
+ stryReader.class
+SHA1-Digest: sdAbZa+LGg87fwbM8FYc1eDcaLk=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/eclipse/wst/html/core/internal/validate/HTMLDocumentContentV
+ alidator.class
+SHA1-Digest: TujVv+RF6z0oCCWm4s2dt1nv238=
+
+Name: org/eclipse/wst/html/core/internal/document/HTMLConverter.class
+SHA1-Digest: aXZ0i7X7Oxv/vzRYC+xNg3HlJoM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedAPPLET.class
+SHA1-Digest: f/cfXlcJQu6Kw8r7+cBrgKdrCHM=
+
+Name: org/eclipse/wst/html/core/internal/provisional/PreferenceNames.c
+ lass
+SHA1-Digest: nn8U9c7tjI1udIxxqN1PHR2NmPk=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/HTMLDocumentAdapter$1
+ .class
+SHA1-Digest: RyMhY2nMvq+uk5TB6bCCI5Ffb1c=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/Tag20ElementColl
+ ection.class
+SHA1-Digest: Sp14zHbJ1Ut1G7vgJB8s0djRMgI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/ssi/SSICMDocumen
+ tFactory.class
+SHA1-Digest: y0/9IztwJb5HH1Bfm/4MfDiX3uw=
+
+Name: .options
+SHA1-Digest: X+vdeCUqlW9DG+w/op9KOIBw0r0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$PPLayoutType.class
+SHA1-Digest: Qtq/2AhZbuBCPoDdCqer7z3fr0I=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/CSSQueryTraverser.cla
+ ss
+SHA1-Digest: 1zf4qXlpxEzR7kG/JxkFxkMALZ4=
+
+Name: org/eclipse/wst/html/core/internal/validate/ElementPropagatingVa
+ lidator.class
+SHA1-Digest: FCmVvuGTSzZ/g3iRBro5yhoMTQ4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedSSIFlas
+ tmod.class
+SHA1-Digest: uMBwBdlyMWVIBRpMYhdbM8cmtsI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedHTML.cl
+ ass
+SHA1-Digest: g4GqSkcwg2yDCzmk5C0kshSUcTQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedADDRESS
+ .class
+SHA1-Digest: rTId7dsSKo9GLohWBQegTuyCKGc=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/AbstractCSSModelAdapt
+ er.class
+SHA1-Digest: KGXdrjfT0y1tX7kHqlndvkXBeuM=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/CMElementDeclarati
+ onBuddySystem$Attrs.class
+SHA1-Digest: td4UD7V4cqCw0iETd1ZwgD39b/8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedSSIBase
+ .class
+SHA1-Digest: oaUy9btLXtnkigGbRIcxTAcf/2o=
+
+Name: org/eclipse/wst/html/core/internal/validate/SyntaxValidator$Elem
+ entInfo.class
+SHA1-Digest: WlE9IPcZxZqEkoZH7GsqFNQdjdI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/Tag20ElementColl
+ ection$TagIds20.class
+SHA1-Digest: uzDlCBqFFJwRA8i3hcA1Zpfu1bY=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$PPIsSSI.class
+SHA1-Digest: H0EIxzTbo5wiz+BtuVv+mPVYnIE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/H5CMDocImpl.clas
+ s
+SHA1-Digest: CnVu677E8DvpkWyd7xe5qdxkO50=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory.class
+SHA1-Digest: FgBsJzny37mJ/ChGRC3TQW0Ngfg=
+
+Name: plugin.properties
+SHA1-Digest: HK6t2npcSMoCrSzWLIior7GxzTM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CMNodeListImpl.c
+ lass
+SHA1-Digest: 11ZgLIgQg+pCVsyrir5RCDcAqbs=
+
+Name: plugin.xml
+SHA1-Digest: IMhSx0eiSadCHKNvOm791+fjyAo=
+
+Name: org/eclipse/wst/html/core/internal/provisional/HTMLCMProperties$
+ Values.class
+SHA1-Digest: 6A9her6dhq+Wd8zOAt4uELO//lM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdFigure.class
+SHA1-Digest: aDnurkDcs63ZxbdI+SchaPcgQ4U=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CtdHtml.cl
+ ass
+SHA1-Digest: KeXWl9340308T8NHDLWOvD7PAvs=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HTMLEntity
+ DeclImpl.class
+SHA1-Digest: QqaQS7W95cFq6Y2eUAgI51Uvnic=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HTMLCMData
+ TypeImpl.class
+SHA1-Digest: HxNPwFWisXdnAIaNOzUGgMbU0rY=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$PPProhibitedAncestors.class
+SHA1-Digest: G4E2OsNq2//qgoE8vyBMHuQhB8o=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSPElementCollec
+ tion$1.class
+SHA1-Digest: OfWMk187pl+SXYkptQaI7qVDmiQ=
+
+Name: org/eclipse/wst/html/core/internal/format/HTMLFormatContraintsIm
+ pl.class
+SHA1-Digest: hr0P307JZbqDPijQaSJYY2TBbuQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedBODY.class
+SHA1-Digest: L+omMl01pkfhVm+HhWpxyFXIMbs=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLElemDeclImpl
+ .class
+SHA1-Digest: V0eoQxJgEKqYtUNjGa2TiIJ9w9Q=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedTABLE.class
+SHA1-Digest: oMbR5SysGV7IiNdKER4k+AcxW1I=
+
+Name: org/eclipse/wst/html/core/internal/contentproperties/HTMLContent
+ PropertiesManager.class
+SHA1-Digest: j9eDRiaJN83A8Tj+Ar6veAnK2Wo=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdSelect.class
+SHA1-Digest: /vPmw/qavwzSXn3TK/7oRzK8qC0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLElementDecla
+ ration.class
+SHA1-Digest: 4IMXSgHCeK/H05pv2NzCyeGVvUg=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/HTMLStyleSelectorAdap
+ terFactory.class
+SHA1-Digest: YppFJW8upEa6NR9Ts9BlTTe5UNs=
+
+Name: org/eclipse/wst/html/core/internal/cleanup/NodeCleanupHandler.cl
+ ass
+SHA1-Digest: ce8JF9BTzCo4axh57xU0joEEX6Q=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdInlineContain
+ er.class
+SHA1-Digest: pU5Knl0nVNKm1Kc5B2rIkA64C/s=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$PPIsJSP.class
+SHA1-Digest: A7+1XQ9d/kBCn98hR0knpo+xb2E=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$AbstractElementPropertyProvider.class
+SHA1-Digest: +miFFeoaXwpyTLchkp6sRoeUIPg=
+
+Name: org/eclipse/wst/html/core/internal/document/TagScanner.class
+SHA1-Digest: vdx22zhpIj5NjhuQMwMaYJ0vgBo=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/ElementDeclaration
+ Adapter.class
+SHA1-Digest: JuJoS5TmT8H5ocBP5QFbWofa8R4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSSIInclude.cl
+ ass
+SHA1-Digest: gce4xfqkga4+Rvsva6ltk58x66c=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdFrameset.clas
+ s
+SHA1-Digest: LP69UM8EU50XUPRT22J9rk8DsHw=
+
+Name: org/eclipse/wst/html/core/internal/validate/ErrorState.class
+SHA1-Digest: YzJud+077lnm9XGDZTUrrt5Q2tU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedBGSOUND.class
+SHA1-Digest: JO7skyvWyT65zem/XqvS8q2uYnE=
+
+Name: org/eclipse/wst/html/core/internal/document/MetaData.class
+SHA1-Digest: GlxB3hVgfKfkZ4zVnnP3gmjha/Y=
+
+Name: org/eclipse/wst/html/core/internal/document/UnknownTagAdapter.cl
+ ass
+SHA1-Digest: PZes70un/oHUhI9yu1YVbP/Hiws=
+
+Name: org/eclipse/wst/html/core/internal/document/MetaDataAdapter.clas
+ s
+SHA1-Digest: 70/EnqJw2jtHWpPe41XjpsHiWmA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedSSIEcho
+ .class
+SHA1-Digest: SlR3WPyuafZz4J09WII/55w+eww=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CMContentImpl.cl
+ ass
+SHA1-Digest: lqE/r1roNO215k+lQrGvh51X4i4=
+
+Name: org/eclipse/wst/html/core/internal/document/ElementStyleImpl.cla
+ ss
+SHA1-Digest: BYYgZYwiC+n1hp8Pgdw0NqeREEs=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CMNodeImpl.class
+SHA1-Digest: 5Pz3eTtscSWbsUxbxLysnYhYoEQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$PPShouldIndentChildSource.class
+SHA1-Digest: TaW9v+iVOZ/RJJgsXNWYY/rNuP4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedCENTER.
+ class
+SHA1-Digest: 18x4c7U0G/rDKbu3POJlMs83gxA=
+
+Name: org/eclipse/wst/html/core/internal/HTMLCorePlugin.class
+SHA1-Digest: rTJEM5YnxxuvXFwiOIIYmOI6gU8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/EntityColl
+ ection$Ids.class
+SHA1-Digest: MULtAkZRbMOhJnhKEfwcqF4gc6U=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedHeading.class
+SHA1-Digest: vQ54ts8ufE8Kqvl+nHEPBLaRoIA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedA.class
+SHA1-Digest: ij3Qq/4kPytp3SBAw/g0XspkPxE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CtdAddress
+ .class
+SHA1-Digest: 0siZNUBzGH/k3hzyeVjG1zQY2As=
+
+Name: org/eclipse/wst/html/core/internal/provisional/HTML40Namespace$E
+ ntityName.class
+SHA1-Digest: FyfSF+qaga0+HNTqeJfJlLB4u8o=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdEmbed.class
+SHA1-Digest: Qri424ReVxgZRuHyhUUto/jhhEA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/ElementCol
+ lection$Ids.class
+SHA1-Digest: fY2kFREAKYT04vDSuUHnVKxhws4=
+
+Name: org/eclipse/wst/html/core/internal/preferences/HTMLCorePreferenc
+ eNames.class
+SHA1-Digest: /kioY/H8KTKS2I8K5fSsFLN5ZZQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/ComplexTypeDefin
+ itionFactory.class
+SHA1-Digest: s+CF2rHJfTV1maDzHz43kaysgQQ=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/StyleElementAdapter.c
+ lass
+SHA1-Digest: MPiw77+uUSANrOJlTowhb1gJBRM=
+
+Name: org/eclipse/wst/html/core/internal/validate/SyntaxValidator.clas
+ s
+SHA1-Digest: ipDdN0l8UBpnfh8o3vJINK3MdRw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLElemDeclImpl
+ $2.class
+SHA1-Digest: 2BpPzTv4skXFYMSU6v6hfoFxX8g=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedOPTION.
+ class
+SHA1-Digest: UJxPBy1geR9Ars3GRrS6BEeSkrE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/ComplexTyp
+ eDefinition.class
+SHA1-Digest: fjkyilh9dvHWQxRzQNtJqaF9fMY=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/StyleAdapterFactory.c
+ lass
+SHA1-Digest: i5T+SWpAQg5FqpQQKRvvx3p4iAU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$PPIsSSI.class
+SHA1-Digest: tkcPdVXyNB6W0Hx10eJjG+1FPxA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedA.class
+SHA1-Digest: ufu+QDjxzqt2l+WHMzoXQKIAEuQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedLINK.class
+SHA1-Digest: veZobHtYdbldXSEMdX30gz11HmM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSSIFsize.clas
+ s
+SHA1-Digest: eXle090er9yw0/bxI7nP7XFkuW0=
+
+Name: org/eclipse/wst/html/core/internal/validate/CMUtil.class
+SHA1-Digest: /vf42PUcsTTDyTCrI5GBDUVpkxs=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedBDO.class
+SHA1-Digest: j4mEhh6RjKPI9fzV6fe6KiUzSkg=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$PPShouldKeepSpace.class
+SHA1-Digest: vZU/RPlyBFbBO8NXRr9qhlDHyqk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedQ.class
+SHA1-Digest: Ip9qkQe2qUfc8MzhU9eiL8q3vBs=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CMGroupImp
+ l.class
+SHA1-Digest: s5fuMmuR8nVZ0HWM9bFmOq8h4d0=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedMarkChanges.c
+ lass
+SHA1-Digest: tsHBjyCzDz8Y16VHFHhtKXmzlKw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedMediaElement.
+ class
+SHA1-Digest: Qy3mpZSGQWCMlL6kS67rMaX+gX8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedDETAILS.class
+SHA1-Digest: Zgba94EybKO6LYkAVsgRky2I94E=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedBASEFONT.clas
+ s
+SHA1-Digest: Sgb0B82Bdrh1EyLOdJ6shwYysnk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedBODY.cl
+ ass
+SHA1-Digest: U85gfm7JhBXWxjs+cTlBUWOli+U=
+
+Name: org/eclipse/wst/html/core/internal/validate/FMUtil.class
+SHA1-Digest: CpOuuWURyC6p1yxuWQ1hLJrDNZQ=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdMediaElement.
+ class
+SHA1-Digest: /hflOiv4d1g5jNOwY51X7Xeq6UM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdMap.class
+SHA1-Digest: YhN6JD0pB6njT761aqZudISlVkM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedOPTGROUP.clas
+ s
+SHA1-Digest: G948Tni/8F3RE+1R+4uxTrQo0AU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedBUTTON.class
+SHA1-Digest: nVf5p9naTlNSzNL1BIyism295Yg=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/ElementCollectio
+ n.class
+SHA1-Digest: r3triWHzYmi4MTJvQE4RVc4T2oo=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedLI.class
+SHA1-Digest: I5ZrzyKb6T/NGPuH8EDLFWAeUEM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedRP.class
+SHA1-Digest: zVzc28PinnvGlKg3RTrIWVcLz4E=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSPElementCollec
+ tion$Ids.class
+SHA1-Digest: qSdUyzTWQjyIAGaMnLusqpbuE74=
+
+Name: org/eclipse/wst/html/core/internal/provisional/contenttype/Conte
+ ntTypeIdForHTML.class
+SHA1-Digest: ZN4/TtiZZtaVHjKGCPE31PVXk1w=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedADDRESS.class
+SHA1-Digest: vjcoSPlf4SyfIoye7/8vBOzv+cM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/DeclCollec
+ tion$DeclIterator.class
+SHA1-Digest: OwX/Ktu5jmbCOdY7YwtSZJlbKaI=
+
+Name: org/eclipse/wst/html/core/internal/encoding/HTMLModelLoader.clas
+ s
+SHA1-Digest: EV2DnHkxEa9k4mSE3MNQq4zA1zg=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdLiContainer.c
+ lass
+SHA1-Digest: OUKp/Gh9ooNlxhWWswR+uFzHCBw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSSIBase.class
+SHA1-Digest: rFkMUn4leQ2cyRKBdKCoWXD54o4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$PPInclusion.class
+SHA1-Digest: n5zBTcRBedNfWbvVGKYdVjb13KE=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/PropertyProvider
+ Factory$PPInclusion.class
+SHA1-Digest: eGmGhFzljT0ZWUGppppSqLW/+b8=
+
+Name: org/eclipse/wst/html/core/internal/contenttype/EncodingGuesser.c
+ lass
+SHA1-Digest: qtwNo+tqk2tSm+3OW7156MghVjQ=
+
+Name: org/eclipse/wst/html/core/internal/contenttype/NullMemento.class
+SHA1-Digest: rwJfw/pQrh4xhZutAannM2tKHDg=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedHGROUP.class
+SHA1-Digest: fYD2+ZVEGP9eAFf+Am2Y0SezL1I=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSP20Namespace$E
+ lementName.class
+SHA1-Digest: 3/qEc85pHIJk04uo2ym30Cmx3s0=
+
+Name: org/eclipse/wst/html/core/internal/cleanup/ElementNodeCleanupHan
+ dler.class
+SHA1-Digest: Ysx6cjFmBAznTddX4aRrawQqje4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedFIGCAPTION.cl
+ ass
+SHA1-Digest: Fzzy7m7NJ3wJZsVCRi80b+kazkA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CtdSelect.
+ class
+SHA1-Digest: HuTBBuzPJlyjLFqao6TjtbWdDXY=
+
+Name: org/eclipse/wst/html/core/internal/provisional/HTMLCMProperties.
+ class
+SHA1-Digest: /tlu66TbME6PF0Kfu7+VtrPNGQY=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTML5ElementColl
+ ection.class
+SHA1-Digest: 8vOpw9iNs3d8bg32zAByGPXhwyk=
+
+Name: org/eclipse/wst/html/core/internal/document/HTMLDocumentTypeRegi
+ stry.class
+SHA1-Digest: +cTvRJbMazLaycQQxbOuiVGMous=
+
+Name: org/eclipse/wst/html/core/internal/format/HTMLElementFormatter.c
+ lass
+SHA1-Digest: Ab1dq7B1FjKSeHhg0LSgd2a+CrI=
+
+Name: org/eclipse/wst/html/core/internal/validate/Segment.class
+SHA1-Digest: qwCUusuTT7A6+1Q8wEi7PQ8tnyU=
+
+Name: data/htmref.xml
+SHA1-Digest: Iyk02LaZ+us0EZQbR5Jlnl2izy4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLCMDocumentFa
+ ctory.class
+SHA1-Digest: HT23Hfw3GbZtJqPsBdnzuenORSo=
+
+Name: org/eclipse/wst/html/core/internal/contenttype/HTMLHeadTokenizer
+ Constants.class
+SHA1-Digest: nYkLPBsUEJszfP+8fwt4inRi/bI=
+
+Name: org/eclipse/wst/html/core/internal/commentelement/handlers/Comme
+ ntElementHandlerForSSI.class
+SHA1-Digest: v78o59kkbDjh+sBJphFO8MNd70k=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/CtdOptionC
+ ontainer.class
+SHA1-Digest: rFYwofsDrVPQapa5glPgvdWAffw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedLI.clas
+ s
+SHA1-Digest: L4pi56mVRSESyQ1SrhwHNbfMdCk=
+
+Name: org/eclipse/wst/html/core/internal/validate/MessageFactory$Error
+ Table$Packet.class
+SHA1-Digest: jtWZZfgsBWQ+9LwgCIpf7UFmn58=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedTR.class
+SHA1-Digest: RNnF4I6iCh2he+wOvIVO7Tp5N9I=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTML5ElementColl
+ ection$Ids50.class
+SHA1-Digest: zictwgcmp+m1DKeHGeOcRqX9yAU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdFlowContainer
+ .class
+SHA1-Digest: fb/89fn4M2ianO3VawLcjMEGG3c=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLAttributeDec
+ laration.class
+SHA1-Digest: w5jaZ7VoXrtRkmmfdKdruTsqbaI=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/ElementDeclaration
+ AdapterFactory.class
+SHA1-Digest: 8IqPu3oVBgM6TeDJ38ZPLiB53bw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CMNamedNodeMapIm
+ pl.class
+SHA1-Digest: N95U1U1nM8OzJUgJ9OJWvwykPqI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSPElementCollec
+ tion$TypePacket.class
+SHA1-Digest: CqgmVl24Kjk/d/jBaT3MULofbvU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedTIME.class
+SHA1-Digest: cJuGlkCDElyns/gBdVKVr2ouMtM=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/CtdDetails.class
+SHA1-Digest: w/+rxdnsVKdRGQjFKf2embD8YxU=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedBLOCKQU
+ OTE.class
+SHA1-Digest: dE6IXMFrATExth7ODNV3p/+Dd7E=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedFONT.class
+SHA1-Digest: 6jo3NM1Urt8Uto5hWmQfwxJYAR4=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedNOBR.class
+SHA1-Digest: OWM23VNQMKsDP5e6GL/Ju8LAVZ8=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/AttributeCollect
+ ion.class
+SHA1-Digest: 0nkHq+e7MHS8FnIeow0PVblduIo=
+
+Name: org/eclipse/wst/html/core/internal/document/HTMLDocumentTypeAdap
+ ter.class
+SHA1-Digest: IDdXcdgonyzLXQk4uwvekYh3dz4=
+
+Name: org/eclipse/wst/html/core/internal/document/HTMLDocumentTypeCons
+ tants.class
+SHA1-Digest: XJwTCSCj/AgkYk3APx4DQqh79Kg=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/DocumentQuery.clas
+ s
+SHA1-Digest: 8AaHxzdqyIbpAQpkr9sFdaThSqI=
+
+Name: org/eclipse/wst/html/core/internal/htmlcss/HTMLStyleSelectorAdap
+ ter.class
+SHA1-Digest: jtu35mtvdT94TGNy3VcCne9cZ0c=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedOL.class
+SHA1-Digest: H/xIyq7DAqHAlwdyMxiWSgVifdw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/PropertyPr
+ oviderFactory$PPTagInfo.class
+SHA1-Digest: v2fzh8T7nKPFdBbx+dJoOwkY+Rk=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedSSIEcho.class
+SHA1-Digest: VYlhwdB4beI6ODbGbeFIC62Julk=
+
+Name: org/eclipse/wst/html/core/internal/document/HTMLModelParserAdapt
+ er.class
+SHA1-Digest: VUr/DyuSItEarrkjv01rV2b4PCI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedMath.class
+SHA1-Digest: S+iLBDgfTAvZSM/lmLwq21tAXEI=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HedFIELDSET.clas
+ s
+SHA1-Digest: zMnvPCXdqYEKf25+Cx0ysjBkBUA=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/chtml/HedP.class
+SHA1-Digest: F/cVoW7six50aAtdvj2cg9tD2NY=
+
+Name: org/eclipse/wst/html/core/internal/validate/SyntaxValidator$TagE
+ rrorInfoImpl.class
+SHA1-Digest: th1GW+JX1IoZejCGoxCrRJRHXgw=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/JSPElementCollec
+ tion$JACreater.class
+SHA1-Digest: qh3iVvFFMuY8Xhv/GqNtQpSSU7A=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/HTMLElementDeclara
+ tionAdapter.class
+SHA1-Digest: KAESTY3/zp61NZWRnTFzn/RznNs=
+
+Name: org/eclipse/wst/html/core/internal/contentmodel/HTMLElemDeclImpl
+ $1.class
+SHA1-Digest: v7FI1XA/E5JCF6bHwNQQ6g+6Azg=
+
+Name: org/eclipse/wst/html/core/internal/modelquery/CMNodeBuddySystem.
+ class
+SHA1-Digest: c0yBA87kfCGdSVNlhjBcdI4pBQo=
+
