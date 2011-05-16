@@ -36,6 +36,14 @@ public class Messages extends NLS {
 	 * see messages.properties
 	 */
 	public static String JSPContentModelMetaDataTranslator_Label;
+	/**
+	 * see messages.properties
+	 */
+	public static String TapestryContentModelMetaDataTranslator_Desc;
+	/**
+	 * see messages.properties
+	 */
+	public static String TapestryContentModelMetaDataTranslator_Label;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

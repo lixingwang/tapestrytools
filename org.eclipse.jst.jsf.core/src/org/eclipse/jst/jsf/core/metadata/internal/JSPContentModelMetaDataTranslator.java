@@ -49,14 +49,16 @@ public class JSPContentModelMetaDataTranslator extends AbstractTagLibDomainConte
 	 * @see org.eclipse.jst.jsf.common.metadata.internal.AbstractTagLibDomainContentModelMetaDataTranslator#getURIDescription()
 	 */
 	protected String getURIDescription() {		
-		return Messages.JSPContentModelMetaDataTranslator_Desc; 
+		CMDocument doc = getSourceModel();
+		if (doc !=null && doc instanceof TapestryCMDocument) return Messages.TapestryContentModelMetaDataTranslator_Desc;
+		else return Messages.JSPContentModelMetaDataTranslator_Desc; 
 	}
 
 	@Override
 	protected String getURIDisplayLabel() {
 		CMDocument doc = getSourceModel();
 		if (doc !=null && doc instanceof TapestryCMDocument){
-			return "Tapestry 5";		
+			return Messages.TapestryContentModelMetaDataTranslator_Label;
 		}else return Messages.JSPContentModelMetaDataTranslator_Label;
 	}
 
