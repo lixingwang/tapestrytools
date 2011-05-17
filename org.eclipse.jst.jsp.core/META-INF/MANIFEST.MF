@@ -1,0 +1,1162 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Bundle-SymbolicName: org.eclipse.jst.jsp.core; singleton:=true
+Eclipse-SourceReferences: scm:cvs:pserver:dev.eclipse.org:/cvsroot/web
+ tools:sourceediting/plugins/org.eclipse.jst.jsp.core;tag=v20110216055
+ 0
+Bundle-Activator: org.eclipse.jst.jsp.core.internal.JSPCorePlugin
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)
+ ",org.eclipse.core.resources;bundle-version="[3.5.0,4.0.0)",org.eclip
+ se.core.jobs;bundle-version="[3.5.0,4.0.0)",org.eclipse.core.filebuff
+ ers;bundle-version="[3.5.0,4.0.0)",org.eclipse.jdt.core;bundle-versio
+ n="[3.5.0,3.7.0)",org.eclipse.wst.common.uriresolver;bundle-version="
+ [1.1.301,1.2.0)",org.eclipse.wst.sse.core;bundle-version="[1.1.500,1.
+ 2.0)",org.eclipse.wst.xml.core;bundle-version="[1.1.500,1.2.0)",org.e
+ clipse.wst.css.core;bundle-version="[1.1.300,1.2.0)",org.eclipse.wst.
+ html.core;bundle-version="[1.1.400,1.2.0)",org.eclipse.wst.validation
+ ;bundle-version="[1.2.100,1.3.0)",org.eclipse.wst.common.project.face
+ t.core;bundle-version="[1.4.0,2.0.0)";resolution:=optional,org.eclips
+ e.wst.common.modulecore;bundle-version="[1.1.300,2.0.0)";resolution:=
+ optional,org.eclipse.osgi.services;bundle-version="3.2.0"
+Export-Package: org.eclipse.jst.jsp.core.internal;x-friends:="org.ecli
+ pse.jst.jsp.ui",org.eclipse.jst.jsp.core.internal.contentmodel;x-frie
+ nds:="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.core.internal.conte
+ ntmodel.tld;x-friends:="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.c
+ ore.internal.contentmodel.tld.provisional;x-friends:="org.eclipse.jst
+ .jsp.ui",org.eclipse.jst.jsp.core.internal.contentproperties;x-friend
+ s:="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.core.internal.content
+ type;x-friends:="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.core.int
+ ernal.document;x-friends:="org.eclipse.jst.jsp.ui",org.eclipse.jst.js
+ p.core.internal.domdocument;x-friends:="org.eclipse.jst.jsp.ui",org.e
+ clipse.jst.jsp.core.internal.encoding;x-friends:="org.eclipse.jst.jsp
+ .ui",org.eclipse.jst.jsp.core.internal.java;x-friends:="org.eclipse.j
+ st.jsp.ui",org.eclipse.jst.jsp.core.internal.java.jspel;x-friends:="o
+ rg.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.core.internal.java.search;
+ x-friends:="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.core.internal
+ .modelhandler;x-friends:="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp
+ .core.internal.modelquery;x-friends:="org.eclipse.jst.jsp.ui",org.ecl
+ ipse.jst.jsp.core.internal.parser;x-friends:="org.eclipse.jst.jsp.ui"
+ ,org.eclipse.jst.jsp.core.internal.parser.internal;x-friends:="org.ec
+ lipse.jst.jsp.ui",org.eclipse.jst.jsp.core.internal.preferences;x-fri
+ ends:="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.core.internal.prov
+ isional;x-friends:="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.core.
+ internal.provisional.contenttype;x-friends:="org.eclipse.jst.jsp.ui",
+ org.eclipse.jst.jsp.core.internal.provisional.text;x-friends:="org.ec
+ lipse.jst.jsp.ui",org.eclipse.jst.jsp.core.internal.regions;x-friends
+ :="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.core.internal.taglib;x
+ -friends:="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.core.internal.
+ tasks;x-friends:="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.core.in
+ ternal.text;x-friends:="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.c
+ ore.internal.util;x-friends:="org.eclipse.jst.jsp.ui",org.eclipse.jst
+ .jsp.core.internal.validation;x-friends:="org.eclipse.jst.jsp.ui",org
+ .eclipse.jst.jsp.core.jspel,org.eclipse.jst.jsp.core.taglib,org.eclip
+ se.jst.jsp.core.text,org.eclipse.jst.jsp.css.core.internal.contentmod
+ el;x-internal:=true,org.eclipse.jst.jsp.css.core.internal.contenttype
+ ;x-internal:=true,org.eclipse.jst.jsp.css.core.internal.document;x-in
+ ternal:=true,org.eclipse.jst.jsp.css.core.internal.encoding;x-interna
+ l:=true,org.eclipse.jst.jsp.css.core.internal.modelhandler;x-friends:
+ ="org.eclipse.jst.jsp.ui",org.eclipse.jst.jsp.css.core.internal.parse
+ r;x-internal:=true,org.eclipse.jst.jsp.css.core.internal.parserz;x-in
+ ternal:=true
+Bundle-Version: 1.2.304.v201102160550
+Bundle-ActivationPolicy: lazy; exclude:="org.eclipse.jst.jsp.core.inte
+ rnal.contenttype,org.eclipse.jst.jsp.css.core.internal.contenttype,or
+ g.eclipse.jst.jsp.core.internal.provisional.contenttype"
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Import-Package: com.ibm.icu.text;version="3.8",com.ibm.icu.util;versio
+ n="3.8",javax.servlet.jsp.tagext;version="[2.0.0,2.2.0)"
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/jst/jsp/core/taglib/ProjectDescription$BuildPathJob.
+ class
+SHA1-Digest: iMSXnDyv0YPGz+nJYc1AJy2+J6c=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/DeploymentDescript
+ orPropertyCache$StringMatcher.class
+SHA1-Digest: JQQJu7Xp2pIPaG9+Odo9AojRsmY=
+
+Name: org/eclipse/jst/jsp/core/internal/modelquery/ModelQueryAdapterFa
+ ctoryForTag.class
+SHA1-Digest: SZkxEhx1f6TOvPhdyeQFJoZwwyA=
+
+Name: org/eclipse/jst/jsp/core/internal/java/search/JSPSearchSupport.c
+ lass
+SHA1-Digest: +VmIWfORfLLzzMquF0/MOpRtp+M=
+
+Name: org/eclipse/jst/jsp/core/internal/modelquery/JSPModelQueryAssoci
+ ationProvider.class
+SHA1-Digest: bftDbx2/YRUO8d+U+Gcv5hF3SgE=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/CMDocumentWrapper
+ Impl$CMNamedNodeMapImpl.class
+SHA1-Digest: n4nIa3GIZNPNboptgAYCXE7nb/o=
+
+Name: org/eclipse/jst/jsp/core/internal/java/search/JSPPathIndexer$JSP
+ FileVisitor.class
+SHA1-Digest: aiie/ZQlwSRMQUgs3RRrmQF6Y2E=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPDirectiveValidat
+ or$1.class
+SHA1-Digest: +BdmftwdSQ4QQAtkV7CNDK1ilVw=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTAddExpress.class
+SHA1-Digest: gMIWKRcfF01ShcmThR6njtRs2YM=
+
+Name: org/eclipse/jst/jsp/core/internal/java/search/NullSearchDocument
+ .class
+SHA1-Digest: 340nQQFfO3g9JteuHDm8r2GLle4=
+
+Name: org/eclipse/jst/jsp/core/taglib/ITaglibIndexDelta.class
+SHA1-Digest: 7MyXfPpDnMBbfxhycEx8bjHPF3Q=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/TLDVariableIm
+ pl.class
+SHA1-Digest: FUCSEVXBZWEFEE59pq7g3rbFS4Q=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTStart.class
+SHA1-Digest: QrMGhpgWPA+rMjc+YoGfKaMOFY4=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTValuePrefix.clas
+ s
+SHA1-Digest: HF3C1Kv3t4k/NMem0UKZlnQohjY=
+
+Name: org/eclipse/jst/jsp/core/internal/java/search/JSPSearchSupport$S
+ earchRunnable.class
+SHA1-Digest: kedrk/VVMOACLTK/n/cMGvcdo2k=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ELGeneratorVisitor.
+ class
+SHA1-Digest: qA+qyyQpHhR1CkvEoV1Yz9Bc6Yo=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/Node.class
+SHA1-Digest: gPgiYkKbJ5YwJ/nOYfiiF+V77ew=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTOperatorExpressi
+ on.class
+SHA1-Digest: j0k50n2FDhmgOUAp8WUPcDbFRZw=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/JSPELParser$JJCalls
+ .class
+SHA1-Digest: IeFs6wV0heh2v4fJqm/KwY1KHfM=
+
+Name: org/eclipse/jst/jsp/core/internal/modelquery/JSPModelQueryCMProv
+ ider.class
+SHA1-Digest: p/ddizTcrI35YvHFFm9OThQXraY=
+
+Name: org/eclipse/jst/jsp/core/internal/parser/internal/JSPTokenizer.c
+ lass
+SHA1-Digest: gn5rtRhffyggpIv7QSl18sr23G0=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPTranslationUtil.class
+SHA1-Digest: velBAfsmcjaYk0uHq7qGHDAZW9s=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/provisional/T
+ LDElementDeclaration.class
+SHA1-Digest: prBtp49N1evRxBOY95x2cbDCSEo=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/CMDocumentWrapper
+ Impl$CMNamespaceImpl.class
+SHA1-Digest: POT4WvqZsMFf7B8nlSLxrmr1f6Y=
+
+Name: org/eclipse/jst/jsp/core/internal/domdocument/AttrImplForJSP.cla
+ ss
+SHA1-Digest: 8L7g5UkDEcJdjVgVc8avqo2qkZk=
+
+Name: org/eclipse/jst/jsp/core/internal/util/FileContentCache$CacheEnt
+ ry.class
+SHA1-Digest: bCkZUgP9xg5RgquIumveMMlu2ek=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPBatchValidator$J
+ SPFileVisitor.class
+SHA1-Digest: 22qfnfjv3I/RO/SXT0lHW0YP0u0=
+
+Name: org/eclipse/jst/jsp/core/internal/provisional/JSP11Namespace$Ele
+ mentName.class
+SHA1-Digest: iK+GecSq51bClTLJhkSl/ntkx58=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/TLDValidatorI
+ mpl.class
+SHA1-Digest: 56n72xvnWhA3aamr630qrPGsONw=
+
+Name: org/eclipse/jst/jsp/core/internal/modelquery/JSPModelQueryExtens
+ ion.class
+SHA1-Digest: xA6wwwzSdtii5+iHOJv3Mq7ee5I=
+
+Name: org/eclipse/jst/jsp/core/taglib/ProjectDescription$TagDirRecord.
+ class
+SHA1-Digest: xfQ2d+YRBYYrE3MK87KsBi1Iv4o=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/provisional/J
+ SP12TLDNames.class
+SHA1-Digest: A2gxR1YcyZ+xOy86SLCQSoyQMaY=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/provisional/T
+ LDVariable.class
+SHA1-Digest: UmZWt6M/Gn9PVjTtCxdEAwqfjho=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/JSPELTranslator.cla
+ ss
+SHA1-Digest: 49kZScMovKVl8z/zI1jPnfdZD8o=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/TokenMgrError.class
+SHA1-Digest: X1wntvb7UI44Z9wUQKzSHNVbvJI=
+
+Name: org/eclipse/jst/jsp/core/internal/taglib/TaglibHelper$MemoryList
+ ener.class
+SHA1-Digest: F6BhwlkfZNkRfmyiIgW/H1a4AcY=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/TLDListenerIm
+ pl.class
+SHA1-Digest: IUsNoVrxli/g8weBFdvTQuU5G40=
+
+Name: org/eclipse/jst/jsp/core/internal/modelquery/TaglibModelQueryExt
+ ension.class
+SHA1-Digest: CYugCtURjLy44fAZyh6GNJ1Jnso=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/TaglibTracker
+ .class
+SHA1-Digest: 2x0fjK2byiLgZrhyIe9kk8RMO10=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTExpression.class
+SHA1-Digest: Mg5d9nn9MixiAjV5G+GltyqAIXI=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTChoiceExpression
+ .class
+SHA1-Digest: ZUepc97j3vp1qHrEp20i5/CVpkU=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/TaglibController$
+ FileBufferListener.class
+SHA1-Digest: xrhkrrtIZcCXNWs4BFhLuouDEF4=
+
+Name: org/eclipse/jst/jsp/core/taglib/TaglibIndex$ClasspathChangeListe
+ ner.class
+SHA1-Digest: s4G5ZjcmLFDZBLsT+nyB52hrIHI=
+
+Name: org/eclipse/jst/jsp/core/internal/java/IJSPProblem.class
+SHA1-Digest: TPvvocvN09/26k1mSrL6vqbWViQ=
+
+Name: org/eclipse/jst/jsp/css/core/internal/parserz/JSPedCSSRegionCont
+ exts.class
+SHA1-Digest: OKdiCiuHddSsWwXqaMCed2RllV8=
+
+Name: org/eclipse/jst/jsp/core/taglib/IJarRecord.class
+SHA1-Digest: hzXUxFX+M+gg/Waiv7XAExH5wBo=
+
+Name: org/eclipse/jst/jsp/core/internal/util/DocumentProvider.class
+SHA1-Digest: W+D5lFBOSrwudp5ig6aW5x3EsQU=
+
+Name: org/eclipse/jst/jsp/core/internal/contentproperties/JSPFContentP
+ ropertiesManager$ContentPropertiesManagerJob.class
+SHA1-Digest: SDAaUqg9/RJuYawEFLhsMMGP4dQ=
+
+Name: org/eclipse/jst/jsp/core/internal/preferences/JSPCorePreferenceN
+ ames.class
+SHA1-Digest: K1DSBt5Qu/ni7rsDy7j1wvOeksA=
+
+Name: org/eclipse/jst/jsp/core/internal/java/search/JSPSearchParticipa
+ nt.class
+SHA1-Digest: gdeyqKq/FDbZUVz2I3Wq3SFTKrM=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/FindFunctionInvocat
+ ionVisitor.class
+SHA1-Digest: mVl8b/lv2sxsXnJ6qWKnLSvFamg=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/provisional/T
+ LDInitParam.class
+SHA1-Digest: ks4+L7fMUezXasnSTplTKdpqgPw=
+
+Name: org/eclipse/jst/jsp/core/internal/document/PageDirectiveAdapter.
+ class
+SHA1-Digest: 44VHtklebFxmjpRSqMu0eRB7ruw=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/TLDFunctionIm
+ pl.class
+SHA1-Digest: x/WZZVa/o6V0cdcgk68dGv57VDo=
+
+Name: org/eclipse/jst/jsp/core/internal/util/DocumentProvider$2.class
+SHA1-Digest: TUrU+EG7gXh3gQJsLtcQ1dcsIoY=
+
+Name: org/eclipse/jst/jsp/core/internal/taglib/CustomTag.class
+SHA1-Digest: 8KnjB547OdGWa9B9RhRRceUocug=
+
+Name: org/eclipse/jst/jsp/core/internal/Assert.class
+SHA1-Digest: Q85y7Pe3BOrVQ9FNk1Q7M/pm/Mk=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTEqualityExpressi
+ on.class
+SHA1-Digest: jSEa6ibiI53HHp0kPs2awalFYMM=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/DeploymentDescript
+ orPropertyCache$1.class
+SHA1-Digest: neT4/nHQd+vvYXmqL3ZzPrXF8fc=
+
+Name: org/eclipse/jst/jsp/core/internal/taglib/TaglibVariable.class
+SHA1-Digest: UYd30USVnCkY5fv6rSQee4vxkKk=
+
+Name: org/eclipse/jst/jsp/core/internal/domdocument/NestedDOMModelPars
+ er.class
+SHA1-Digest: QACWDo4r3be1I7+a1NCurMlnpgI=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/provisional/T
+ LDListener.class
+SHA1-Digest: m5Kt4UHL3Lw1cyJrfO91A9+G69w=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/TLDInitParamI
+ mpl.class
+SHA1-Digest: E7iiQ5d9G/dUVaBTYvOB/N33YmY=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPDirectiveValidat
+ or.class
+SHA1-Digest: WNWHnoy9bh2vf7+NssOpXSYoibU=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPTranslation.class
+SHA1-Digest: ta+hXzdbyaEaVTyyJ0pnmYlt1TU=
+
+Name: org/eclipse/jst/jsp/core/internal/domdocument/DOMModelForJSP.cla
+ ss
+SHA1-Digest: 6A7/ZkiKcNLfYDjvCKlhSGmbfSg=
+
+Name: org/eclipse/jst/jsp/core/taglib/ITagDirRecord.class
+SHA1-Digest: Xt/nKl760q5sPh5h2Jwr0Yg9P5k=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSP2ServletNameUtil.class
+SHA1-Digest: se8oM3Y/3fp1cN4nnXgQaR+2axI=
+
+Name: org/eclipse/jst/jsp/core/jspel/ELProblem.class
+SHA1-Digest: 40xri+AvbXW4GNomrbhqlBKrZac=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/Messages.class
+SHA1-Digest: wnMb//au8Bzol7XbtmaQXtQjQYU=
+
+Name: org/eclipse/jst/jsp/core/internal/domdocument/CommentImplForJSP.
+ class
+SHA1-Digest: c76Y+Wvi4YwpAPqJ2+xSbEToOfU=
+
+Name: org/eclipse/jst/jsp/core/internal/JSPCorePluginResources.propert
+ ies
+SHA1-Digest: qY70Cl1hyAruKNNm3yPqQctZSGA=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPIncludeRegionHelper.cl
+ ass
+SHA1-Digest: u8gjhcyl/ZfIKPg6PK8c2aGj36A=
+
+Name: org/eclipse/jst/jsp/core/taglib/ProjectDescription$Indexer.class
+SHA1-Digest: 0v0BIRIhNxWr69iI4y35M6KK5iE=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPTranslationAdapterFact
+ ory.class
+SHA1-Digest: RObTbmQ+j85s4m4CRZFbfDW+72Q=
+
+Name: org/eclipse/jst/jsp/core/taglib/ITaglibRecord.class
+SHA1-Digest: DlbUV27ryX3ELkLmPoVbHO7d/7I=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/provisional/T
+ LDFunction.class
+SHA1-Digest: YwY6dVqz27b+Pl9tsWowA+qWYQM=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/TLDCMDocument
+ Manager$TLDCacheEntry.class
+SHA1-Digest: H5F4Im7dQPyZIjtMy0MbLPj91TU=
+
+Name: org/eclipse/jst/jsp/core/taglib/ProjectDescription.class
+SHA1-Digest: ktt3ftwUyKNSkTQjD2r7HwSx6io=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/provisional/T
+ LDValidator.class
+SHA1-Digest: W1iNwNJDiW4RmTaW0pCLWAJZdPU=
+
+Name: org/eclipse/jst/jsp/core/internal/tasks/JSPFileTaskScanner.class
+SHA1-Digest: UYlE/kg7Gd+qB/bWrJTA7w+o6EU=
+
+Name: org/eclipse/jst/jsp/core/internal/util/FacetModuleCoreSupport.cl
+ ass
+SHA1-Digest: U32P8+C3/j5Wd6olbOc+SVQMJ4Q=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/fixtm.sed
+SHA1-Digest: aCgPzWiYMT4Xr9enBgIKtZcBg5A=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/DeploymentDescript
+ orPropertyCache.class
+SHA1-Digest: BjMBogzMCKs5Mb83q7fVABbRhGQ=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPValidator.class
+SHA1-Digest: xnO5hn+xXF4/iPMj9uWLGzta4z0=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/LocalizedMessage.cl
+ ass
+SHA1-Digest: h1eiDdu7YrIliVGs0pG1uKXBoF8=
+
+Name: org/eclipse/jst/jsp/core/internal/modelhandler/JSPModelLoader.cl
+ ass
+SHA1-Digest: hPDcIUm0xyRx7Vjb8e4Xpw++VvA=
+
+Name: org/eclipse/jst/jsp/core/internal/contentproperties/JSPFContentP
+ ropertiesManager.class
+SHA1-Digest: EHu/RoBFM0Zk9M9vxgbmV9zzIgs=
+
+Name: org/eclipse/jst/jsp/core/internal/JSPCorePlugin$1.class
+SHA1-Digest: NdIibDfz1Zwn9UeI1T1Or1jJX00=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/JSPELParser$Lookahe
+ adSuccess.class
+SHA1-Digest: VRVzhTJ0/hbP4XnQW2NpGYmFNTw=
+
+Name: .options
+SHA1-Digest: XOlKBg9GRE8/RCMiB+bNfFIpNTI=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/ByteReader.class
+SHA1-Digest: Gc48BbSpVP++lijBzacELp9Zdag=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/CMNodeWrapperImpl
+ .class
+SHA1-Digest: grlUpsadjPiORwz+buPr7VcJMbk=
+
+Name: org/eclipse/jst/jsp/core/internal/taglib/TaglibHelper$2.class
+SHA1-Digest: xcXLsIC5TacfNRWR1+ks5RrBsVA=
+
+Name: org/eclipse/jst/jsp/core/internal/java/search/JSPSearchSupport$S
+ earchJob.class
+SHA1-Digest: XkT27OJqy7T62P/8DLihUPSYtoM=
+
+Name: org/eclipse/jst/jsp/core/taglib/ITaglibDescriptor.class
+SHA1-Digest: TzC8BPRe7PE1nFWCSH9pQTE0D/4=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/CMDocumentWrapper
+ Impl.class
+SHA1-Digest: Yuk/ZG6DuE9g+3pu4V87+QXbbOg=
+
+Name: org/eclipse/jst/jsp/core/internal/taglib/TaglibHelperManager.cla
+ ss
+SHA1-Digest: /K9M/UqHrxEma8CopTrie85Rpx8=
+
+Name: org/eclipse/jst/jsp/core/internal/parser/JSPSourceParser.class
+SHA1-Digest: LC+SnTzKKgz2/cDEOxA5fjWJ5K8=
+
+Name: org/eclipse/jst/jsp/core/internal/taglib/TaglibHelper$TagLibrary
+ InfoImpl.class
+SHA1-Digest: iYL7c/e6c2UN54YyHV7y+msr+AQ=
+
+Name: org/eclipse/jst/jsp/core/internal/parser/JSPDirectiveStructuredD
+ ocumentRegion.class
+SHA1-Digest: vDsAp6hC7EH/e5CGVqnCq9Y9NN4=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPBatchValidator$2
+ .class
+SHA1-Digest: bk10gkdiCqh0N/A3bcnFsed4MTE=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPTranslationAdapter.cla
+ ss
+SHA1-Digest: IYmJc0u9JWldmer7lu6A69dY8tM=
+
+Name: org/eclipse/jst/jsp/core/internal/document/DocumentFactoryForJSP
+ .class
+SHA1-Digest: Rx0UXQpIUXBe++0JyE9UzWMFR6Q=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTAndExpression.cl
+ ass
+SHA1-Digest: Uxghnet94jB6Nu2LN/WaQUaCtOM=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/HeadParserToken.cl
+ ass
+SHA1-Digest: iWHInCDe768a1JW0Exe93AJUaEA=
+
+Name: org/eclipse/jst/jsp/css/core/internal/modelhandler/JSPedCSSModel
+ Loader.class
+SHA1-Digest: oCTK+OV6ikXZFc5ej+eyxvnKX8o=
+
+Name: org/eclipse/jst/jsp/core/internal/java/search/IndexWorkspaceJob.
+ class
+SHA1-Digest: CXUlVmkF63aHmEnt8uyl2opXmyo=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/JSPEL.jj
+SHA1-Digest: gPtsSn1KqQpAfeGfjC/KML8lc6M=
+
+Name: org/eclipse/jst/jsp/core/taglib/TaglibIndexDelta.class
+SHA1-Digest: +KnprXwMugPuXt//bJeL3fbR3Yk=
+
+Name: plugin.properties
+SHA1-Digest: mCPS/5nS8OPBgD881BSBMgBdyHQ=
+
+Name: org/eclipse/jst/jsp/core/internal/document/PageDirectiveAdapterF
+ actory.class
+SHA1-Digest: MjHrz/Hlz/p+wtHCj349UoPc6Zo=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/CMDocumentFac
+ toryTLD.class
+SHA1-Digest: qE+VOFK8bXUPcKU/dlz8YHn2A/U=
+
+Name: org/eclipse/jst/jsp/core/internal/java/TagTranslator.class
+SHA1-Digest: TyyozLJE1PuC/yDLN0jv8E5nqBQ=
+
+Name: org/eclipse/jst/jsp/core/internal/parser/JSPReParser.class
+SHA1-Digest: xEETVo0XGEcnqp9MsOZJXUU7jJE=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPTranslatorPersister.cl
+ ass
+SHA1-Digest: R2+vPGGuRXQimacCNds0MHxj4MU=
+
+Name: org/eclipse/jst/jsp/core/internal/modelhandler/ModelHandlerForJS
+ P.class
+SHA1-Digest: 8fKKH0EGCskUZJTRnbYEuRbVYGw=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/JSPELParserVisitor.
+ class
+SHA1-Digest: TCNsijQN8tKq22iAe2Ox/N2OycU=
+
+Name: org/eclipse/jst/jsp/core/internal/java/search/JSPPathIndexer.cla
+ ss
+SHA1-Digest: Amn7RAQ5XtlkGiCOwIDlLRnTuI8=
+
+Name: org/eclipse/jst/jsp/core/jspel/IJSPELTranslator.class
+SHA1-Digest: R3Jxw0o+T9DJx3bqJGRFyjPhvqc=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/CMGroupWrapperImp
+ l$CMNodeListImpl.class
+SHA1-Digest: ePlB7VdGHQucZ99DPS20U8zVUkU=
+
+Name: plugin.xml
+SHA1-Digest: 6zjQwWjNIxCVI1bMy8JwIp/UjgM=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/DeploymentDescript
+ orPropertyCache$ResourceChangeListener.class
+SHA1-Digest: TDva4QVIhtvxKpR0Y7bprPid9wU=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/JSPCMDocumentFact
+ ory.class
+SHA1-Digest: yz59YhJhlfZeHA0gtSsKLY6fHs8=
+
+Name: org/eclipse/jst/jsp/core/internal/java/TagTranslationAdapterFact
+ ory.class
+SHA1-Digest: J+tUSKDeH0HcA0lFbYAe78crh5w=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ELGenerator.class
+SHA1-Digest: UPjVj8+pXf8ZwUmIrK7gbU+YUS0=
+
+Name: org/eclipse/jst/jsp/css/core/internal/document/JSPedCSSModelPars
+ er.class
+SHA1-Digest: O7iRjKD9+DSy2hrt+ncRIWTjDrU=
+
+Name: org/eclipse/jst/jsp/core/internal/modelquery/ModelQueryAdapterFa
+ ctoryForJSP.class
+SHA1-Digest: GNW4zla1/cdIUVIXxuMjWikqTqk=
+
+Name: org/eclipse/jst/jsp/core/internal/domdocument/DOMDocumentForJSP.
+ class
+SHA1-Digest: SHdwpdFIm0AO0ueh1nlpwNZaUbk=
+
+Name: org/eclipse/jst/jsp/core/internal/modelhandler/EmbeddedTypeState
+ Data.class
+SHA1-Digest: EwasnoYlQSc+G8oo9qOI8Dn88D4=
+
+Name: org/eclipse/jst/jsp/core/taglib/ProjectDescription$TLDRecord.cla
+ ss
+SHA1-Digest: gcLxOzVcKz8fQ3RQJEmk/X202EU=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/JSPELParserConstant
+ s.class
+SHA1-Digest: ws5nIKgd8EgbuFgUaDnpq6ijsD0=
+
+Name: org/eclipse/jst/jsp/core/internal/java/search/JSPSearchDocument.
+ class
+SHA1-Digest: /Uq4nVgWiT8GtaQtUPMwP2hoOVE=
+
+Name: org/eclipse/jst/jsp/core/taglib/ProjectDescription$URLRecord.cla
+ ss
+SHA1-Digest: TN2k5DGlrbbMwgUemVN3g3QjN48=
+
+Name: org/eclipse/jst/jsp/core/text/IJSPPartitions.class
+SHA1-Digest: 8OddUWodbBYDONPZ/eTJnUr9c/s=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/TLDCMDocument
+ Manager.class
+SHA1-Digest: uLxfB0PNjNkPBlprEU1fmn1vb7s=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/JSPELParser.class
+SHA1-Digest: xxrmT/fSc0SJ3G1UCa+95wI/wIY=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/DeploymentDescript
+ orPropertyCache$PropertyGroup.class
+SHA1-Digest: ngWwa8c1r+sbCyiiXwfhntvk/SM=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPTranslator$1.class
+SHA1-Digest: rPRSU3AILxajemsXHmgkASJYgVU=
+
+Name: org/eclipse/jst/jsp/css/core/internal/document/JSPCSSImportRuleI
+ mpl.class
+SHA1-Digest: JH6b3UIlZpJYm/gPwTGfTZ/mm9M=
+
+Name: org/eclipse/jst/jsp/core/taglib/ITaglibIndexListener.class
+SHA1-Digest: UupccAKuTORJAUjhW7Kx1BM9GhA=
+
+Name: org/eclipse/jst/jsp/core/internal/java/search/JavaSearchDocument
+ Delegate.class
+SHA1-Digest: 64KTkRMG32StGMEuAzWTDwADVjE=
+
+Name: org/eclipse/jst/jsp/core/internal/encoding/IJSPHeadContentDetect
+ or.class
+SHA1-Digest: OxEtTMgX4VnF3mmeO6ku4Vi3wvY=
+
+Name: org/eclipse/jst/jsp/core/internal/contentproperties/JSPFContentP
+ roperties.class
+SHA1-Digest: +uOBaddOB5EiMhOig6lLUo7+wyU=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPActionValidator.
+ class
+SHA1-Digest: q2lnFX3ykHuoWsa4xojQ97NQNFQ=
+
+Name: org/eclipse/jst/jsp/core/internal/JSPCorePlugin$SaveParticipant.
+ class
+SHA1-Digest: 3vO8+dx/wteDGGb6Iik2xCksQPw=
+
+Name: org/eclipse/jst/jsp/core/internal/java/TagTranslationAdapter.cla
+ ss
+SHA1-Digest: 4bIx8eb0uDwdvnnmabBqbL65HI8=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/messages.propertie
+ s
+SHA1-Digest: 1uWMdVgjKidYwOOLYwcK3wjsqJs=
+
+Name: org/eclipse/jst/jsp/core/internal/document/PageDirectiveWatcher.
+ class
+SHA1-Digest: hLqS/MfDfIFLsnyguuPvpsrvgw0=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/CMDataTypeImp
+ l.class
+SHA1-Digest: EoPjmQ2wJy0n4kZ6iyf1AOVGhEA=
+
+Name: org/eclipse/jst/jsp/core/internal/java/ArrayMap.class
+SHA1-Digest: 8BeUgTSKdtXbdIy9LvuaBB3eV6I=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTOrExpression.cla
+ ss
+SHA1-Digest: FRcYqFKYYLnYgnJQajLMZ+ThFqU=
+
+Name: org/eclipse/jst/jsp/core/internal/domdocument/NestDOMModelUpdate
+ r.class
+SHA1-Digest: 43MBzCvMhsbu+qZ88fM/mzaFaDs=
+
+Name: org/eclipse/jst/jsp/css/core/internal/parser/JSPedCSSSourceParse
+ r.class
+SHA1-Digest: AzsUcbfbEwocuDJh+a7lbGKvGu8=
+
+Name: org/eclipse/jst/jsp/core/internal/taglib/BuildPathClassLoader.cl
+ ass
+SHA1-Digest: XgBzrwh/6KMArh5YGqn4RGMf+e8=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPTranslator$RegionTags.
+ class
+SHA1-Digest: P+IRi+g9copB6DK7gCJeYZZWpfM=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPJavaValidator.cl
+ ass
+SHA1-Digest: hfzUbFg3UBjPUKF2WGJtowGOXE8=
+
+Name: org/eclipse/jst/jsp/core/internal/java/XMLJSPRegionHelper.class
+SHA1-Digest: dh0QhDkTwdvGLS8hjlMEP9GXkt0=
+
+Name: org/eclipse/jst/jsp/css/core/internal/document/IJSPCSSNode.class
+SHA1-Digest: UPPZkiK7T3EAUYoaNvOcL4eTwUk=
+
+Name: org/eclipse/jst/jsp/core/internal/parser/internal/JSPStructuredR
+ egionFactory.class
+SHA1-Digest: M/FuAQmveYqECl47EdK7FBv17Es=
+
+Name: org/eclipse/jst/jsp/core/taglib/TaglibIndex$ResourceChangeListen
+ er.class
+SHA1-Digest: 5/Mc4qprVz1yCi4vQIr3JY5z75I=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/CMContentWrapperI
+ mpl.class
+SHA1-Digest: 2QXfOu93EYjZuxtxetJTeAVOgno=
+
+Name: org/eclipse/jst/jsp/core/internal/util/DocumentProvider$1.class
+SHA1-Digest: 1P5G2IS1bcUlkCWvPpTJjbGTy+U=
+
+Name: org/eclipse/jst/jsp/core/taglib/ProjectDescription$TaglibInfo.cl
+ ass
+SHA1-Digest: S2JhzZTvEDLX4z4oqsKhaJu5LRk=
+
+Name: org/eclipse/jst/jsp/core/internal/domdocument/ElementImplForJSP.
+ class
+SHA1-Digest: MefGzV6XQDYASp3S0tlETFCSwUs=
+
+Name: org/eclipse/jst/jsp/core/internal/java/CompilationUnitHelper.cla
+ ss
+SHA1-Digest: hYEjlf8UN0lwbO8uPMXBUd4U67s=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPTranslationExtension.c
+ lass
+SHA1-Digest: BXEzAxT//qrqPIGEn9SU5ajTc3g=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ParseException.clas
+ s
+SHA1-Digest: cquxdU9wGhG9hCsiVFUyndrc8Jg=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPBatchValidator.c
+ lass
+SHA1-Digest: uODVMPRFL6o6NjD58ZmSLOrPQKc=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPProblemRequestor.class
+SHA1-Digest: /pEnrnb67zkYB9jOp3yNHfs6ozI=
+
+Name: org/eclipse/jst/jsp/core/internal/Logger.class
+SHA1-Digest: oAR1fyRnqDQ8NWTUUmXLHJGbuSc=
+
+Name: org/eclipse/jst/jsp/core/internal/text/StructuredTextPartitioner
+ ForJSP.class
+SHA1-Digest: Fem4rr8rPVGqomk7WXPbU42ClBA=
+
+Name: org/eclipse/jst/jsp/core/internal/preferences/JSPCorePreferenceI
+ nitializer.class
+SHA1-Digest: mHatdIUEqjSbE4VVlzXiyddMBuk=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/DeploymentDescript
+ orPropertyCache$DeploymentDescriptor.class
+SHA1-Digest: o9vaGLYDVo3ts72HDPrHoxVbvGA=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTFunctionInvocati
+ on.class
+SHA1-Digest: 0Sx5147lLKdBQkzsXqEF0R5kOf8=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/JSPEL.jjt
+SHA1-Digest: 33QMcXn3F2XX5Mzc6HUvJcsA3N8=
+
+Name: org/eclipse/jst/jsp/core/internal/provisional/contenttype/Conten
+ tTypeIdForJSP.class
+SHA1-Digest: EcAxUDUpj/dSGqrvsf4NI6Sh0Ak=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/fixparser.sed
+SHA1-Digest: f3B7LoXP+Midll0tw5/lIyT/+6Q=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/JSPHeadTokenizerCo
+ nstants.class
+SHA1-Digest: bnb5IdtZ4wAsqdjU5umAVrq9g4U=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPDirectiveValidat
+ or$2.class
+SHA1-Digest: RKTw8za+uHgr2w04LT5JA8lubDM=
+
+Name: org/eclipse/jst/jsp/core/taglib/ProjectDescription$TaglibSorter.
+ class
+SHA1-Digest: +YmXdebn/EZ1n3+w6Lfl3l7f/2Y=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/CMAttributeDe
+ clarationImpl.class
+SHA1-Digest: MQhX7Oye3c6OD1CS0xWbwHM5ruc=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/Token.class
+SHA1-Digest: F/NMad17nCUZYhDhbUnFnzeXo4Y=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/JSPHeadTokenizer.c
+ lass
+SHA1-Digest: th8SDsY7/8g1E4EiABM8d1Av0AM=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/CMElementDeclarat
+ ionWrapperImpl.class
+SHA1-Digest: RKujCDw2fM+gVyeYibS0fiFsqP4=
+
+Name: org/eclipse/jst/jsp/core/taglib/ProjectDescription$PackageFragme
+ ntRootDelta.class
+SHA1-Digest: sCJJITBwl91axkhSdlbbeC+YGUA=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTUnaryExpression.
+ class
+SHA1-Digest: th48KyYQyZHXnqeXiu3+En563x0=
+
+Name: org/eclipse/jst/jsp/core/taglib/TaglibIndex.class
+SHA1-Digest: 5hA7wTM2+ZojG0Wj6D9hV5VP+N4=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTRelationalExpres
+ sion.class
+SHA1-Digest: rICdrD1Ho1GNe6AmSa4RPtccCTQ=
+
+Name: org/eclipse/jst/jsp/css/core/internal/contentmodel/JSPedCSSTagli
+ bController.class
+SHA1-Digest: MmSj3g/Nrmt71LuTcViWqZ6UdBU=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/IntStack.class
+SHA1-Digest: xk/KW30LsGVIFqJrOI1b7AWHKfw=
+
+Name: org/eclipse/jst/jsp/css/core/internal/parser/JSPedCSSTokenizer.c
+ lass
+SHA1-Digest: i4hdpp2Ew5ijldlZxNNZrM+TD8Q=
+
+Name: org/eclipse/jst/jsp/core/internal/modelquery/JSPModelQueryImpl.c
+ lass
+SHA1-Digest: tU/lcjmws60bQIMQZorJciNofQ4=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/TLDValidator.class
+SHA1-Digest: pWDurxhiI9OqGLgsEB5nZ5CpRXc=
+
+Name: org/eclipse/jst/jsp/core/internal/domdocument/TextImplForJSP.cla
+ ss
+SHA1-Digest: mKIgQeaNY5AlmJ7K+sQlNFpBAB8=
+
+Name: about.html
+SHA1-Digest: mUOvxSYxCUot6WW9T8TxmOQUrws=
+
+Name: org/eclipse/jst/jsp/core/internal/provisional/JSP12Namespace.cla
+ ss
+SHA1-Digest: KuTmtgx5h1Nqepf+3FwvKdoW4ns=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTGTNode.class
+SHA1-Digest: 1mLAHSx763C2esv3XMOtv5IcCp0=
+
+Name: org/eclipse/jst/jsp/css/core/internal/document/JSPedCSSModelImpl
+ .class
+SHA1-Digest: OXCbBUm5ZIJXsq6SUkOr4NUbqIg=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/CMDocumentImp
+ l.class
+SHA1-Digest: FzbpyEcILechqh++O/BlVTSgOQg=
+
+Name: org/eclipse/jst/jsp/core/internal/taglib/TaglibHelper$1.class
+SHA1-Digest: Uq1HzKUa31RzA9pMRP0PC4I61F0=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/ContentDescriberFo
+ rJSP.class
+SHA1-Digest: H87eJu4hHhEpuOXyRPqBVJNxA0I=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/TLDCMDocument
+ Manager$IncludeHelper.class
+SHA1-Digest: mg/kXc+zcxWI8Q256IJ6eh9qs5U=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/JSPELParserTreeCons
+ tants.class
+SHA1-Digest: HQ2tZuqStOEcObKqjcvNfI76hhg=
+
+Name: org/eclipse/jst/jsp/core/internal/taglib/TaglibHelperCache$Entry
+ .class
+SHA1-Digest: aZewS67Arz0NCFTpkp51lwlpCqQ=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPTranslationExtension$P
+ ositionDelta.class
+SHA1-Digest: q0+HIVEPBhwuEUMAdiF9oZtdDCw=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPTranslator.class
+SHA1-Digest: 8+sOjUcAfXnyaaghlSMnKBb/Kq4=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPBatchValidator$1
+ .class
+SHA1-Digest: Sdh3H0XzfR6V3dKfi3Hils3wkcA=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/DeploymentDescript
+ orPropertyCache$ResourceErrorHandler.class
+SHA1-Digest: oawqgwXTT8ueGJWhVSzf5gsoPTg=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/HTMLValidationRepor
+ ter.class
+SHA1-Digest: gy2KGPmWIYnXm7QG0VPE0fgLKZs=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/provisional/T
+ LDAttributeDeclaration.class
+SHA1-Digest: r2DFDXey855N89e9sNjkWlhqPkg=
+
+Name: org/eclipse/jst/jsp/core/internal/JSPCorePlugin$PluginInitialize
+ rJob.class
+SHA1-Digest: wMRkm77/SBFnCNtkM8eSHZ1q7ac=
+
+Name: org/eclipse/jst/jsp/core/internal/document/PageDirectiveWatcherF
+ actory.class
+SHA1-Digest: ZkCwKZ5t2l4g4336yK/EjTXpY6E=
+
+Name: org/eclipse/jst/jsp/core/internal/util/FacetModuleCoreSupportDel
+ egate.class
+SHA1-Digest: bA7EvkDlfHrm2N33qwCYQ/fF8tg=
+
+Name: org/eclipse/jst/jsp/core/internal/provisional/contenttype/IConte
+ ntDescriptionForJSP.class
+SHA1-Digest: 9NcJ7sfTARtpqkVUClFmVsybe40=
+
+Name: org/eclipse/jst/jsp/core/internal/provisional/text/IJSPPartition
+ Types.class
+SHA1-Digest: mFWk23kA5VHTAfJkLvwUbfyPhWA=
+
+Name: org/eclipse/jst/jsp/core/internal/util/CommonXML.class
+SHA1-Digest: zz+a5txbWpcCXjgwXK17p2j/pIU=
+
+Name: org/eclipse/jst/jsp/core/taglib/ProjectDescription$DeltaVisitor.
+ class
+SHA1-Digest: MKYhg+cqmEifhU2sh0OlJtwmsYw=
+
+Name: org/eclipse/jst/jsp/core/internal/provisional/JSP11Namespace.cla
+ ss
+SHA1-Digest: XsY0hW/x+0mV/6ye/WZhIT5baYM=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTAddExpression.cl
+ ass
+SHA1-Digest: CgTRecVwjeQWn18oadUSBbDG9Gk=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/go.sh
+SHA1-Digest: jMzCnQ4m7YMKBjwB1VVzKnPgIeU=
+
+Name: org/eclipse/jst/jsp/core/taglib/TaglibIndex$MemoryListener.class
+SHA1-Digest: IwBK80aw2HBFptOiLAKVzcvfZoA=
+
+Name: org/eclipse/jst/jsp/core/internal/provisional/JSP21Namespace.cla
+ ss
+SHA1-Digest: Po1JRwNYl3qFWGf0TRI+mNp16PM=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/TaglibController.
+ class
+SHA1-Digest: JrMQBh4vTKBhUW4/SRnNnzrNU7M=
+
+Name: org/eclipse/jst/jsp/core/internal/java/search/JSPIndexManager.cl
+ ass
+SHA1-Digest: K/jP+P04LjXFj/GhoXecBxiAv2U=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/TaglibController$
+ DocumentInfo.class
+SHA1-Digest: 8MI9OT4hi986GB+sFQEHJheqcjc=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPContentValidator
+ .class
+SHA1-Digest: 0VvkuZk+XXkJUO21zkdD4cXOGzI=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTValueSuffix.clas
+ s
+SHA1-Digest: AmUGMmUFxMbeg0hohFtX6SyiI6s=
+
+Name: org/eclipse/jst/jsp/css/core/internal/contenttype/ContentDescrib
+ erForJSPedCSS.class
+SHA1-Digest: 7VpWO8tMDDbI+t0gz5WM3fiGKmk=
+
+Name: org/eclipse/jst/jsp/core/internal/util/FileContentCache.class
+SHA1-Digest: 4BIYfB2B3E9SAFUVbGDMNbK1CV8=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/provisional/J
+ SP20TLDNames.class
+SHA1-Digest: jYCnb132DszqkK2crIQhkp+oP7g=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTMultiplyExpressi
+ on.class
+SHA1-Digest: mnTZHll4iKXVwlUYxLjnmgtZqi4=
+
+Name: org/eclipse/jst/jsp/core/internal/parser/internal/JSPParserRegio
+ nFactory.class
+SHA1-Digest: TbvBPzBakn+kHOHCRpqWMqfeTpw=
+
+Name: org/eclipse/jst/jsp/core/internal/util/ZeroStructuredDocumentReg
+ ion.class
+SHA1-Digest: Z8gwadUEr3BP7mW+VOjc+XkAT2o=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/JSPELParserTokenMan
+ ager.class
+SHA1-Digest: dQZZDAYZ4V0pie1+PepEjvwQ9Is=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/CMDocumentFac
+ toryTLD$1.class
+SHA1-Digest: lTVJeiGeIHEO+cZF8K6wyfDMaE0=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/provisional/T
+ LDDocument.class
+SHA1-Digest: 42IiWVRwHBIHjFRUce4SF8W4nnY=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPELValidator.clas
+ s
+SHA1-Digest: YUWlYuyb4y7+kDg+0ZWfvqtBXTI=
+
+Name: org/eclipse/jst/jsp/css/core/internal/encoding/JSPedCSSDocumentL
+ oader.class
+SHA1-Digest: slCg+GvLq71oqxr8hIpEml3u6sg=
+
+Name: org/eclipse/jst/jsp/core/internal/encoding/JSPDocumentLoader.cla
+ ss
+SHA1-Digest: 9nQRRQRNaRMqD8z1ES43S0TZ+nc=
+
+Name: org/eclipse/jst/jsp/core/internal/taglib/TaglibHelper.class
+SHA1-Digest: HhIKcNd03xKXK+TzgQothN0Zw1o=
+
+Name: org/eclipse/jst/jsp/core/taglib/ProjectDescription$JarRecord.cla
+ ss
+SHA1-Digest: 1zvcAM2cvzwrvQ5sX2iQkfdlS8A=
+
+Name: org/eclipse/jst/jsp/css/core/internal/document/IJSPCSSImportRule
+ .class
+SHA1-Digest: r5CyMdoXCy/l7rML5+C4hkLvUOo=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/SimpleNode.class
+SHA1-Digest: VaBwmZWcgbbXZWb3tLFHRcV33H4=
+
+Name: org/eclipse/jst/jsp/core/internal/document/PageDirectiveAdapterI
+ mpl.class
+SHA1-Digest: HJ56oxoViYhaNiWpCTOb1e2JCFU=
+
+Name: org/eclipse/jst/jsp/css/core/internal/modelhandler/ModelHandlerF
+ orJSPedCSS.class
+SHA1-Digest: qD+rLe+rTeUIu50QBMdXA81eW90=
+
+Name: org/eclipse/jst/jsp/core/internal/modelquery/TagModelQueryCMProv
+ ider.class
+SHA1-Digest: TeulGfx3SXSf+GOdisg2BRidjXk=
+
+Name: org/eclipse/jst/jsp/core/internal/provisional/JSP20Namespace.cla
+ ss
+SHA1-Digest: vzVAmEp3AJZiB6p2ZbrSmbJJTLg=
+
+Name: org/eclipse/jst/jsp/core/taglib/ITLDRecord.class
+SHA1-Digest: fO6BHmRVSNm0XET74zyBoWOinWU=
+
+Name: org/eclipse/jst/jsp/core/taglib/ITaglibRecordEvent.class
+SHA1-Digest: cTWOwpb5BY63nSwpJ5gbAku67f4=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/CMElementDecl
+ arationImpl.class
+SHA1-Digest: HlqUtfGEmjOlqA9y+KlLlxSGCWw=
+
+Name: org/eclipse/jst/jsp/core/taglib/IURLRecord.class
+SHA1-Digest: 4vhI1zRxA8SwhtFK9jA8Kuu0vb0=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/DeploymentDescript
+ orPropertyCache$2.class
+SHA1-Digest: aN+MoY2eVFEF+itJHKJ5FrcB++0=
+
+Name: org/eclipse/jst/jsp/core/internal/modelhandler/TagModelLoader.cl
+ ass
+SHA1-Digest: A12BzLv5MyV/xypovejqWChvbHc=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPValidator$Locali
+ zedMessage.class
+SHA1-Digest: m7sVqNxpDDSJxgw+g360AnYe/Jg=
+
+Name: org/eclipse/jst/jsp/core/internal/parser/JSPSourceParser$Nestabl
+ ePrefixHandler.class
+SHA1-Digest: zBi1r0+ERr3vntLm5FHxeWnXCo0=
+
+Name: org/eclipse/jst/jsp/core/internal/java/CompilationUnitHelper$1.c
+ lass
+SHA1-Digest: DarT01zfD8cOhyIqtbFgVOkE+/M=
+
+Name: org/eclipse/jst/jsp/core/internal/encoding/JSPDocumentHeadConten
+ tDetector.class
+SHA1-Digest: BHwZczjvPNygsB0moJS0KxHRc8Q=
+
+Name: org/eclipse/jst/jsp/core/internal/modelquery/JSPModelQueryAdapte
+ rImpl.class
+SHA1-Digest: yvQ13MEioISfe1qDz/N3Cbwf5Q8=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTImplicitObject.c
+ lass
+SHA1-Digest: joUKzybrhdVgwBengv6r9oRjSdE=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/FragmentValidationT
+ ools.class
+SHA1-Digest: w66JRXx3GWq4RlVUZJsB2jAb0ok=
+
+Name: org/eclipse/jst/jsp/core/internal/taglib/TaglibClassLoader.class
+SHA1-Digest: 5xf2s3AMgkHJCEjfgzywILZ56ZA=
+
+Name: org/eclipse/jst/jsp/core/internal/java/StackMap.class
+SHA1-Digest: q9I3rOOQavV/DxX5eh39hT5QbiY=
+
+Name: org/eclipse/jst/jsp/core/internal/java/search/JSPSearchScope.cla
+ ss
+SHA1-Digest: PJvehf5YnZ/kNbaEVzuglBmoDNA=
+
+Name: org/eclipse/jst/jsp/core/taglib/ProjectDescription$WebXMLRecord.
+ class
+SHA1-Digest: 0Ak1fMiogZxgTf8UeO4KlFaLtC0=
+
+Name: org/eclipse/jst/jsp/core/internal/java/JSPTranslation$1.class
+SHA1-Digest: YrOchl+BaaOmToql2WEuRb/95Wk=
+
+Name: org/eclipse/jst/jsp/css/core/internal/document/JSPCSSNodeImpl.cl
+ ass
+SHA1-Digest: lCWjCe9r0j7RSqwdN0gczyZE6Cc=
+
+Name: org/eclipse/jst/jsp/core/internal/taglib/TaglibHelperCache.class
+SHA1-Digest: XrJ3QYXkrLdScUNwiSxiupPTSfE=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/CMNodeListImp
+ l.class
+SHA1-Digest: vX9ChVE+ZCKXuv4uBCmvO24mQO4=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/JJTJSPELParserState
+ .class
+SHA1-Digest: gV4B2EpIA6cHpbp0KNA8+OcSKzo=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/CMNamedNodeMa
+ pImpl.class
+SHA1-Digest: dBtor5n30bcGIQwCXfmW6BimehA=
+
+Name: org/eclipse/jst/jsp/core/internal/document/PageDirectiveWatcherI
+ mpl.class
+SHA1-Digest: 7e370Mkv7ESRh38+avHqj0GKCLs=
+
+Name: org/eclipse/jst/jsp/core/internal/contentproperties/JSPFContentP
+ ropertiesManager$ResourceChangeListener.class
+SHA1-Digest: Kw7vIqO99YYBpLfD4D9O9qS+ssY=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/SimpleCharStream.cl
+ ass
+SHA1-Digest: FdMqqirn7cGScwgTHZmGHJlDIVM=
+
+Name: org/eclipse/jst/jsp/core/internal/JSPCorePlugin.class
+SHA1-Digest: EHTcmHgIcLAKL7HJkAt5CemjY1g=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTLiteral.class
+SHA1-Digest: QZOj2optwOlYkEjZg0iLso4e6RM=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/CMGroupWrapperImp
+ l.class
+SHA1-Digest: flLRheZXOV3RXCp9oW0dtLGEcco=
+
+Name: org/eclipse/jst/jsp/core/internal/java/jspel/ASTValue.class
+SHA1-Digest: QCujORSzhLLYAgbLLtw2xzumX5w=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/JSPResourceEncodin
+ gDetector$NullMemento.class
+SHA1-Digest: ugSUtVHZ1NHTNuhePr1S4hTVsrA=
+
+Name: org/eclipse/jst/jsp/core/internal/modelhandler/ModelHandlerForTa
+ g.class
+SHA1-Digest: ureKO8k5R9vLrOBabP20WgQAwf4=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/TLDCMDocument
+ Manager$TLDCMDocumentReference.class
+SHA1-Digest: JQdV0gKZY4Odyl0rmV7OvoHhN10=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/TLDCMDocument
+ Manager$DirectiveStructuredDocumentRegionHandler.class
+SHA1-Digest: 0i/Ls8TnHh23ZkVc+nVD5qAbwHQ=
+
+Name: org/eclipse/jst/jsp/core/internal/JSPCorePlugin$2.class
+SHA1-Digest: AqWI3oRKXNpsQ0d7Xl7AggA32eU=
+
+Name: org/eclipse/jst/jsp/core/internal/java/EscapedTextUtil.class
+SHA1-Digest: sVStvOba3WBfFd3hRYGJ2QdQXEE=
+
+Name: org/eclipse/jst/jsp/core/internal/java/IJSPTranslation.class
+SHA1-Digest: FcIyuhikREV2r/YoRhIF2wFw5hA=
+
+Name: org/eclipse/jst/jsp/core/internal/modelquery/TagModelQuery.class
+SHA1-Digest: lEY+BG4Z5kq7YbAIhkGVgpPN5VA=
+
+Name: org/eclipse/jst/jsp/core/internal/Assert$AssertionFailedExceptio
+ n.class
+SHA1-Digest: 0tNO8P/qdXZ1jrI1QxbnEVb0ux8=
+
+Name: org/eclipse/jst/jsp/core/internal/regions/DOMJSPRegionContexts.c
+ lass
+SHA1-Digest: Q76dMLYqx2kGidCyn4nCmUabSEU=
+
+Name: org/eclipse/jst/jsp/core/internal/validation/JSPValidator$JSPFil
+ eVisitor.class
+SHA1-Digest: jH6pTyZpot47QXydUu8FxljO3v4=
+
+Name: org/eclipse/jst/jsp/core/internal/contenttype/JSPResourceEncodin
+ gDetector.class
+SHA1-Digest: C705GJ/gGJPdS8HyrOCX9hG8YQw=
+
+Name: org/eclipse/jst/jsp/core/internal/JSPCoreMessages.class
+SHA1-Digest: 2y/P+QRrkeNNEi9p6wulmsdRFxY=
+
+Name: org/eclipse/jst/jsp/core/internal/contentmodel/tld/provisional/J
+ SP11TLDNames.class
+SHA1-Digest: bTAzMSc6ue8Y5wCyPA5/n64M5r0=
+
