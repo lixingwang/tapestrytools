@@ -71,6 +71,8 @@ public interface HTMLElementDeclaration extends CMElementDeclaration {
 	int FORMAT_XML = 10004;
 	/** Format; MW */
 	int FORMAT_MW = 10005;
+	
+	int FORMAT_TAPESTRY_ACTIONLINK = 50001;
 
 	/**
 	 * A short hand method to get an attribute declaration of a HTML element.

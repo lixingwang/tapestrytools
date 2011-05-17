@@ -104,9 +104,9 @@ public final class HTMLCMDocumentFactory {
 		}
 		
 		else if (CMDocType.TAPESTRY5_DOC_TYPE.equals(cmtype)) {
-			CMNamespaceImpl t5ns = new CMNamespaceImpl(HTML40Namespace.HTML40_URI, HTML40Namespace.HTML40_TAG_PREFIX);
-			CHCMDocImpl chtmldoc = new CHCMDocImpl(CMDocType.CHTML_DOC_TYPE, t5ns);
-			return chtmldoc;
+			CMNamespaceImpl t5ns = new CMNamespaceImpl(Tapestry5Namespace.Tapestry_URI, Tapestry5Namespace.Tapestry_TAG_PREFIX);
+			TapestryCMDocImpl tapestrydoc = new TapestryCMDocImpl(CMDocType.TAPESTRY5_DOC_TYPE, t5ns);
+			return tapestrydoc;
 		}
 
 		return null;
