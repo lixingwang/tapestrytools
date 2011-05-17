@@ -310,17 +310,10 @@ public class PaletteItemManager implements IPaletteItemManager,
 	}
 	
 	private void initTagRegistry() {
-		System.out.println("-----------------------Start add HTML section job---------------------------");
 		registerHTMLCategory();
-		System.out.println("-----------------------Finish add HTML section job---------------------------");
 		if (isJSP(_tagRegId)){
-			System.out.println("-----------------------Start add JSP section job---------------------------");
 			registerJSPCategory();
-			System.out.println("-----------------------Finish add JSP section job---------------------------");
-			
-			System.out.println("-----------------------Start add Tapestry section job---------------------------");
 			registerTapestryCategory();	
-			System.out.println("-----------------------Finish add Tapestry section job---------------------------");
 		}
 		registerTagsFromTagRegistry();	
 	}
