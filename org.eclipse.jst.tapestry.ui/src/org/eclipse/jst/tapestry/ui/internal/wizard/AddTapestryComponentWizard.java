@@ -72,12 +72,13 @@ public class AddTapestryComponentWizard extends Wizard implements INewWizard,
 		final String folderName = page.getFolderName();
 		final String packageName = page.getPackageName();
 		final String className = page.getClassName();
+		final boolean createTemplate = page.createTemplateOrNot();
 
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			public void run(IProgressMonitor monitor)
 					throws InvocationTargetException {
 				try {
-					doFinish(projectName, folderName, packageName, className,
+					doFinish(projectName, folderName, packageName, className, createTemplate,
 							monitor);
 				} catch (CoreException e) {
 					throw new InvocationTargetException(e);
@@ -106,7 +107,7 @@ public class AddTapestryComponentWizard extends Wizard implements INewWizard,
 	 */
 
 	private void doFinish(String projectName, String folderName,
-			String packageName, String className, IProgressMonitor monitor)
+			String packageName, String className, boolean createTemplate, IProgressMonitor monitor)
 			throws CoreException {
 		IProject project = ProjectUtilities.getProject(projectName);
 		IJavaProject javaProject = JavaCore.create(project);
@@ -129,31 +130,34 @@ public class AddTapestryComponentWizard extends Wizard implements INewWizard,
 		aimPackage.createCompilationUnit(className+".java", classContent, false, null);
 		monitor.worked(1);
 		
-		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-		final IFile file = root.getFile(aimPackage.getPath().append(
-					className + ".tml"));
-		try {
-			InputStream stream = openContentStream();
-			if (file.exists()) {
-				file.setContents(stream, true, true, monitor);
-			} else {
-				file.create(stream, true, monitor);
-			}
-			stream.close();
-		} catch (IOException e) {
-		}
-		monitor.worked(1);
-		monitor.setTaskName("Opening file for editing...");
-		getShell().getDisplay().asyncExec(new Runnable() {
-			public void run() {
-				IWorkbenchPage page = PlatformUI.getWorkbench()
-						.getActiveWorkbenchWindow().getActivePage();
-				try {
-					IDE.openEditor(page, file, true);
-				} catch (PartInitException e) {
+		if(createTemplate){
+			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+			final IFile file = root.getFile(aimPackage.getPath().append(
+						className + ".tml"));
+			try {
+				InputStream stream = openContentStream();
+				if (file.exists()) {
+					file.setContents(stream, true, true, monitor);
+				} else {
+					file.create(stream, true, monitor);
 				}
+				stream.close();
+			} catch (IOException e) {
 			}
-		});
+			monitor.worked(1);
+			monitor.setTaskName("Opening file for editing...");
+			getShell().getDisplay().asyncExec(new Runnable() {
+				public void run() {
+					IWorkbenchPage page = PlatformUI.getWorkbench()
+							.getActiveWorkbenchWindow().getActivePage();
+					try {
+						IDE.openEditor(page, file, true);
+					} catch (PartInitException e) {
+					}
+				}
+			});
+		}
+		
 		monitor.worked(1);
 
 	}
@@ -163,10 +167,10 @@ public class AddTapestryComponentWizard extends Wizard implements INewWizard,
 	 */
 
 	private InputStream openContentStream() {
-		String contents = "<t:container xmlns:t=\"http://tapestry.apache.org/schema/tapestry_5_1_0.xsd\"" +
+		String contents = "<t:container xmlns:t=\"http://tapestry.apache.org/schema/tapestry_5_1_0.xsd\" " +
 				"xmlns:p=\"tapestry:parameter\"" +
 				">"+
-		"\n"+
+		"\n\r\n"+
 		"</t:container>";
 		return new ByteArrayInputStream(contents.getBytes());
 	}

@@ -129,7 +129,7 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 		classContent+="}";
 		aimPackage.createCompilationUnit(className+".java", classContent, false, null);
 		monitor.worked(1);
-		
+
 		IFile pageFile = null;
 		if (pageLocation.equals("src")) {
 			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
@@ -154,7 +154,9 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 			}
 			stream.close();
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		
 		monitor.worked(1);
 		monitor.setTaskName("Opening file for editing...");
 		getShell().getDisplay().asyncExec(new Runnable() {
@@ -176,9 +178,10 @@ public class AddTapestryNewWizard extends Wizard implements INewWizard,
 	 */
 
 	private InputStream openContentStream() {
-		String contents = "<div  xmlns:t=\"http://tapestry.apache.org/schema/tapestry_5_1_0.xsd\"> "+
-		"\n"+
-		"</div>";
+		String contents = "<html  xmlns:t=\"http://tapestry.apache.org/schema/tapestry_5_1_0.xsd\"> \n" +
+		"<body>\n\r\n"+
+		"</body>\n" +
+		"</html>";
 		return new ByteArrayInputStream(contents.getBytes());
 	}
 

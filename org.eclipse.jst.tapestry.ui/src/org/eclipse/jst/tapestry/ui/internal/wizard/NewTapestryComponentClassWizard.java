@@ -85,6 +85,7 @@ public class NewTapestryComponentClassWizard extends WizardPage {
 	private Combo projectNameCombo;	
 	protected String projectType = J2EEProjectUtilities.DYNAMIC_WEB;
 	private String projectName;
+	private Button createTemplate;
 	private HashMap<String,Object> model = new HashMap<String,Object>();
 
 	private ISelection selection;
@@ -96,8 +97,8 @@ public class NewTapestryComponentClassWizard extends WizardPage {
 	 */
 	public NewTapestryComponentClassWizard(ISelection selection) {
 		super("wizardPage");
-		setTitle(Messages.TapestryPageCreationWizard_PageOneTitle);
-		setDescription(Messages.TapestryPageCreationWizard_PageOneDesc);
+		setTitle(Messages.TapestryComponentCreationWizard_PageOneTitle);
+		setDescription(Messages.TapestryComponentCreationWizard_PageOneDesc);
 		this.selection = selection;
 	}
 	
@@ -120,6 +121,7 @@ public class NewTapestryComponentClassWizard extends WizardPage {
 		addSeperator(composite, 3);
 		addPackageGroup(composite);
 		addClassnameGroup(composite);
+		addCreateTemplate(composite);
 
 		// set the cursor focus
 		//   - to the "Java package" if it is empty
@@ -144,6 +146,21 @@ public class NewTapestryComponentClassWizard extends WizardPage {
 		classText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
 		new Label(composite, SWT.LEFT);
+	}
+	/**
+	 * In Tapestry it is possible to create components without templates. 
+	 * Please provide an additional checkbox, labeled with "Create template" which is checked by default. 
+	 */
+	private void addCreateTemplate(Composite composite){
+		Label templateLabel = new Label(composite, SWT.LEFT);
+		templateLabel.setText("Create Template:");
+		templateLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
+		
+		createTemplate = new Button(composite, SWT.CHECK);
+		createTemplate.setText("Use Default Component Template");
+		createTemplate.setToolTipText("Select this checkbox button to create template file for Tapestry 5 component");
+		createTemplate.setSelection(true);
+		createTemplate.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 	}
 	/**
 	 * Add package group to composite
@@ -591,5 +608,8 @@ public class NewTapestryComponentClassWizard extends WizardPage {
 	}
 	public String getClassName(){
 		return classText.getText();
+	}
+	public boolean createTemplateOrNot(){
+		return createTemplate.getSelection();
 	}
 }
