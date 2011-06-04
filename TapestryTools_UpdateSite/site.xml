@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="TapestryTools" url="http://code.google.com/p/tapestrytools">
+      Eclipse WTP based Tapestry 5 visual editor Version 0.02
+   </description>
+   <feature url="features/org.apache.tapestrytools.features_1.0.0.201106041538.jar" id="org.apache.tapestrytools.features" version="1.0.0.201106041538">
+      <category name="TapestryTools"/>
+   </feature>
+   <category-def name="TapestryTools" label="TapestryTools V 0.02">
+      <description>
+         Eclipse WTP based Tapestry 5 visual editor Version 0.02
+      </description>
+   </category-def>
+</site>
