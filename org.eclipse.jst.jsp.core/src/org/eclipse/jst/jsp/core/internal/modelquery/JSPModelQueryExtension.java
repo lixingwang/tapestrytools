@@ -35,8 +35,12 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 /**
- * An implementation of {@link ModelQueryExtension} for JSP tags in JSP documents
+ * An implementation of {@link ModelQueryExtension} for JSP and Tapestry tags in JSP documents
+ * 
+ * @author gavingui2011@gmail.com - Beijing China
+ *
  */
+
 public class JSPModelQueryExtension extends ModelQueryExtension {
 	
 	private static final String TAG_JSP_ROOT = "jsp:root";
@@ -124,14 +128,24 @@ public class JSPModelQueryExtension extends ModelQueryExtension {
 							
 							rejectElements.add(JSP12Namespace.ElementName.ROOT);
 						}
-
+						//Add JSP elements into autocomplete menu
 						for (int j = 0; j < jspelements.getLength(); j++) {
 							CMElementDeclaration ed = (CMElementDeclaration) jspelements.item(j);
 							if (!rejectElements.contains(ed.getNodeName())) {
 								nodeList.add(ed);
 							}
 						}
-
+						
+						//Add Tapestry components into autocomplete menu
+						jcmdoc = getDefaultTapestryCMDocument();
+						CMNamedNodeMap tapestryelements = jcmdoc.getElements();
+						for (int j = 0; j < tapestryelements.getLength(); j++) {
+							CMElementDeclaration ed = (CMElementDeclaration) tapestryelements.item(j);
+							if (!rejectElements.contains(ed.getNodeName())) {
+								nodeList.add(ed);
+							}
+						}
+						
 					}
 				}
 				// No cm document (such as for the Document (a non-Element) node itself)
@@ -180,6 +194,11 @@ public class JSPModelQueryExtension extends ModelQueryExtension {
 			}
 		}
 
+		return jcmdoc;
+	}
+	
+	private CMDocument getDefaultTapestryCMDocument() {
+		CMDocument jcmdoc = JSPCMDocumentFactory.getTapestryCMDocument(); 
 		return jcmdoc;
 	}
 	
