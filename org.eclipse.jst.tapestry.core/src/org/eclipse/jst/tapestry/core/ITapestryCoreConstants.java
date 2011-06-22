@@ -23,7 +23,7 @@ public final class ITapestryCoreConstants
      * The facet version for a Tapestry 1.2 project
      * TODO: align with extensioin point through plugin.properties
      */
-    public final static String                  FACET_VERSION_5_0 = "5.0";//$NON-NLS-1$
+    public final static String                  FACET_VERSION_5_0 = "5.2.5";//$NON-NLS-1$
     /**
      * The constant id for a Tapestry 1.2 project
      */
