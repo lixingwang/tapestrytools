@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<md:metadatamodel 
+	xmlns:md="http://org.eclipse.jst.jsf.common.metadata/metadata.ecore" 
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" 
+	xmlns:mdt="http://org.eclipse.jst.jsf.common.metadata/metadataTraitTypes.ecore" 
+	xmlns:pi="http://org.eclipse.jsf.pagedesigner/paletteInfos.ecore" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	id="tapestry5" 
+	type="tagFile">
+	
+	<trait id="paletteInfos">
+		<value xsi:type="pi:PaletteInfos">
+			<item id="t:actionlink"/>
+			<item id="t:addrowlink"/>
+			<item id="t:any"/>
+			<item id="t:beandisplay"/>
+			<item id="t:beaneditform"/>
+			<item id="t:beaneditor"/>
+			<item id="t:checkbox"/>
+			<item id="t:datefield"/>
+			<item id="t:delegate"/>
+			<item id="t:error"/>
+			<item id="t:eventlink"/>
+			<item id="t:exceptiondisplay"/>
+			<item id="t:form"/>
+			<item id="t:formfragment"/>
+			<item id="t:forminjector"/>
+			<item id="t:grid"/>
+			<item id="t:gridcell"/>
+			<item id="t:gridcolumns"/>
+			<item id="t:gridpager"/>
+			<item id="t:gridrows"/>
+			<item id="t:hidden"/>
+			<item id="t:if"/>
+			<item id="t:label"/>
+			<item id="t:linksubmit"/>
+			<item id="t:loop"/>
+			<item id="t:output"/>
+			<item id="t:outputraw"/>
+			<item id="t:pagelink"/>
+			<item id="t:palette"/>
+			<item id="t:passwordfield"/>
+			<item id="t:progressivedisplay"/>
+			<item id="t:propertydisplay"/>
+			<item id="t:propertyeditor"/>
+			<item id="t:radio"/>
+			<item id="t:radiogroup"/>
+			<item id="t:select"/>
+			<item id="t:submit"/>
+			<item id="t:textarea"/>
+			<item id="t:textfield"/>
+			<item id="t:textoutput"/>
+			<item id="t:trigger"/>
+			<item id="t:unless"/>
+			<item id="t:zone"/>
+		</value>
+	</trait>
+
+	<trait id="images-base-path">
+		<value xsi:type="mdt:StringValue">$nl$/icons/palette/TAPESTRY</value>
+	</trait>
+
+	<trait id="display-label">
+		<value xsi:type="mdt:StringValue">Tapestry Component</value>
+	</trait>
+	
+	<entity id="t:actionlink">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">ActionLink</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:addrowlink">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">AddRowLink</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:any">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Any</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:beandisplay">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">BeanDisplay</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:beaneditform">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">BeanEditForm</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:beaneditor">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">BeanEditor</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:checkbox">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Checkbox</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:datefield">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">DateField</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:delegate">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Delegate</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:error">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Error</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:errors">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Errors</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:eventlink">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">EventLink</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:exceptiondisplay">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">ExceptionDisplay</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:form">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Form</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:formfragment">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">FormFragment</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:forminjector">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">FormInjector</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:grid">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Grid</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:gridcell">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">GridCell</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:gridcolumns">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">GridColumns</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:gridpager">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">GridPager</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:gridrows">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">GridRows</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:hidden">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Hidden</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:if">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">If</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:label">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Label</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:linksubmit">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">LinkSubmit</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:loop">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Loop</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:output">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Output</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:outputraw">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">OutputRaw</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:pagelink">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">PageLink</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:palette">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Palette</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:passwordfield">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">PasswordField</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:progressivedisplay">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">ProgressiveDisplay</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:propertydisplay">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">PropertyDisplay</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:propertyeditor">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">PropertyEditor</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:radio">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Radio</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:radiogroup">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">RadioGroup</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:select">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Select</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:submit">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Submit</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:textarea">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Textarea</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:textfield">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">TextField</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:textoutput">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">TextOutput</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:trigger">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Trigger</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:unless">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Unless</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	<entity id="t:zone">
+		<trait id="display-label">
+			<value xsi:type="mdt:StringValue">Zone</value>
+		</trait>
+		<trait id="description">
+			<value xsi:type="mdt:StringValue">%tapestry.component.description</value>
+		</trait>		
+		<trait id="small-icon">
+			<value xsi:type="mdt:StringValue">small/tapestry.gif</value>
+		</trait>
+		<trait id="large-icon">
+			<value xsi:type="mdt:StringValue">large/tapestry.gif</value>
+		</trait>
+	</entity>
+	
+	
+</md:metadatamodel>
