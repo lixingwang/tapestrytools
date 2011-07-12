@@ -25,9 +25,9 @@ public class JSPELParser/*@bgen(jjtree)*/implements JSPELParserTreeConstants, JS
     ((SimpleNode)n).setLastToken(getToken(0));
   }
 
-  public static JSPELParser createParser(java.lang.String input) {
-          java.io.StringReader reader = new java.io.StringReader(input);
-          return new JSPELParser(reader);
+  public static JSPELParser createParser(java.lang.String input) { 
+	  	java.io.StringReader reader = new java.io.StringReader(input);
+        return new JSPELParser(reader);
   }
 
   public void ReInit(java.lang.String input) {
