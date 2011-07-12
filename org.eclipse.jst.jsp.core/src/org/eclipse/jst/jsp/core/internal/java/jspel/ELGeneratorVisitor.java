@@ -555,9 +555,10 @@ public class ELGeneratorVisitor implements JSPELParserVisitor {
 			//column offsets are 1 based not 0 based, thus subtract one
 			final int problemOffset = fContentStart + node.getFirstToken().beginColumn - 1;
 			final int problemLength = node.getLastToken().endColumn - 1;
-
+			
 			//could not find function translation so report error
-			fELProblems.add(new ELProblem(new Position(problemOffset, problemLength), NLS.bind(JSPCoreMessages.JSPELTranslator_0, node.getFullFunctionName())));
+			if(!node.getFullFunctionName().startsWith("prop:")) //In tapestry environment, we usually use prop: expression to get attributes, these are not functions   
+				fELProblems.add(new ELProblem(new Position(problemOffset, problemLength), NLS.bind(JSPCoreMessages.JSPELTranslator_0, node.getFullFunctionName())));
 			
 			//error message to be injected into translation purely for debugging purposes
 			String errorMsg = "\"Could not find function translation for: " + node.getFullFunctionName() + "\""; //$NON-NLS-1$ //$NON-NLS-2$
