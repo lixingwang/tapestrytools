@@ -1801,7 +1801,8 @@ public class JSPTranslator implements Externalizable {
 
 	private void translateEL(String elText, String delim, IStructuredDocumentRegion currentNode, int contentStart, int contentLength) {
 		IJSPELTranslator translator = getELTranslator();
-		if (null != translator) {
+		//prop: start EL expression means Tapestry value expression, WTP does not need to handler this kind of EL expression 
+		if (null != translator && !elText.startsWith("prop:")) {
 			List elProblems = translator.translateEL(elText, delim, currentNode, contentStart, contentLength, fUserELExpressions, fUserELRanges, fStructuredDocument);
 			fTranslationProblems.addAll(elProblems);
 		}
