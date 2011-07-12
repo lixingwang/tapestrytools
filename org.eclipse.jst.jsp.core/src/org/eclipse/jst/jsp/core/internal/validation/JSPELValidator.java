@@ -160,6 +160,7 @@ public class JSPELValidator extends JSPValidator {
 		}
 		
 		String elText = container.getFullText().substring(contentStart, (elRegion != null) ? elRegion.getStart() : (contentLength - 1));
+		
 		JSPELParser elParser = JSPELParser.createParser(elText);
 		try {
 			elParser.Expression();
