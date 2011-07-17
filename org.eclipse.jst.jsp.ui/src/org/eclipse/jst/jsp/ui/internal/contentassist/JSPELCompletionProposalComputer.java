@@ -30,6 +30,7 @@ import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.SimpleName;
@@ -328,6 +329,7 @@ public class JSPELCompletionProposalComputer extends
 		cu.accept(new ASTVisitor() {
 			public boolean visit(VariableDeclarationFragment node) {
 				SimpleName name = node.getName();
+				addIfNotExist(name.toString(),propList);
 				return false; 
 			}
 
@@ -336,12 +338,20 @@ public class JSPELCompletionProposalComputer extends
 				String methodName = name.toString();
 				if(node.getModifiers() == Modifier.PUBLIC && methodName.startsWith("get") && methodName.length()>3){
 					String propName = methodName.substring(3).toLowerCase();
-					propList.add(propName);
+					addIfNotExist(propName,propList);
 					methodList.add(methodName+"()");
 				}
 				return false;
 			}
 		});
+	}
+	
+	private void addIfNotExist(String newItem, List<String> list){
+		for(int i=0; i<list.size(); i++)
+			if(list.get(i).trim().equals(newItem.trim())){
+				return;
+			}
+		list.add(newItem);
 	}
 
 	private String inputStream2String(InputStream ins) {
