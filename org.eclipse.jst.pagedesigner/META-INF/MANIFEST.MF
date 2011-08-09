@@ -1,0 +1,4071 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-SymbolicName: org.eclipse.jst.pagedesigner;singleton:=true
+Eclipse-SourceReferences: scm:cvs:pserver:dev.eclipse.org:/cvsroot/web
+ tools:org.eclipse.jsf/components/jsf/plugins/org.eclipse.jst.pagedesi
+ gner;tag=v201104032306
+Bundle-Activator: org.eclipse.jst.pagedesigner.PDPlugin
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.2.0,4.0.0)
+ ",org.eclipse.debug.ui;bundle-version="[3.2.0,4.0.0)",org.eclipse.emf
+ .ecore;bundle-version="[2.2.0,3.0.0)",org.eclipse.gef;bundle-version=
+ "[3.2.0,4.0.0)",org.eclipse.jface.text;bundle-version="[3.2.0,4.0.0)"
+ ,org.eclipse.ui.workbench.texteditor;bundle-version="[3.2.0,4.0.0)",o
+ rg.eclipse.wst.common.ui;bundle-version="[1.1.0,1.2.0)",org.eclipse.w
+ st.common.uriresolver;bundle-version="[1.1.0,1.2.0)",org.eclipse.wst.
+ sse.ui;bundle-version="[1.0.101,1.4.0)",org.eclipse.jst.j2ee;bundle-v
+ ersion="[1.1.0,1.2.0)",org.eclipse.jst.jsp.core;bundle-version="[1.1.
+ 0,1.3.0)",org.eclipse.jst.jsp.ui;bundle-version="[1.1.0,1.3.0)",org.e
+ clipse.jst.j2ee.web;bundle-version="[1.1.0,1.2.0)",org.eclipse.jst.pa
+ gedesigner.jsp.core;bundle-version="[1.0.0,2.0.0)",org.eclipse.jst.js
+ f.common.ui;bundle-version="[1.0.0,2.0.0)",org.eclipse.ui.ide;bundle-
+ version="[3.2.0,4.0.0)",org.eclipse.jdt.ui;bundle-version="[3.2.0,4.0
+ .0)",org.eclipse.jst.jsf.common;bundle-version="[1.0.0,2.0.0)",org.ec
+ lipse.jst.jsf.core;bundle-version="[1.0.0,2.0.0)",org.eclipse.jdt.cor
+ e;bundle-version="[3.2.0,4.0.0)",org.eclipse.wst.html.ui;bundle-versi
+ on="[1.0.100,1.1.0)",org.eclipse.wst.css.core;bundle-version="[1.1.0,
+ 1.2.0)",org.eclipse.wst.html.core;bundle-version="[1.1.0,1.2.0)",org.
+ eclipse.wst.xml.ui;bundle-version="[1.0.100,1.2.0)",org.eclipse.wst.x
+ ml.core;bundle-version="[1.1.0,1.2.0)",org.eclipse.wst.sse.core;bundl
+ e-version="[1.1.0,1.2.0)",org.eclipse.ui.views.properties.tabbed;bund
+ le-version="[3.2.0,4.0.0)",org.eclipse.core.expressions;bundle-versio
+ n="[3.4.0,3.5.0]",org.eclipse.jst.jsf.common.runtime;bundle-version="
+ [1.0.201,2.0.0)"
+Export-Package: org.eclipse.jst.pagedesigner;x-internal:=true,org.ecli
+ pse.jst.pagedesigner.actions.container;x-internal:=true,org.eclipse.j
+ st.pagedesigner.actions.link;x-internal:=true,org.eclipse.jst.pagedes
+ igner.actions.menuextension;x-internal:=true,org.eclipse.jst.pagedesi
+ gner.actions.range;x-internal:=true,org.eclipse.jst.pagedesigner.acti
+ ons.single;x-internal:=true,org.eclipse.jst.pagedesigner.actions.tabl
+ e;x-internal:=true,org.eclipse.jst.pagedesigner.adapters;x-internal:=
+ true,org.eclipse.jst.pagedesigner.adapters.internal;x-internal:=true,
+ org.eclipse.jst.pagedesigner.commands;x-internal:=true,org.eclipse.js
+ t.pagedesigner.commands.html;x-internal:=true,org.eclipse.jst.pagedes
+ igner.commands.nav;x-internal:=true,org.eclipse.jst.pagedesigner.comm
+ ands.range;x-internal:=true,org.eclipse.jst.pagedesigner.commands.sin
+ gle;x-internal:=true,org.eclipse.jst.pagedesigner.converter,org.eclip
+ se.jst.pagedesigner.converter.html;x-internal:=true,org.eclipse.jst.p
+ agedesigner.converter.jsp;x-internal:=true,org.eclipse.jst.pagedesign
+ er.css2;x-internal:=true,org.eclipse.jst.pagedesigner.css2.border;x-i
+ nternal:=true,org.eclipse.jst.pagedesigner.css2.color;x-internal:=tru
+ e,org.eclipse.jst.pagedesigner.css2.font;x-internal:=true,org.eclipse
+ .jst.pagedesigner.css2.layout;x-internal:=true,org.eclipse.jst.pagede
+ signer.css2.layout.table;x-internal:=true,org.eclipse.jst.pagedesigne
+ r.css2.list;x-internal:=true,org.eclipse.jst.pagedesigner.css2.marker
+ ;x-internal:=true,org.eclipse.jst.pagedesigner.css2.property;x-intern
+ al:=true,org.eclipse.jst.pagedesigner.css2.provider;x-internal:=true,
+ org.eclipse.jst.pagedesigner.css2.style;x-internal:=true,org.eclipse.
+ jst.pagedesigner.css2.value;x-internal:=true,org.eclipse.jst.pagedesi
+ gner.css2.widget;x-internal:=true,org.eclipse.jst.pagedesigner.dnd;x-
+ internal:=true,org.eclipse.jst.pagedesigner.dnd.internal;x-internal:=
+ true,org.eclipse.jst.pagedesigner.dom;x-internal:=true,org.eclipse.js
+ t.pagedesigner.dom.html;x-internal:=true,org.eclipse.jst.pagedesigner
+ .dtmanager,org.eclipse.jst.pagedesigner.dtmanager.converter,org.eclip
+ se.jst.pagedesigner.dtmanager.converter.internal;x-friends:="org.ecli
+ pse.jst.pagedesigner.jsf.ui",org.eclipse.jst.pagedesigner.dtmanager.c
+ onverter.operations,org.eclipse.jst.pagedesigner.dtmanager.converter.
+ operations.internal;x-friends:="org.eclipse.jst.pagedesigner.tests",o
+ rg.eclipse.jst.pagedesigner.dtmanager.dtinfo,org.eclipse.jst.pagedesi
+ gner.dtmanager.dtinfo.internal.impl;x-internal:=true,org.eclipse.jst.
+ pagedesigner.dtmanager.dtinfo.internal.util;x-internal:=true,org.ecli
+ pse.jst.pagedesigner.dtresourceprovider;x-internal:=true,org.eclipse.
+ jst.pagedesigner.editors;x-internal:=true,org.eclipse.jst.pagedesigne
+ r.editors.actions;x-internal:=true,org.eclipse.jst.pagedesigner.edito
+ rs.pagedesigner;x-internal:=true,org.eclipse.jst.pagedesigner.editors
+ .palette;x-internal:=true,org.eclipse.jst.pagedesigner.editors.palett
+ e.impl;x-internal:=true,org.eclipse.jst.pagedesigner.editors.properti
+ es,org.eclipse.jst.pagedesigner.editors.properties.internal;x-interna
+ l:=true,org.eclipse.jst.pagedesigner.editors.properties.quickedittabs
+ ections,org.eclipse.jst.pagedesigner.editors.properties.quickedittabs
+ ections.internal.impl;x-internal:=true,org.eclipse.jst.pagedesigner.e
+ ditors.properties.quickedittabsections.internal.util;x-internal:=true
+ ,org.eclipse.jst.pagedesigner.editpolicies;x-internal:=true,org.eclip
+ se.jst.pagedesigner.elementedit;x-internal:=true,org.eclipse.jst.page
+ designer.elementedit.html;x-internal:=true,org.eclipse.jst.pagedesign
+ er.elementedit.jsp;x-internal:=true,org.eclipse.jst.pagedesigner.exte
+ nsionpoint,org.eclipse.jst.pagedesigner.figurehandler;x-internal:=tru
+ e,org.eclipse.jst.pagedesigner.itemcreation;x-internal:=true,org.ecli
+ pse.jst.pagedesigner.itemcreation.command;x-internal:=true,org.eclips
+ e.jst.pagedesigner.itemcreation.customizer;x-internal:=true,org.eclip
+ se.jst.pagedesigner.itemcreation.internal;x-internal:=true,org.eclips
+ e.jst.pagedesigner.meta;x-internal:=true,org.eclipse.jst.pagedesigner
+ .meta.internal;x-internal:=true,org.eclipse.jst.pagedesigner.parts;x-
+ internal:=true,org.eclipse.jst.pagedesigner.preview,org.eclipse.jst.p
+ agedesigner.properties;x-friends:="org.eclipse.jst.pagedesigner.tests
+ ",org.eclipse.jst.pagedesigner.properties.attrgroup;x-friends:="org.e
+ clipse.jst.pagedesigner.tests",org.eclipse.jst.pagedesigner.propertie
+ s.celleditors;x-friends:="org.eclipse.jst.pagedesigner.tests",org.ecl
+ ipse.jst.pagedesigner.properties.dialogfields;x-internal:=true,org.ec
+ lipse.jst.pagedesigner.properties.internal;x-friends:="org.eclipse.js
+ t.pagedesigner.tests",org.eclipse.jst.pagedesigner.range;x-internal:=
+ true,org.eclipse.jst.pagedesigner.requests;x-internal:=true,org.eclip
+ se.jst.pagedesigner.tableedit;x-internal:=true,org.eclipse.jst.pagede
+ signer.tools;x-internal:=true,org.eclipse.jst.pagedesigner.ui.common;
+ x-internal:=true,org.eclipse.jst.pagedesigner.ui.common.sash;x-intern
+ al:=true,org.eclipse.jst.pagedesigner.ui.dialogfields;x-internal:=tru
+ e,org.eclipse.jst.pagedesigner.ui.dialogs;x-internal:=true,org.eclips
+ e.jst.pagedesigner.ui.preferences;x-internal:=true,org.eclipse.jst.pa
+ gedesigner.utils;x-internal:=true,org.eclipse.jst.pagedesigner.valida
+ tion.caret;x-internal:=true,org.eclipse.jst.pagedesigner.viewer;x-int
+ ernal:=true
+Bundle-Version: 1.3.3.v201104032306
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Import-Package: javax.servlet;version="2.4.0",javax.servlet.http;versi
+ on="2.4.0",javax.servlet.jsp;version="2.0.0",javax.servlet.jsp.el;ver
+ sion="2.0.0",javax.servlet.jsp.resources;version="2.0.0",javax.servle
+ t.jsp.tagext;version="2.0.0",javax.servlet.resources;version="2.4.0"
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/TableInfoContext.
+ class
+SHA1-Digest: wDpXwEExH+L/4qUMWoKhVyG/yII=
+
+Name: org/eclipse/jst/pagedesigner/commands/DesignerCommand.class
+SHA1-Digest: AWV6YfjxMQyOXRRZ6KHR8UL9Xts=
+
+Name: org/eclipse/jst/pagedesigner/dom/DOMUtil.class
+SHA1-Digest: DS+VzBP0SsqVHGm/qx2rW43JX4I=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/TextDecorationMeta.cl
+ ass
+SHA1-Digest: jEqR0DmrM6YL3eY8d2Jo++TQ0V4=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/SingleElementActionG
+ roup$2.class
+SHA1-Digest: 7Icd1E13ZbfZJkWGJOX25CrHC64=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/AppendChildElementOperation.class
+SHA1-Digest: E4gVAoCywrtJcB8DnmtzqU9vZjs=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/PageDesignerActionB
+ arContributor2.class
+SHA1-Digest: PTnMIIpYTbPqXzva2CqRAUOV5ho=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$2.clas
+ s
+SHA1-Digest: 4aBQeeWlievhYKrAqASxoBbI+K8=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/IPaletteConstants.c
+ lass
+SHA1-Digest: aaellx0hTnRWebEYT0qDG1u+7wc=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/ElementResizableEditPo
+ licy.class
+SHA1-Digest: 7CIIdVj2Dzqqt2RvtWtUMkVz6gg=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/html/TableElementEdit$2
+ .class
+SHA1-Digest: HoBRZujmK6i635eIiU6zBcbvN1s=
+
+Name: org/eclipse/jst/pagedesigner/ui/preferences/PDPreferencePage$Boo
+ leanField.class
+SHA1-Digest: HN+GFV+XPQD/cSYfyo02SI6T/3g=
+
+Name: org/eclipse/jst/pagedesigner/css2/widget/HiddenProvider.class
+SHA1-Digest: ikJEoGlXHl5GXtMkZn+WzfZ1tTM=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/HeadItemCreationEditPo
+ licy.class
+SHA1-Digest: G39Gt6NDLXqwPRWEZUpTU9buXi0=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/customizer/IDropCustom
+ izer.class
+SHA1-Digest: D1q1rHlRq6LbKJ6KmybSii7tQfk=
+
+Name: org/eclipse/jst/pagedesigner/editors/SimpleGraphicalEditor.class
+SHA1-Digest: TDeI16e0hTkAlaV+ibPNO+PdC3k=
+
+Name: org/eclipse/jst/pagedesigner/css2/provider/ICSSWidgetProvider.cl
+ ass
+SHA1-Digest: 5l1mzaIbO64exAWvGlQpInAl3AU=
+
+Name: org/eclipse/jst/pagedesigner/dtresourceprovider/DefaultDTSkin.cl
+ ass
+SHA1-Digest: JSRdDJ2VPz6znRUJ+LAZkLK78CU=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteCust
+ omizerDialog.class
+SHA1-Digest: 9UZeHkaw8ViRS9wWeU58lD4bb3E=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$9.cla
+ ss
+SHA1-Digest: JKR/xqum3oWb5BFBLRwpEO9Jxas=
+
+Name: org/eclipse/jst/pagedesigner/properties/AttributePropertySource.
+ class
+SHA1-Digest: uchB5GPxoksplzouB2tY/6vG7no=
+
+Name: schema/propertyContributor.exsd
+SHA1-Digest: E1CFPJyPHAp10+DuI6zqTS4nDRY=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/CSSTextFigure.class
+SHA1-Digest: iXK3qBs6hxz32tKCd3gf39sDsbs=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/impl/PaletteItemMan
+ ager.class
+SHA1-Digest: 6Wruc4C0RxTM8BLIXmd7MzxcZb8=
+
+Name: org/eclipse/jst/pagedesigner/css2/ICSSStyle.class
+SHA1-Digest: D/lYSPFoH9XxD+gHOviUMLAvI5k=
+
+Name: org/eclipse/jst/pagedesigner/adapters/internal/BodyInfo.class
+SHA1-Digest: iFXlXwGDlrJvDvCsF9rJxssHIBY=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/internal/ICreationComm
+ and.class
+SHA1-Digest: FnyqgLIbUgRU3pWQZmV+n5gX4Co=
+
+Name: org/eclipse/jst/pagedesigner/converter/TagConverterToSpan.class
+SHA1-Digest: LjXHbfV9p4TnZreEnoTmcaApcrk=
+
+Name: org/eclipse/jst/pagedesigner/actions/table/TableActionGroup$1.cl
+ ass
+SHA1-Digest: 8yhRIgxqXwe81RnFACUY4qJl2P4=
+
+Name: org/eclipse/jst/pagedesigner/editors/pagedesigner/IPageDesignerC
+ onstants.class
+SHA1-Digest: Vwr6b1U+Ikc2Poe1UlTishrM6Ls=
+
+Name: org/eclipse/jst/pagedesigner/properties/PropertyDescriptorWrappe
+ r$StatusBarUpdater.class
+SHA1-Digest: k2ctWA0NgwO2dm+Vpksul4BTQ+U=
+
+Name: org/eclipse/jst/pagedesigner/utils/SelectionHelper.class
+SHA1-Digest: h3Qti5Ywa4ScRue2t0U/7aCPmiM=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/QuickEditTabDes
+ criptor.class
+SHA1-Digest: 3z0OnicjIv0VLIzKMSaNRKZGgDs=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/CopyChildrenOperation.class
+SHA1-Digest: kbxS8Hwt79FHAbJ3VOiMhW5/ltg=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/ITagConverterDe
+ corator.class
+SHA1-Digest: rViD2LUNkiKoDQuwcxaX/yHzJtk=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableEditAdapter.class
+SHA1-Digest: CkShk9RDZ3Fi7fVqXXuTq8k/D4o=
+
+Name: org/eclipse/jst/pagedesigner/utils/IWorkbenchAdapterFactory.clas
+ s
+SHA1-Digest: 3AIQV2mrwkmkLXblApzgReztWUM=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/internal/Abstra
+ ctAttributeValueResolver.class
+SHA1-Digest: KbBFQZ+AKlh/lVMVSWQGAnbXREw=
+
+Name: org/eclipse/jst/pagedesigner/commands/PaletteDropInsertCommand.c
+ lass
+SHA1-Digest: U8Pc8OxJGApmo4zpGruQETkXI5k=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/Paragraph.class
+SHA1-Digest: DlqEk0ZTUM+nd8XfPigzAB+spYI=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/CSSTableLayout2.c
+ lass
+SHA1-Digest: JQgdU5ZqUVw2/uzTpyUNPKc7I8w=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/PaletteViewAction.c
+ lass
+SHA1-Digest: fDRFnTrQi99tOlJT54Dz+rfGfrQ=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/IPaletteFactory.cla
+ ss
+SHA1-Digest: tgTyDHNH6v6/j69ZDZX/MzZldY4=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/internal/Propert
+ yDescriptor.class
+SHA1-Digest: Suv5bRV8EazLGM7HEKyGCkJHUJI=
+
+Name: org/eclipse/jst/pagedesigner/actions/link/HtmlLinkCreator.class
+SHA1-Digest: BiBQfDBTzHkuCvvwvdeZ4q9ayfM=
+
+Name: org/eclipse/jst/pagedesigner/extensionpoint/IContextMenuItemCont
+ ributor.class
+SHA1-Digest: BckMdn55lsqwcnEwAlOdDovvE/s=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$13.class
+SHA1-Digest: 539SXQeq+r3Z/+e1fYsceOIvJhA=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/CSSBlockFlowLayout.clas
+ s
+SHA1-Digest: QIq+ByTBvIdoALnbaYtv6UEdjks=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$7.clas
+ s
+SHA1-Digest: Ht1SCtjqlunS/3IM3nPtIb3Xpss=
+
+Name: org/eclipse/jst/pagedesigner/css2/widget/RadioWidgetProvider.cla
+ ss
+SHA1-Digest: 5ZRYvSxbX9VoUbV+GeBLkKpNIsI=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/PropertiesViewActio
+ n.class
+SHA1-Digest: ead4X4yGUUxpIRFUt35Tjnx/kGY=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/ITagDropOverrider.clas
+ s
+SHA1-Digest: dVLALcNi5ZQaPfnAGi2RzHx7zOw=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/NonVisualChildGraphica
+ lEditPolicy.class
+SHA1-Digest: bVzF7a1iXlngcLVCu1PeHwyKNrY=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/customizer/ChildrenDat
+ a.class
+SHA1-Digest: phnJvb3XinVxxa0V+k0YVRIKza4=
+
+Name: org/eclipse/jst/pagedesigner/utils/UriAdapterFactory.class
+SHA1-Digest: KppBjZoBnIzqTo/YZ+XoY+48ST8=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/internal/impl/DTIn
+ foFactoryImpl.class
+SHA1-Digest: sWrkgOytudj8tirpbs+yTlf9X4s=
+
+Name: org/eclipse/jst/pagedesigner/editors/IPropertySheetPageFactory.c
+ lass
+SHA1-Digest: RaqI2S5aR4RggxzACal7b1a4wfg=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/SashEditorPart$3.cla
+ ss
+SHA1-Digest: i/rozKNeGkXWneMZfz89QOrJx+Y=
+
+Name: org/eclipse/jst/pagedesigner/dom/IDOMRefPosition.class
+SHA1-Digest: KlSOkqQ8KJIpUVWRo++9YpvogXM=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/InsertHeaderFooterRequest
+ .class
+SHA1-Digest: F3AvIAmdP8YVUJUs8sb/+aSlr8Y=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/DeleteHeaderFooterAction.
+ class
+SHA1-Digest: 6DLn+qpxeaqcVH0Tw2LOLSnX/Rg=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/DefaultPositionRul
+ e.class
+SHA1-Digest: R7ts6rXp6HmNRp19FsETy6TTyaY=
+
+Name: org/eclipse/jst/pagedesigner/commands/CommandResources.class
+SHA1-Digest: c1cXZj+0eYJFGKpmE3kYUmWc6cI=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteCust
+ omizationsHelper.class
+SHA1-Digest: SAjyKcHwWJt/XaEWdpPYbUbvtRc=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$24.class
+SHA1-Digest: 9pVw/QmjyhUCKfPbVOzocJxq2LQ=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/WidgetBox.class
+SHA1-Digest: u8PNsJ0F2AMdVPUgxhxPPuKcxcs=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/SectionInfo.class
+SHA1-Digest: lIiYt0uFd/rPGWC/FRcaRlAFj5k=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/MarqueeRectangleFigure.cl
+ ass
+SHA1-Digest: j3imsrUVdyzW/wkua5j4ixzoKII=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/DefaultMovementRul
+ e.class
+SHA1-Digest: Lue3xYmdxVhcaoqNgJx2R0RPpkw=
+
+Name: icons/PD_Toolbar_smallfont_disabled.gif
+SHA1-Digest: S+zmUGzyUlA5gsefxZuNu/m6aBQ=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/NoneStyleAction.class
+SHA1-Digest: coM06sKbDwYkVHN0VI737iVW/Yc=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$20.cla
+ ss
+SHA1-Digest: +8aLvF2Y0i0Qk8hHCkMF2snDkpo=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/RangeActionGroup.clas
+ s
+SHA1-Digest: vLqHefyHS/V17AAoNfgj2UrNl/w=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/IDropSourceDataProv
+ ider.class
+SHA1-Digest: /yF4APkElPYv6WZ90YIVHNt/ZBI=
+
+Name: org/eclipse/jst/pagedesigner/actions/link/LinkWizardPage.class
+SHA1-Digest: Sn9NPp/g9EXzOoVUdyFYSiF70XE=
+
+Name: org/eclipse/jst/pagedesigner/parts/NonVisualComponentEditPart.cl
+ ass
+SHA1-Digest: AtbK+oilGyA8bhuueZMg6bRG5uc=
+
+Name: org/eclipse/jst/pagedesigner/editors/pagedesigner/PageDesignerRe
+ sources.class
+SHA1-Digest: vsJS3o/W4CIxfJmrEuf2Z942RTU=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/AbstractElementEdit.cla
+ ss
+SHA1-Digest: 7vgNI7mFMZtH0t9+K+oQ3A56hzA=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableEditConst.class
+SHA1-Digest: OJkJDTBF4RPEuAhl5CEsq3zWAXA=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/ICSSLayout.class
+SHA1-Digest: jAN0XnZC4Stvd6IcCa7h+yJF/Yw=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/internal/impl/SectionInfoImpl.class
+SHA1-Digest: UlY0+dpbo3YYcgvFErCT3q+Anzg=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$18.class
+SHA1-Digest: NujKIIZ88Bo5CL7u9Xj00+6WS6c=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/CopyAttributeWithRenameOperation.class
+SHA1-Digest: 6aNiCopNpGvf/GoMe3Q5ttOQ1pc=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/internal/impl/DTIn
+ foPackageImpl.class
+SHA1-Digest: gtdDOW3LtVPUqd4AAhHsWT2RTBY=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/package-info.cla
+ ss
+SHA1-Digest: eBOcLMEz+NZ1yfV6WqFFWhFrZNM=
+
+Name: org/eclipse/jst/pagedesigner/editors/HTMLEditor$2.class
+SHA1-Digest: xFqdwriV6JzH4aXykJJ6j8FpDSQ=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/UserCustomizedTagCreat
+ ionAdvisor.class
+SHA1-Digest: XBserymo61IiZf81Z7JWPsjcU8E=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/WPEPropertyPage$SkinLabe
+ lProvider.class
+SHA1-Digest: jxsxmctuPP72STs8Tp0YTV7lwOs=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$5.class
+SHA1-Digest: 7qE8bXR0u4TwvTEjnMqzZfaj+Ek=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$14.cla
+ ss
+SHA1-Digest: uao7mbe2nolMnA1qXAu7i6G4+oc=
+
+Name: org/eclipse/jst/pagedesigner/css2/style/StyleUtil.class
+SHA1-Digest: ooJOOvCeoCPdUN9eKrTRMNm323U=
+
+Name: org/eclipse/jst/pagedesigner/meta/EditorCreator.class
+SHA1-Digest: F5g5hKWyYU/rft1ROHTPOBC0UqE=
+
+Name: org/eclipse/jst/pagedesigner/preview/DefaultELValueResolver.clas
+ s
+SHA1-Digest: 8CEQjPV46i8u8ru4TN0UfoLsEpA=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/LocalDropEditPolicy.cl
+ ass
+SHA1-Digest: ZSC2UiqfMXDM3l07Hoe15BwSOEE=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/ListStyleTypeMeta.cla
+ ss
+SHA1-Digest: nbb5+SzCx/eBeZMJKiijHFiaSsw=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/NodeConstructionPo
+ sitionRule.class
+SHA1-Digest: xHuzEhPW7zt60i6UjYNMLMwUNKU=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/ResouceDropTargetListe
+ ner.class
+SHA1-Digest: IOZ2guHG8kwaaYIm8jEEfgEa2vw=
+
+Name: org/eclipse/jst/pagedesigner/properties/PropertyDescriptorWrappe
+ r$1.class
+SHA1-Digest: uXjhS+8ytwbNDm231HvcelU44EU=
+
+Name: org/eclipse/jst/pagedesigner/properties/NavigationHiearchyAction
+ .class
+SHA1-Digest: CJzheC9m8SSQ7uOhZl75S15PUQk=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/SashEditorSelectionP
+ rovider.class
+SHA1-Digest: JPCNuAHoqq5HWEMVb8E3M8L+kq8=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/CellEditorWr
+ apper$1.class
+SHA1-Digest: +Zamzp11OLCo0GULNEHeztrQJkU=
+
+Name: org/eclipse/jst/pagedesigner/commands/html/TableInsertColumnComm
+ and.class
+SHA1-Digest: FbkJh/KeHa55Z7pJloOGvN6tAq0=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/WPEPropertyPage$TaglibCo
+ ntentProvider.class
+SHA1-Digest: 3yhso6oKDMT9EmxCwTjbNzfLEQ0=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/ITagCreationAdvisor.cl
+ ass
+SHA1-Digest: 2xnn09YY8C9zjlFzbxzU6BI4YL0=
+
+Name: org/eclipse/jst/pagedesigner/ui/preferences/PDPreferencePage.cla
+ ss
+SHA1-Digest: ZHUGqefGRuu7VivcZjg5M/zhzPs=
+
+Name: org/eclipse/jst/pagedesigner/properties/BaseCustomSection$1.clas
+ s
+SHA1-Digest: a5Y7nPC7oro6GMN52ytAYgACw3w=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteCust
+ omizerDialog$ImportAction.class
+SHA1-Digest: AQBinfq1214jOXGJPexxewErVbo=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/SashEditorSelectionP
+ rovider$2.class
+SHA1-Digest: cJl9GUhAXZQXZc0CLoz8yWf3gNI=
+
+Name: icons/PD_Toolbar_largefont_disabled.gif
+SHA1-Digest: +hkFVXEoiu1X/mkSz08ChmPcvR8=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/internal/impl/TagD
+ ecorateInfoImpl.class
+SHA1-Digest: xjQmDQrHbKgiad7RAlJigoThdIk=
+
+Name: org/eclipse/jst/pagedesigner/css2/CSSUtil.class
+SHA1-Digest: kZA/fdDyFOlqPXI2AW+tHFkfJJc=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferencePage$3.cl
+ ass
+SHA1-Digest: b56uN7RWG3+aUTr7/MFxrB4zX2c=
+
+Name: org/eclipse/jst/pagedesigner/css2/list/ListStyleUtil.class
+SHA1-Digest: wX/8TY0KCmqxhpKUOYPaKWsFOgw=
+
+Name: org/eclipse/jst/pagedesigner/utils/CacheManager.class
+SHA1-Digest: t3+RPvu8dNvl/XDE9puSqx6fWKY=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/ActionsMessages.pro
+ perties
+SHA1-Digest: 8f+3EtsRINxZSydHAQfA7xCWDnk=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/ManageSkinsAction$S
+ electionProvider.class
+SHA1-Digest: PTIRj44CQcpJ+Jliz+6lqajJVzg=
+
+Name: org/eclipse/jst/pagedesigner/parts/NonVisualComponentEditPart$1.
+ class
+SHA1-Digest: 5GE6S0TjXUq0nekKZ/jiSTI0wqE=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/LoadbundleSe
+ lectionCellEditor.class
+SHA1-Digest: wXoIY546lYyfaa4/HFjQt0stEKY=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/ShowViewAction.clas
+ s
+SHA1-Digest: Mc7la50E8p+RPnpNxQ1briuTX8k=
+
+Name: org/eclipse/jst/pagedesigner/editors/HTMLEditor$7.class
+SHA1-Digest: X39fjv/oQZf6RvZRDO6i8RwDqEs=
+
+Name: org/eclipse/jst/pagedesigner/preview/PreviewResources.properties
+SHA1-Digest: 2JqCLb0RldAQNwmicYWk+aWYYE4=
+
+Name: org/eclipse/jst/pagedesigner/editors/DesignerStructuredTextEdito
+ rJSP$ModelStateListener.class
+SHA1-Digest: JayXFtcmjFXBp0YROKgiSuVhSUM=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/internal/impl/QuickEditTabSectionsImpl.class
+SHA1-Digest: NQPJ+3P3uEG2qT3i1q6vOR//Puk=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/StyleDialog.class
+SHA1-Digest: pRFZGte2C2zZeGUKbF3VlPjsQug=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$19.cla
+ ss
+SHA1-Digest: L/yhnkkoggR7O8vayDq6QNzny+E=
+
+Name: org/eclipse/jst/pagedesigner/requests/NodeCreationFactory.class
+SHA1-Digest: U1f9mIt3YiaAjhTekUl9eUNj56Y=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/internal/util/DTIn
+ foAdapterFactory$1.class
+SHA1-Digest: h70CHx7XF2J8CB/SR3o01ljEXDY=
+
+Name: org/eclipse/jst/pagedesigner/utils/IFileAdapterFactory.class
+SHA1-Digest: ESJgUHpOS7nZ3MFzMaEfJoxF5KI=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogfields/ClasspathResourceBu
+ ttonDialogField.class
+SHA1-Digest: psROrQjBzA5yvv+UQ5fcN1IyBcs=
+
+Name: org/eclipse/jst/pagedesigner/dom/DOMRange.class
+SHA1-Digest: 67oo40C2ItDhu51SXan8nkISIKg=
+
+Name: org/eclipse/jst/pagedesigner/dnd/ILocalDropHandler.class
+SHA1-Digest: Qs+fEOqSH6WsFfnX+KjDLDkJldQ=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/CompositeBox.class
+SHA1-Digest: tAon4AXLS7YVZEcm3sXI++pFFNQ=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/DTInfoPackage.clas
+ s
+SHA1-Digest: tDfEQh8FcFfSZT/eAoiaviqbX9E=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/ExtensionsPreferencePage
+ $1.class
+SHA1-Digest: ibqdBYvIzJ0Pb74WtaaWvK8DCn4=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/SingleElementActionG
+ roup.class
+SHA1-Digest: VAgr0jVqQ4FryprCDXkTycPFrnU=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableRowHandleLocator.cla
+ ss
+SHA1-Digest: RJHzFm8JeuHzKok7qmmOIT5Cin0=
+
+Name: org/eclipse/jst/pagedesigner/dom/EditValidateUtil.class
+SHA1-Digest: 4sEaLrBL5QbwsoVDkO7lw71l5Fs=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/ContentCommand.class
+SHA1-Digest: hHFKbOaNLq5A0dpUMvHAJkVwiGw=
+
+Name: org/eclipse/jst/pagedesigner/properties/attrgroup/AttributeGroup
+ Messages.class
+SHA1-Digest: zODLN0bsIeXErqCBjt4fIKm9Ds0=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/CutEdit.class
+SHA1-Digest: CTFDzlrC6MEFsp1nM5JqfSB+TAo=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/internal/DTTagC
+ onverterDecorator.class
+SHA1-Digest: hoV+uexb8LfeMPE5E9h1+P/y4QY=
+
+Name: org/eclipse/jst/pagedesigner/editors/IDesignViewer.class
+SHA1-Digest: iFX8JyWnow6TnKrdhkUZhe7Vt4M=
+
+Name: org/eclipse/jst/pagedesigner/extensionpoint/package-info.class
+SHA1-Digest: jKm429ykMT2ivpqOMFf6jJFxDQU=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferencePage.clas
+ s
+SHA1-Digest: OFAFV2R8pGrtOL6YNY4ZHY5N810=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/SourceViewerDragDropHe
+ lper.class
+SHA1-Digest: 3+EhwD11pdLiRaZbfJu3KitfFRM=
+
+Name: icons/PD_Toolbar_underline.gif
+SHA1-Digest: 40tzWt64FnyKgVEuC7KfzyxZjQw=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/customizer/DropCustomi
+ zationController.class
+SHA1-Digest: 5kUGcj0BVz3b8pI9Q9xziklSWZE=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/WPEPropertyPage$TaglibSe
+ lectionListener.class
+SHA1-Digest: 5zBSHorfAiTQKQ7rVtx+6+e+Gv0=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/QuickEditTabSec
+ tionDescriptor.class
+SHA1-Digest: 7xE6QuIFoXjgO4YqWerYPkESdvU=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/ParagraphAction.class
+SHA1-Digest: wBsrjnHioq4ccILl01bqvT7R658=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/BorderSpacingMeta.cla
+ ss
+SHA1-Digest: uH0rEGhqQ045sorvidZ1Dh4lhGM=
+
+Name: org/eclipse/jst/pagedesigner/commands/html/TableDeleteHeaderFoot
+ erCommand.class
+SHA1-Digest: /YAlG1I1YwMVnFwLZn2dd21B5kQ=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/PDEditPolicy.class
+SHA1-Digest: VOXrRWWgmn/GWeGrEF1LRxNF2u8=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BackgroundPreferencePage
+ $3.class
+SHA1-Digest: L4dVVn9gfTOSNAHbBW+Iz3h2nFA=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferencePage$8.cl
+ ass
+SHA1-Digest: FBTj3c8XRJWJfZ5ThtZwQYkoXOE=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/FigureFactory$1.class
+SHA1-Digest: GSI8j4W5iyM13xqpjFXKWh6Yre0=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/FragmentHandle.class
+SHA1-Digest: cPKkS2mtMPN9qT1WQ+cLGdDQUf4=
+
+Name: org/eclipse/jst/pagedesigner/preview/PageExpressionContext$ELVal
+ ueResolver.class
+SHA1-Digest: wE+W15XOK64Ta7kh94/dGKsVLAk=
+
+Name: org/eclipse/jst/pagedesigner/viewer/IHTMLGraphicalViewer.class
+SHA1-Digest: k+teZuLiDp8WZnSlJA+9oPBNWc0=
+
+Name: org/eclipse/jst/pagedesigner/commands/CutNodeCommand.class
+SHA1-Digest: JHjMaVGIW8e7jfXtJTNUlEfTjSc=
+
+Name: org/eclipse/jst/pagedesigner/css2/marker/RomanCounter.class
+SHA1-Digest: eO2hjaY+peM8acUb+VVjWWvw7Oo=
+
+Name: org/eclipse/jst/pagedesigner/editors/SimpleGraphicalEditor$1.cla
+ ss
+SHA1-Digest: 8XmrJbOGge6+QbMjrz9EEw3rcsg=
+
+Name: org/eclipse/jst/pagedesigner/commands/CloneNodeCommand.class
+SHA1-Digest: /bXTLiBzvb3Awrc1FztS0UzwpQY=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/DesignerUndoRedoAct
+ ion.class
+SHA1-Digest: gMahihRnY+pjSoTvxRbketrRW0A=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogfields/DialogFieldWrapper$
+ 4.class
+SHA1-Digest: HJeYPzC4fx2dfbxLYuY8BL5E82c=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/IDropSourceData.cla
+ ss
+SHA1-Digest: GIc/X3ruPYsju3UcHn6IHM79BOE=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/ColumnResizableEditPol
+ icy$ColumnBorderHandleLocator.class
+SHA1-Digest: M3nruFEWzVcK7liCJ39/ZjyjSps=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/LabeledCombo
+ BoxCellEditor$1.class
+SHA1-Digest: V2HS4P3dmyxpvU0vfuL2gF5SNjA=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/internal/DTTagC
+ onverterContext.class
+SHA1-Digest: Ccltj+4MoS1t/bb2ExHvyldIsXs=
+
+Name: icons/PD_Toolbar_bold_disabled.gif
+SHA1-Digest: JLMJKJVqA43Wnt4yTtVjzutnxgU=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/SashEditorSite$1.cla
+ ss
+SHA1-Digest: EyO1c42jILLGsqwxHsTm6zpxx+Q=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$10.
+ class
+SHA1-Digest: u+tv8gUCapVKs2elWlbU9e/+kSc=
+
+Name: org/eclipse/jst/pagedesigner/css2/style/HiddenElementStyle$1.cla
+ ss
+SHA1-Digest: YAUkgRq14YpmenBtiU8Lw7q0unE=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/ApplyStyleCommand.cl
+ ass
+SHA1-Digest: EOMV6bEqrAgzh+4KGThI4F2s7P8=
+
+Name: org/eclipse/jst/pagedesigner/converter/JSFConverterUtil.class
+SHA1-Digest: xbk0Dp3122g/TolVdmQRV9XsPzs=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/UnapplyStyleCommand.
+ class
+SHA1-Digest: cV1z9/paYoKVGxJ6gCxrG6rlD9g=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/DesignerSourceDropTarg
+ etListener.class
+SHA1-Digest: 23w6jfhVTx5gZNHD3lMuOS2TFQY=
+
+Name: org/eclipse/jst/pagedesigner/preview/PreviewHandlerNew.class
+SHA1-Digest: EtNJ4bmh450WTtB1+Vt/MYzVDHY=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogfields/ContextableResource
+ ButtonDialogField.class
+SHA1-Digest: 8xr9OpdijOIYCWcswaq8TyhY6sk=
+
+Name: org/eclipse/jst/pagedesigner/utils/XMLUtil.class
+SHA1-Digest: kTUQEKNRDO936mHwf0zFlC9rVlY=
+
+Name: org/eclipse/jst/pagedesigner/properties/NavigationHiearchyAction
+ $MenuCreator$1.class
+SHA1-Digest: 5RVn1vQUO+P5R59hu96cY0oph1Y=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/IPositionMediator.
+ class
+SHA1-Digest: Smcjk0UMg+fiBts+VfLW+HwGvfs=
+
+Name: org/eclipse/jst/pagedesigner/viewer/CaretUpdater.class
+SHA1-Digest: OYTpZ94DOiAL8cEy8mG4NbWk4fg=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$2.cla
+ ss
+SHA1-Digest: pSwJFD+oNTOUwyZcxaok4Uo9H14=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$4.c
+ lass
+SHA1-Digest: 4++Z/Noc9sT6PCfXo9FLaCd6sKU=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/internal/EditorV
+ alidatorAdapter.class
+SHA1-Digest: GmGbQof8O1lwx+rV6m1KMq56+PE=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$12.cl
+ ass
+SHA1-Digest: RATfHIQLYXhUfoKnyERaa6nXIDo=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BackgroundPreferencePage
+ $8.class
+SHA1-Digest: Iug6CK2E/uNcn3A0s+0ZVfmh8bw=
+
+Name: org/eclipse/jst/pagedesigner/preview/WindowsIEBrowser.class
+SHA1-Digest: YhPPJJ8USysF9ycgmF2acsl6iuI=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/DefaultDTInfo.class
+SHA1-Digest: WP3pKuYfV3kCCCV6+xvzManjQrE=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/CopyAllAttributesOperation.class
+SHA1-Digest: 9uvyiyu+0BQCihuvwT7BM4rUZTs=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/ColumnHandle.class
+SHA1-Digest: NjiO26NnFuaUi6k0ihKHmdfWuC0=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/html/InsertStylesheetLi
+ nkAction.class
+SHA1-Digest: DtibtJLqGIC/qbaqSTw5XZMXY7M=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/NullQuickEditTa
+ bGroupDescriptor.class
+SHA1-Digest: gwOCdgk48a0zy0HPTNSUkar0suo=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/messages.proper
+ ties
+SHA1-Digest: X7yLn1Arm87ZV/F5xcGmC8n3sVo=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/SashEditorSite.class
+SHA1-Digest: lO3n4xhiraS0ENFlIm3TQTEmDuY=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableInsertRequest.class
+SHA1-Digest: 8mG0KnFRzNs5i7bbxhImPKtI2kQ=
+
+Name: org/eclipse/jst/pagedesigner/editors/pagedesigner/MessageFormate
+ r.class
+SHA1-Digest: eYcfa5yK+MJ6BFq2bQnMg9Krwqc=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/FlowContext.class
+SHA1-Digest: G6+iLrDaaw0DwK+Ko2Z4ZABk88I=
+
+Name: org/eclipse/jst/pagedesigner/commands/nav/HorizontalMoveCommand.
+ class
+SHA1-Digest: Xcpo0jnLQ8D9+z2OmelclxfnqZQ=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/impl/PaletteItemMan
+ ager$2.class
+SHA1-Digest: Nn65CXL0M9d24TDsfFT875xgPBQ=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/StyleComboCe
+ llEditor$1.class
+SHA1-Digest: wWd1Otm2LUwIDLcD2KOAwFOv9tk=
+
+Name: org/eclipse/jst/pagedesigner/converter/IDOMFactory.class
+SHA1-Digest: 862JuK4MKaBjNoytixecItjxAIY=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteView
+ er.class
+SHA1-Digest: +UGgbPgZAxU94gb0CnNknqghU5Y=
+
+Name: org/eclipse/jst/pagedesigner/utils/JSPUtil.class
+SHA1-Digest: BXh+ywm7xo70rQhjiPww5iWnD9c=
+
+Name: org/eclipse/jst/pagedesigner/dom/IDOMPosition.class
+SHA1-Digest: V94+lhmmG3iJGpQduaWUSGD0BcM=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/FontSizeMeta.class
+SHA1-Digest: S3iFA4KrCD/XAi8KUw7ED2v5d4Q=
+
+Name: org/eclipse/jst/pagedesigner/commands/html/TableDeleteRowCommand
+ .class
+SHA1-Digest: qiopmDLD8RPYon58mk8bOVwkgtE=
+
+Name: org/eclipse/jst/pagedesigner/tools/ObjectModeDragTracker.class
+SHA1-Digest: o9KzSaMHPvPO0S3hhIPYPIqwDTs=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/CounterResetMeta.clas
+ s
+SHA1-Digest: /BPDm7fXVPbF3yWBMc0joxHTaaY=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/MouseSelectableChildDe
+ corator$1.class
+SHA1-Digest: 0pUt2tV6yFFHGCR6l+HsIlKmlpY=
+
+Name: org/eclipse/jst/pagedesigner/utils/CommandUtil.class
+SHA1-Digest: Wli4+5qNIBpdPmjqeDpfp/80Bwc=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$15.
+ class
+SHA1-Digest: A5EktEzB3NxVWbj0qQ+2K4vX1cI=
+
+Name: schema/tagProperty.xsd
+SHA1-Digest: appDoYPrKN7zkpRNg1zO1p7fV9E=
+
+Name: org/eclipse/jst/pagedesigner/commands/CreateItemCommand.class
+SHA1-Digest: +d0d5GahnNiibi20Ki33BH/+rm4=
+
+Name: org/eclipse/jst/pagedesigner/parts/CSSStyleAdapterFactory.class
+SHA1-Digest: CRVuFq3JHPTIV3dXL/BiyLvt2pY=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableColumnHandle.class
+SHA1-Digest: OpADvNXkwZhLQI3HteWKbZyPCZk=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/internal/AbstractCreat
+ ionCommand.class
+SHA1-Digest: N/uVjwuuMjKnLHRW8FUocsW+Q+A=
+
+Name: org/eclipse/jst/pagedesigner/tools/RangeDragTracker.class
+SHA1-Digest: RYyYJqv460RKDAhFbOAbVqhq3O8=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/CSSListItemLayout.class
+SHA1-Digest: DmnJi4UhpieHsEUzWvihOPp1gMQ=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/IElementEdit.class
+SHA1-Digest: Uj02+l8s79QKa3aiGd3z+XvIRLU=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$7.cla
+ ss
+SHA1-Digest: UkjGwHlnSpZObXSLM9Vk6lawQYs=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$9.c
+ lass
+SHA1-Digest: KyEd5AIe12Zf7MOmSbVQxb5r4Gk=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferencePage$11.c
+ lass
+SHA1-Digest: f3pcp/OA6RoTdN28GPJBEHxCS3E=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/CopyAttributeOperation.class
+SHA1-Digest: HD1awXrFk4CqQ/hrB8QXIh751fw=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/CounterIncrementMeta.
+ class
+SHA1-Digest: h1q9Zzp68Lu5ww0QLsdOz+CH6Vs=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/EditableDial
+ ogCellEditor$1.class
+SHA1-Digest: MjeqJOrF4P6IWgX7EHoyGwRezno=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/WidthMeta.class
+SHA1-Digest: WV/BAiKlDZTtgpyJZxoHJaWsVPE=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/WPEPropertyPage$1.class
+SHA1-Digest: C2MHp4rCuz8rW8VcZAshO47IO3E=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/CellEditorWr
+ apper$DialogCellLayout.class
+SHA1-Digest: DothbEUZ7h+2dlHu5agjBGMv5Ws=
+
+Name: org/eclipse/jst/pagedesigner/converter/ConverterFactoryRegistry$
+ 1.class
+SHA1-Digest: 6kHvQ7WZgiG4SYPtjOBF+F5j61A=
+
+Name: org/eclipse/jst/pagedesigner/converter/ITagConverter.class
+SHA1-Digest: BDutewA/Bng3NyY2tGDd1G7tBrk=
+
+Name: org/eclipse/jst/pagedesigner/dom/EditHelper.class
+SHA1-Digest: qQ9y9PrSBM8FulIyRdB0HkjlKLk=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/DeleteHeaderFooterRequest
+ .class
+SHA1-Digest: +G3amWTeLEy6w7HcGRYe4kitiDc=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/IPropertyPageDes
+ criptor.class
+SHA1-Digest: OEtoDdF+K3P4VJENVezKVKdKsBQ=
+
+Name: icons/PD_Toolbar_bold.gif
+SHA1-Digest: U9BqtaRwi4r4zQ2sALZeGTx2lEM=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/SimpleWizardSelectionP
+ age$4.class
+SHA1-Digest: oplUbyqGtqH0SP1OKI0xgnxncGM=
+
+Name: org/eclipse/jst/pagedesigner/PageDesignerTraceOptions.class
+SHA1-Digest: +hdgDRgo6OVzQutPmIQrbOPChlw=
+
+Name: org/eclipse/jst/pagedesigner/css2/widget/InputFileWidgetProvider
+ .class
+SHA1-Digest: SNqZzW2UdnRBzD9Bpfgtkdv7pVk=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/DataBindingViewActi
+ on.class
+SHA1-Digest: vuD6BOOzQ60u7Lp86XBSO3SWHIU=
+
+Name: org/eclipse/jst/pagedesigner/css2/list/CSSHtmlListStyleData.clas
+ s
+SHA1-Digest: a8NJNoIQ11PmkiQ8+FB3GJvKI0Y=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$11.class
+SHA1-Digest: FzBQvoPuEVmwU69Lqs5y3jk4bEw=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/InputFigureHandler.cl
+ ass
+SHA1-Digest: dktSd4W+Fr47pFQoiD4p/XVIlIA=
+
+Name: org/eclipse/jst/pagedesigner/css2/list/ICounterValueGenerator.cl
+ ass
+SHA1-Digest: 7WbCloauXNciw+r1jTM+J6SJIYQ=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$5.clas
+ s
+SHA1-Digest: ciWGBbi3hZmtp94tHVb4oQ759tY=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/command/UserCustomized
+ ElementCustomizationCommand.class
+SHA1-Digest: d7racGTEo2ozNAyLTpNSbq3mMok=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/CreateAttributeFromXPathOperation.class
+SHA1-Digest: Zh8JxRSS5O/RTfdDfGmZgjUSbb0=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/BorderWidthMeta.class
+SHA1-Digest: 2lLUIE/3lOt6YHu0Je/vDMu9bwk=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/CSSTRLayout.class
+SHA1-Digest: nwz0ovx928VdFVqO7peqlzInHlI=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/DropSelectionWizard.cl
+ ass
+SHA1-Digest: FZUTsf8KugYJznMpmYTDK/CKLnQ=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/DefaultTagCreationAdvi
+ sor.class
+SHA1-Digest: B68JlPlLvT83h4SqtM9n/y/eNko=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/messages.properties
+SHA1-Digest: bzX1Hj2JRjWJ+FwWcBPNxUT6Wqk=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/SashEditorPart$1.cla
+ ss
+SHA1-Digest: /jPlHEYuEMhN6guxqhmeWhFLheA=
+
+Name: org/eclipse/jst/pagedesigner/preview/DefaultELValueResolver$Vari
+ ablePropertyPair.class
+SHA1-Digest: cyfINYlOJ/2qaehGJUBpqrqkLBw=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/TagStyleAttr
+ Adapter.class
+SHA1-Digest: 7VkFUSnjfJKdaaPQ3OJhfll2FlU=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/IfNotOperation.class
+SHA1-Digest: iQ0yH0olOBkCC1AegOHQgVjritI=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/DTInfo.class
+SHA1-Digest: urwjRyiTdtwTuXewcVFoq7GOclg=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/ShowAllAction.class
+SHA1-Digest: O9swEvDvO981zt1wsG0a0NZrbKk=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/internal/DefaultTagCre
+ ator.class
+SHA1-Digest: Ai0Ue08xcqoPUYF+EbgDqN++3Uk=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/ColumnResizableEditPol
+ icy$ColumnCornerLocator.class
+SHA1-Digest: xGM74O8Qcl76ec3Bnx4SKNPzGL8=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$22.class
+SHA1-Digest: VXp5bamdEf3s+6EUmpSgNI99GXA=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/BackgroundColorMeta.c
+ lass
+SHA1-Digest: ovPLqiwlVivYvF7ZAI0nU5t6Io0=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/ListStyleImageMeta.cl
+ ass
+SHA1-Digest: VNUwcYI1IxTUnN4MH4ZTxdDEa7U=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/DeleteCommand.class
+SHA1-Digest: z68yJsDykkWei/ERhMU6p2AkRls=
+
+Name: org/eclipse/jst/pagedesigner/viewer/DefaultDropLocationStrategy$
+ 1.class
+SHA1-Digest: RYXQu/uw+8rCyKiZTLQhHkhM2gA=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/TagConvertInfo.cla
+ ss
+SHA1-Digest: upEwyJ5azzGpgSMRMzIs/YbQuEI=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/ITableEditAdapter.clas
+ s
+SHA1-Digest: ReD8pgsXm2njBW9m2XfzodS0X28=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/DeleteEdit.class
+SHA1-Digest: jIp5+Ugr8KQ0Ns90RAz6SDQRySw=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/ListPreferencePage$2.cla
+ ss
+SHA1-Digest: Is/tj7FgYzJNRKae9PADaFkaMWw=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/CopyEdit.class
+SHA1-Digest: FMWflXh0mH0ebek+d6TNUfCLYvQ=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/TextEditorDropTargetLi
+ stenerFactory.class
+SHA1-Digest: 2hBx8G1JIDMG1VQWiq4EPimTlHo=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/AbstractCSSM
+ odelAdapter.class
+SHA1-Digest: aXisTvCmcqXYqjlCHuWYB+N1v6s=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/ResourceBoun
+ dle.class
+SHA1-Digest: D6HRR37qfZLOFE1m6shiOMNpUW8=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/html/StylesheetLinkElem
+ entEdit.class
+SHA1-Digest: POeZ8Rv2/8vJjb5GYz3otv3YkLU=
+
+Name: org/eclipse/jst/pagedesigner/utils/ImageResolver.class
+SHA1-Digest: MwudIjb1Mx3l6mCz0RSE+xkiBkA=
+
+Name: org/eclipse/jst/pagedesigner/viewer/DesignPosition.class
+SHA1-Digest: o2e3tRvG4yp6McwQzE+EjWZCRro=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/BasicLabelToolTip.clas
+ s
+SHA1-Digest: nfugPbaqw7q1RVL8NoyneKhtk1M=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$16.class
+SHA1-Digest: WJtw0qkDY0GU6fgJYad/N9y0BNU=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/PageFlowLayout.class
+SHA1-Digest: wmp1p5hWeXqrMqfygEsj4Wr3/Uk=
+
+Name: org/eclipse/jst/pagedesigner/utils/EditorUtil.class
+SHA1-Digest: mgTdo8STooLuP+6alKdpztJBGi0=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/ITransformer.cl
+ ass
+SHA1-Digest: 9xGvSlDOTYp4FHBoqqSTxAUC2fA=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$3.class
+SHA1-Digest: pzSRgsLHVDADI2/tKjq6R35Kq8s=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$12.cla
+ ss
+SHA1-Digest: mHLgLMlJV4BAKANjUk3ST0ra+1Y=
+
+Name: org/eclipse/jst/pagedesigner/properties/PropertyDescriptorWrappe
+ r.class
+SHA1-Digest: 3uUW54wLRSQbmx0ctZRYXxvQVVk=
+
+Name: org/eclipse/jst/pagedesigner/commands/DeleteNodeCommand.class
+SHA1-Digest: 4TRrb3ywfmUoPq7pjxjVqPFsyls=
+
+Name: org/eclipse/jst/pagedesigner/dom/html/TableUtil.class
+SHA1-Digest: m6N+5EPXPDc5mAvlRC00xq+3hWU=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/html/HeadElementEdit$2.
+ class
+SHA1-Digest: MAVUUwrY/U1eFpstrBrNVOt0Z3c=
+
+Name: org/eclipse/jst/pagedesigner/tools/RangeSelectionTool.class
+SHA1-Digest: 8YfhFLm6yPE6OERWRLdOVPHdSHE=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/SashEditorPart$6.cla
+ ss
+SHA1-Digest: Aiia5gmFzDVPEqVHKbwYUYT7v7I=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/AttributeGroupS
+ ection$1.class
+SHA1-Digest: g+Td1uCqhYtBEZFmoP46fQIRY4I=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/RemoveAttributeOperation.class
+SHA1-Digest: MwubhSy7bUkKhkrojzPUCfKDkOE=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteRoot
+ Factory$1.class
+SHA1-Digest: WEoCcbL5evZ076Pzk64a3o/sBvw=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/SECTION_TYPE.class
+SHA1-Digest: yxPYLL+3QXPE4bNkHKOBXsLKcgM=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/DisplayToLayout.class
+SHA1-Digest: PYtc3UsTtjpHP8sifR8F5JP+3K4=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/BorderStyleAction.cl
+ ass
+SHA1-Digest: iS5KRNnSZk5d+iIsjF5ZMtw2AAQ=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/messages.properties
+SHA1-Digest: VMHIjqlOMyEspD2S5VfmMrg8Heg=
+
+Name: org/eclipse/jst/pagedesigner/commands/single/ChangeStyleCommand.
+ class
+SHA1-Digest: z/JAOpVXFtso/AitL8u9lRk1yZk=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/Parameter.class
+SHA1-Digest: 9WBrHTDrNQzisB5nIuzmZwdpiKQ=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferenceNode.clas
+ s
+SHA1-Digest: jku4cV40K+MqWfiixlKsTyAv84Q=
+
+Name: org/eclipse/jst/pagedesigner/utils/BodyHelper.class
+SHA1-Digest: iOnc51pNtyHRJOV6GOegYTggWRA=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/internal/DTHTML
+ OutputRenderer.class
+SHA1-Digest: dR2p7gCpYcFCej6LMr2YtuzMiYM=
+
+Name: icons/palette/GENERIC/small/PD_Palette_Import.gif
+SHA1-Digest: 76qUinOyZwIpKPli67gkfzaEN9w=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/QuickEditTabSec
+ tion$QuickEditTabLayout.class
+SHA1-Digest: VnEmSZ/bArlD8JJZG2CTv148PC0=
+
+Name: icons/palette/GENERIC/small/PD_Palette_Import_Disabled.gif
+SHA1-Digest: xYA8+DYvMSBd8/CMd9sGawVkeuc=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/RangeActionGroup$3.cl
+ ass
+SHA1-Digest: K1B7zI7I674iBHdwBk3kKNSv79A=
+
+Name: org/eclipse/jst/pagedesigner/editors/HTMLEditor.class
+SHA1-Digest: KqZSDoNzeC02qlhaqyFXLuqF/9E=
+
+Name: org/eclipse/jst/pagedesigner/viewer/IDropLocationStrategy.class
+SHA1-Digest: svxsWVJQk48OZMkZ8XerQdmmN8s=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/SourcePageActionCon
+ tributor.class
+SHA1-Digest: PyrxxePRFcZvpwIgxc+y3I3ZaRQ=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteCust
+ omizerDialog$ExportAction.class
+SHA1-Digest: 8RtbsignA3xbf7Z3jd21fIZ3htQ=
+
+Name: org/eclipse/jst/pagedesigner/preview/PreviewResources.class
+SHA1-Digest: S4NhvXwqPl1sOMkuxMsd9Ze8dDs=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferencePage$1.cl
+ ass
+SHA1-Digest: 7/bIQk++m6AmsO1NwB0enQuS7Pc=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/DesignEdit.class
+SHA1-Digest: ktfm4pGid4js1Rch6f5EM0j0vdE=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/CSSFigure.class
+SHA1-Digest: 86Hm/RCJgtjvurn1dZYzmqNEcDI=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/IFigureHandler.class
+SHA1-Digest: z18qNUziECgm71czrXSg1Q4TXXs=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/package-info.class
+SHA1-Digest: 3gJ5V5nohos6w66pWioVLwy88qI=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/PDTemplateTransferDrop
+ TargetListener.class
+SHA1-Digest: nbEs+09S4QyrqR4tjvHs8X/8UBU=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/CreateAttributeFromXPathOperation$NSContext.class
+SHA1-Digest: QKqIDuHk6hbxKkId55BP6YEgbJY=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/TagToolPaletteEntry
+ .class
+SHA1-Digest: dZi5kvEpLMXfEG7wck2JScTx9RE=
+
+Name: org/eclipse/jst/pagedesigner/editors/HTMLEditor$5.class
+SHA1-Digest: kqcnGj/2I/Wie5tr4ZuuO3nJebg=
+
+Name: org/eclipse/jst/pagedesigner/converter/jsp/JSPConverterFactory$M
+ yLabelProvider.class
+SHA1-Digest: H/UTwFXnTRdfgbSeF6IT+d7HElw=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/AbstractTagCreator.cla
+ ss
+SHA1-Digest: sGXm6waqsmAC7xN2Q+Bn03WrLhg=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$8.class
+SHA1-Digest: QNTc8S2JlW0568KuoHdxgD3SE0A=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$17.cla
+ ss
+SHA1-Digest: zJWe4L8alR2dXqQib7Go5AFR4nE=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/DropEditPolicy.class
+SHA1-Digest: IwktwSkYd/xAVm9fcZXyqkSlfqI=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/command/TagContainerCr
+ eationCommand.class
+SHA1-Digest: KW+vlHbIhTVG4kXC8FxW9keZ5bg=
+
+Name: org/eclipse/jst/pagedesigner/converter/TagConverterToInlineBlock
+ .class
+SHA1-Digest: u9YZrIsmJwm0qOOdyswttCTWgQ8=
+
+Name: org/eclipse/jst/pagedesigner/css2/list/IIndexConverter.class
+SHA1-Digest: wsNn81kWziZOY4bvcy46h7MaRx4=
+
+Name: org/eclipse/jst/pagedesigner/css2/widget/TextInputWidgetProvider
+ .class
+SHA1-Digest: PXqVWQrpqVJc0KMQawpO6VqjkdM=
+
+Name: org/eclipse/jst/pagedesigner/meta/DefaultEditorCreator.class
+SHA1-Digest: wFDh9qJFwo+S+bcynTze2dGnry8=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/CellEditorWr
+ apper$4.class
+SHA1-Digest: CPyTXkRe9PX7pns4B5wR4OArVGY=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/IterateOverElementsOperation.class
+SHA1-Digest: KA3ilW7oRY8snlZdmwGbb6s7bAM=
+
+Name: org/eclipse/jst/pagedesigner/dtresourceprovider/AbstractDTSkin.c
+ lass
+SHA1-Digest: Xo9X/wk8YfK9ayAyINuY3CmzxWo=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteView
+ er$1.class
+SHA1-Digest: MnuW6Qn0G+72gNAC6XmCkbhj5Tk=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage.cla
+ ss
+SHA1-Digest: jWGyeKbnQ96mg+j2ewc5oOS1PWM=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/MouseSelectableChildDe
+ corator$DisplayStateMachine.class
+SHA1-Digest: +QnwQH+itmjKNw3VTRvn4M6WbuI=
+
+Name: org/eclipse/jst/pagedesigner/commands/html/TableInsertRowCommand
+ .class
+SHA1-Digest: OehdrcVfqgYM5TLARTYaoQgh28c=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/DesignerStyleAction
+ Group$ChangeDesignerStyleAction.class
+SHA1-Digest: Ryt+79Pp70nEycNybvLbJdyJEQ4=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteRoot
+ $1.class
+SHA1-Digest: RGoEXzxNbcRaCmlSUAlq0iAGLqw=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BackgroundPreferencePage
+ $1.class
+SHA1-Digest: ly4vt3zoVoKeSOp2RPeftmHR5eM=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/ContentMeta.class
+SHA1-Digest: 2p2/OdjvzuRmoFjyyKjZDIcwTOE=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferencePage$6.cl
+ ass
+SHA1-Digest: MwqI/fouvTYOrktdbymYJYMrYSk=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BackgroudPreferenceNode.
+ class
+SHA1-Digest: X22mvXqruZ27GwL2NW0fQz0SoCs=
+
+Name: org/eclipse/jst/pagedesigner/utils/NodeLocationComparator.class
+SHA1-Digest: d2lBrRH/ONtyq9iDAV4rpa80GSM=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/messages.properties
+SHA1-Digest: nVvRxEz8xWqmpYLAAIlwmcHfrwo=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/ICSSPropertyMeta.clas
+ s
+SHA1-Digest: 9NXX7kjhA8H1B+P6Q2YVJ+80K4Y=
+
+Name: org/eclipse/jst/pagedesigner/properties/WPETabbedPropertySheetPa
+ ge$1.class
+SHA1-Digest: TxLh7jmnyc33IvuMs/ULDQm7yP0=
+
+Name: icons/palette/GENERIC/small/PD_Palette_Export_Disabled.gif
+SHA1-Digest: +qsUPi14qdiFivhZ5+VFShU+VVA=
+
+Name: org/eclipse/jst/pagedesigner/css2/border/CSSBorder.class
+SHA1-Digest: kaJWtgWFw5o6djNEtWPWh05WIs4=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/WPEPropertyPage.class
+SHA1-Digest: SHPWKZgzRcHhIZFk1oXY4vGVgPI=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/NoneParagraphStyleAct
+ ion.class
+SHA1-Digest: vgFmyBcz9F+/AXw0ikFJtGSa+wk=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/CreateAttributeOperation.class
+SHA1-Digest: TdX1AOSk02zv9IPzgIvWgtfoad4=
+
+Name: org/eclipse/jst/pagedesigner/parts/TextEditPart.class
+SHA1-Digest: K2niW8UqHk6K1kV2X+jjyVstvmo=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableColumnHandleLocator.
+ class
+SHA1-Digest: melLD+3SNAgGOBZOmHel5wOWOj8=
+
+Name: org/eclipse/jst/pagedesigner/commands/PasteNodeCommand.class
+SHA1-Digest: U9CZviTmzUBH4MbQcWljg/3GOWs=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/ITagConverterCo
+ ntext.class
+SHA1-Digest: rogqLxg126cYuEPYcbRUXGPBooM=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogfields/DialogFieldWrapper$
+ 2.class
+SHA1-Digest: G/69/+wqWOySt2XklJmWI7ySeJM=
+
+Name: icons/PD_Toolbar_paragraph.gif
+SHA1-Digest: bK7SfPmAIvxB9IPWUDiRfpSZfXo=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/ITransformOpera
+ tion.class
+SHA1-Digest: tdc5fzSpDfEc94PiGvPmVVUjcfo=
+
+Name: org/eclipse/jst/pagedesigner/IJMTConstants.class
+SHA1-Digest: fiwMSxWZhEAGdBzs3t4HzZjifJ8=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/TreeViewerSelectionDialog
+ $2.class
+SHA1-Digest: xzbjBbgDHZVI+qQX45GIOHH4Pbo=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/DTInfoFactory.clas
+ s
+SHA1-Digest: b/CLzG7uOd28hFbbvwLJ6/2wkns=
+
+Name: org/eclipse/jst/pagedesigner/parts/NodeEditPart.class
+SHA1-Digest: ScVtQUcvmbkZ1qXH5Ab3YggWlFc=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/WPEPropertyPage$SkinSele
+ ctionListener.class
+SHA1-Digest: UiF4R+gBP+z0qnv8dAQTznndCbI=
+
+Name: org/eclipse/jst/pagedesigner/dtresourceprovider/DefaultDTResourc
+ eProvider.class
+SHA1-Digest: CTKnH1Yw2sT45QHd6ogR5R7xtTY=
+
+Name: org/eclipse/jst/pagedesigner/css2/widget/ButtonWidgetProvider.cl
+ ass
+SHA1-Digest: m3ESBeUFkFxxdg6gxfXV4JPSklc=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/MouseSelectableChildDe
+ corator$AnimatedHideLocator.class
+SHA1-Digest: AQhygZn4vc4QCYmMLcUXjlf6P9c=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/NonVisualChildDecorato
+ r.class
+SHA1-Digest: tbcKnzWdq1HWkae+T59HEpeTUWM=
+
+Name: org/eclipse/jst/pagedesigner/utils/HTMLSpecialCharHelper.class
+SHA1-Digest: 6g/MC5G4+2oINnSAeEKEvR0RAu0=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/FlowUtilities.class
+SHA1-Digest: jpKOrAm0yCA8jXg3PAKFW5//PPA=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/pack
+ age-info.class
+SHA1-Digest: ack0vxgWBVrg+eXyu+PJpzrEpok=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/DesignPageActionCon
+ tributor.class
+SHA1-Digest: L0HMQMREN3QKK9uo/2YoTVv9lFA=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/FlowPage.class
+SHA1-Digest: 48IJRL8H3y7Ph26heUWpmdkJ+/Q=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/ParagraphSupport.clas
+ s
+SHA1-Digest: OVam4/DNtTHvGKEtJsZgDXMx+RU=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/package-info.class
+SHA1-Digest: 5Zhul3gezyP3ENIcCo4U7Oqk4Ns=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$2.c
+ lass
+SHA1-Digest: cDDdB72zA3b4Lv5PRJn2pU33//Y=
+
+Name: icons/palette/GENERIC/small/PD_Palette_Export.gif
+SHA1-Digest: A2P2Lt+2u2ueOfFmoxGojyBFco0=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/ConvertAttributeToTextOperation.class
+SHA1-Digest: /cewMJwWBuhDItp6fw4yR5G1wtw=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$10.cl
+ ass
+SHA1-Digest: U+eMUzX342B3JUWtlsboVkjZkPI=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BackgroundPreferencePage
+ $6.class
+SHA1-Digest: 9BN0fwws6jIwxrW98X6uvy6NKCI=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/internal/impl/Para
+ meterImpl.class
+SHA1-Digest: d4zseIT2FRPcd+sefLDTo/+ttpo=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/SkinsMenuItemBuilde
+ r$SkinSelectionListener.class
+SHA1-Digest: BK402WuH3mt+j68vxLv820sUehg=
+
+Name: org/eclipse/jst/pagedesigner/dom/DOMRefPosition2.class
+SHA1-Digest: nVvmf3aOXQvMrOR+3ds9yTDvc2E=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/IPaletteItemManager
+ .class
+SHA1-Digest: KStZ1ggRHo4CuTfzSMOQ6q2/uZg=
+
+Name: org/eclipse/jst/pagedesigner/viewer/CaretUpdater$1.class
+SHA1-Digest: lUpknznqja8mOSzatcTbNx7JK/g=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/TextLayoutSupport.class
+SHA1-Digest: t0C7jYkBPuB9aEsSFB/9WCK/67M=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/RenameAttributeOperation.class
+SHA1-Digest: lwsBRJNC9soNWaQkDZYLXiSLEJY=
+
+Name: org/eclipse/jst/pagedesigner/editors/SimpleGraphicalEditor$4.cla
+ ss
+SHA1-Digest: Cqw6uWRIpG3H4IaVUWmbwy2jYXs=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/RelatedViewActionGr
+ oup$2.class
+SHA1-Digest: e8SwkEPSEqRI952q+SJczKlL5E4=
+
+Name: org/eclipse/jst/pagedesigner/css2/marker/EnumerableCounter.class
+SHA1-Digest: 1nA3mqilWUXDh0Cmht7UFsa2Ie8=
+
+Name: org/eclipse/jst/pagedesigner/viewer/IHTMLGraphicalViewerListener
+ .class
+SHA1-Digest: riXdv1szUgypUwSsYcOzXzadKkk=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/ImgFigureHandler.clas
+ s
+SHA1-Digest: cY3oQaSiusjFZPhwlihuKrDQG4E=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$13.
+ class
+SHA1-Digest: IZwah5NvVotDVI0grqA+zrpbyrc=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage.class
+SHA1-Digest: AFYZAtujDtI0GmuUHonJxKz9cKo=
+
+Name: org/eclipse/jst/pagedesigner/viewer/TextPosition.class
+SHA1-Digest: JN4qj0oVbpduGxar7q8QTIt6yrk=
+
+Name: default.properties
+SHA1-Digest: dFcyF2pX35hS5bbrL7oIt2l9bk4=
+
+Name: org/eclipse/jst/pagedesigner/css2/font/CSSFontManager.class
+SHA1-Digest: bRCaLIxr42p7d6jBNdiDEJDU8DE=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/BlockNodeFinder.clas
+ s
+SHA1-Digest: bhdQN8+yjYsd+xVrn7aNto28KD4=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/ParagraphUnapplyStyl
+ eCommand.class
+SHA1-Digest: w1u1uPQQPzQ8ZagXiHvZA9FtOZk=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/IfOperation.class
+SHA1-Digest: Lu6bO2XmiuDUyAaWJchlIqAKEBE=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/internal/DTTagC
+ onverter$NodeConvertPositionMap.class
+SHA1-Digest: itIiNM5iODh8QISvSV0f6K1CjbU=
+
+Name: org/eclipse/jst/pagedesigner/css2/list/IncrementObject.class
+SHA1-Digest: xhL2UO2/hsHZjUXp4+/y0uod2P0=
+
+Name: org/eclipse/jst/pagedesigner/commands/nav/CaretPositionTracker.c
+ lass
+SHA1-Digest: AUNDOGAL0aiefRRACxqci1tBbHI=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/CommonResourceDialog.clas
+ s
+SHA1-Digest: +ENVUjh5wsGQh9USbJxY+ZnmQ8c=
+
+Name: icons/PD_Toolbar_smallfont.gif
+SHA1-Digest: iciQwOmPJ76kWu2185PfyKdWwzE=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$5.cla
+ ss
+SHA1-Digest: QgRVb+Z2B+IR+LnNYU2pnlTsyKU=
+
+Name: org/eclipse/jst/pagedesigner/commands/DesignResizeComponentComma
+ nd.class
+SHA1-Digest: TWZUdkmara3Bkt/5ZliQF4LIgEI=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$7.c
+ lass
+SHA1-Digest: xiyxI8YDFeirK8HLrGEn5VemON4=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/ChangeAttributeActio
+ n.class
+SHA1-Digest: OPzJmNl2lOffr/hoCMKG0bJnwqg=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableSideResizeHandle.cla
+ ss
+SHA1-Digest: N8KhQVkswodWMSVlBfupnLwWCdk=
+
+Name: org/eclipse/jst/pagedesigner/dom/html/ColStructure.class
+SHA1-Digest: gxhCHiMqOs855s3YUsrYFeP9JVc=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/AbstractPaletteFact
+ ory.class
+SHA1-Digest: Mdxm7UHsnZPw3ZD4lBtEwH6EneQ=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableRowColumnDeleteReque
+ st.class
+SHA1-Digest: 95XfIHSOvOxs0meqTk03hAkFASI=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/VisibilityMeta.class
+SHA1-Digest: 6C/LRqb7/YKxtL5uppCJyG2jRXU=
+
+Name: org/eclipse/jst/pagedesigner/commands/nav/VerticalMoveCommand.cl
+ ass
+SHA1-Digest: rWctpiOKBbTfuWSLGVaksjDvfis=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$15.cl
+ ass
+SHA1-Digest: TSOuEI1ekqIuMyC0Cm4jqYCPVEk=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/ActionsMessages.cla
+ ss
+SHA1-Digest: ITU3AjoAHgv036gOWf/C97cJSbo=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/CSSInlineFlowLayout.cla
+ ss
+SHA1-Digest: nfljXpVSIihO0eWSzHq7gPrH8ro=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/package-info.cl
+ ass
+SHA1-Digest: 7VXkPCrqh3iO/HzP66hET1fwm/Q=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/DialogsMessages.class
+SHA1-Digest: KXd6R06BMee1R0lsATBtgpj2kBY=
+
+Name: org/eclipse/jst/pagedesigner/converter/html/TableTagConverter.cl
+ ass
+SHA1-Digest: mL9YWMf0aafjqHqCB4dygYr7rks=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/impl/PaletteElement
+ TemplateHelper.class
+SHA1-Digest: 9hRjEm7PFncdftwYFx/Y800TNMQ=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/FlowFigureLayout.class
+SHA1-Digest: qWzaPQkwkbH060vki3s8SsqkHEc=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/ChangeStyleAction.cl
+ ass
+SHA1-Digest: 7BA6J3a/Zscv0U/CnB811ViRnT4=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/SelectAllCommand.cla
+ ss
+SHA1-Digest: 16x8cmHhJlJ98VFVhtj4+4mDXXQ=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/BorderColorMeta.class
+SHA1-Digest: 1HwhqoZU9emT9qPkj4HzPfSPDfE=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/StyleComboCe
+ llEditor$4.class
+SHA1-Digest: 2rJGNzhGfGRvNZNJyV8Wwp/t2Go=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/jsp/TaglibURIAction.cla
+ ss
+SHA1-Digest: v+bAlX1TCP/i7K3c9HP16bIRGpg=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/DefaultPositionVal
+ idator.class
+SHA1-Digest: APTBE/u0qomczyYzXXyIhcgd+U4=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/SimpleWizardSelectionP
+ age$2.class
+SHA1-Digest: tLdlWkw/b+4FvQnSeqmnmROYjLM=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/ManageSkinsAction.c
+ lass
+SHA1-Digest: jr5H+T6BEyWRmKephFF6nFct8XQ=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/LocalDropCommand.class
+SHA1-Digest: K3+Wcn+22h0Ko6xIhioZKIsshS4=
+
+Name: org/eclipse/jst/pagedesigner/converter/HiddenTagConverter2.class
+SHA1-Digest: vZj6U7fN1Etxbzen5zy2TsUDMYo=
+
+Name: org/eclipse/jst/pagedesigner/css2/provider/DimensionInfo.class
+SHA1-Digest: Kv5CjFtvus3Kn4I78gLEwCt4qOs=
+
+Name: org/eclipse/jst/pagedesigner/ui/preferences/PreferenceMessages.c
+ lass
+SHA1-Digest: WtYwLF0s12BeR5rG9kIHm2+zZJI=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/SingleElementActionG
+ roup$3.class
+SHA1-Digest: eNenqxSssklon5EHu3lfFffCRaY=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/WPETabDescripto
+ rProvider.class
+SHA1-Digest: t2oPrrwdK2TnTKFfvj3XiJCTLas=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/internal/DTTagC
+ onverterDecorator$1.class
+SHA1-Digest: fFh2CG2cZ91LHY7psgFD2pEjWJY=
+
+Name: org/eclipse/jst/pagedesigner/css2/marker/CounterFactory.class
+SHA1-Digest: K9OsPF8hT0BHvbbxYCc0m86l6/U=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$3.clas
+ s
+SHA1-Digest: /BYgEwkl3fbcHnv6dhRJjCBDDjU=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/ActionData.class
+SHA1-Digest: HxzCF+3QweJQKujihNymdcVea8U=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/html/TableElementEdit$3
+ .class
+SHA1-Digest: 3bRvjgt/0nC/H/b1h3Ap4OMLrNg=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogfields/ExtendedResourceBut
+ tonDialogField.class
+SHA1-Digest: 6zwrnTyhneU4PSz7cM/3gL943D0=
+
+Name: org/eclipse/jst/pagedesigner/parts/HTMLEditPartsFactory.class
+SHA1-Digest: pK7PkDsPGz5Gh0ZCqhlxUUBDK6E=
+
+Name: org/eclipse/jst/pagedesigner/css2/list/CSSMarkerStyleData.class
+SHA1-Digest: f1wXFLCCBNKpFE3V750REyJ/Q8Q=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteView
+ erProvider$HideTagLibAction.class
+SHA1-Digest: KcgASrEs6GiPGXa8zVHBQgzwGRM=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/ResourceOnClasspathDialog
+ .class
+SHA1-Digest: U7MNgGyfOcDCqC6Z3n2ZuxLkeeA=
+
+Name: org/eclipse/jst/pagedesigner/converter/DumDescriptionTagConverte
+ r.class
+SHA1-Digest: eIvg/eTKokczzhxLSDAavNdczo0=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/internal/util/DTIn
+ foAdapterFactory.class
+SHA1-Digest: SI2DHPT6WnlPpw6ri1PvM3JamhA=
+
+Name: org/eclipse/jst/pagedesigner/dtresourceprovider/IDTResourceProvi
+ der.class
+SHA1-Digest: 2qevhpeoonNTKJg3qjhTnzFTtLY=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/InsertTagChangeStyleA
+ ction.class
+SHA1-Digest: a+lSAS6InO0pFyDFtckkWJhbBMA=
+
+Name: org/eclipse/jst/pagedesigner/actions/table/TableActionGroup$2.cl
+ ass
+SHA1-Digest: RJ0kIJ877EYcLh8I+sdqAdZf8jQ=
+
+Name: org/eclipse/jst/pagedesigner/properties/AttributePropertySourceP
+ rovider.class
+SHA1-Digest: q0Yu/c+VwcnSMLIeEoejvBahukY=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/RootContainerPosit
+ ionRule.class
+SHA1-Digest: T8iRRrBODsXWKSVFvv0+vLEFFy8=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$20.class
+SHA1-Digest: 5B3/AnSuxZguceRnemvpvPzHPJk=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/DesignerSourceMouseTra
+ ckAdapter.class
+SHA1-Digest: 17XzblT/UNSAenf7l/MS5kduEZQ=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/MetadataTagDropSour
+ ceData.class
+SHA1-Digest: 8E/NaSD+D6r0uTPPMiE9e4TC/8s=
+
+Name: org/eclipse/jst/pagedesigner/actions/link/CreateLinkWizard.class
+SHA1-Digest: o2/TrXEwHoy6l9USqIdk6aR3Mvc=
+
+Name: org/eclipse/jst/pagedesigner/converter/PreferenceReader.class
+SHA1-Digest: VH4h/Nr9fWDvMeKgs8ej3/HlUT4=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/InsertHeaderFooterAction.
+ class
+SHA1-Digest: DLsKHaGwlrM03rcS1aOeqcZNZoI=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/DeleteCommand$1.clas
+ s
+SHA1-Digest: AWCAMXR34uBlbw9xtIufwC+lCBQ=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/ChangeStyleAction.cla
+ ss
+SHA1-Digest: VtS7otA/HOprskkU+1Xt9IAYkUM=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/HiddenFigureHandler.c
+ lass
+SHA1-Digest: OY0fplsxaVsGtF4ZLiuiaxk2+m4=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/IDTInfo.class
+SHA1-Digest: 3SRzhQ6vgG//zxxRi9JjghUozX4=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/CellEditorWr
+ apper$3$1.class
+SHA1-Digest: rKc7HvjA930ZnhCfKA+Im/LIJ94=
+
+Name: org/eclipse/jst/pagedesigner/editors/OutlineConfiguration.class
+SHA1-Digest: Q+IjHMqko/NP2TropS4AX45kuPs=
+
+Name: org/eclipse/jst/pagedesigner/ui/preferences/PreferenceMessages.p
+ roperties
+SHA1-Digest: gBeokidRCmwZ+E7jEOSZuflxhFI=
+
+Name: org/eclipse/jst/pagedesigner/utils/JavaUtil.class
+SHA1-Digest: gAWVvkNVVYlgW8b62r9mJOEx7iU=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableSideItemDragTracker.
+ class
+SHA1-Digest: jCn6ZS4yJuDhBF9Ob8sqRsHlZNU=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/ManageSkinsAction$M
+ enuCreator$1.class
+SHA1-Digest: 4PRDwz2MxyOeqpYS4XWgOiUfA7w=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$14.class
+SHA1-Digest: VKoTfwakHG5zVjaxH4gtgWxYIRY=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$8.clas
+ s
+SHA1-Digest: BuN0SeoDaxpa/OcRMcM/9K5+mcw=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/internal/util/QuickEditTabSectionsSwitch.class
+SHA1-Digest: wK3rjAAANcNI9TWknjVGS0Rn5PE=
+
+Name: org/eclipse/jst/pagedesigner/properties/Messages.class
+SHA1-Digest: E2E+4tBbsEpHb+D3BGPQ4Pkzl/c=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/AlignSupport.class
+SHA1-Digest: /W0JJzXRtd540QxNFP5ws72YFms=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$1.class
+SHA1-Digest: VE7exvnzcNbLfUxUrcyGk9Z3qCs=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$10.cla
+ ss
+SHA1-Digest: H4opwTFnrd1oDzZ/SqmYyvDTNLE=
+
+Name: org/eclipse/jst/pagedesigner/commands/ICustomizableCommand.class
+SHA1-Digest: YvuhTXmPbS5ElYiR4Ql7Ee03lAs=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteCust
+ omizerDialog$DesignerPaletteContentProvider.class
+SHA1-Digest: wYYXVnLjARyv2bIHc1ZYU9l898E=
+
+Name: icons/palette/GENERIC/small/PD_Palette_Import_Hover.gif
+SHA1-Digest: 76qUinOyZwIpKPli67gkfzaEN9w=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/ChangeStylePropertyA
+ ction.class
+SHA1-Digest: qXZL2YiInWlHRQLGAL011S76MEo=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/InsertCommand.class
+SHA1-Digest: MsR8fRo9PHEnGqzup1nZzlihP8g=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/SashEditorPart$4.cla
+ ss
+SHA1-Digest: t6eFeL+ld+L6oK5b8vpxCi8jrwk=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/IValidationRule.cl
+ ass
+SHA1-Digest: QcNivXdmXiWpWPbxH6YlrpP0uqg=
+
+Name: org/eclipse/jst/pagedesigner/viewer/HTMLGraphicalViewer.class
+SHA1-Digest: 8theN/zzGwe1EaF52MeHL6oMC8M=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/QuickEditTabSectionsPackage$Literals.class
+SHA1-Digest: wUChGzK38O+RldX/TtozfUn7mBQ=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/DesignActionBarFact
+ ory.class
+SHA1-Digest: fIcmXfL7G0iL3YzK1sfqawxAw1w=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/ColorPropertyMeta.cla
+ ss
+SHA1-Digest: l+VlfQjkILO+PmK8raHfYgpAhkI=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/internal/impl/TagC
+ onvertInfoImpl.class
+SHA1-Digest: CUlbLb+GrnYZZFT/YXKUnxtVmxk=
+
+Name: org/eclipse/jst/pagedesigner/css2/marker/ICounter.class
+SHA1-Digest: syo7EqIbBH9undSWUgzICUapSsg=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferenceNode.cla
+ ss
+SHA1-Digest: KI0wui3vWOR1eRYvmMxzPK8QX2E=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$21.cla
+ ss
+SHA1-Digest: UGV9bzfL2zAJq53VTLWoP2DHfwc=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/internal/IAttri
+ buteValueResolver.class
+SHA1-Digest: zJQ4OHpJZpM/EitQQB2WGJ80a/c=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/LocalSelectionDropTarg
+ etListener.class
+SHA1-Digest: bhULfP3SSj8DVuySClWxRErmOyk=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/CornerRelativeHandleLo
+ cator.class
+SHA1-Digest: bi38epPTjOq87fSZihtG8FNHt/o=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteView
+ erProvider.class
+SHA1-Digest: P+SbcN5c6CDGRolBqgwbdalvJoI=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/PartActivationHandler.cla
+ ss
+SHA1-Digest: 80oilxSvVE8glxCWLIH4T6Dyqr8=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/RangeActionGroup$1.cl
+ ass
+SHA1-Digest: aXJ0Sdzv8qlBrKiw5H4Pnb0f5ok=
+
+Name: org/eclipse/jst/pagedesigner/actions/link/ExtensionReader.class
+SHA1-Digest: fPWa6loZDvund9XweGTHv0wybvg=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/AbstractFigureHandler
+ .class
+SHA1-Digest: ZfHLwDzib5eldk/kJxQy8QZbQzA=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/ObjectFigureHandler.c
+ lass
+SHA1-Digest: 6Oo6UnTN5InVaTSWZhjLt+E5PvA=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/EditableDial
+ ogCellEditor.class
+SHA1-Digest: UF+x6hiQ5g+LgMhEYScR13aKKuY=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$19.class
+SHA1-Digest: X78ZS3BTQ8GPBFNQQf9Wfy+Balg=
+
+Name: org/eclipse/jst/pagedesigner/editors/HTMLEditor$3.class
+SHA1-Digest: Fsge63AcUb3f06hpguR4sB6qme0=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/ColumnResizableEditPol
+ icy$MyMoveHandle.class
+SHA1-Digest: wnGhRRA73jV42CPfAov594PGsr0=
+
+Name: org/eclipse/jst/pagedesigner/meta/IAttributeRuntimeValueType.cla
+ ss
+SHA1-Digest: 4DKUp4BxkNjXF6vXuF57/HiwLXg=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/CellEditorFa
+ ctory.class
+SHA1-Digest: GsZbN7WRiPEkIpUNLb2J+ytstxI=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/SelectParentAction.c
+ lass
+SHA1-Digest: NEqRlvmAWUpIwDTgz9xIJ3d8cos=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/PasteCommand.class
+SHA1-Digest: ZzDNYQLhsVfsEAuPlxIZPXTV5Ak=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$6.class
+SHA1-Digest: Ad/sQ5YEdiiRxNAyyJCBq5Gcshg=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$15.cla
+ ss
+SHA1-Digest: WvHdb1OZrqwiPMsIlv1sTftgCVU=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/StyleComboCe
+ llEditor.class
+SHA1-Digest: hUAJHC1j/shlQ4e+SQ1qyQnMB90=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/CSSTextLayout.class
+SHA1-Digest: dH+Gipf+N2Ug8gWXp8p8xs1lmXM=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteCust
+ omizerDialog$1.class
+SHA1-Digest: PyleMHEdKZU73Z/Yci5H95+RfZY=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/TreeViewerSelectionDialog
+ .class
+SHA1-Digest: KSWhPmMAfJNZTwUdeVtcW7rjiqY=
+
+Name: org/eclipse/jst/pagedesigner/commands/DesignAction.class
+SHA1-Digest: 15+5WfCNAlXCPT3GW/BqEpWR+J0=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/CSSTableCaptionLa
+ yout.class
+SHA1-Digest: 3s37NORsd8X2PWZp7A2I1YRUZtc=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/IStyleConstants.class
+SHA1-Digest: 6BMf0T4o/iQibpLBliQsvddYY7Y=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/AbstractTagConv
+ erterContext.class
+SHA1-Digest: gDE3j/+x7CPwM/hEfCb2U8U5nfs=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/CellEditorWr
+ apper$2.class
+SHA1-Digest: tpe9eGzyZLdNjKbBlT0/JvWErYU=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/CheckModeOperation.class
+SHA1-Digest: 7q3gpOTwr0qNnT1UThVPHdbe5Vk=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/LineBox.class
+SHA1-Digest: a3+dbKXJEq443SUk9Y3eogYtYQo=
+
+Name: org/eclipse/jst/pagedesigner/utils/IResourceAdapterFactory.class
+SHA1-Digest: ceYT+DuwBYEd21+UDOQsJOLJHvw=
+
+Name: org/eclipse/jst/pagedesigner/IHTMLConstants.class
+SHA1-Digest: Uu0RwyD+ba1yCz+xZcV6vO6e5is=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/FlowBox.class
+SHA1-Digest: RBKTY5rSSO4p2BVJV8/UQ44sqRc=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/LocationHelper.class
+SHA1-Digest: 1h+T3Y0k+g/AfYKybnTDBSAjKaw=
+
+Name: org/eclipse/jst/pagedesigner/dom/DOMStyleUtil.class
+SHA1-Digest: bC+0wdqDOmvntaryLMlpSvAbs24=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/TableRowGroupInfo
+ .class
+SHA1-Digest: +75TnIh7OgJZqb6n9FaBEuoTeHE=
+
+Name: org/eclipse/jst/pagedesigner/properties/dialogfields/MDEnabledCo
+ mboDialogField.class
+SHA1-Digest: Xjd5AjKFgZ5ku/sb9eq8KVc6w0A=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableSideResizeDragTracke
+ r.class
+SHA1-Digest: EkG1Y2+3ae7v0WTNYGkMkhtdAMI=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/DesignerToolBarAction
+ .class
+SHA1-Digest: 5iWlzPCTCHf4DIsP4cU5KffDGJE=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/OutlineViewAction.c
+ lass
+SHA1-Digest: mVI/EByctApCm8qd06hEer+cANQ=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/MarginWidthMeta.class
+SHA1-Digest: pcDJoy0waRHGx1FgAE8AgfLxqqg=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferencePage$4.cl
+ ass
+SHA1-Digest: qkRdScaNcNItY6OZHEaaUrNxFd4=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/html/StylesheetLinkElem
+ entEdit$MyDropLocationStrategy.class
+SHA1-Digest: +8UTS+8pl8nyWjSVE3yM/f0dacw=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/NestedEditorActionBa
+ rContributor.class
+SHA1-Digest: Yr2yXJQtyRFbkktJlprWU549W/4=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/CreationData.class
+SHA1-Digest: iaCayeXw0k2agTNgBRzerLk+wYY=
+
+Name: org/eclipse/jst/pagedesigner/editors/pagedesigner/DelegatingZoom
+ Manager.class
+SHA1-Digest: MqB9zUmhr3GprfJlpqxX9L6S1tY=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/AbstractElementEdit$1.c
+ lass
+SHA1-Digest: x5zDXEVbTw8jjnQusjYy/bKjVnU=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/KeyboardData.class
+SHA1-Digest: BeBHCQuLv5Popy/Vl2KuXlHw8Ng=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/ICSSPainter.class
+SHA1-Digest: 4A8aZMEnaIDr0mR0E97FrWggQ6Y=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/BasicPositionRule.
+ class
+SHA1-Digest: QcNFlwjVvvjEwpi8uL/lr1Bl2dk=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/ElementMenuBar.class
+SHA1-Digest: UK3mylI1HYIeANaF22XKB+FMMFM=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/internal/UserCustomize
+ dTagCreator.class
+SHA1-Digest: s/OkrgKKNASojuObbWpg0d2G96k=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/AllPropertySect
+ ionDescriptor.class
+SHA1-Digest: DgDmIq8CGzqsp5XU4Y5r4vqP3T8=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/IETablePositionRul
+ e.class
+SHA1-Digest: zahHzNzAji3TZUtC7iVTtSrQLog=
+
+Name: org/eclipse/jst/pagedesigner/editors/HTMLEditor$8.class
+SHA1-Digest: ooJ7dii2/qP+t7qq2z1FjNeV1Hg=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteRoot
+ Factory.class
+SHA1-Digest: y7xipXAsx5tLhgVpJW0COdAXc0w=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/BasicMovementRule.
+ class
+SHA1-Digest: B+aRGRs0A6uYxBqfXWoeQNJNO2s=
+
+Name: org/eclipse/jst/pagedesigner/converter/jsp/JSPConverterFactory.c
+ lass
+SHA1-Digest: hZroakhffGvfWdJzRvihw5bY34s=
+
+Name: org/eclipse/jst/pagedesigner/commands/single/ChangeAttributeComm
+ and.class
+SHA1-Digest: epOLRKmwaci0ngHRwp4qU/23rSk=
+
+Name: org/eclipse/jst/pagedesigner/commands/single/InsertSubNodeComman
+ d.class
+SHA1-Digest: ubUz/B+UpCLPuCY2zH/ADzMmEuw=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/messages.pro
+ perties
+SHA1-Digest: YA9n+FCP9sSwqMPrdGQD1Xcgh/Y=
+
+Name: org/eclipse/jst/pagedesigner/meta/IBindingHandler.class
+SHA1-Digest: kClBmqmCmnxk4VJ4vPREGLMTSDY=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferenceNode.class
+SHA1-Digest: 6RrH22Ka9KepQ0kJgBEcokl12y4=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/CSSStyleDecl
+ arationFactory.class
+SHA1-Digest: iRkwL0qe8PnHpKTJycXbvcvGGew=
+
+Name: org/eclipse/jst/pagedesigner/css2/marker/CounterUtil.class
+SHA1-Digest: f7o48t/mHqKhKW4V0OW3We0vPIc=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/DefaultFigureHandler.
+ class
+SHA1-Digest: jTaVWACV28YMhbQNXV/SEG+LQEU=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/ExtensionsPreferencePage
+ $2.class
+SHA1-Digest: I9EDajKiDNLDhjbRBKfhPcEI+bU=
+
+Name: org/eclipse/jst/pagedesigner/css2/list/CounterValueGenerator.cla
+ ss
+SHA1-Digest: 5Tjft67VuJlQFuHxio48rHSKMp4=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/internal/impl/QuickEditTabSectionsFactoryImpl.class
+SHA1-Digest: zpJOWD7e5/2MiadcDSQLEHx/gbE=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableSideHandle.class
+SHA1-Digest: 2FFfYdfq5VZ6RMrUJXWLbcVaRKk=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/AttributesTabDe
+ scriptor.class
+SHA1-Digest: /Wx4WtCQDtXQPOS01oeNCQLwxrM=
+
+Name: org/eclipse/jst/pagedesigner/actions/link/MakeLinkCommand.class
+SHA1-Digest: KG6g9O+3GSTiA6AgQADz3WcckHM=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/MouseSelectableChildDe
+ corator$VerticalMenuLocator.class
+SHA1-Digest: MXG9x2IrSriayblUvBivdy35r40=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/internal/DTTagC
+ onverterFactory.class
+SHA1-Digest: U6dtQ95ntaiNGaDbMdIFk2Cj+PA=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteView
+ er$1$1.class
+SHA1-Digest: vmtZ+e1kgRNAw7Izx+nGyvNsONA=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/CSSPropertyMeta.class
+SHA1-Digest: kzuZpSOSMzJAV1VPBTajYAWvYyo=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BackgroundPreferencePage
+ $4.class
+SHA1-Digest: +OP/goV9PZgqp+Az0tDu3PfKphU=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/TableCaptionInfo.
+ class
+SHA1-Digest: 22Q3MTS5cpDow4mIjqawVMf3UJ8=
+
+Name: org/eclipse/jst/pagedesigner/commands/DeleteAction.class
+SHA1-Digest: yXvg7iI+e0DEC6hTTStbWB1m8ZM=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferencePage$9.cl
+ ass
+SHA1-Digest: EPD6vIcRsRX2/uYA8ovFPbIELWo=
+
+Name: org/eclipse/jst/pagedesigner/actions/table/TableActionGroup.clas
+ s
+SHA1-Digest: CcpIn3uQdDGF49ZWCKdsa2dchgY=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/SelectEditPartAction
+ $1.class
+SHA1-Digest: /ZxFVDoEeEQEpAveEHOYwofyRXk=
+
+Name: org/eclipse/jst/pagedesigner/css2/font/CSSFont.class
+SHA1-Digest: s5CwaNykdn3HDYrgJE9IWe3yeU4=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/TagDecorateInfo.cl
+ ass
+SHA1-Digest: sdziWexbgz+ldzeZw2d1h/S9CQw=
+
+Name: org/eclipse/jst/pagedesigner/converter/AbstractTagConverter.clas
+ s
+SHA1-Digest: u+Y7/ExCatG3puv/et7S2v1i9Jw=
+
+Name: org/eclipse/jst/pagedesigner/editors/SimpleGraphicalEditor$2.cla
+ ss
+SHA1-Digest: Z+oGGyQaeQoZSSGMrNwyg2lNDX8=
+
+Name: org/eclipse/jst/pagedesigner/requests/LocationModifierRequest.cl
+ ass
+SHA1-Digest: Hk1HjuAHBxGCDkrqnkSehZdKnAc=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/package-info.class
+SHA1-Digest: uUxCaTUl+WfYkAg59UWJqwc9YSc=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/AttributeGroup.
+ class
+SHA1-Digest: Bzcbnkm4T00icFxT60yM8q7sl1g=
+
+Name: org/eclipse/jst/pagedesigner/css2/widget/ListWidgetProvider.clas
+ s
+SHA1-Digest: IlY7uTNS+t5l7NmqELB1rptJcG4=
+
+Name: org/eclipse/jst/pagedesigner/css2/color/CSSColorManager.class
+SHA1-Digest: ef6DErUuvAtPnFgXCVcaAW7gf3g=
+
+Name: org/eclipse/jst/pagedesigner/dom/DOMPosition.class
+SHA1-Digest: C0hS+F2oPnXOhoe+dCt1fP718WA=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/ICSSPainter2.class
+SHA1-Digest: 1XHQapknoDq4BSGcObJDfwBRLLk=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/IEntryChangeListene
+ r.class
+SHA1-Digest: dTHfTTL7aPog0O4isgRA+yPN0C0=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/ItemCreationTool.class
+SHA1-Digest: vF4yN1OXU9D+9VkPOHudBISkrIE=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$11.
+ class
+SHA1-Digest: AUT/C53RD9sILcAk7A12oxuEW8o=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/CommonResourceDialog$Comm
+ onResourceFilter.class
+SHA1-Digest: 4Oi1gc9gwdG7AFqfpgirbBUzQKU=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/QuickEditTabSec
+ tionsDescriptor.class
+SHA1-Digest: zOM5dqkSZh1v/FyLd+sRE6Cdcz8=
+
+Name: org/eclipse/jst/pagedesigner/commands/CutAction.class
+SHA1-Digest: UUepx+SWX2LRf8h0qYTJ0NX0N4k=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/internal/impl/QuickEditTabSectionsPackageImpl.class
+SHA1-Digest: G5mehbJiGU+QLNqsi6Gg62bjAmc=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/StyleClassSupport.cl
+ ass
+SHA1-Digest: 405N1pEki5j83OAn4yh/bXZfGV8=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/QuickEditTabSec
+ tion.class
+SHA1-Digest: r01IiAST71Jwv2WNv2WSVHXAIMQ=
+
+Name: org/eclipse/jst/pagedesigner/commands/html/TableDeleteColumnComm
+ and.class
+SHA1-Digest: Xywjnv8vzYGEtlsTZ6kdyqX3f0M=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/customizer/Customizati
+ onDataImpl.class
+SHA1-Digest: PE8X7DpCQBQd6VriExsVEoFFeh8=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/JSFDropEditPolicy$1.cl
+ ass
+SHA1-Digest: PyIlAv6TYl5HDm1ipHDgjRgdtpg=
+
+Name: org/eclipse/jst/pagedesigner/converter/TagConverterToDumBlock.cl
+ ass
+SHA1-Digest: OLONivOC6AVs5JMIVkFyNCN6uwE=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/IEnhancedSelectionEdit
+ Policy.class
+SHA1-Digest: 34nolDnMq9OOmWJdr3jlDuZYbic=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/DialogsMessages.properti
+ es
+SHA1-Digest: EQGk5bU3CYc0lq7jK7d5ZoUBBmA=
+
+Name: org/eclipse/jst/pagedesigner/dom/DOMRefPosition.class
+SHA1-Digest: 0ZlXy1xvCMc16wvjCa6kaSub/n8=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteView
+ erProvider$1.class
+SHA1-Digest: tvK50ZiwAfyHnwCXBmLy3WS7gwI=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$3.cla
+ ss
+SHA1-Digest: f9E0iifXxfIEE8IXbuL/39LCRIU=
+
+Name: org/eclipse/jst/pagedesigner/editors/SelectionSynchronizer.class
+SHA1-Digest: lRlM6RCd25OUeieEx0QP5fQRCBw=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/Messages.class
+SHA1-Digest: tgbmAe8yLyNouhSqzKv2l1lUE/o=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$5.c
+ lass
+SHA1-Digest: e7iF860VuhyrpjG4q6aWB3evM98=
+
+Name: org/eclipse/jst/pagedesigner/converter/html/HTMLConverterFactory
+ .class
+SHA1-Digest: +0ep7kYExtJUxYXnmkRG1nhp7rQ=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/RowHandle.class
+SHA1-Digest: fXMBV4Vv9uTazGcE4++mAXW7srY=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$13.cl
+ ass
+SHA1-Digest: RNjdSsPmNKfve2YttOXM76T8hzo=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/WorkNode.class
+SHA1-Digest: CUnS6maQj9VXsFwk81Yf6paT9WU=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/internal/Propert
+ yDescriptorAdapter.class
+SHA1-Digest: aZm0vl5rUTXBK97St0+dFfi2Xok=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/IEPanelgridPositio
+ nRule.class
+SHA1-Digest: Z7AB2hib28+iQjgnAMIQY2FuyaY=
+
+Name: org/eclipse/jst/pagedesigner/parts/SubNodeEditPart.class
+SHA1-Digest: 8PJ7he/nCnZ/DlsrADCBpvy7m34=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/messages.properties
+SHA1-Digest: +WWHF6Q0z2qS+AgbBjetN7hMsC4=
+
+Name: org/eclipse/jst/pagedesigner/commands/SourceViewerCommand.class
+SHA1-Digest: EQv0NPbcPegFCXdDA9FaIeZa0Xg=
+
+Name: org/eclipse/jst/pagedesigner/css2/widget/TextAreaWidgetProvider.
+ class
+SHA1-Digest: r//YSeJ2I/ksvRAjPFVlFrkxNyM=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/WhiteSpaceMeta.class
+SHA1-Digest: OYluzanN3TLAPmqMf+co7D+MkFk=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/QuickEditTabSections.class
+SHA1-Digest: w5LvUpHN/2HAZlU+uE8dOZl8hkg=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/CSSTableCellLayou
+ t.class
+SHA1-Digest: ykATYVrlvCK4sABVq/uN2lHjemA=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/WidgetFigureHandler.c
+ lass
+SHA1-Digest: uLETM85GmfqvVo8WR/JFgmf2yS8=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/CellEditorWr
+ apper.class
+SHA1-Digest: TRoSrRivNgdRTM7EuJilI6FGzE8=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/Messages.class
+SHA1-Digest: VbFRjFNHZEhVIcVBiH8E5vO/NEk=
+
+Name: org/eclipse/jst/pagedesigner/css2/color/CSSColorDefaults.class
+SHA1-Digest: KIHXhZmg4Kolx3OYNfjr6wqvnL0=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/impl/PaletteHelper$
+ 1.class
+SHA1-Digest: 8gbzhTwmoHMgol+mL/V/ji09kY0=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/impl/PaletteItemMan
+ ager$3.class
+SHA1-Digest: jkHqZa47Nj8qH4LOtJMrCscJ4Mo=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/StyleComboCe
+ llEditor$2.class
+SHA1-Digest: xkXeSihLk04SiDVqrjvOfTGR6hs=
+
+Name: org/eclipse/jst/pagedesigner/utils/DOMUtil.class
+SHA1-Digest: EqoP5pB91JgQwJNvzajZIwHa7m4=
+
+Name: org/eclipse/jst/pagedesigner/properties/messages.properties
+SHA1-Digest: bBaHFb4Mh6h3Mj2mXF4OmS302XU=
+
+Name: icons/pin_down.gif
+SHA1-Digest: 5gKT8jGe3oahhbsWNlNKjioO/vk=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/MouseSelectableChildDe
+ corator$2.class
+SHA1-Digest: 7ZHXnDyHMkL7ZSiVOfQSuwzCmhQ=
+
+Name: org/eclipse/jst/pagedesigner/viewer/FlowBoxLine.class
+SHA1-Digest: WZt5wqlNrXdf3pIya+2dcFP+y+c=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$16.
+ class
+SHA1-Digest: u1tp3N9gz3rCMcbo2r6CmtScbeE=
+
+Name: org/eclipse/jst/pagedesigner/meta/internal/CellEditorFacRegistry
+ Reader.class
+SHA1-Digest: yjPpqFfxD9qpDT57JLHBmaUSSyE=
+
+Name: org/eclipse/jst/pagedesigner/css2/provider/ICSSTextProvider.clas
+ s
+SHA1-Digest: 3ulhfZrjLVdcSvbd0zi8rN/4S60=
+
+Name: org/eclipse/jst/pagedesigner/dtresourceprovider/IDTSkin.class
+SHA1-Digest: lxPeumVRD9NXrZANRoaPn1quXTo=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/CreateElementOperation.class
+SHA1-Digest: GYWZoH0+7biVowLW+IetcF2c8CM=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/SingleElementActionG
+ roup$1.class
+SHA1-Digest: yMlC/jqWmgN8QpTnh+uYm6LOkII=
+
+Name: org/eclipse/jst/pagedesigner/editors/AbstractPropertySheetPageFa
+ ctory.class
+SHA1-Digest: kPsPkD/Hg+olWLbzOOI2qZ3Og/Q=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/jsp/JSPElementEditFacto
+ ry.class
+SHA1-Digest: zerclbdEMrpM1ViE9CluEcLvg3g=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/ITagCreator.class
+SHA1-Digest: Z8OgWfC78c3AaVcRKjcit7VKqOw=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$1.clas
+ s
+SHA1-Digest: M2vEdzxDgFGFRagv9z+IIoNyk7I=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/ICSSFigure.class
+SHA1-Digest: olP+EpZYc4+kR+I76eXD1Vb84os=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/html/TableElementEdit$1
+ .class
+SHA1-Digest: oVRvnHMNqMfr8xc/YL+d4gHMb8c=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/FragmentHandle$BorderF
+ igure.class
+SHA1-Digest: 633+M1kRTR1miRa9wEcyoOmCMHg=
+
+Name: org/eclipse/jst/pagedesigner/converter/IConverterFactory.class
+SHA1-Digest: qfAawPW9cTQpiZpOZ+HK+QDaGnk=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/DropActionData$Dro
+ pData.class
+SHA1-Digest: E3H/8gi6NjcfKTlQTyXpdXn/lKY=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$8.cla
+ ss
+SHA1-Digest: dJOB5iZQPkbPSCZtg8hrMev7KRo=
+
+Name: org/eclipse/jst/pagedesigner/meta/EditorCreator$CellEditorHolder
+ .class
+SHA1-Digest: mo2atpLZxv7kaDq/szL3Ww79RBs=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/QuickEditTabSec
+ tionsManager$QuickEditTabSectionsManagerMgr.class
+SHA1-Digest: Dvzxs493VZkEQ1CSF1n8aEJhdlc=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/internal/util/QuickEditTabSectionsAdapterFactory.class
+SHA1-Digest: fAPnYq2wxGzedjBLp9acYNmi7M4=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/EditableDial
+ ogCellEditor$2.class
+SHA1-Digest: W4VJYolWyS3PAEqet7n5NZ6t9kE=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableHandleKit.class
+SHA1-Digest: 50mxVHEfw9tJ2qOe8EntUlnmMcU=
+
+Name: org/eclipse/jst/pagedesigner/viewer/IHTMLGraphicalViewer$Factory
+ .class
+SHA1-Digest: eFHBCUtTZn/pF3l1ZGLmOQ1YE14=
+
+Name: icons/PD_nopic.jpg
+SHA1-Digest: r4UPcZhVqXxnbC7difXgUdJHclQ=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/ItemCreationRequest.cl
+ ass
+SHA1-Digest: v/laDz+JMjcobg8Z8LpgxA8G0Dk=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/SimpleWizardSelectionP
+ age.class
+SHA1-Digest: 2/RgKWyh/I5u0tmv5aVgEqao9J4=
+
+Name: org/eclipse/jst/pagedesigner/converter/package-info.class
+SHA1-Digest: g3dc6vBu85UOHmPfFBoqjMhSl6A=
+
+Name: icons/palette/GENERIC/small/PD_Palette_Export_Hover.gif
+SHA1-Digest: A2P2Lt+2u2ueOfFmoxGojyBFco0=
+
+Name: org/eclipse/jst/pagedesigner/tools/ExposeHelper.class
+SHA1-Digest: p/y1qWyxhK0Fo/7S+8W3AC3fROU=
+
+Name: org/eclipse/jst/pagedesigner/css2/font/ICSSFont.class
+SHA1-Digest: Eh/GVH6AJx56z+wQl2367cxFOVg=
+
+Name: org/eclipse/jst/pagedesigner/properties/attrgroup/DialogUtil.cla
+ ss
+SHA1-Digest: WUw3gV/yn7W0sOS+OO68YjhtLd4=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/internal/Attrib
+ uteValueResolverRegistryReader.class
+SHA1-Digest: ZI/ULKzSiEggHO8itS0LJrl8mgw=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/ColumnResizableEditPol
+ icy$ColumnHandleLocator.class
+SHA1-Digest: FT76Smo99W8w2Rm3NHJFkzB4BgE=
+
+Name: org/eclipse/jst/pagedesigner/css2/style/AbstractStyle.class
+SHA1-Digest: RhGQJ9T7JphB5tmxikYi4a2fQnY=
+
+Name: org/eclipse/jst/pagedesigner/converter/ConvertPosition.class
+SHA1-Digest: 9dAA+aZA2QdPrtkb5jjGm30W2EM=
+
+Name: schema/pageDesignerExtension.exsd
+SHA1-Digest: xYOthXHMmRjLEvtf1T4nw2SwK9U=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/TagImageManager.cla
+ ss
+SHA1-Digest: h+EfUPlu4b4wn/Vsh3qxLfLKO+M=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/FragmentHandle$Fragmen
+ tLocator.class
+SHA1-Digest: eBX8k4Qh/DIFnQEUZ+79TvIY2Ss=
+
+Name: org/eclipse/jst/pagedesigner/viewer/EditPartPositionHelper.class
+SHA1-Digest: YpkzKSslJp5V94PuxJOqG7G6hEg=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/ParagraphApplyStyleC
+ ommand.class
+SHA1-Digest: ix4gryqtx98wYG5e5CGgHee3yFQ=
+
+Name: org/eclipse/jst/pagedesigner/converter/ConverterFacRegistryReade
+ r.class
+SHA1-Digest: hpcrL32Df65vZ4/U/78noDYJ8eM=
+
+Name: org/eclipse/jst/pagedesigner/properties/AttributePropertySheetPa
+ ge.class
+SHA1-Digest: U6wr6JvOX6YUzht5hQ99vokdY6g=
+
+Name: org/eclipse/jst/pagedesigner/commands/PDRequestConstants.class
+SHA1-Digest: Ra5DaFhTDKzFcd54LkcLvnxanGA=
+
+Name: org/eclipse/jst/pagedesigner/viewer/DesignRange.class
+SHA1-Digest: odkGoIovqMdqWoVrtpAujcZC7u4=
+
+Name: org/eclipse/jst/pagedesigner/properties/AttributePropertySheetPa
+ ge$MySorter.class
+SHA1-Digest: gpnFhoFVwnAMJeiT9e8oetpI+Rc=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$12.class
+SHA1-Digest: jKM7tace4GHRPVRqtxZof/ucnzI=
+
+Name: org/eclipse/jst/pagedesigner/commands/PDDropRequest.class
+SHA1-Digest: 9vEl6rlPLLEB9LUODT+p5acqXhU=
+
+Name: org/eclipse/jst/pagedesigner/actions/table/TableOperationContext
+ .class
+SHA1-Digest: ATglwC08EwHNZx0A0AMOh9Ho3vc=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$6.clas
+ s
+SHA1-Digest: dXP9GqloRiW7vsZHtzFWzX86YjA=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/SashEditorPart.class
+SHA1-Digest: uYSmpd610u/VVTCFyrN/c9acjVE=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/internal/DTTagC
+ onverter.class
+SHA1-Digest: cV/3z/GeyFFu1NIyF1MkjIBsUCU=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/MDQuickEditTabS
+ ectionDescriptor.class
+SHA1-Digest: iPTvswnEayDTHZIVckPvHGfLqQ0=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/DTManager.class
+SHA1-Digest: 5Rqlxxl9byHm6S1zC03kRQNkH7s=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogfields/DialogFieldWrapper.
+ class
+SHA1-Digest: 7aOMYcXHoHMGt2MtpyT3cmvs/aY=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/SashEditorPart$2.cla
+ ss
+SHA1-Digest: KDHPpyRmB5cildBu14+2izbg0cQ=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/internal/impl/DTIn
+ foImpl.class
+SHA1-Digest: eXsjQ38pfoFlnmJzjhVdUX/Bwzc=
+
+Name: org/eclipse/jst/pagedesigner/viewer/DesignRefPosition.class
+SHA1-Digest: uZ6GYzB+rRarKDiYXEKOeMk+ZJ8=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/customizer/AbstractDro
+ pCustomizer.class
+SHA1-Digest: Qk2H/mJbInTWuQbOoL/A6lqb4UI=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/IPaletteContext.cla
+ ss
+SHA1-Digest: kjnrr6e5hzDxLnGtyjOhEfZWRFY=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$23.class
+SHA1-Digest: n9qcmyhegEOgeTFPIkQlwnr1eoc=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/ClipboardData.class
+SHA1-Digest: cTVonit15MFrrcppWCpRWctb7bY=
+
+Name: org/eclipse/jst/pagedesigner/css2/value/Length.class
+SHA1-Digest: VLFiCrgS9jakYgo+beDpScE4nGY=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/MoveSupport.class
+SHA1-Digest: Jj6miw4KwRbRx4kjANJ2r7iTEXY=
+
+Name: org/eclipse/jst/pagedesigner/utils/IntFlexArray.class
+SHA1-Digest: EUXRLG0ZDlQ+la1JyNPl8BjT/kg=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage.class
+SHA1-Digest: XInMQNpXpok3QhjNXkU4kqlvPvQ=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/ListPreferencePage$3.cla
+ ss
+SHA1-Digest: qu/8JE5sZUkcz95dPdamL74ARg0=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/DefaultDTInfoFactory.clas
+ s
+SHA1-Digest: WPlkgdnx4fqRhAJdH/gZTPfuyr4=
+
+Name: org/eclipse/jst/pagedesigner/parts/Refresher.class
+SHA1-Digest: H35x/qipg6wty7GTJJFvc+NUfOw=
+
+Name: icons/PD_Toolbar_largefont.gif
+SHA1-Digest: r/INhRP/GtUL2BVUvvf6t25dCag=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e.class
+SHA1-Digest: sTn7lJg3Sp7U0x6gxa4XwsNYHpw=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/AppendChildTextOperation.class
+SHA1-Digest: kicYbDPZwwlfzBn4YySX5+QTLsE=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$17.class
+SHA1-Digest: +losiDjEmaSDZftqOtTvmTtNpUY=
+
+Name: org/eclipse/jst/pagedesigner/css2/list/ContentObject.class
+SHA1-Digest: 9ZtT0D0cuXE1oRbkuwGyBuVjOUM=
+
+Name: org/eclipse/jst/pagedesigner/editors/HTMLEditor$1.class
+SHA1-Digest: 8eXuzItq+EhQYrVORXsXoVktXK4=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteImag
+ es.class
+SHA1-Digest: ZqMhWuoAB8VveT72UpVHy7YgpoU=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/HorizontalAlignMeta.c
+ lass
+SHA1-Digest: umi6NpGaaLBxuWRBWIN7dBfM37k=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$4.class
+SHA1-Digest: 6F4EeTy7rqAUHDnCCaCmjX9FFYI=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$13.cla
+ ss
+SHA1-Digest: pgDdCb38VXDcsZZQS2XpTj8mKU0=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/RelatedViewActionGr
+ oup.class
+SHA1-Digest: gg86lhDM/eCf18bXO3QgEIMLRXM=
+
+Name: org/eclipse/jst/pagedesigner/viewer/CaretPositionResolver.class
+SHA1-Digest: hKO7RD1ql89RIAektPCqosIPirE=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/command/SingletonConta
+ inerCreationCommand.class
+SHA1-Digest: Zpu5Aivv/DY4onqNpnQDzFiG9bg=
+
+Name: org/eclipse/jst/pagedesigner/commands/CopyAction.class
+SHA1-Digest: D5mB+fHN3UvMIp3jYQlch+hAAYw=
+
+Name: icons/PD_Toolbar_italic.gif
+SHA1-Digest: 7HmSBgDdvAtpg9qXjxmhxpJlBCM=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/WhitespacePosition
+ MoveRule.class
+SHA1-Digest: W5nfzMH32eTBa9rUP2ziNAp9jQ8=
+
+Name: org/eclipse/jst/pagedesigner/dom/CaretMoveIterator.class
+SHA1-Digest: ijjMzPlTnoJcsqsY8JHVBjMfszc=
+
+Name: org/eclipse/jst/pagedesigner/viewer/DefaultDropLocationStrategy.
+ class
+SHA1-Digest: 04pswsRaLGEfauK6yKNUQxyu7s0=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/TableCellInfo.cla
+ ss
+SHA1-Digest: dPd/CvJjrcrcP3JCBksdikCdHo8=
+
+Name: org/eclipse/jst/pagedesigner/meta/ITagAttributeCellEditorFactory
+ .class
+SHA1-Digest: 7SfozTET/KTJwcFx9EvJKC3ctNE=
+
+Name: org/eclipse/jst/pagedesigner/css2/list/ResetObject.class
+SHA1-Digest: +2Hr75Pm5iSK2TkvQf1FEk2aowE=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/DefaultProperty
+ PageDescriptor.class
+SHA1-Digest: nX1k9AQjCKDAQWzxCkPmyGBQnWs=
+
+Name: org/eclipse/jst/pagedesigner/css2/widget/AbstractWidgetProvider.
+ class
+SHA1-Digest: 0SkTASIR6txBnb04fb4dPkEL7ec=
+
+Name: about.html
+SHA1-Digest: OJyoBf8l3c2Kfn+uImC4IbpLdfA=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/ColorSupport.class
+SHA1-Digest: tCboq3G5MPcmPey2Wfo5adX3MF8=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/FontWeightMeta.class
+SHA1-Digest: VTFPmBycPjvrS20j6l2VZLnDJ2c=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/ContainerMoveInAnd
+ OutRule.class
+SHA1-Digest: yJMGYp3C/iGY7sQ54pxaCbSVcb8=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/Operation.class
+SHA1-Digest: 8X7q3FckEJp8mKL/FYOedk3M5L0=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/LinkEditPolicy.class
+SHA1-Digest: z5dDkPDvJs0WauM4YUzP0VnKKLE=
+
+Name: org/eclipse/jst/pagedesigner/converter/html/ATagConverter.class
+SHA1-Digest: NjJ6gfQQp5n4AbEmTmgiorzHz40=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableEditHelper.class
+SHA1-Digest: gavsCHYQNwu7EKKgZed+An4CwlY=
+
+Name: org/eclipse/jst/pagedesigner/css2/html4.css
+SHA1-Digest: bT3xKHGD96Gog63NiD4Q/UKJDl0=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/SashEditorSelectionP
+ rovider$1.class
+SHA1-Digest: 6nLFIiTAtrF8pAfMzSW3VNWUW0s=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/customizer/ParentData.
+ class
+SHA1-Digest: gSEFJQcH/7osHE0uPkjDd2UtP24=
+
+Name: org/eclipse/jst/pagedesigner/properties/attrgroup/DialogUtil$1.c
+ lass
+SHA1-Digest: 6Co4cpKUtlisUBj9Vat8RYDMSmg=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteRoot
+ .class
+SHA1-Digest: gzI5v4UHgUXATmeEuc+0T++XNfw=
+
+Name: org/eclipse/jst/pagedesigner/properties/AllPropertySection$1.cla
+ ss
+SHA1-Digest: UiTuIfa3RVdJe7XMTg/babwcnG4=
+
+Name: org/eclipse/jst/pagedesigner/converter/DefaultUnknownTagConverte
+ r.class
+SHA1-Digest: 8w3BiXdhSWr+nexcVcs2mYFexlM=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/MouseSelectableChildDe
+ corator$AnimatedHideLocator$1.class
+SHA1-Digest: +y9EwGgeVUqtfCd3iBAajs5uXWI=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/RangeActionGroup$4.cl
+ ass
+SHA1-Digest: mxGuiz/97vqaZjsY1vDpV+bduzE=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/InsertEdit.class
+SHA1-Digest: hAd8+afBHvvAszaGBkw3ER+PrmY=
+
+Name: org/eclipse/jst/pagedesigner/commands/PasteAction.class
+SHA1-Digest: jV1E/9+OJdo30HX6TieB8zCslUk=
+
+Name: icons/skin.png
+SHA1-Digest: 5m51XOWwu47egTXyWXX90o98gqM=
+
+Name: org/eclipse/jst/pagedesigner/preview/PageExpressionContext.class
+SHA1-Digest: UM1gSuzMiGMAOWl72hQR+wOduXo=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferencePage$2.cl
+ ass
+SHA1-Digest: iwdqFo/EHYZ0hRBTV5YDkLY8KLc=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/RangeModeCommand.cla
+ ss
+SHA1-Digest: pp2wipt2vtvfUULB1KKRl592QFU=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/IPositionRule.clas
+ s
+SHA1-Digest: mEXu4SbFnYjqCC9Y5SNe7NGoiTo=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/WPEPropertyPage$TaglibDa
+ ta.class
+SHA1-Digest: XSYw4kYOnTf7dBEQX7EyP9oaE1Q=
+
+Name: icons/PD_Toolbar_vsplit.gif
+SHA1-Digest: we2xMexo4E19hl00CVgFqpRqsI0=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogfields/StyleButtonDialogFi
+ eld$1.class
+SHA1-Digest: C3NFYE+tOtHmP+rRec1xThXylEA=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/SkinsMenuItemBuilde
+ r$TaglibData.class
+SHA1-Digest: Mb+qTSh/1TxNXmbhNftT2vahQU8=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/IMovementRule.clas
+ s
+SHA1-Digest: S0Kjvz9LBYFT9YEDrWILRkX75vQ=
+
+Name: org/eclipse/jst/pagedesigner/editors/HTMLEditor$6.class
+SHA1-Digest: ailBe5p0lEqLMYA0n1AOCw9nO5I=
+
+Name: org/eclipse/jst/pagedesigner/dtresourceprovider/AbstractDTResour
+ ceProvider.class
+SHA1-Digest: OyXyQxew96FJACPVpjOAJzjlzhM=
+
+Name: org/eclipse/jst/pagedesigner/actions/link/LinkWizardPage$SelectL
+ inkListener.class
+SHA1-Digest: BJxLtxfmaKldcQWoyKkJx40V74s=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$9.class
+SHA1-Digest: +KXd9LeFeoBvg+PRg9gzL+7G4tM=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$18.cla
+ ss
+SHA1-Digest: 4olCVQyPcJ1pH+ND0+/RGl5oyYI=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/CopyCommand.class
+SHA1-Digest: +l6paQZCuIV9/PBD+K2uRLnJzeg=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/TagToolPaletteEntry
+ $1.class
+SHA1-Digest: nhVWXlLoFnKB/8zlx+x5RX4zJVc=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/BlockFlowLayout.class
+SHA1-Digest: woedYDlUsbN5NstidS45+vbsOr0=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/TextareaFigureHandler
+ .class
+SHA1-Digest: reJEpTQPk1il/xX6uI8yhEZrDPs=
+
+Name: org/eclipse/jst/pagedesigner/css2/widget/ImageWidgetProvider.cla
+ ss
+SHA1-Digest: lFa49cqWQO9ThDsNQmdTKtJBRvg=
+
+Name: org/eclipse/jst/pagedesigner/utils/HTMLUtil.class
+SHA1-Digest: LIWyVJ57RybCx5L8O9FW0zdBPc4=
+
+Name: org/eclipse/jst/pagedesigner/parts/ElementEditPart.class
+SHA1-Digest: ZMwyBMiEJFzBjsvbPMLQXRwzLNo=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/CellEditorWr
+ apper$5.class
+SHA1-Digest: xS4nIZ/TmXnIfad4Vrg+Ohep2FU=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/QuickEditTabSec
+ tionsManager.class
+SHA1-Digest: HSrNXE0YXS5OVrF0b4qy37bd1sY=
+
+Name: org/eclipse/jst/pagedesigner/utils/PreviewUtil.class
+SHA1-Digest: miWYZkOt1aRGP/QXyJsGvdhgxgU=
+
+Name: org/eclipse/jst/pagedesigner/dom/DOMPositionHelper.class
+SHA1-Digest: IO5TLtzHyvUH7PjbA556XWDGvkk=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/MarqueeRectangleFigure$1.
+ class
+SHA1-Digest: W92uvtUDS3tYzq8yX+E1CQ0Om0M=
+
+Name: org/eclipse/jst/pagedesigner/dom/DOMRangeHelper.class
+SHA1-Digest: oZ/QnJ9+WSePxoTDZmiV3Arx0aE=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/customizer/ICustomizat
+ ionData.class
+SHA1-Digest: 3ad76QOlqoNukpG7LPehSs121WM=
+
+Name: org/eclipse/jst/pagedesigner/css2/style/IRangeSelectionProxy.cla
+ ss
+SHA1-Digest: C4hbB0EKLvpGxGSOweWfiMJ1ABw=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableRowColumnRequest.cla
+ ss
+SHA1-Digest: rVgCguZjVQ/VScKgwtaW1utfO1I=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/RangeStyleSupport.cla
+ ss
+SHA1-Digest: lPS9ECsOfUODNlozAju2265bfvs=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/ParagraphFinder.clas
+ s
+SHA1-Digest: g4eB5+IfHpgtgL7Nd3i2ZCRmYUU=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/VerticalAlignMeta.cla
+ ss
+SHA1-Digest: gO2pO75ptRZwnEvjozY1TJ5/rBg=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/DesignerStyleAction
+ Group.class
+SHA1-Digest: gi+AIrF4Q0fMkttrOBBIjq9MHLM=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/HTagsInsertGroupActio
+ n.class
+SHA1-Digest: u1CfMcFX7u6P019ay9q72lw3wiI=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/CSSDialogCel
+ lEditor$1.class
+SHA1-Digest: hiXm0UM7JTDmZEkajez59y1XFXU=
+
+Name: org/eclipse/jst/pagedesigner/meta/AttributeDescriptor.class
+SHA1-Digest: ghWlQlGD4XudttyplQhKOyEwI1U=
+
+Name: org/eclipse/jst/pagedesigner/preview/PreviewConvertContext.class
+SHA1-Digest: yQv7zo6yCNDp68OzdUGKT7zKvIE=
+
+Name: icons/PD_Toolbar_source.gif
+SHA1-Digest: 0qYCjCOm4oUc1JNq7sw6fo4XBA0=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BackgroundPreferencePage
+ $2.class
+SHA1-Digest: rzVsB8N+2xaJGqxeBIQOJkSHWog=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferencePage$7.cl
+ ass
+SHA1-Digest: /nobvrZNQz61jNYbd2b2m/ZyTCE=
+
+Name: icons/library_obj.gif
+SHA1-Digest: nkL22+4kbPDTI1ASDZhct7YaLXQ=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/TableItemInfo.cla
+ ss
+SHA1-Digest: gj3lSzhHINDw0HK+68RU5Oz6oVs=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/QuickEditTabSectionsPackage.class
+SHA1-Digest: 2vgjHc9OsaeolKVqCoH6ZhWshbY=
+
+Name: org/eclipse/jst/pagedesigner/properties/attrgroup/messages.prope
+ rties
+SHA1-Digest: oUdZpFLjZE02K9gfkNj42a5IeXM=
+
+Name: org/eclipse/jst/pagedesigner/properties/WPETabbedPropertySheetPa
+ ge$2.class
+SHA1-Digest: E8Y9E1e5lJ2GtDX0WNCUC5WZ8VA=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/command/ContainerCreat
+ ionCommand.class
+SHA1-Digest: tv1XhszB5SJqvmd0X/37K4oiGj4=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/command/ElementCustomi
+ zationCommand.class
+SHA1-Digest: gZ9XPOAUXbf0Pr2lLmnjH0HqunM=
+
+Name: org/eclipse/jst/pagedesigner/dom/EditModelQuery.class
+SHA1-Digest: i1jrnwmxh4jWP1DYUMCYNxLkWDQ=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/StyleSupport.class
+SHA1-Digest: PRb7tBLIqv/X/g6zHyniPQGR8Qs=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/WPEPropertyPage$SkinCont
+ entProvider.class
+SHA1-Digest: SVX1GsOEKwLNh0sQuM7/Zs+uiAM=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/TableUtil.class
+SHA1-Digest: pNfjJo1EQe/J2qyWAPNsGfU/f0A=
+
+Name: icons/PD_Toolbar_hsplit.gif
+SHA1-Digest: zqr/7GS9JqDoc6WSqBYvlsi9qdU=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/BackgroundImageMeta.c
+ lass
+SHA1-Digest: 9Dx1ITtSYW8degZ34BzkGE0QPh4=
+
+Name: icons/PD_Toolbar_italic_disabled.gif
+SHA1-Digest: V8bp72GrCibfNAxakoH86PLdc44=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/ExtensionsPreferencePage
+ .class
+SHA1-Digest: qr8QNJKRyN/iyKUEflV4Zpb55hE=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogfields/DialogFieldWrapper$
+ 3.class
+SHA1-Digest: h+wcZXJDW7d6JQRtWAJfdKD5yAc=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/ITagDropOverrider$Defa
+ ultTagDropOverrider.class
+SHA1-Digest: xZvMCZ3ulJgd5iKfrrjtWOWPj6A=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/LengthMeta.class
+SHA1-Digest: PKiJpzeoZfN9Xo5BLM5iOeoxZxU=
+
+Name: icons/pin_up.gif
+SHA1-Digest: tusLv/4jWAop6wC/NHwwm3GyW0U=
+
+Name: org/eclipse/jst/pagedesigner/editors/DesignerStructuredTextEdito
+ rJSP.class
+SHA1-Digest: giPOrlA5rDeNwGYf5WyjRjd5dXM=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/SelectNodeAction.cla
+ ss
+SHA1-Digest: u0C0UP8KQv1YlF5MOpRMxkFLfUY=
+
+Name: org/eclipse/jst/pagedesigner/properties/AllPropertySection.class
+SHA1-Digest: zCdrLJwF3yhvlFmiqM9wIJZZB/Y=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/ResourceDial
+ ogCellEditor.class
+SHA1-Digest: BAVfcVR00nqTuZWc++TP/dz+7RQ=
+
+Name: org/eclipse/jst/pagedesigner/converter/HTMLStringTagConverter.cl
+ ass
+SHA1-Digest: 35ydM5lBNBIwf/lE1FxYv3FRLwk=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/SourceViewLocalDropCom
+ mand.class
+SHA1-Digest: MvWfe/xqYwy9zJquKCBOXnNb3hQ=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/JSFDropEditPolicy.clas
+ s
+SHA1-Digest: IMdE65lzALRmHCk3sK7uBhpxpTs=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/customizer/IWritableCu
+ stomizationData.class
+SHA1-Digest: yRMLjTkXbxcuiBnUTmSq1p7cgJQ=
+
+Name: org/eclipse/jst/pagedesigner/editors/PageDesignerActionConstants
+ .class
+SHA1-Digest: 0s1aEahz7oqN1cJmTpUiJ2jn3ek=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BackgroundPreferencePage
+ .class
+SHA1-Digest: 2J5kWK1Ejzl/KlRH2is/BJ45WQ8=
+
+Name: org/eclipse/jst/pagedesigner/utils/EntityMap.class
+SHA1-Digest: ySArtaqCsJP0g2e7Mw4pX3AwIVQ=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/OverflowMeta.class
+SHA1-Digest: gpvOYqUvBt1uDVMZvYRIX44meUk=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/FigureFactory.class
+SHA1-Digest: 3tw1WnCyx6GJISZGh3IJc2CmtX4=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/InlineEditingNavig
+ ationMediator.class
+SHA1-Digest: jFsxiEfFHAz+Y2/J9kyHQO2JeqY=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$1.cla
+ ss
+SHA1-Digest: BFssEt8rN/llHDaVZ2H9WqQFmck=
+
+Name: org/eclipse/jst/pagedesigner/editors/pagedesigner/JSPEditorMessa
+ ges.properties
+SHA1-Digest: NRqpo10ueL8sBOorA+I98dCO8bc=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/internal/TagCreatorFac
+ toryRegistryReader.class
+SHA1-Digest: P/LeRkgr/DhT2vBRn34eYDXsgXo=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$3.c
+ lass
+SHA1-Digest: bj+YOJ3YMOrsSZHp0b4n6yIFZLk=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/CSSLayout.class
+SHA1-Digest: t3gzoF15ETk/OjceS/I1cK1+aG8=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$11.cl
+ ass
+SHA1-Digest: 4GK7TdpaVgw1iyhD27/jxFu6hAM=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BackgroundPreferencePage
+ $7.class
+SHA1-Digest: M5LPYDwomwhlf8rOt7BTniiN6CU=
+
+Name: org/eclipse/jst/pagedesigner/adapters/IBodyInfo.class
+SHA1-Digest: on4tWiyHbDEdzxhrDBxuKBczsGA=
+
+Name: icons/PD_Toolbar_designer.gif
+SHA1-Digest: /ObDF4UItxayyCK5lGOu6FzyCdg=
+
+Name: org/eclipse/jst/pagedesigner/viewer/CaretUpdater$2.class
+SHA1-Digest: l1pAchfNeUqWdNym+DZul/M1DWg=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/IDTInfoFactory.class
+SHA1-Digest: 7aGT6wziEwGUwyXgbSy6QavlFkE=
+
+Name: org/eclipse/jst/pagedesigner/parts/EditProxyAdapter.class
+SHA1-Digest: a/putTFLpoiTi8bDLkCbEZWkYkc=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/ColumnResizableEditPol
+ icy.class
+SHA1-Digest: YiEvk1FaXe1Bts6gEqBUTsxrEUY=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/RegistryReader.class
+SHA1-Digest: YwzZQIbO/1objtr9zmFsoaUqZ6Q=
+
+Name: org/eclipse/jst/pagedesigner/css2/style/HiddenElementStyle.class
+SHA1-Digest: 5u7u06yfdgqu3hsaShH4k0657gc=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/impl/PaletteItemMan
+ ager$1.class
+SHA1-Digest: pFku4DCLPiKR53VbOLChlHMm89U=
+
+Name: org/eclipse/jst/pagedesigner/actions/link/MakeLinkAction.class
+SHA1-Digest: 9Vviq5a5EVrJnqSFYhhHXhDtUf0=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/html/TableElementEdit$T
+ ableResizePolicy.class
+SHA1-Digest: PbEiY1yZZe7cUUht6p5CeNwHg+k=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/ListPreferencePage.class
+SHA1-Digest: WnQdaj3wvuIDoabhDE7duBB8bJA=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/ChangeStyleAction$1
+ .class
+SHA1-Digest: 1+ZrWovDh2CvAYH561zeCKHRaw0=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/CSSMetaRegistry.class
+SHA1-Digest: h5/llu3NRzTlm6890TvNwO7VT+s=
+
+Name: org/eclipse/jst/pagedesigner/meta/IAttributeDescriptor.class
+SHA1-Digest: Rf0Rrmv1jELTb+Uak0jLJL9WCAQ=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$14.
+ class
+SHA1-Digest: 0fReppv/cMr0azxMD2Rj8USiCdA=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/AppendChildTextFromXPathOperation.class
+SHA1-Digest: Bm364dvOF+jIsPoSrCT0HKNj6pI=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/ParagraphStyleAction.
+ class
+SHA1-Digest: eWBdkrqJWOtMIOrsOt17d67mcN8=
+
+Name: org/eclipse/jst/pagedesigner/viewer/LayoutPart.class
+SHA1-Digest: tvgE6l4lQQ73HSqS/yB0560oeBs=
+
+Name: org/eclipse/jst/pagedesigner/utils/StructuredModelUtil.class
+SHA1-Digest: wdVj2aWEUV28dpCa6FL4yu5/rjU=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/TableRowInfo.clas
+ s
+SHA1-Digest: CAwmNIKnp7/wGksL09pWDRjYUgA=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/ITagDropSourceData.
+ class
+SHA1-Digest: dNXk/C7+id06vr5U6hglOraiCjo=
+
+Name: org/eclipse/jst/pagedesigner/converter/DumDeepTagConverter.class
+SHA1-Digest: mtzrQzFLzp5/jzG0iEog0R2tJio=
+
+Name: org/eclipse/jst/pagedesigner/utils/ProjectResolver.class
+SHA1-Digest: Vlu0U/qvpWU20OFWp6SvC6fRGs4=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/SkinsMenuItemBuilde
+ r$ChangeCurrentSkinAction.class
+SHA1-Digest: TAhr1vEaAsivufe7jaaHsHciYis=
+
+Name: org/eclipse/jst/pagedesigner/meta/internal/CategoryNameComparato
+ r.class
+SHA1-Digest: FOEz1S+5sJGP4mt1eIdUjL+rCYw=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/IMovementMediator.
+ class
+SHA1-Digest: cJWEJQuWkVz/7+2TJd3UJakWXPw=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/IInputSourceProvider
+ .class
+SHA1-Digest: ER75TBP2bk0CBoGogREe5CA4Vk4=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/ListStylePositionMeta
+ .class
+SHA1-Digest: otS+Lh1O6XNxEmKveoQXk6RJY9Q=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/html/HeadElementEdit.cl
+ ass
+SHA1-Digest: de62iWZZWcSJ7pAlQk3Kk+LZ8jk=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$6.cla
+ ss
+SHA1-Digest: Mk7j1gIwiW6UUA5mfA0ogggzSoY=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/MultiLineLabel.class
+SHA1-Digest: GfU/5Pcq4S/ZOburCYbGlX8C75s=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$8.c
+ lass
+SHA1-Digest: vdlSWZwANf3lFB7FPJkw1gtUBWY=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/Messages.class
+SHA1-Digest: Lm0fITZsS7vGfg/c2jkbHNRlxm0=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferencePage$10.c
+ lass
+SHA1-Digest: krMGdNvsikemgAYoJ9Nxf+BYO1w=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/AbstractElementEditFact
+ ory.class
+SHA1-Digest: zyaffS8fZaxz0DiKnbwu5pfX400=
+
+Name: org/eclipse/jst/pagedesigner/actions/link/LinkRequest.class
+SHA1-Digest: 2BeNrc6C0MxlMRrQ7GIA8z4hvqM=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/DropActionData.cla
+ ss
+SHA1-Digest: mSvG2dRAuzgnM0SIKcrpWzdigLs=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/DnDPositionValidat
+ or.class
+SHA1-Digest: GRxJqMfyB6//oIrVeqeenb326ro=
+
+Name: icons/palette/GENERIC/large/PD_Palette_Default.gif
+SHA1-Digest: 5fmvm9j6tjBjdq/dUYfvZIA8pQI=
+
+Name: org/eclipse/jst/pagedesigner/css2/list/HTMLListInfoHelper.class
+SHA1-Digest: 994+613eXZ1PZWQE8UmprPkYP8Q=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/LabeledStyle
+ ComboCellEditor.class
+SHA1-Digest: ch7AIENiGnq+Tcch+H8+sWbB7hg=
+
+Name: icons/PD_Binding_disabled.gif
+SHA1-Digest: 6y+467zbJpTUafOauQPxaEOjoXI=
+
+Name: org/eclipse/jst/pagedesigner/css2/widget/ComboWidgetProvider.cla
+ ss
+SHA1-Digest: BlduefSlK5NKF1x8mhDPdBsXzek=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/command/UserCustomized
+ ContainerCreationCommand.class
+SHA1-Digest: 5BIgKwjQ7LtT8ste+pzfsmqZDAM=
+
+Name: org/eclipse/jst/pagedesigner/dom/html/TableChildElementPosition.
+ class
+SHA1-Digest: mB6nOTwaRqjrtRkHW5F9dts8v58=
+
+Name: org/eclipse/jst/pagedesigner/commands/single/ChangeTagCommand.cl
+ ass
+SHA1-Digest: KHwQn3XHkM8vfSCObRwoFAHWzq4=
+
+Name: icons/LineBreak.gif
+SHA1-Digest: I3EP6EUcwrgNKKcwzdtAtxsIjfM=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/Messages.class
+SHA1-Digest: lxLmD0IHuKwPuZyoCcl/kZ5fh6Y=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/MakeParentElementCurrentOperation.class
+SHA1-Digest: d/3HX0M1t+jdsj5TxSDocWrL5o8=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/PositionMeta.class
+SHA1-Digest: oeLzGrb6cgt8IUDmSUELxfq9ZCE=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferenceNode.class
+SHA1-Digest: 2Df1MOnOqG6acFUTyJSvO0WGyyk=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/TextFragmentBox.class
+SHA1-Digest: Mh9SZQc1SHnjZUOJFMlkTnMDm44=
+
+Name: org/eclipse/jst/pagedesigner/commands/single/RemoveSubNodeComman
+ d.class
+SHA1-Digest: YTyAkAnw4yabqPKY5HMa/wZsJv4=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/internal/Defaul
+ tTransformer.class
+SHA1-Digest: 72oS5Gbkw94RhmPcs/H2AT4MP44=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/SkinsMenuItemBuilde
+ r.class
+SHA1-Digest: IshRJ49ytNexJRKqmNGuaEWLJ4A=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/impl/TaglibPaletteD
+ rawer.class
+SHA1-Digest: lyjPXizYXKV92Nac0UEU1E59/TM=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/SimpleWizardSelectionP
+ age$3.class
+SHA1-Digest: OeNIWNi6zIWWbwejoflICLS4mMc=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/CSSWidgetLayout.class
+SHA1-Digest: bT4O/GOzbypI6x1qyHL52Fz0fvQ=
+
+Name: org/eclipse/jst/pagedesigner/actions/link/ILinkCreator.class
+SHA1-Digest: 4MMfjNdiF2aDzSQCOYr9+WsihY0=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/IOutputRenderer
+ .class
+SHA1-Digest: tqLLSPk5FTdsD529sc2hGGKl8Tc=
+
+Name: org/eclipse/jst/pagedesigner/range/RangeUtil.class
+SHA1-Digest: kJxDCF9g7Z2GKvYooJ8bKb0gC6s=
+
+Name: org/eclipse/jst/pagedesigner/commands/MoveNodeCommand.class
+SHA1-Digest: KHrt97csqNnsA6+GvkOSt+H3UaM=
+
+Name: org/eclipse/jst/pagedesigner/css2/style/DefaultStyle.class
+SHA1-Digest: 0deh/EsLFEFe0+nQt6Prb+tKSME=
+
+Name: org/eclipse/jst/pagedesigner/properties/NavigationHiearchyAction
+ $MenuCreator.class
+SHA1-Digest: 0a6ksjV5mZKrBlvO+QE1AuvkbqM=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/PaddingWidthMeta.clas
+ s
+SHA1-Digest: qWL/pc/SyieCOY50UUbScdt+0Q4=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferenceNod
+ e.class
+SHA1-Digest: osaSQI6k/9mxxoTabHuvt6jyA6Q=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/ResourceOnClasspathDialog
+ $ResourceOnClasspathFilter.class
+SHA1-Digest: NnVp53CS/QN5fJe4oi14UpNLl8k=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/inte
+ rnal/IterateOverElementsOperation$NSContext.class
+SHA1-Digest: nHYAu8Fwt6m6q997ct34ch0rfAg=
+
+Name: org/eclipse/jst/pagedesigner/dtresourceprovider/ProviderClassMap
+ .class
+SHA1-Digest: KwZd29DrzggKQZLRGXDFDpSTrmc=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/ManageSkinsAction$M
+ enuCreator.class
+SHA1-Digest: NkEOJsCDrRan0fQCn331DGB/FrY=
+
+Name: org/eclipse/jst/pagedesigner/commands/html/TableResizeRowCommand
+ .class
+SHA1-Digest: /bSdmVw6Mf3QgPFISVvCq8n6zRs=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/HeadItemCreationEditPo
+ licy$MyDnDPositionValidator.class
+SHA1-Digest: L9n0qrHRKw19EtKO+ohcwCEdhyI=
+
+Name: icons/PD_Binding.gif
+SHA1-Digest: H+2m51BerrT1juXbnqeFP/+gBn4=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/SingleElementActionG
+ roup$4.class
+SHA1-Digest: rPJfoLEv1v2ouWMqi0+i06M0ONo=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/EmptyLocator.class
+SHA1-Digest: P2AlSeZFU6dfN3ZZo6vxzvkdW84=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$10.class
+SHA1-Digest: WvtMUCkS9Zb4tbyLKdHtBF6a52M=
+
+Name: org/eclipse/jst/pagedesigner/css2/widget/CheckboxWidgetProvider.
+ class
+SHA1-Digest: 5WdDjuQtt6oeZLiL0sT17MvE3dc=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$4.clas
+ s
+SHA1-Digest: 8XoTOi2thXsjzFbwkbZi605jqJs=
+
+Name: org/eclipse/jst/pagedesigner/utils/ICacheEntryCreator.class
+SHA1-Digest: i2awQ9XHuVpPt1LbadDuz0mJq08=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/FloatInfo.class
+SHA1-Digest: r/jA0Osh1pz+8hAJy5hy90LckkY=
+
+Name: org/eclipse/jst/pagedesigner/properties/ISectionFilter.class
+SHA1-Digest: PVyrYivdgaPgOxTr9xtficU+UIA=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/HeadDataPositionRu
+ le.class
+SHA1-Digest: Jc81zHn/dwnpsrVS/EL7m1GcqQ0=
+
+Name: org/eclipse/jst/pagedesigner/properties/attrgroup/IElementContex
+ table.class
+SHA1-Digest: Liqn2P6MOXJUZ2Ce7g/qdO4ts18=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/PositionOffsetMeta.cl
+ ass
+SHA1-Digest: BVOBVHrJOgaq/jQMNCoIwgLv4A0=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$21.class
+SHA1-Digest: CCTrI0EYgtqr4dkraBh1TzYuGCs=
+
+Name: .options
+SHA1-Digest: JjxJZTYJvdKj96LKZeqQxLc52Vo=
+
+Name: org/eclipse/jst/pagedesigner/dnd/LocalDropRequest.class
+SHA1-Digest: wVqtOOE/tYyiEB5e3PM0X3+qr+k=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/ElementEditFactoryRegis
+ try.class
+SHA1-Digest: whXkx0nnlRgvAYyjR0nRTGccwf4=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/BoxUtil.class
+SHA1-Digest: 79bl+Vlo3as0LFc2vvZhC1kz67g=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/NullQuickEditTa
+ bSection.class
+SHA1-Digest: hKzgUBuCP+S9lzqjM7KBuMxC44w=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableResizableEditPolicy.
+ class
+SHA1-Digest: hGkwkuAKaV5vTytysDKVbQoAZwE=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/ListPreferencePage$1.cla
+ ss
+SHA1-Digest: o6nHPkPzKdzT/aIK8+Sr1T16aYs=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/FlowContainerLayout.cla
+ ss
+SHA1-Digest: ywW/DEAV57nKxCeeCar5QwZoT/M=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogfields/StyleButtonDialogFi
+ eld.class
+SHA1-Digest: Elzg0T9b7l/cNHwLgz7CBeiFpyY=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/ICSSPropertyID.class
+SHA1-Digest: QJCi+tYk6depE+UEeIIsUrwE/iA=
+
+Name: plugin.properties
+SHA1-Digest: frCoG1QTnuByxC5IEsnBZ71WhnE=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/FragmentCornerHandle.c
+ lass
+SHA1-Digest: Qx5ADiqw0GYtjnU5H25No7y5rSY=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$15.class
+SHA1-Digest: dUHwyFOpPn/xHuvukFE2Iz/77Yg=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/CSSBrFlowLayout.class
+SHA1-Digest: 9EtDnSAo1rrFvqmpklWONQlL84Q=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$9.clas
+ s
+SHA1-Digest: F0BLYppZEzxIm9rF/J386zzkUCI=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/ElementEditFacRegistryR
+ eader.class
+SHA1-Digest: nsYN6vpKud0qtLx3DEWi7vsRo6k=
+
+Name: schema/popupMenuContributor.exsd
+SHA1-Digest: GT99acVruYSDOQKeCcEak4hQ46Y=
+
+Name: org/eclipse/jst/pagedesigner/utils/WebAppUtil.class
+SHA1-Digest: /NgxM5XvYXAUC8nMoHuWjyOXdps=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/StyleCombo$1.class
+SHA1-Digest: Vq8jI21gPvscsV9YM8P3DLnCzDI=
+
+Name: org/eclipse/jst/pagedesigner/commands/single/AddSubNodeCommand.c
+ lass
+SHA1-Digest: yMyvIidWLlCQq/NC6DdNuK8+6DY=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/AttributeGroupS
+ ection.class
+SHA1-Digest: qy+wsxCBhxJKBJJR/YCpb5Lvl90=
+
+Name: org/eclipse/jst/pagedesigner/commands/html/TableResizeColumnComm
+ and.class
+SHA1-Digest: gKSAttWKIQh2mCuQtpN2I9otz/s=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$2.class
+SHA1-Digest: nady4YtbIPd/YptsCztOucCiJJI=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$11.cla
+ ss
+SHA1-Digest: m3mK6MvFjxZEgh9T6CR/KSLsnmw=
+
+Name: plugin.xml
+SHA1-Digest: 5TpP4UGM/kG0tvKN26xaecJXCpQ=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/CachedTableCellLa
+ yout.class
+SHA1-Digest: m2q1QWFphMuO+CYqnUhRA/QJtQU=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/html/HeadElementEdit$1.
+ class
+SHA1-Digest: gIPHqxzvY1J38FmkDrdT1Glv4E4=
+
+Name: org/eclipse/jst/pagedesigner/meta/BindingHandlerDelegate.class
+SHA1-Digest: o7emX/hwT+cwUojMCsOHYtx/Y1k=
+
+Name: org/eclipse/jst/pagedesigner/css2/widget/BorderUtil.class
+SHA1-Digest: TEoQQEtb5FPZ2lgK/M+LoUMKl2g=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/sash/SashEditorPart$5.cla
+ ss
+SHA1-Digest: qKHIbns7MYuOHBx0tzNtGgbZ89Y=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/ChangeStyleAction.c
+ lass
+SHA1-Digest: uFWBfpQUcb17xvRB3MfHEvgq4vA=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/DTInfoPackage$Lite
+ rals.class
+SHA1-Digest: DMyb9I7Zio4rzcHlVIBGmGz3bfU=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/SelectFigureHandler.c
+ lass
+SHA1-Digest: U/z7kxCEWCnUWypW3+TccJUMgZk=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/HeightMeta.class
+SHA1-Digest: lASt5xrUaQ382li8PvEPUkOFtkU=
+
+Name: org/eclipse/jst/pagedesigner/JMTResources.properties
+SHA1-Digest: 4VBLVGvSv/Q1i+SX4K0VLABBewg=
+
+Name: org/eclipse/jst/pagedesigner/actions/container/ContainerActionGr
+ oup.class
+SHA1-Digest: 0d7rB5Ryo9fAQp7wedgQIiSz9iE=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableRowHandle.class
+SHA1-Digest: W5bcc7bOv75novL/MQDtGpY+Ysc=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableSideItemHandle.class
+SHA1-Digest: fBYSFAwaiF0MKI76ZDBAYmuRkX0=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/ItemCreationEditPolicy
+ .class
+SHA1-Digest: bcF2qHu5pU7KcPvJNAQ6vPFw+nA=
+
+Name: org/eclipse/jst/pagedesigner/converter/jsp/IncludeTagConverterPr
+ eview.class
+SHA1-Digest: UM7XhBMxx/XGZBKrVjB4WP0Hg74=
+
+Name: org/eclipse/jst/pagedesigner/converter/ConverterUtil.class
+SHA1-Digest: xan1CrunLi3ixu20c9rWPYMMobM=
+
+Name: org/eclipse/jst/pagedesigner/dtresourceprovider/DTResourceProvid
+ erFactory.class
+SHA1-Digest: nir3/+N0snDQ2bD/3n8pxxKwgN0=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/RangeActionGroup$2.cl
+ ass
+SHA1-Digest: lYfEAgJFHqNS6tVjUanmYGmM/LA=
+
+Name: org/eclipse/jst/pagedesigner/properties/ITabbedPropertiesConstan
+ ts.class
+SHA1-Digest: O5w36Fnq795RIBVloKoKdikW4FU=
+
+Name: org/eclipse/jst/pagedesigner/css2/font/ICSSFontManager.class
+SHA1-Digest: s55lmhrplRh+0dzwzaerS8DPOoI=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/SelectEditPartAction
+ .class
+SHA1-Digest: KEXu8CQt92QQUTnB3BCJSv/EJ7U=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/CSSPageFlowLayout.class
+SHA1-Digest: al+YfrNBoHVirFKJ/uV1PxgB34U=
+
+Name: icons/palette/GENERIC/small/PD_Palette_Default.gif
+SHA1-Digest: 0I4vhZElkaCeS+CVuv1V7+rGINc=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/internal/impl/Oper
+ ationImpl.class
+SHA1-Digest: c85vLsEiw0VoQc4nfzUWRE6Inq8=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/jsp/TaglibElementEdit.c
+ lass
+SHA1-Digest: PmoaOeX3ifFdOxwpUQ9bHy7UDB8=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/internal/util/DTIn
+ foSwitch.class
+SHA1-Digest: 1uHsVrZvp/FjyqI4ASpWPpVK7RM=
+
+Name: org/eclipse/jst/pagedesigner/editors/HTMLEditor$4.class
+SHA1-Digest: SWRXZbPSdbkCz5UR5/N5OXq4I1w=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/ExtensionsPreferenceNode
+ .class
+SHA1-Digest: iucSQii+7lDmsh1eo2/+ELycHRE=
+
+Name: org/eclipse/jst/pagedesigner/meta/internal/CellEditorFactoryRegi
+ stry.class
+SHA1-Digest: F0FjTnzKDcgTWA1klAOhcots+e4=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/Target.class
+SHA1-Digest: AKr2fpawMnwui9xftLccuYrp45k=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/PositioningPreferencePag
+ e$7.class
+SHA1-Digest: D2NOYHBtFsqMqT5xb6f84S/JLos=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BoxPreferencePage$16.cla
+ ss
+SHA1-Digest: RTPCGvQlwwAK9v/9dTsVnGBi8hk=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/FlowFigure.class
+SHA1-Digest: mvhiM+TvVFXwzlSzHHnmGCsxXkQ=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/impl/PaletteHelper.
+ class
+SHA1-Digest: 5yVVxQHYioi8RxjjdEoVmU6BtqQ=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/InlineEditingPosit
+ ionMediator.class
+SHA1-Digest: b9zlDVAlFC4mPZpM53pQsFKHpQc=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/DragMoveEditPolicy.cla
+ ss
+SHA1-Digest: JdQ7unTrJ1OLY56v1QzcPmDQo/A=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/ElementDecoratorSquare
+ Handle.class
+SHA1-Digest: TXyCtX3u8CHUjVHe7X8RzqE/Lz8=
+
+Name: org/eclipse/jst/pagedesigner/converter/HiddenTagConverter.class
+SHA1-Digest: rR/NwRkt7kC97XrY9Bxzx321ks4=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/BlockBox.class
+SHA1-Digest: he9Pcny9g03K0EK7JH71PFBUF6E=
+
+Name: org/eclipse/jst/pagedesigner/actions/link/LinkUtil.class
+SHA1-Digest: PFsWTTMch4bn6UdaQkm5TlA088o=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/Abst
+ ractTransformOperation.class
+SHA1-Digest: ceypwF3UgjYr1e8CtdGhntIn8gA=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/TextAlignMeta.class
+SHA1-Digest: l4snCLGG9GE2JxRFwc51f2FdN6Q=
+
+Name: org/eclipse/jst/pagedesigner/properties/BaseCustomSection.class
+SHA1-Digest: Ap4aRcYVbgXdnrwIkjSentgMJVQ=
+
+Name: org/eclipse/jst/pagedesigner/css2/style/ITagEditInfo.class
+SHA1-Digest: u05fmOfVEUXRbi2rRwwdPr8ZaLk=
+
+Name: icons/newsuade_wiz.gif
+SHA1-Digest: rsdcAzZ+bs3jAD/Ph2rJ7qKg9gI=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/CellEditorWr
+ apper$3.class
+SHA1-Digest: e9S+OuG4/odzEUoX/hUJVaKSyNc=
+
+Name: org/eclipse/jst/pagedesigner/actions/link/AbstractLinkCreator.cl
+ ass
+SHA1-Digest: psGbDIYKF7DYFVkmDQrwTOJ3u3A=
+
+Name: org/eclipse/jst/pagedesigner/preview/IELValueResolver.class
+SHA1-Digest: izgy51bFlYb1uLb+C7Z20UUD+g0=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/CSSDialogCel
+ lEditor.class
+SHA1-Digest: +fuOgABlKkECnBZ52jRfTc+QM1E=
+
+Name: icons/PD_Toolbar_underline_disabled.gif
+SHA1-Digest: mPvZimbvNRaJbpb8Lebef9KKTsg=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/html/TableElementEdit.c
+ lass
+SHA1-Digest: AaSnKx3XoDrvY/J3hNm7eSkBlHY=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/BorderCollapseMeta.cl
+ ass
+SHA1-Digest: StfQowNmKO0/5i/1gbI0Dhn2GDM=
+
+Name: org/eclipse/jst/pagedesigner/css2/CSSTempUtil.class
+SHA1-Digest: VettC3JUu7PtPKsR+ahBknftnjk=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/TagToolCreationAdap
+ ter.class
+SHA1-Digest: CgbmJ2fIf2ot/aVPZAibfh8KDHk=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/QuickEditTabMan
+ ager.class
+SHA1-Digest: UHFYB1DOaVfoCcYRH/0Mt1o4STw=
+
+Name: org/eclipse/jst/pagedesigner/commands/SwitchSelectionCommand.cla
+ ss
+SHA1-Digest: PjFeJSMqNFwN1oHQ+yESW9eBRfs=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/ResolveAttributeVa
+ lue.class
+SHA1-Digest: l9c0CqflYWUmweeo2+BFbVSgA1Y=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/TableResizeRequest.class
+SHA1-Digest: ueEa7WIlw99a/mCvIeuB7dxX0Qk=
+
+Name: org/eclipse/jst/pagedesigner/actions/single/Messages.class
+SHA1-Digest: qVtALtjfPWjLZkl7GgPUWsZ72Ak=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/ColorUtil.class
+SHA1-Digest: 2jVllkgw4JT121CRQeh/PkS1jmY=
+
+Name: org/eclipse/jst/pagedesigner/commands/range/CutCommand.class
+SHA1-Digest: 8ijRt88/bFX5stO8vMjjLxb14Dk=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/internal/TagCreationFa
+ ctory.class
+SHA1-Digest: 60tj8nJIzxH8euePG4D+mDF7JLs=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/customizer/AttributeDa
+ ta.class
+SHA1-Digest: Q5pArE28LF3NBTwMZE25T2WKTZQ=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BlockPreferencePage$5.cl
+ ass
+SHA1-Digest: tqTIbTC9DaKopaLcgCIlmnLoRPI=
+
+Name: org/eclipse/jst/pagedesigner/requests/PageDesignerRequestConstan
+ ts.class
+SHA1-Digest: qQRfybbfi1U1oGIZ/gPv7j97IJQ=
+
+Name: org/eclipse/jst/pagedesigner/itemcreation/AbstractTagCreationAdv
+ isor.class
+SHA1-Digest: oOPgF6PvxT+osD3uY6LA16ePfZQ=
+
+Name: org/eclipse/jst/pagedesigner/commands/nav/ICaretPositionMover.cl
+ ass
+SHA1-Digest: JDR/TOc2cJALUmJIddIBiT3QoRY=
+
+Name: org/eclipse/jst/pagedesigner/commands/CopyNodeCommand.class
+SHA1-Digest: eWIqG9/h4QlvzIofVKxfetAdzXc=
+
+Name: org/eclipse/jst/pagedesigner/actions/range/RangeStyleAction.clas
+ s
+SHA1-Digest: Evp41M6BYwkKmBUT2+ct7nC4/p4=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/FontFamilyMeta.class
+SHA1-Digest: 4WSPTSiysg4mc9x/L9hiSFW1N28=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/Debug.class
+SHA1-Digest: aeXCYQ9lxh8bMInR3qQQUIfOD1I=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/BasicLabelToolTip$1.cl
+ ass
+SHA1-Digest: A/lcmUEHrD+Y4sHQUoNpPuikJKI=
+
+Name: org/eclipse/jst/pagedesigner/commands/CommandResources.propertie
+ s
+SHA1-Digest: Aq0OmYgFxbdExBMBB392+Xb59zw=
+
+Name: org/eclipse/jst/pagedesigner/editors/HTMLEditor$9.class
+SHA1-Digest: LnCj1H7ggncgymVTyPu7uCuCvpQ=
+
+Name: org/eclipse/jst/pagedesigner/viewer/HTMLGraphicalViewerListenene
+ rAdapter.class
+SHA1-Digest: 1a6svkmPNGZWoUL/sC8qEsvgMA8=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/InsertRowColumnAction.cla
+ ss
+SHA1-Digest: elyOLjXXyRrTSnZseW8vK6Ob8tA=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/TableInfo.class
+SHA1-Digest: dEBqWbrMUmwlDpp1exiM1iih+Po=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/ListPreferenceNode.class
+SHA1-Digest: zDDzGV4qLA91brAILIAJrURIIvE=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogfields/DialogFieldWrapper$
+ 1.class
+SHA1-Digest: d18jEZD051oKmR35yWcamRSdVgE=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/dtinfo/internal/impl/Reso
+ lveAttributeValueImpl.class
+SHA1-Digest: GwjGWXoV6YeyS/ImTHRX1yjfTX0=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/MouseSelectableChildDe
+ corator.class
+SHA1-Digest: 7HRXzrZgOpGiQbn3iftNXOi11Us=
+
+Name: org/eclipse/jst/pagedesigner/dnd/FeedBackInfo.class
+SHA1-Digest: qv5hxqu7grBXAu9MFS+CU0/zCu8=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/IElementEditFactory.cla
+ ss
+SHA1-Digest: dTFHeLS68YoNu4MGSbIHqQG/qZE=
+
+Name: org/eclipse/jst/pagedesigner/dom/ValidatorSupport.class
+SHA1-Digest: xA82jXz7s3cNC0CGE4ZBIX+26Dw=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/CommonResourceDialog$Proj
+ ectFileDialogContentProvider.class
+SHA1-Digest: ejASHM+a9SdGIeeKO00tQRF6KIg=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/FigureUtil.class
+SHA1-Digest: 1zjry2o1j7cuWVyNOMObJOQXEkc=
+
+Name: org/eclipse/jst/pagedesigner/ui/common/TreeViewerSelectionDialog
+ $1.class
+SHA1-Digest: vqgC1r2jwLG6z+u0u1GXmaikDgk=
+
+Name: org/eclipse/jst/pagedesigner/validation/caret/JSFRootContainerPo
+ sitionRule.class
+SHA1-Digest: 0LR72dMFff6QLf42AJQW1Dqd25c=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/ExtensionsPreferencePage
+ $3.class
+SHA1-Digest: xHNeyB635lIO8ynE9oQk6vc2vbk=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/FontStyleMeta.class
+SHA1-Digest: 0FHYarwAZTDDvfmxKCZ1HYlWQxA=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/AbsolutePointLocator.c
+ lass
+SHA1-Digest: 7MhV3JRlQMYlqCii1z0oMIWRMTo=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/BlockFlowContext.class
+SHA1-Digest: oRZEITirbLHffuNe28zQxAPjgDI=
+
+Name: org/eclipse/jst/pagedesigner/meta/internal/CategoryNameComparato
+ r$Pair.class
+SHA1-Digest: +FKD5LpJLbp0GJVPdZDqexxcr9k=
+
+Name: org/eclipse/jst/pagedesigner/css2/list/CounterHelper.class
+SHA1-Digest: /mNcO8LUf98skiNDpNShTpp6R28=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/StyleCombo.class
+SHA1-Digest: WFz1PAB7vLX3z4re1G+kVlK8D0c=
+
+Name: org/eclipse/jst/pagedesigner/css2/marker/DecimalCounter.class
+SHA1-Digest: qzuxiHzGEz5oNuj+DfmoNbTQl6Q=
+
+Name: org/eclipse/jst/pagedesigner/properties/WPETabbedPropertySheetPa
+ ge.class
+SHA1-Digest: Y1EjcqfjTUIlPpMdcMu8eAmQ2Vk=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/EmptyCellsMeta.class
+SHA1-Digest: 1KckqO6IhTGiaI7tpFeG8ounZ7E=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogfields/ClasspathResourceBu
+ ttonDialogField$MyStringButtonAdapter.class
+SHA1-Digest: T3p7Z3sDtFIc7D91+r4ZdT3I9kM=
+
+Name: org/eclipse/jst/pagedesigner/commands/single/SingleNodeCommand.c
+ lass
+SHA1-Digest: t7YaTi2ZmTTKCNwRESiCnT/FFrw=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$1.c
+ lass
+SHA1-Digest: muKQMdy/B58jdfL8JW4THdWRpQI=
+
+Name: org/eclipse/jst/pagedesigner/utils/SelectManyHelper.class
+SHA1-Digest: y1qAKtfl8LDq7FKDMNEtjmv54o4=
+
+Name: org/eclipse/jst/pagedesigner/PDPlugin.class
+SHA1-Digest: s+VbU0ow1niKXOwOdBVjzTRqrqw=
+
+Name: org/eclipse/jst/pagedesigner/parts/DocumentEditPart.class
+SHA1-Digest: feDXFB1S39aCzVDpguyWEMCjoeY=
+
+Name: org/eclipse/jst/pagedesigner/css2/font/CSSFontManager$1.class
+SHA1-Digest: zlu9uThcYBnrBiEbY1oc7Vo4NKM=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BackgroundPreferencePage
+ $5.class
+SHA1-Digest: 9HufvgEKsKEKo8aHoTeRWqKuAkI=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/DisplayMeta.class
+SHA1-Digest: nHjd3H3JkXWGfnJXu5tWgsnUSng=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/QuickEditTabSectionsFactory.class
+SHA1-Digest: +bxM1MqHV8RQDOsO0PkE8sgCNuY=
+
+Name: org/eclipse/jst/pagedesigner/css2/color/CSSColorConverter.class
+SHA1-Digest: ZQ+zRXHYLglKTG/EgWRnN4zeEQU=
+
+Name: org/eclipse/jst/pagedesigner/properties/internal/WPETabPropertyS
+ ectionDescriptorProvider.class
+SHA1-Digest: bWKV4jMv0FBZtPCEoVxi1danE30=
+
+Name: icons/PD_Plugin.gif
+SHA1-Digest: DOPX1vcaw/4r/5Ego7B+XivBJDQ=
+
+Name: org/eclipse/jst/pagedesigner/editors/SimpleGraphicalEditor$3.cla
+ ss
+SHA1-Digest: vLmxOZvNa91wRZg9oIhlFAEGZuo=
+
+Name: org/eclipse/jst/pagedesigner/editors/properties/quickedittabsect
+ ions/internal/util/QuickEditTabSectionsAdapterFactory$1.class
+SHA1-Digest: Q0+hoIUjRusWggTFrYs5pfcSM9Y=
+
+Name: org/eclipse/jst/pagedesigner/editors/actions/RelatedViewActionGr
+ oup$1.class
+SHA1-Digest: 15qG2pENzrIoHxH0pj5WIvoxjOs=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/RowResizeHandle.class
+SHA1-Digest: RpB+eEUExzWWQR6TJ2lG3mIF9Y0=
+
+Name: org/eclipse/jst/pagedesigner/actions/menuextension/RunAction.cla
+ ss
+SHA1-Digest: vm28u4LAtq1b/GjBCkdklXb0r6o=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/LabeledStyle
+ ComboCellEditor$1.class
+SHA1-Digest: 45qEv6GRR7TeK6r/wSw5ZW04uL8=
+
+Name: org/eclipse/jst/pagedesigner/editors/palette/DesignerPaletteCust
+ omizer.class
+SHA1-Digest: hbvwOSAIVKzuD1aUOarB9M21LJA=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/DeleteRowColumnAction.cla
+ ss
+SHA1-Digest: QBHWQjVwHnR1euB8ietcdvPj0yg=
+
+Name: org/eclipse/jst/pagedesigner/dtmanager/converter/operations/Tran
+ sformOperationFactory.class
+SHA1-Digest: 2/Qvus5qZB6Ey8R8NETcsjSKb88=
+
+Name: org/eclipse/jst/pagedesigner/elementedit/html/HTMLElementEditFac
+ tory.class
+SHA1-Digest: 4WcgbgX35lwDxLFjzjYVh6p+H2E=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$12.
+ class
+SHA1-Digest: dEei+h6KgUnVUiGffdPJL2WTunQ=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/BRFigureHandler.class
+SHA1-Digest: 1cVDXrKgl/Id8ruLlLhEokiJYco=
+
+Name: org/eclipse/jst/pagedesigner/figurehandler/Messages.class
+SHA1-Digest: KW/rjn5FzA8S1xO/tctsjH0bj0o=
+
+Name: org/eclipse/jst/pagedesigner/converter/DumTagConverter.class
+SHA1-Digest: RPIhE1L/uPJ9oRCVcsbycJqoD18=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/DesignerElementEditPol
+ icy.class
+SHA1-Digest: KihQ/R8qDLNCqVKNTF3p+hmlwV0=
+
+Name: org/eclipse/jst/pagedesigner/commands/html/TableInsertHeaderFoot
+ erCommand.class
+SHA1-Digest: JpabsgA/MjE5VVjGqxblGTKH0LE=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/PolicyHelper.class
+SHA1-Digest: T0XRyX0YYnGoGCxJwIoXsg3t55w=
+
+Name: org/eclipse/jst/pagedesigner/utils/IWorkbenchAdapterFactory$1.cl
+ ass
+SHA1-Digest: lz4TQ9CRL1shgco6u7kI9iNi7ak=
+
+Name: org/eclipse/jst/pagedesigner/dtresourceprovider/DTSkinManager.cl
+ ass
+SHA1-Digest: UvIeOdSJhSFOvYNatEvk7tpqFP4=
+
+Name: icons/MoveHandle.png
+SHA1-Digest: oVBbioRfmo/JpvrrbAMBs8G9IwE=
+
+Name: org/eclipse/jst/pagedesigner/editors/SimpleGraphicalEditor$Conte
+ xtMenuListener.class
+SHA1-Digest: SyYeF+ngRH1x8H2FoMGq4qZz2po=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$4.cla
+ ss
+SHA1-Digest: Mf8ph/vyVgf2SI6sKgBfdVcJZ54=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/BorderPreferencePage$6.c
+ lass
+SHA1-Digest: aUkgIRmUSgl9ObxuCiVHveYCMIw=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/table/CSSTRGroupLayout.
+ class
+SHA1-Digest: istr+0iLBi6ZbNEHy+DUIu71gmU=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/TextPreferencePage$14.cl
+ ass
+SHA1-Digest: bsIJlTBsQSi5ZwmQlBBWNNv4HIA=
+
+Name: org/eclipse/jst/pagedesigner/parts/RefresherFactory.class
+SHA1-Digest: rH3Lv3bojJd1fS3/K46rgqXCnCQ=
+
+Name: org/eclipse/jst/pagedesigner/ui/preferences/PDPreferences.class
+SHA1-Digest: 8oMZ79RnKdcSabo81O8+j679Mrg=
+
+Name: org/eclipse/jst/pagedesigner/converter/ConverterFactoryRegistry.
+ class
+SHA1-Digest: 60qpE1k13ofXFaqU9jDfGN6tqmk=
+
+Name: org/eclipse/jst/pagedesigner/properties/DesignerPropertyTool.cla
+ ss
+SHA1-Digest: bEcTJp5ykux08+bvSoZlQcVxhps=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/LabeledCombo
+ BoxCellEditor.class
+SHA1-Digest: 0/0reF3yLg4Cy33z1kGyIP8raH8=
+
+Name: org/eclipse/jst/pagedesigner/viewer/AbstractDropLocationStrategy
+ .class
+SHA1-Digest: ROCDa0xW/z+t96HylmeOjVyb+oQ=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/BlockFlow.class
+SHA1-Digest: 9akHkpW8aEjRsfPn4rn8DTcwwMo=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/ColumnHelper.class
+SHA1-Digest: 02nmFsxSjSmfnWTAM1+uQUVJIH0=
+
+Name: org/eclipse/jst/pagedesigner/properties/celleditors/StyleComboCe
+ llEditor$3.class
+SHA1-Digest: +cBpx5ha+GKoXMXnOuxEyjlBrH4=
+
+Name: org/eclipse/jst/pagedesigner/ui/dialogs/WPEPropertyPage$TaglibLa
+ belProvider.class
+SHA1-Digest: 0M3UAnex6y5GIa7EwPQswXnjVsU=
+
+Name: org/eclipse/jst/pagedesigner/tableedit/ColumnResizeHandle.class
+SHA1-Digest: IObIyyN6CvsICcjPnWzSVI19lis=
+
+Name: org/eclipse/jst/pagedesigner/actions/menuextension/CustomedConte
+ xtMenuActionGroup.class
+SHA1-Digest: UZzjUCNmUUEBYZp+bFGhJbYHXFI=
+
+Name: org/eclipse/jst/pagedesigner/dnd/internal/SimpleWizardSelectionP
+ age$1.class
+SHA1-Digest: DcRbrzLWZmZw0AR6OCv0zdwHQ5k=
+
+Name: org/eclipse/jst/pagedesigner/css2/layout/DisplayToLayout$1.class
+SHA1-Digest: P6Ad7zC3hZCAZh3rNPJbK82cjUM=
+
+Name: org/eclipse/jst/pagedesigner/css2/property/BorderStyleMeta.class
+SHA1-Digest: sgI6Q1iyfW/VWUHMhjBmZnMmUfY=
+
+Name: org/eclipse/jst/pagedesigner/editpolicies/MouseSelectableChildDe
+ corator$3.class
+SHA1-Digest: AKoOYZl+QPGiS8PzFIvGXlknl08=
+
