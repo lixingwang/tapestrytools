@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<!-- Tapestry realtive new wizard --> 
+	<extension
+         id="TapestryUIWizards"
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="%tapestry.ui.views.category.name"
+            id="org.eclipse.wst.web.tapestry.ui">
+      </category>
+      
+      <wizard
+            name="%NewTapestryPage_tml"
+            icon="icons/tapestry.gif"
+            category="org.eclipse.wst.web.tapestry.ui"
+            project="true"
+            class="org.eclipse.jst.tapestry.ui.internal.wizard.AddTapestryNewWizard"
+            finalPerspective="org.eclipse.wst.web.ui.webDevPerspective"
+            id="org.eclipse.wst.web.tapestry.ui.internal.wizards.TapestryPageWizard">
+         <description>
+            %NewTapestryPage_des
+         </description>
+         <selection
+               class="org.eclipse.core.resources.IResource">
+         </selection>
+      </wizard>
+      
+      <wizard
+            name="%NewTapestryComponent_tml"
+            icon="icons/tapestry.gif"
+            category="org.eclipse.wst.web.tapestry.ui"
+            project="true"
+            class="org.eclipse.jst.tapestry.ui.internal.wizard.AddTapestryComponentWizard"
+            finalPerspective="org.eclipse.wst.web.ui.webDevPerspective"
+            id="org.eclipse.wst.web.tapestry.ui.internal.wizards.TapestryComponentWizard">
+         <description>
+            %NewTapestryComponent_des
+         </description>
+         <selection
+               class="org.eclipse.core.resources.IResource">
+         </selection>
+      </wizard>
+	</extension>
+  
+	<extension point="org.eclipse.ui.propertyPages">
+    <page
+          adaptable="true"
+          category="org.eclipse.wst.common.project.facet.ui.FacetsPropertyPage"
+          class="org.eclipse.jst.tapestry.ui.internal.project.facet.TapestryLibraryPropertyPage"
+          id="org.eclipse.jst.tapestry.ui.internal.project.facet.JSFLibraryPropertyPage"
+          name="%tapestry.library.property.page"
+          objectClass="org.eclipse.core.resources.IProject">
+      <enabledWhen>
+        <adapt type="org.eclipse.core.resources.IProject">
+          <test 
+            forcePluginActivation="true"
+            property="org.eclipse.wst.common.project.facet.core.projectFacet"
+            value="jst.tapestry"/>
+        </adapt>
+      </enabledWhen>          
+    </page>
+	</extension>
+
+	<extension 
+        point="org.eclipse.wst.common.project.facet.ui.wizardPages">
+     <wizard-pages action="jst.tapestry.v5.install">
+        <page class="org.eclipse.jst.tapestry.ui.internal.project.facet.TapestryFacetInstallPage"/>
+     </wizard-pages>
+	</extension> 
+  
+	<extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="%tapestry.corresponding.file"
+            visible="true"
+            id="org.eclipse.jst.tapestry.ui.actionSet">
+         <menu
+               label="%preferencepage.jsf.name"
+               id="tapestryTMLMenu">
+            <separator
+                  name="tapestryTMLGroup">
+            </separator>
+         </menu>
+         <action
+               label="%tapestry.find.corresponding.file"
+               icon="icons/tapestry.gif"
+               class="org.eclipse.jst.tapestry.ui.internal.actions.FindCorrespondingFileAction"
+               tooltip="%tapestry.corresponding.file.description"
+               menubarPath="tapestryTMLMenu/tapestryTMLGroup"
+               toolbarPath="tapestryTMLGroup"
+               definitionId="org.eclipse.jst.tapestry.ui.command.actions.FindCorrespondingFile"
+               id="org.eclipse.jst.tapestry.ui.actions.FindCorrespondingFileAction">
+         </action>
+      </actionSet>
+	</extension>
+    
+	<extension point="org.eclipse.ui.bindings">  
+		<key  
+            commandId="org.eclipse.jst.tapestry.ui.command.actions.FindCorrespondingFile"  
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"  
+            sequence="Ctrl+R">  
+		</key>  
+	</extension> 
+   
+	<extension point="org.eclipse.ui.commands">  
+	<command  
+		description="%tapestry.corresponding.file.description"  
+		id="org.eclipse.jst.tapestry.ui.command.actions.FindCorrespondingFile"  
+		name="%preferencepage.jsf.name">  
+	</command>  
+	</extension> 
+    
+</plugin>
