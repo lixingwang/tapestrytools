@@ -1,0 +1,3041 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-SymbolicName: org.eclipse.jst.jsf.core; singleton:=true
+Eclipse-SourceReferences: scm:cvs:pserver:dev.eclipse.org:/cvsroot/web
+ tools:org.eclipse.jsf/components/jsf/plugins/org.eclipse.jst.jsf.core
+ ;tag=v201105031140
+Bundle-Activator: org.eclipse.jst.jsf.core.internal.JSFCorePlugin
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.2.0,4.0.0)
+ ",org.eclipse.core.resources;bundle-version="[3.2.0,4.0.0)",org.eclip
+ se.wst.common.project.facet.core;bundle-version="[1.2.0,2.0.0)",org.e
+ clipse.jst.j2ee.web;bundle-version="[1.1.0,1.2.0)",org.eclipse.jst.js
+ f.facesconfig;bundle-version="[1.0.0,2.0.0)",org.eclipse.jdt.core;bun
+ dle-version="[3.2.0,4.0.0)",org.eclipse.jst.j2ee;bundle-version="[1.1
+ .0,1.2.0)",org.eclipse.jst.j2ee.core;bundle-version="[1.1.0,1.3.0)",o
+ rg.eclipse.wst.xml.core;bundle-version="[1.1.0,1.2.0)",org.eclipse.ws
+ t.common.frameworks.ui;bundle-version="[1.1.0,2.0.0)",org.eclipse.jst
+ .jsp.core;bundle-version="[1.1.0,1.3.0)",org.eclipse.jst.jsf.common;b
+ undle-version="[1.0.0,2.0.0)",org.eclipse.jface.text;bundle-version="
+ [3.2.0,4.0.0)",org.eclipse.wst.sse.core;bundle-version="[1.1.0,1.2.0)
+ ",org.eclipse.wst.html.core;bundle-version="[1.1.0,1.2.0)",org.eclips
+ e.wst.validation;bundle-version="[1.1.0,2.0.0)",org.eclipse.wst.commo
+ n.emf;bundle-version="[1.1.103,2.0.0)",org.eclipse.jem.util;bundle-ve
+ rsion="[2.0.0,3.0.0)",org.eclipse.emf.common;bundle-version="[2.2.0,3
+ .0.0)",org.eclipse.emf.ecore;bundle-version="[2.2.0,3.0.0)",org.eclip
+ se.core.commands;bundle-version="[3.2.0,4.0.0)",org.eclipse.emf.ecore
+ .xmi;bundle-version="[2.2.0,3.0.0)",org.eclipse.emf.edit;bundle-versi
+ on="[2.2.0,3.0.0)",org.eclipse.jst.common.project.facet.core;bundle-v
+ ersion="[1.1.0,2.0.0)",org.eclipse.jst.jsf.common.runtime;bundle-vers
+ ion="[1.0.0,2.0.0)",org.eclipse.jem.proxy;bundle-version="[2.0.0,3.0.
+ 0)",javax.servlet;bundle-version="[2.4.0,3.0.0)",javax.servlet.jsp;bu
+ ndle-version="[2.0.0,3.0.0)",org.eclipse.jst.common.frameworks;bundle
+ -version="[1.1.102,1.2.0)",org.eclipse.wst.css.core;bundle-version="[
+ 1.1.200,1.2.0)",org.eclipse.debug.core;bundle-version="[3.5.0,4.0.0)"
+ ,org.eclipse.ui;bundle-version="3.6.0"
+Export-Package: org.eclipse.jst.jsf.core,org.eclipse.jst.jsf.core.inte
+ rnal;x-friends:="org.eclipse.jst.jsf.core.tests,org.eclipse.jst.jsf.u
+ i,org.eclipse.jst.jsf.ui.tests",org.eclipse.jst.jsf.core.internal.con
+ tentassist.el;x-friends:="org.eclipse.jst.jsf.contentassist.tests",or
+ g.eclipse.jst.jsf.core.internal.contenttype;x-internal:=true,org.ecli
+ pse.jst.jsf.core.internal.jem;x-internal:=true,org.eclipse.jst.jsf.co
+ re.internal.jsflibraryconfig;x-friends:="org.eclipse.jst.jsf.core.tes
+ ts,org.eclipse.jst.jsf.ui.tests,org.eclipse.jst.pagedesigner.tests",o
+ rg.eclipse.jst.jsf.core.internal.jsflibraryregistry; x-friends:="org.
+ eclipse.jst.jsf.core.tests,  org.eclipse.jst.jsf.ui,  org.eclipse.jst
+ .jsf.ui.tests,  org.eclipse.jst.pagedesigner.tests",org.eclipse.jst.j
+ sf.core.internal.jsflibraryregistry.adapter;x-friends:="org.eclipse.j
+ st.jsf.core.tests,org.eclipse.jst.jsf.ui,org.eclipse.jst.jsf.ui.tests
+ ",org.eclipse.jst.jsf.core.internal.jsflibraryregistry.impl;x-friends
+ :="org.eclipse.jst.jsf.core.tests,org.eclipse.jst.jsf.ui,org.eclipse.
+ jst.jsf.ui.tests",org.eclipse.jst.jsf.core.internal.jsflibraryregistr
+ y.util;x-friends:="org.eclipse.jst.jsf.core.tests,org.eclipse.jst.jsf
+ .ui,org.eclipse.jst.jsf.ui.tests",org.eclipse.jst.jsf.core.internal.l
+ aunch;x-internal:=true,org.eclipse.jst.jsf.core.internal.project.face
+ t;x-friends:="org.eclipse.jst.jsf.core.tests,org.eclipse.jst.jsf.ui,o
+ rg.eclipse.jst.jsf.ui.tests",org.eclipse.jst.jsf.core.internal.region
+ ;x-internal:=true,org.eclipse.jst.jsf.core.internal.tld;x-friends:="o
+ rg.eclipse.jst.pagedesigner,org.eclipse.jst.jsf.core.tests",org.eclip
+ se.jst.jsf.core.jsfappconfig,org.eclipse.jst.jsf.core.jsfappconfig.in
+ ternal;x-internal:=true,org.eclipse.jst.jsf.core.jsflibraryconfigurat
+ ion,org.eclipse.jst.jsf.core.jsflibraryconfiguration.internal;x-frien
+ ds:="org.eclipse.jst.jsf.core.tests",org.eclipse.jst.jsf.core.jsflibr
+ aryregistry,org.eclipse.jst.jsf.core.jsflibraryregistry.internal;x-fr
+ iends:="org.eclipse.jst.jsf.core.tests",org.eclipse.jst.jsf.core.meta
+ data.internal;x-internal:=true,org.eclipse.jst.jsf.core.set.constrain
+ t,org.eclipse.jst.jsf.core.set.mapping,org.eclipse.jst.jsf.core.tagma
+ tcher,org.eclipse.jst.jsf.designtime,org.eclipse.jst.jsf.designtime.c
+ ontext,org.eclipse.jst.jsf.designtime.el,org.eclipse.jst.jsf.designti
+ me.internal;x-internal:=true,org.eclipse.jst.jsf.designtime.internal.
+ jsp;x-internal:=true,org.eclipse.jst.jsf.designtime.internal.resolver
+ ;x-internal:=true,org.eclipse.jst.jsf.designtime.internal.resources;x
+ -internal:=true,org.eclipse.jst.jsf.designtime.internal.symbols;x-fri
+ ends:="org.eclipse.jst.jsf.designtime.tests",org.eclipse.jst.jsf.desi
+ gntime.internal.view;x-internal:=true,org.eclipse.jst.jsf.designtime.
+ internal.view.mapping;x-internal:=true,org.eclipse.jst.jsf.designtime
+ .internal.view.mapping.mappers;x-internal:=true,org.eclipse.jst.jsf.d
+ esigntime.internal.view.mapping.viewmapping;x-internal:=true,org.ecli
+ pse.jst.jsf.designtime.internal.view.mapping.viewmapping.impl;x-inter
+ nal:=true,org.eclipse.jst.jsf.designtime.internal.view.mapping.viewma
+ pping.util;x-internal:=true,org.eclipse.jst.jsf.designtime.internal.v
+ iew.model;x-internal:=true,org.eclipse.jst.jsf.designtime.internal.vi
+ ew.model.jsp;x-internal:=true,org.eclipse.jst.jsf.designtime.internal
+ .view.model.jsp.analyzer;x-friends:="org.eclipse.jst.jsf.designtime.t
+ ests",org.eclipse.jst.jsf.designtime.internal.view.model.jsp.persiste
+ nce;x-internal:=true,org.eclipse.jst.jsf.designtime.internal.view.mod
+ el.jsp.registry;x-friends:="org.eclipse.jst.jsf.designtime.tests",org
+ .eclipse.jst.jsf.designtime.resolver,org.eclipse.jst.jsf.designtime.s
+ ymbols,org.eclipse.jst.jsf.metadataprocessors,org.eclipse.jst.jsf.met
+ adataprocessors.features,org.eclipse.jst.jsf.metadataprocessors.inter
+ nal;x-friends:="org.eclipse.jst.jsf.metadata.tests",org.eclipse.jst.j
+ sf.tagdisplay.internal.paletteinfos; x-friends:="org.eclipse.jst.page
+ designer,  org.eclipse.jst.pagedesigner.tests,  org.eclipse.jst.jsf.m
+ etadata.tests,  org.eclipse.jst.jsf.facelet.core,  org.eclipse.jst.js
+ f.facelet.ui",org.eclipse.jst.jsf.tagdisplay.internal.paletteinfos.im
+ pl; x-friends:="org.eclipse.jst.pagedesigner,  org.eclipse.jst.pagede
+ signer.tests,  org.eclipse.jst.jsf.metadata.tests,  org.eclipse.jst.j
+ sf.facelet.core,  org.eclipse.jst.jsf.facelet.ui",org.eclipse.jst.jsf
+ .tagdisplay.internal.paletteinfos.util; x-friends:="org.eclipse.jst.p
+ agedesigner,  org.eclipse.jst.pagedesigner.tests,  org.eclipse.jst.js
+ f.metadata.tests,  org.eclipse.jst.jsf.facelet.core,  org.eclipse.jst
+ .jsf.facelet.ui",org.eclipse.jst.jsf.taglibprocessing.attributevalues
+ ,org.eclipse.jst.jsf.validation.internal;x-friends:="org.eclipse.jst.
+ jsf.ui",org.eclipse.jst.jsf.validation.internal.appconfig;x-friends:=
+ "org.eclipse.jst.jsf.ui,org.eclipse.jst.jsf.core.tests",org.eclipse.j
+ st.jsf.validation.internal.constraints;x-internal:=true,org.eclipse.j
+ st.jsf.validation.internal.constraints.impl;x-internal:=true,org.ecli
+ pse.jst.jsf.validation.internal.constraints.util;x-internal:=true,org
+ .eclipse.jst.jsf.validation.internal.el;x-friends:="org.eclipse.jst.j
+ sf.ui,org.eclipse.jst.jsf.validation.el.tests",org.eclipse.jst.jsf.va
+ lidation.internal.el.diagnostics;x-friends:="org.eclipse.jst.jsf.vali
+ dation.el.tests",org.eclipse.jst.jsf.validation.internal.el.operators
+ ;x-internal:=true,org.eclipse.jst.jsf.validation.internal.facelet,org
+ .eclipse.jst.jsf.validation.internal.strategy;x-internal:=true
+Bundle-Version: 1.3.5.v201105031140
+Bundle-Vendor: %plugin.provider
+Bundle-ActivationPolicy: lazy;exclude:="org.eclipse.jst.jsf.core.inter
+ nal.contenttype"
+Bundle-Name: %plugin.name
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor.class
+SHA1-Digest: AoiCbpsp0f8ZvoxsEe9Ai2cofmw=
+
+Name: org/eclipse/jst/jsf/core/internal/jem/BeanProxyUtil.class
+SHA1-Digest: m/CRjoL0bTpHdYsV6Nv6YZbYx1Q=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryregistry/PluginProvidedJSFLib
+ raryArchiveFilesDelegate.class
+SHA1-Digest: 0CmKYKzunuHG4dFdGqVn+yfZd4w=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /util/ComponentMappingXMLProcessor.class
+SHA1-Digest: ku/JLvH0kUevrirPNRwgf/tkCbs=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetPrimaryR
+ untimeChangedListener.class
+SHA1-Digest: hQNyNXfzFWdnhCYZhufVpVJBs+s=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/ICustomView
+ Mapper$PropertyMapping.class
+SHA1-Digest: M05E5UI2nq1IeQayjJgPdsYVVEE=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/RendererValida
+ tionVisitor$RendererClassValidationVisitor.class
+SHA1-Digest: WbkxSSQX75MHLJBWK63xaEBaLSg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/IJSFResource.c
+ lass
+SHA1-Digest: WUC5uotEe1A0pan7K8zJtAAUOYc=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FacesConfigVal
+ idator$LifecycleValidationVisitor.class
+SHA1-Digest: JiW3b7XZ2QqlgBcgBW5yQ2z1UOo=
+
+Name: org/eclipse/jst/jsf/designtime/symbols/package-info.class
+SHA1-Digest: Lpv2JKqCEM8WjCBU6kL5BcKRQIg=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/impl/JSFLib
+ raryImpl.class
+SHA1-Digest: x8asOiTcFxOOeOSGi8HJ9+Hk9oo=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/JSFAppConfigManager.class
+SHA1-Digest: vDTpP73Hq2kJ2qT3goFBL2a0oxg=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/NumberPatte
+ rnType.class
+SHA1-Digest: CWnz+/nOPsOjvhONsq0a7R/ceDc=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/Enumeration
+ Type.class
+SHA1-Digest: BRZOsXV4Y0Wj0sDtgzGVeo2agno=
+
+Name: org/eclipse/jst/jsf/designtime/symbols/SymbolUtil.class
+SHA1-Digest: gq2W4JUxE4HY5QITLUNyd9TJAEw=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/JSFAppConfigUtils.class
+SHA1-Digest: th1hQvfIIJXfZ7lX4zTbH0wy6cc=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/internal/AbstractMetaData
+ EnabledTypeRegistry.class
+SHA1-Digest: o9XC6IzE4BWQOzHIngVuvx7m+GQ=
+
+Name: org/eclipse/jst/jsf/designtime/resolver/CachingSymbolContextReso
+ lver.class
+SHA1-Digest: +DfL+KcZhwC3+/4X6ADozIzbSCo=
+
+Name: org/eclipse/jst/jsf/core/internal/jem/BeanProxyUtil$ProxyExcepti
+ on.class
+SHA1-Digest: Hz6Gf19Y334DAuOnYNPeObru1hU=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/util/Constra
+ intsAdapterFactory$1.class
+SHA1-Digest: kOQOleCXOzXaaMwrWMSGfReDDPY=
+
+Name: org/eclipse/jst/jsf/designtime/symbols/DefaultBuiltInSymbolProvi
+ der$ScopeMap.class
+SHA1-Digest: Lr0fetb1p2S1321NqUhpjASWEPI=
+
+Name: org/eclipse/jst/jsf/designtime/context/AbstractDTExternalContext
+ Factory.class
+SHA1-Digest: 2f75uybstyXhxsW/1c6YxKryEBk=
+
+Name: org/eclipse/jst/jsf/designtime/el/IInstancePerProjectResolver.cl
+ ass
+SHA1-Digest: p3DLM5fMN1rC+b5D+UYg/0qhVFE=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DefaultDTUIViewRoot
+ $DefaultServices.class
+SHA1-Digest: o9hQg/LV2/8ZSUsNKwjEzOX2Jq4=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/impl/TagCre
+ ationTemplateImpl.class
+SHA1-Digest: dth+Z4mFwOTT3OASZ3CLBzVL8IU=
+
+Name: org/eclipse/jst/jsf/core/internal/contentassist/el/SymbolInfo.cl
+ ass
+SHA1-Digest: f2SglRmzTs2LU0mFlsjnKcStEhs=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/analyzer/
+ TagAnalyzer.class
+SHA1-Digest: XFEz11mW/Z0LRPbv4d+3qNDI12c=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor$Co
+ untingMutex.class
+SHA1-Digest: DLgzZVz3dhZUiNAof3tn4VtBFjw=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/DirectBindi
+ ngType.class
+SHA1-Digest: ocWE0sLdJM/Aq2QwzKBpQprYqEU=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/TaglibMetadataContext.cla
+ ss
+SHA1-Digest: 6g1v46Xa7SV2ccMuPhWpXwnoUg8=
+
+Name: org/eclipse/jst/jsf/core/internal/ITagRegistryFactoryInfo.class
+SHA1-Digest: 3SGRo1wZnsJ8sau7PIWrH0rzKyM=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/impl/JSFLib
+ raryRegistryImpl.class
+SHA1-Digest: BaBgGUQkjcnyxPsTXaK3yClEaqk=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/LoadBundleUtil$LocaleDescr
+ iptor$1.class
+SHA1-Digest: XpcCJbQPLdGlH2nbwjymwn5SiKY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/AbstractT
+ agResolvingStrategy.class
+SHA1-Digest: Sll/dTJb02605uzWtFTiT6naQ3o=
+
+Name: org/eclipse/jst/jsf/designtime/internal/DecoratableExtensionFact
+ ory.class
+SHA1-Digest: zRoDtNtyTdoduh7C/eMEQ6SPlv4=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetInstallD
+ ataModelProvider.class
+SHA1-Digest: 0x1GiIWh0cU//K3qjcUe+m8R+LM=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/BooleanType
+ .class
+SHA1-Digest: PNwl+vZWeWmj86ldFpctJEd1JiQ=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/internal/AttributeValueRu
+ ntimeTypeFactory.class
+SHA1-Digest: wAQsoB+TfObM/8iMyNm4nTT224I=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/CharacterTy
+ pe.class
+SHA1-Digest: 6Ppndo8CJCJEw/cJh1lqjatV7QI=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /impl/TagToViewObjectMappingImpl.class
+SHA1-Digest: 1YD3YxUx1mWDEDoSwZdax0b8Bu8=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/impl/Palett
+ eInfoImpl.class
+SHA1-Digest: KCo/zhKTYMaJu1T5ye/KA66di1Q=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/ViewMetadat
+ aGenerator.class
+SHA1-Digest: gQF+jh5bwhkWOl3N2hUCRotierY=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$PropertyResolverValidationVisitor.class
+SHA1-Digest: KL0vgPCzyNOQ/V7sobyUGRI6nGs=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryregistry/internal/PluginProvi
+ dedJSFLibraryCreationHelper2.class
+SHA1-Digest: 9s7vM8Wct/Tx0xScfnzW23sqdFY=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$SystemEventListenerClassValidationVisitor.class
+SHA1-Digest: ksCpZ8YK8CWV3XIcswCrilE3BLo=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryconfig/JSFLibraryCon
+ figDialogSettingData.class
+SHA1-Digest: ntzEcePI2kLZd/vcRUTkCYNZOHk=
+
+Name: org/eclipse/jst/jsf/designtime/messages.properties
+SHA1-Digest: ArHyCEA+sLgrCeAKqpJuifIdQYQ=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/Messag
+ es.class
+SHA1-Digest: 3xr0P6U0xCJ2H8rws58VECkk6t4=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/features/IValidValues.cla
+ ss
+SHA1-Digest: lDdHe8s3iUDS4ucs61gUD/J/Y2s=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/mappers/Val
+ ueHolderAttributeMapper.class
+SHA1-Digest: crGEhOFSROlIZM/cIERzyasX8uA=
+
+Name: schema/viewhandler.exsd
+SHA1-Digest: lYzOthMnYaY3TViotNdUAoRoLAc=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/features/IPossibleValue.c
+ lass
+SHA1-Digest: gKLK3BQOTog2+dFjlh2sSPYXUeg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/persisten
+ ce/MasterIndex$SerializableVersion.class
+SHA1-Digest: wLKGqHyw6xryG2QiystJffBh+UE=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/DateTimePat
+ ternType.class
+SHA1-Digest: V1G/fnaTGeEWiSwCeIEHWfRHDM8=
+
+Name: schema/variableresolver.exsd
+SHA1-Digest: a4OmxISSrXjxzgEQYDMvCqovX54=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/ViewMetadat
+ aGenerator$1.class
+SHA1-Digest: Eap5WLHk/1KQ0Smjg0OCh6BVB+Q=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/LengthType.
+ class
+SHA1-Digest: sXeIfNbNaYglQBiolCYwF1Ag0cg=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/Messages.class
+SHA1-Digest: 1JBB7Tn4NqACYF1B9sObI2KiQKo=
+
+Name: org/eclipse/jst/jsf/core/internal/TagRegistryFactoryProviderLoad
+ er.class
+SHA1-Digest: /TfhEnWmVLNn1Vlli8tqAHOdtIA=
+
+Name: schema/customViewMapper.exsd
+SHA1-Digest: 0dnPavRXcEkpSunCkx8q5emsw4E=
+
+Name: org/eclipse/jst/jsf/core/metadata/internal/TaglibMetaDataLocator
+ .class
+SHA1-Digest: mo/T1L2QY1IzfsWGvF2e2tL72ds=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/GreaterThan
+ RelationalBinaryOperator.class
+SHA1-Digest: ndLpNAjWpmR1iPnMY/7nYf0gKjc=
+
+Name: org/eclipse/jst/jsf/core/internal/JSFCorePlugin.class
+SHA1-Digest: edihtEfTvc/kqtW9MtH5GTg9As0=
+
+Name: schema/AttributeValueRuntimeTypes.exsd
+SHA1-Digest: BLEDGYBKPHbWIiyL9YZidmgMxxI=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/JSFLibraryR
+ egistry.class
+SHA1-Digest: vjfoVmzLIDuRt8z+OlR+DUlIzxM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/IAttribut
+ eAdvisor$UnknownAttributeException.class
+SHA1-Digest: vmG67Sp9e7idjNuAwLs/ufvmuK4=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/TLDTagIdentifier.class
+SHA1-Digest: Lz7rmypbZSNmpm+9AFiHyrpsyXk=
+
+Name: org/eclipse/jst/jsf/core/internal/CompositeTagRegistryFactory$1$
+ 1.class
+SHA1-Digest: cY5llfr4facJqlQCUFqdAZLqdyQ=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FactoryValidat
+ ionVisitor$FacesContextFactoryValidationVisitor.class
+SHA1-Digest: LafKLXgD58p4kaln8z5OI7u86FA=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/ResourceBundleMa
+ pSourceFactory.class
+SHA1-Digest: JGxPDP1546aItpOXc0r9v4y2hsM=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/DiagnosticFact
+ ory.class
+SHA1-Digest: Pc0sIZ7CJh/hbtftyR3BZl4Bim4=
+
+Name: org/eclipse/jst/jsf/validation/internal/XMLViewDefnValidator.cla
+ ss
+SHA1-Digest: RcQ8BtV3x0DzeVjVYqzb1tEf0mw=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/RuntimeClasspathJSFAppConf
+ igLocater.class
+SHA1-Digest: nyHuzY+ODGziXc5G655yo/5S6mg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/Unresolve
+ dJSPTagResolvingStrategy.class
+SHA1-Digest: yPb+EEZBGGe0reYk8gGufgojRUs=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/LegacyJSFLibrary
+ ProviderDetector.class
+SHA1-Digest: M2ZvlxMQo7CeVT69RcoW0gx75SU=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/WorkspaceJSFRe
+ source.class
+SHA1-Digest: Akcmie+1gcNknjozouhmXH0oNRk=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/LoadBundleUtil.class
+SHA1-Digest: g6T0Qizj5R9E7gBir6rtcpi7hhk=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/WebPathType
+ .class
+SHA1-Digest: 6rXhOiNKSmJgqKFwmC9Wq+qvgs0=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/diagnostics/Diagnosti
+ cFactory.class
+SHA1-Digest: gQw3Pt9EIrlDyttD0d3MwTi4Qck=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/CMNodeNam
+ edMapAdapter.class
+SHA1-Digest: NJVUeeqD/YbspobQZ2eqrVFVqxY=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/features/IPossibleValues.
+ class
+SHA1-Digest: IxIhnwscw96nK/I9BmOuMpLLp3o=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/IJSFFacetInstall
+ DataModelProperties.class
+SHA1-Digest: LBk7NmhwsJ36XYKyaFXPEh14r4A=
+
+Name: org/eclipse/jst/jsf/designtime/internal/BasicExtensionFactory.cl
+ ass
+SHA1-Digest: nb9ftSAJGqQ0tcjda5sslZpPT1M=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryconfig/JSFLibraryCon
+ figModel.class
+SHA1-Digest: t1/H7NgR9gDLotqY6w2HhYoWNfs=
+
+Name: org/eclipse/jst/jsf/core/tagmatcher/TagMatchingAlgorithm.class
+SHA1-Digest: EEwvcOOhiDZo/JD3TyR1yr/0F0k=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$SystemEventListenerTypeValidationVisitor.class
+SHA1-Digest: aNWnpMH++ghMt2MmmKHEJGTg+0I=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFUtils20.class
+SHA1-Digest: cfR1wEx0JBvoOun1XWTTHPbDPks=
+
+Name: org/eclipse/jst/jsf/designtime/el/DefaultDTMethodResolver.class
+SHA1-Digest: Xn4p/5udvHd4juYUC4tV2SrhwGE=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/EqualsBinar
+ yRelationalOperator.class
+SHA1-Digest: g2RpXDZjIAnuEXP5diovNCQ5H98=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/ConstraintsP
+ ackage.class
+SHA1-Digest: lkh2gBAZqjwOu8YR07p9DYUywLA=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/NavigationRule
+ Validator.class
+SHA1-Digest: 2cDvOpkDMY4B7fN1JKnkziAX6bw=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/features/ValidationMessag
+ e.class
+SHA1-Digest: reSLo7wrmXBss+SGEasa/W6pLu4=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/impl/TagSetI
+ mpl.class
+SHA1-Digest: vHHXkKUtypZmc0Gf/wI97n3J0jg=
+
+Name: org/eclipse/jst/jsf/core/internal/CompositeTagRegistryFactory$1.
+ class
+SHA1-Digest: pW6iwV6zLg3nqiQWtFbpalZt8+I=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ComponentValid
+ atorVisitor$ComponentClassValidationVisitor.class
+SHA1-Digest: LSlMqdm1WG7NlTcBLsrpsSjPBhQ=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/persisten
+ ce/SerializableTLDNamespace.class
+SHA1-Digest: L8syGtrNDFcCvMbD/xw6jog1idY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/ResourceBundleSy
+ mbolSourceProvider.class
+SHA1-Digest: NR2GZKtP8OC1VhiOyolMQh7TPRw=
+
+Name: org/eclipse/jst/jsf/validation/internal/Severity.class
+SHA1-Digest: JGui4EiqHa6Zc0j4MeLoSyalWzQ=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/CompositeJSFAppCo
+ nfigLocatorProviderStrategy$ExtensionPointLocatorProviderStrategy.cla
+ ss
+SHA1-Digest: 2XMpRlo+GckuYWM490GHAtFtYDQ=
+
+Name: org/eclipse/jst/jsf/designtime/context/IExternalContextFactoryLo
+ cator.class
+SHA1-Digest: JuhKG6pskZoqFAfuwylXwWVaeF4=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/PropertyNameVa
+ lidationVisitor.class
+SHA1-Digest: PUTCogl/HjaIL/EsefcbpFl3D2A=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$SystemEventListenerValidationVisitor.class
+SHA1-Digest: 70Ae9gqe9t+BDK5RrG+nTj4j0Vw=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$StateManagerValidationVisitior.class
+SHA1-Digest: DxxpwcGKO5lTOqIte2cdQ6BV/hQ=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/ITagResol
+ vingStrategy.class
+SHA1-Digest: 4/dxfHUmInZLld13bMdF69X9SnU=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FacesConfigVal
+ idator.class
+SHA1-Digest: DuAE0X2DhjJlN/rCdR7ly93Azng=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/FacesConfig
+ ValidatorIDFeatures.class
+SHA1-Digest: 32t1cQfxaMHT0nvOqzJTJ6JlD+o=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/IJarBasedJSFRe
+ source.class
+SHA1-Digest: Iv2dQUHhVrazCISDSt7MpY4mpGI=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TLDRegistryPreferences$1.class
+SHA1-Digest: 7ocUY/JOnLooHba8EY/kX+Gr7ys=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/JSPViewDefnAdapter.
+ class
+SHA1-Digest: xgaC+DcUMuamJ89X0ybcpUu+EmY=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/PropertyValida
+ tionVisitor.class
+SHA1-Digest: yAYCVbGa7QX6VilPq9+JOt0tXc4=
+
+Name: org/eclipse/jst/jsf/designtime/resolver/AbstractStructuredDocume
+ ntSymbolResolverFactory.class
+SHA1-Digest: sd0q4zWkHyq+CGtyXybY/Gluc84=
+
+Name: org/eclipse/jst/jsf/designtime/resolver/SymbolContextResolverRea
+ der.class
+SHA1-Digest: clB6lLVibLFxqR//0/4++Meu7os=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFUtils$JSFLibr
+ aryHandler.class
+SHA1-Digest: i8ScjZozZlKAzn+pXFzaUde+WAg=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/JSFLibraryRefer
+ enceUserSpecified.class
+SHA1-Digest: nEGWUtMeTwDU/iisJzoqG8kB7Lc=
+
+Name: org/eclipse/jst/jsf/core/internal/JSFRegistryVersionInfo.class
+SHA1-Digest: bs23E3lQbI7Bcg0Ib4l2YvdSoTY=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/AndBinaryOp
+ erator.class
+SHA1-Digest: UGQCAb3L3LL8RoXD+rthaQMFlx0=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /ClassTypeInfo_.class
+SHA1-Digest: Wx3/51yYQRN7JggM3g5nfgHItDM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TLDRegistryManager$MyWorkspaceSaveParticipant.class
+SHA1-Digest: uGgSow8ftt0rhBor473eBf8nbeM=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/DivArithmet
+ icBinaryOperator.class
+SHA1-Digest: nSFGzJLghlmdB73kZWZO1JaKzW8=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/PaletteInfo
+ sPackage$Literals.class
+SHA1-Digest: iP8Da1+ad6FY9RZb8IFX8AnvN08=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/IViewDefnAdapterFac
+ tory.class
+SHA1-Digest: CyWV4eVtO+2aOkRPWh1spNOfoCU=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryconfig/JSFLibraryCon
+ figModel$JSFLibraryConfigModelFactory.class
+SHA1-Digest: ylz0kf/XodJ+WnUvu6EWWLVze6E=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ClientBehavior
+ RendererValidationVisitor.class
+SHA1-Digest: ykEpRW/x5fL1Ye5j873jm9Y7BH4=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/ComponentConstructi
+ onData.class
+SHA1-Digest: QUDqiOiI+cse70Ba7+WfPxSEA4Q=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/IViewRootHandle.cla
+ ss
+SHA1-Digest: 48iKvSlrkuKcuYpj8NqTQkIqU4E=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/TagSet.class
+SHA1-Digest: AaRFPoOYEQh+72NAz4hmFIdwa9Q=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/JSFLibraryR
+ egistryFactory.class
+SHA1-Digest: UEiKdinjvccq0oGLDnRMruYBC30=
+
+Name: org/eclipse/jst/jsf/designtime/context/IDTExternalContext.class
+SHA1-Digest: aTxB/JPdCYLm//eqdkOh6/yXqEA=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor$Co
+ untingMutex$1.class
+SHA1-Digest: lT7fVnFJFheCGU0nbRi8ccABp9I=
+
+Name: org/eclipse/jst/jsf/core/internal/contenttype/AbstractContentDes
+ criberForFacelets.class
+SHA1-Digest: pzFiVSzPnS6urLRMggpMVDxn40k=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/JSFLibrary.
+ class
+SHA1-Digest: xfuJQkdNzMJMmsSJ9H+4LnuOAKo=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/ResourceBundleMa
+ pSource$2.class
+SHA1-Digest: ppvBvHwkzlzKvJh8g5eQZQnZjoo=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryconfig/JSFLibraryInt
+ ernalReference.class
+SHA1-Digest: 2hYE6zS9m4ygTFW9gV3gq6ssaTo=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/AddArithmet
+ icBinaryOperator.class
+SHA1-Digest: /l5VPd6SkNR2h1/0bhrTdX0tsQw=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/package-inf
+ o.class
+SHA1-Digest: M3ixzU7ztUo79Hpm2D9LKGvGoaw=
+
+Name: org/eclipse/jst/jsf/core/internal/region/Region2AttrAdapter.clas
+ s
+SHA1-Digest: LYHxWU+KoEsrYb9MnHBx0CkYIKI=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/DataModelVariableFac
+ tory$MyDataModelVariableFactory.class
+SHA1-Digest: fHPWivdai/TgYBlZXQq7br8QHr0=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TLDRegistryManager$MyRegistryFactory.class
+SHA1-Digest: g1nPh7PDvbu0+M/bseF7UC00wnY=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FactoryValidat
+ ionVisitor$ApplicationFactoryValidationVisitor.class
+SHA1-Digest: FIFNQJ8GoxY1/QNVo66kOgJNI8E=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDTagEle
+ ment$SerializedTLDElementData.class
+SHA1-Digest: UQYh5+n0goU3XU6c2N7H7hEUklA=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /impl/AttributeToPropertyMappingImpl.class
+SHA1-Digest: cLCyucg+jCmzM5k0lwfCtu4Zp8c=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/ResourceBundleMa
+ pSource$BundleFileCacheInfo$CachedDataItem.class
+SHA1-Digest: OpVvl16Q1rRZwkV70jnHQ+gX4AE=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$ELResolverValidationVisitor.class
+SHA1-Digest: UJ5jln2wVJAq6DCTAve97dSzObs=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/AbstractTagRe
+ gistry.class
+SHA1-Digest: fPbtbsb7UBLSz6E1AAqjz9TalXQ=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/IJSFAppConfigMana
+ gerFactory.class
+SHA1-Digest: 3dKb/uVQGtJCV97Nq1BHW0t+ODA=
+
+Name: org/eclipse/jst/jsf/core/metadata/internal/HTMLContentModelMetaD
+ ataTranslator.class
+SHA1-Digest: JLd/cCvko69pKN/UMoGIuwbwudg=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/CSSIdType.c
+ lass
+SHA1-Digest: ny6s13G09AujSouDuALe0U0OHw4=
+
+Name: org/eclipse/jst/jsf/core/internal/contentassist/el/IdCompletionS
+ trategy$MyProposalFactory.class
+SHA1-Digest: b9Ijhk3lOKIrOEXEsyxCP/m6sAw=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/CompositeJSFAppCo
+ nfigLocatorProviderStrategy$TestableLocatorProviderStrategy.class
+SHA1-Digest: FGiy+kxOAuC1vtfYPTGbAYxMJ8Q=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/FacesConfig
+ ValidatorIDType.class
+SHA1-Digest: NUdjKqFwiAU5XHgFLfRkb+d7HFU=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/impl/TagCre
+ ationInfoImpl.class
+SHA1-Digest: weI6tijEO4k5mbx43nNsNAPjPvw=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/JSFResource.cl
+ ass
+SHA1-Digest: RTPw53qLkJfVD/Izq3fRDRXp8AM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DefaultDTViewHandle
+ r$ViewInfo.class
+SHA1-Digest: PB/kItb4+gd6iQscmh+veuZB3Ys=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor.cl
+ ass
+SHA1-Digest: ROxaNRSSCwXVr/0ZRjD12h4UTmc=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/ValueExpressionTracke
+ r.class
+SHA1-Digest: /VxAipLvvaZmjjMua4aztGPK9vw=
+
+Name: org/eclipse/jst/jsf/core/set/constraint/package-info.class
+SHA1-Digest: QPSDcKJ3RYbnwS3oHxQTXSXkPOc=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/impl/Plugin
+ ProvidedJSFLibraryImpl.class
+SHA1-Digest: GJeO50ZPs/HIZzGLshRo2RvqN8A=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/AbstractDTViewHandl
+ er$NullStalenessAdvisor.class
+SHA1-Digest: PAgiTWxOJe0q3ehmqqD3DPCL5y0=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/NumberType.
+ class
+SHA1-Digest: gmqxp4WzMBAMm/c/Ge5GiwwzlNY=
+
+Name: org/eclipse/jst/jsf/core/internal/messages.properties
+SHA1-Digest: mQXf7X2KyYQ3dCLxL0WP6BtQ730=
+
+Name: org/eclipse/jst/jsf/designtime/resolver/package-info.class
+SHA1-Digest: l+Wn0QTK5cpWm4EkvAt1GYlDr9s=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/IAttribut
+ eAdvisor$NullAttributeAdvisor.class
+SHA1-Digest: v4cRMOK3pqKnUQeIXCE8Rag9n/A=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/ValueBindin
+ gType.class
+SHA1-Digest: CHpjQTVNJ4GxE/ZVjZ/CyxtEVx4=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/ViewMetadat
+ aMapper.class
+SHA1-Digest: ry29l56vtllidr0lqL8RlwtjdHw=
+
+Name: org/eclipse/jst/jsf/core/internal/RegistryUpgradeCommitHandler$1
+ .class
+SHA1-Digest: dlBiaIrC5WlQ+BcuA3Ox8cGO0ZE=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/XMLViewObjectConstr
+ uctionStrategy.class
+SHA1-Digest: fhNoRmbD8P0aQR7953mCnyTh3fM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDTagAtt
+ ribute.class
+SHA1-Digest: MbeLFl3ETKbhf1tep6ucI5vTc9Q=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/Messages.
+ class
+SHA1-Digest: v7ynmvTYJp2f4iffUbldBlcttDY=
+
+Name: org/eclipse/jst/jsf/core/internal/CompositeJSFPreferenceModel.cl
+ ass
+SHA1-Digest: n5POEM0eaTT8kPjWgCR4hpgCGkc=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/IJSFAppConfigMana
+ ger.class
+SHA1-Digest: eYpmki9BGuzukVnQ5F6gJvWR0g0=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/JSFResourceCha
+ ngeListener.class
+SHA1-Digest: Ff/jdlgjRBNnp4zCIclTFs1Bp8Y=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/ELExpressionValidator
+ .class
+SHA1-Digest: mA5aW/Dn+PdzwXbgnK6ldx4AZMk=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetInstallD
+ ataModelProvider$1.class
+SHA1-Digest: 5H17byP9WxEMozSVCGUPtoROwck=
+
+Name: org/eclipse/jst/jsf/core/metadata/internal/TaglibMetaDataLocator
+ $TaglibMetaDataSource.class
+SHA1-Digest: /yLjX3cqYhOeC/hc6mL/1iPn6pg=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/PathType.cl
+ ass
+SHA1-Digest: Vlwuy0vinhHcjNSzl+E5AnJZzvc=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPDefaultSymbolFact
+ ory.class
+SHA1-Digest: L7Yi7GKiPkAPwxcYvTb8sqnQ1UI=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/internal/JSFLib
+ raryReferenceServerSuppliedImpl.class
+SHA1-Digest: URQE6Npz4T3Q9b4YXoQyGhMQciY=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/NotEqualsBi
+ naryRelationalOperator.class
+SHA1-Digest: 6Or+COsMAOTYe+j6qO3GSwdldGA=
+
+Name: org/eclipse/jst/jsf/core/package-info.class
+SHA1-Digest: mKDgV6Z8/jMZGvAEiIWQGltE9b0=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TagIndexListener.class
+SHA1-Digest: eDBHxLAT7+iZ+YPVIDwXRLnIcu8=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetUninstal
+ lDelegate$RemoveJSFFromJ2EEWebAppOperation.class
+SHA1-Digest: FwWEupu9NHYIHtep83mq/iIfyeg=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/Versio
+ nUpgradeOperation.class
+SHA1-Digest: PGzujiDTC3sEylavbfZcYMaerI8=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/AbstractDTViewHandl
+ er.class
+SHA1-Digest: 51FAMVHKCiEPmEXI9iVRHbdQfnM=
+
+Name: org/eclipse/jst/jsf/validation/internal/strategy/Messages.class
+SHA1-Digest: u27mS8pXvSWY5WAzI1LIjmX150g=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/ViewMetadat
+ aGenerator$1$1.class
+SHA1-Digest: iKLBR5ERZ8xDqI9HCyafQVuQkzQ=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/ExtensionBasedJSF
+ AppConfigManagerProviderStrategy.class
+SHA1-Digest: ia98Ai4At8KGiESwguBZ2WdilrY=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/MemberAcces
+ sorOperator.class
+SHA1-Digest: 7fOiRazWIgcwhhKBtQ8LyprWxwc=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/BinaryOpera
+ tor.class
+SHA1-Digest: +jn/5+SA0w1RLQY//RipFOxqj0o=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetInstallD
+ elegate$UpdateWebXMLForJavaEE.class
+SHA1-Digest: 6QjnsGb86eD/XKag4ZaerlFFg2U=
+
+Name: org/eclipse/jst/jsf/core/internal/JSFLibrariesContainerInitializ
+ er.class
+SHA1-Digest: 72MygdfXB7nao6GAG6PGtv02brM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TLDTagRegistry$1.class
+SHA1-Digest: Jhhdc65ixXdDBzkCofySfWx4Bnw=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/JSPTagIdentifier.class
+SHA1-Digest: CieaqDqckKG1hZWjScvANOhT2SM=
+
+Name: org/eclipse/jst/jsf/validation/internal/strategy/AttributeValida
+ tingStrategy.class
+SHA1-Digest: oBHBvSrYrOncL/Cq57kkh/Jhq3w=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/AbstractViewDefnAda
+ pter.class
+SHA1-Digest: YHoU36XUL2Ep3hvRtu92TKuzrkk=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ LibraryOperationFactory.class
+SHA1-Digest: fV+EUo3gdP50OIUTmmVItcnfW8w=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /TagToViewObjectMapping.class
+SHA1-Digest: Ti3ntb+PLYecMTdHef3dfD9jRjI=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/ArithmeticB
+ inaryOperator.class
+SHA1-Digest: CuuyU2YJDwuZrLwO8k3nbwzg+f8=
+
+Name: org/eclipse/jst/jsf/validation/internal/facelet/messages.propert
+ ies
+SHA1-Digest: 1Ib4DTiTpQPWcC/t/btCDpe9TDY=
+
+Name: org/eclipse/jst/jsf/validation/internal/strategy/AttributeValida
+ tingStrategy$1.class
+SHA1-Digest: NaQNdsrcccWptOUU30VkSVjg7oI=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/DefaultJS
+ PTagResolver.class
+SHA1-Digest: Ko4JT+GZV7YFhbIdy/2Tu547ue8=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DefaultDTViewHandle
+ r$MyLifecycleManager$1.class
+SHA1-Digest: 7l0vWASURKLsa3t0pBc37OU9Nqg=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/MetaDataEnabledProcessing
+ Factory.class
+SHA1-Digest: 8s5qjUMm5jQas6xk5vjmxthRKiE=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/IJSFAppConfigProvider.clas
+ s
+SHA1-Digest: yoejczL9eMPTCJ3XM7wofuUJhuU=
+
+Name: schema/jsfLibraries.exsd
+SHA1-Digest: /LmT2t2mwNWortlPlXytd/znSuk=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /ComponentMappingFactory.class
+SHA1-Digest: kFV8b56jYQh9kpUsYpEJfmjL64s=
+
+Name: org/eclipse/jst/jsf/core/internal/contenttype/ContentDescriberFo
+ rFaceletCompositeComponent.class
+SHA1-Digest: NkRtJScPo6Dx7cN04v+Bx0dkdtg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor$4.
+ class
+SHA1-Digest: imEb5Sm1B1Ovq+Vha2mGZJRUuzA=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/ResourceIdenti
+ fierFactory$InvalidIdentifierException.class
+SHA1-Digest: brIkNl+1k55U+DywzxazXxbtZss=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/ITagRegistry.
+ class
+SHA1-Digest: b1Ltx/aHKyt41Zi0y1ptt6HNymg=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$SystemEventListenerSourceClassValidationVisitor.class
+SHA1-Digest: PMD1M97f/8sjCat/YecAyZ0BaAI=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/DotOperator
+ .class
+SHA1-Digest: Jg7cYb3juyQEuJXA5FI1au9on7w=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/messages.
+ properties
+SHA1-Digest: 5oVgn+3nQEDP/Mi0bSxjyOUx/Xs=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/WorkspaceJSFRe
+ sourceContainer.class
+SHA1-Digest: Siftl3M/V7Iqez+6asyo6dpML7g=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/internal/JSFLib
+ raryReferenceUserSpecifiedImpl.class
+SHA1-Digest: 54NhXvglfBZccjRAV1hDtcBoWzw=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/AppConfigValid
+ ationUtil.class
+SHA1-Digest: 38AYpzjvKU0uDd4CyNzYmM+RRmU=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/JSFLib
+ raryRegistryResourceImpl.class
+SHA1-Digest: exfhZncatZpH87PpM1cLE/5rn8c=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/AbstractJSFRes
+ ourceLocator.class
+SHA1-Digest: QRzXXBb96tdZ9R7cVIEm785D+zI=
+
+Name: org/eclipse/jst/jsf/designtime/resolver/SymbolContextResolver.cl
+ ass
+SHA1-Digest: EsKbgdvlileex5ohM/6qnJOOKBw=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDTagAtt
+ ribute$DocumentAttributeData.class
+SHA1-Digest: pPxrP6vjnTbPiWN3tGrI+6Z0VKU=
+
+Name: org/eclipse/jst/jsf/designtime/internal/messages.properties
+SHA1-Digest: +zC3/QpAfniOEHRVEM1LNLoecNg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDTagAtt
+ ribute$SerializedTLDAttributeData.class
+SHA1-Digest: HuhTkV8POARVBFGFVHEMzSbAG3Q=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/JavaClassTy
+ pe.class
+SHA1-Digest: Ebsp/cb3dPCB5fsOmDp7z4o5MYU=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/LanguageCod
+ eType.class
+SHA1-Digest: P6LomwolVTjK9V2O444Jl/rS1DY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /util/ComponentMappingSwitch.class
+SHA1-Digest: e/RXc4TyuJwtzho+o4jVphW00p4=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/features/ELIsNotValidExce
+ ption.class
+SHA1-Digest: cLpol3sBdA8UR3sVx8Af09WoD18=
+
+Name: org/eclipse/jst/jsf/designtime/el/AbstractDTPropertyResolver.cla
+ ss
+SHA1-Digest: H2wue1CirQ5tClg2jJgHtntrDTE=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/JSFResourceFra
+ gment.class
+SHA1-Digest: nOmNeloIgsjvprhoX+n2sK2QF4s=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/ViewMetadat
+ aLoader.class
+SHA1-Digest: aGaihXOCTTamTF7PS0rFj2I7FNw=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TLDTagRegistry.class
+SHA1-Digest: mxSQpDhKciIQmpP1KqLJKfMEo9A=
+
+Name: org/eclipse/jst/jsf/core/internal/TagLibraryRegistryLoader.class
+SHA1-Digest: 6hiD05loeERHWoKrgoMCAkc3W3c=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TLDTagRegistry$MyPropertyListener.class
+SHA1-Digest: bGcuYceEIcnSa+LU6MbE2GuNDGY=
+
+Name: org/eclipse/jst/jsf/validation/internal/JSFValidationContext.cla
+ ss
+SHA1-Digest: Kz3XfjZjGMIyse7TyJcwY6Istbo=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/AppConfigValid
+ ator.class
+SHA1-Digest: aVZ6CLu32/15tVY/avNwX/p88g0=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/NodeValidation
+ Visitor.class
+SHA1-Digest: CksWKfiyi/6gMO8/aAwNQy0zbVM=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/AbstractJSFAppCon
+ figManager$1.class
+SHA1-Digest: xMPRRgOrwAEjGJCPab4Ci8xL7Uc=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ComponentValid
+ atorVisitor.class
+SHA1-Digest: AiWKekMAr7njijaCF/OPlTJqn2w=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/Upgrad
+ eStatus.class
+SHA1-Digest: fln0tCx8PS4H6hc144B1DP3pYZg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ LibraryOperationFactory$AddTagLibrary.class
+SHA1-Digest: SeXP/MsqEAlfJrKkzy/srwTulm0=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DefaultDTViewHandle
+ r$MyLifecycleManager.class
+SHA1-Digest: 6c0p+JOoAASWp1p7nZAXjkaZMD4=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/ITagRegistry$
+ TagRegistryChangeEvent.class
+SHA1-Digest: jdzrBnS7k4vJ8batcSiWFioV3J8=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/JSFLibraryRefer
+ enceServerSupplied.class
+SHA1-Digest: HmReRCEaH/5PyoM4/G9p23geQUY=
+
+Name: org/eclipse/jst/jsf/validation/internal/Severity$3.class
+SHA1-Digest: TPqqDwsyj8tb0TghZzO6VvEsnm0=
+
+Name: org/eclipse/jst/jsf/validation/internal/LocalizedMessage.class
+SHA1-Digest: XjlMcbIcPA94Ms2bDeFyuxSqs34=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/LibraryResourc
+ eIdentifier.class
+SHA1-Digest: lVjYysINqb3yuP6jGgGQl8LpHaY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/XMLViewObjectMappin
+ gService$ElementData.class
+SHA1-Digest: ceiM6c+v5o/pmswe9IfhPfjmTE4=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/ObjectType.
+ class
+SHA1-Digest: CpQA/ivi6INMxydvOc/EX4O6ObE=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/IFacesConfigChangeListener
+ .class
+SHA1-Digest: XPaD08xDOEI4GYqfmzrmENxKwPw=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/MultiplyAri
+ thmeticBinaryOperator.class
+SHA1-Digest: +J8AuRMDH5kmq3O5olWdgcPmsgY=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/impl/Archiv
+ eFileImpl.class
+SHA1-Digest: RyszdR9fQJePq/LkokN4zjoQf9w=
+
+Name: org/eclipse/jst/jsf/designtime/DTAppManagerUtil.class
+SHA1-Digest: CzV/tTmsPDiaMmmTHyzOI53rPgo=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DefaultDTUIViewRoot
+ .class
+SHA1-Digest: KevU9X6jqVkUPWWjsJddq+EkG2Y=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/XMLComponentTreeCon
+ structionStrategy.class
+SHA1-Digest: AYAmESAp+DhaZH+qyAX06wKRd18=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ComponentValid
+ atorVisitor$ComponentFacetValidationVisitor.class
+SHA1-Digest: jbgQLi19FDiA0uYZufzkfsSD/2E=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/persisten
+ ce/MasterIndex.class
+SHA1-Digest: cKbodd6gEYcqIau3ztcbHZD59ss=
+
+Name: org/eclipse/jst/jsf/designtime/el/DefaultDTPropertyResolver.clas
+ s
+SHA1-Digest: ajfRG36m1Wy6U0zFZBd85PD7TOQ=
+
+Name: org/eclipse/jst/jsf/designtime/symbols/AbstractDataModelVariable
+ Factory.class
+SHA1-Digest: LpE2lGjxAKY8qs/i1RC5bvlFyWU=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/BehaviorValida
+ tionVisitor$BehaviorClassValidationVisitor.class
+SHA1-Digest: mRrdC+kWIh1Xf45cMKIsdYaqkv8=
+
+Name: org/eclipse/jst/jsf/validation/internal/AbstractXMLViewValidatio
+ nStrategy.class
+SHA1-Digest: 0UlrBMkRtRzf5G4WIIk/tZ0siuQ=
+
+Name: about.html
+SHA1-Digest: OJyoBf8l3c2Kfn+uImC4IbpLdfA=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/JarBasedJSFRes
+ ourceLocator.class
+SHA1-Digest: kjkWqv14j8NwVWBPIGfRlLqMFkM=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/diagnostics/messages.
+ properties
+SHA1-Digest: vjlSR9BjkVUu4YvlWGGj68ToeR4=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FacesConfigVal
+ idator$LifecycleValidationVisitor$PhaseListenerValidation.class
+SHA1-Digest: IpHAdpbSUbB2PkvlJVT02VhTLK4=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/IJSFAppConfigLoca
+ torProvider.class
+SHA1-Digest: PTlVHILPTwjOANFyD0kjX3eRmkg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/ResourceBundleMa
+ pSource$1.class
+SHA1-Digest: rXds5E2HJF5jOAOL3LUyl9rrarI=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/AttributeValid
+ ationVisitor.class
+SHA1-Digest: 77JDQiWDK8I8X6PNxoDc6UCQ0s4=
+
+Name: org/eclipse/jst/jsf/core/internal/JSFCoreTraceOptions.class
+SHA1-Digest: pZQ815ssWEKj+Gij3KU7fK0dcAo=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/ComponentTreeConstr
+ uctionStrategy.class
+SHA1-Digest: h62djDlI+qw+J3kzel0oYakWRU8=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/PaletteInfo
+ sFactory.class
+SHA1-Digest: VOfm7ovXfp+hTkxUo+9wtCpO2NQ=
+
+Name: org/eclipse/jst/jsf/core/internal/CompositeTagRegistryFactory.cl
+ ass
+SHA1-Digest: S6Lkf65Nuaie3XHQAZPWxHfnRLU=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryregistry/InvalidArchiveFilesC
+ reationException.class
+SHA1-Digest: n79PtwaxilBs8eMLolyEDwUipGo=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /ComponentTypeInfo_.class
+SHA1-Digest: xINA8aXBzMT854baIYqqp3xMUB4=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/util/Constra
+ intsResourceFactoryImpl.class
+SHA1-Digest: Ui80ar6hkvM0u+RQQHjqrjVVC5s=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/AbstractJSFAppConfigLocate
+ r.class
+SHA1-Digest: Fy1iwDcK77LM9x7EMPcwbHfYbSw=
+
+Name: org/eclipse/jst/jsf/designtime/context/AbstractDTExternalContext
+ .class
+SHA1-Digest: E3Ob1pMoB8/8y/TECMA72deIifM=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/EvaluationTracker.cla
+ ss
+SHA1-Digest: Ya2iIxdfgujbFYa6ir1VEBsjiwQ=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFConfiguration
+ PresetFactory11.class
+SHA1-Digest: aaci7YWEz065xSrklVJxyiJGNiM=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/DefaultJSFAppConfigLocater
+ .class
+SHA1-Digest: 9ZSOSjRcd/3uC8C8Szx/hcRP10U=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/persisten
+ ce/SerializableTLDNamespace$SerializedNamespaceData.class
+SHA1-Digest: byW9heJ7oQJ8xo3w0tOJMIzqOlg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/StaticJavaTypeSy
+ mbolFactory.class
+SHA1-Digest: L4bPemzxU4Q3fhxAjghARchsNiM=
+
+Name: schema/propertyresolver.exsd
+SHA1-Digest: tGeN2QKh26cCn9+WVlsZP+Buytc=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/JSFLib
+ raryRegistryUpgradeUtil.class
+SHA1-Digest: pjqDO+Lj9pPIMoiVyIofpgXhKt8=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/impl/Palett
+ eInfosFactoryImpl.class
+SHA1-Digest: evi6SAL+JjJoEwJe6KnyniHqDkc=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/TagCreation
+ Template.class
+SHA1-Digest: yD/5cz8zsIcnzvirhCv5HJjkAYg=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/JSFAppConfigLocat
+ orProviderStrategy.class
+SHA1-Digest: t1j/NYpsMjGFVjplWoQDE1WfrjM=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/CSSClassTyp
+ e.class
+SHA1-Digest: k8t33G3MIZASzLKzIJT+ZuS0swM=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/LessThanRel
+ ationalBinaryOperator.class
+SHA1-Digest: W+WaFaDzGfqit3paFkdp1kxntzE=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/MultiSignat
+ ureEnumerationType.class
+SHA1-Digest: h84wX1ZHxissy6qW+GUOTuX8Svg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/BasicExtensionFactory$Pe
+ rProjectExtensionData.class
+SHA1-Digest: p//ezFb+71fktG8e/gI00BA1U9Y=
+
+Name: org/eclipse/jst/jsf/core/internal/TagRegistryFactoryInfo.class
+SHA1-Digest: 6S4JUIFfpFm8Ivut27MBYdYvGes=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/IType.class
+SHA1-Digest: q8qXourQUeRTB9yQnBp9whX643U=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDTagEle
+ ment.class
+SHA1-Digest: /Yp2vAbQxBXIE6Qq4krkw0lpl6o=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/AdditionalContextSym
+ bolInfo.class
+SHA1-Digest: mITS6Jw2bHLBuDbRg6TtfxD870o=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/messages.pr
+ operties
+SHA1-Digest: z3oiSGSPPPfg2NTKpAu5XH0oQEU=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/persisten
+ ce/TagRepository.class
+SHA1-Digest: +Iou+5fbt8KbpTmxrjN5Yq37wOo=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDConver
+ terTagElement.class
+SHA1-Digest: /zeuAiWFoNEszjqvRGmHECkYFuM=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetUninstal
+ lConfig$Factory.class
+SHA1-Digest: Yk/+fkqyjX0iWmKkc0NfoSbFdW0=
+
+Name: schema/jsfAppConfigManagerFactory.exsd
+SHA1-Digest: mItyOvH4M+kcRhhIUyBNygaQPRk=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/internal/JSFLib
+ raryReferenceFacadeFactory.class
+SHA1-Digest: KavmUeEmoSE+94js3SimJcXMeQQ=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/PaletteInfo
+ .class
+SHA1-Digest: XGN6+vHjNFFKI8wvrVxtmvbEGpg=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/ITypeDescriptor.class
+SHA1-Digest: Id+Hhr7bGvINxG/97KINHytNs0k=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /AttributeToPropertyMapping.class
+SHA1-Digest: JrOQvFeafFs4aLjnr1Yal5gTtnc=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/ResourceBundleMa
+ pSource.class
+SHA1-Digest: +AosKp//SUzehxqYultyWDWnTso=
+
+Name: org/eclipse/jst/jsf/designtime/el/AbstractDTVariableResolver.cla
+ ss
+SHA1-Digest: wryqrcHUi0i9PpvuEf4hnmcqp5U=
+
+Name: org/eclipse/jst/jsf/designtime/el/IDecorativeResolver.class
+SHA1-Digest: TJTMkyfrc65payWoz56rRtw5+fY=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$ApplicationClassNameBasedValidationVisitor.class
+SHA1-Digest: o8alBFHPqaGIEh403qkqgEJ80AE=
+
+Name: org/eclipse/jst/jsf/designtime/DesignTimeApplicationManager.clas
+ s
+SHA1-Digest: hpdHfjpT5YX9E/aqPsqL5faOlRc=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ConverterValid
+ ationVisitor$ConverterForClassValidationVisitor.class
+SHA1-Digest: JIs9ytAEM6T1HiKcRc+qPVXXJsc=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TLDTagRegistry$ChangeJob.class
+SHA1-Digest: 4mg8EbZnqDa2SRqUdjeiC75K1Mc=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/JSFLibraryRefer
+ encePluginProvided.class
+SHA1-Digest: q8vwQn+LoFyKA73Vjkv8X7LADEw=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/MinusUnaryO
+ perator.class
+SHA1-Digest: MyD52F2aErMlZeK8j0yPXKkoWrI=
+
+Name: org/eclipse/jst/jsf/designtime/context/DTJSPExternalContext.clas
+ s
+SHA1-Digest: 24aiTN53Sl6RMyfutOvCm7Vp3+Y=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/EmptyUnaryO
+ perator.class
+SHA1-Digest: bTsFSWTl6Cxyaz4UX3z+6Ju94l4=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/impl/JSFLib
+ raryRegistryFactoryImpl.class
+SHA1-Digest: GOG6yHzhBuRkSsbfejoDwxs2w/M=
+
+Name: org/eclipse/jst/jsf/designtime/resolver/AbstractSymbolContextRes
+ olver.class
+SHA1-Digest: TXpOYMqpPn1nG9wrb1e2bffCf1U=
+
+Name: jars/fake_jsp_21.jar
+SHA1-Digest: qN7j5O7ch40i8JUHVF3iHYp9HUY=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FactoryValidat
+ ionVisitor$ExceptionHandlerFactoryValidationVisitor.class
+SHA1-Digest: N9ulhSI7hPw/zPR0uqb+qih+llk=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/util/Palett
+ eInfosAdapterFactory$1.class
+SHA1-Digest: NW9AAL7CYVD+fZNJ0ALbrN5/W24=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/IWorkspaceJSFR
+ esourceFragment.class
+SHA1-Digest: mPE+oK/Fxz7dr9tu+SzGJo/SRLg=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/JSFAppConfigProvidersChang
+ eEvent.class
+SHA1-Digest: aR8v8fccH+VOaIEu+881Eid4kgY=
+
+Name: org/eclipse/jst/jsf/designtime/context/DTFacesContext$1.class
+SHA1-Digest: e8CiusQxhYLcIkhZr94TXZDNUak=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ManagedPropert
+ yValidationVisitor.class
+SHA1-Digest: aUYthXMbfRWonqqjq9n2duVUGLU=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDTagEle
+ ment$DocumentElementData.class
+SHA1-Digest: pBaUK6WJIwyOKEg/DD1vQFGRVHc=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /impl/ClassTypeInfo_Impl.class
+SHA1-Digest: OPvAwzTGFEMteOUjLFrDdGGJkSw=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/ExtensionBasedJSF
+ AppConfigManagerProviderStrategy$JSFAppConfigManagerFactoryExtensionP
+ ointReader.class
+SHA1-Digest: Io4J6wqtF9SHIRpjjAH33tB18Uo=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/AbstractJSFAppCon
+ figManager$FacesConfigChangeAdapter.class
+SHA1-Digest: 5kA+oCxC52V9wWHN4XHS5T+fywY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DTUIViewRoot$Stalen
+ essAdvisor.class
+SHA1-Digest: dzJb80H/bcIYWR5MH+IPOFGjETo=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/XMLViewDefnAdapter$
+ DTELExpression.class
+SHA1-Digest: L3zNSKwbtnSO4tbXul9liUgFWMk=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/IMetaDataEnabledFeature.c
+ lass
+SHA1-Digest: TNII4tA1LXZ7B/VlErV6XSWaGjU=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/IJSFAppConfigProvidersChan
+ geListener.class
+SHA1-Digest: MqH7XpruCddqe1pO54eM5LRtWlc=
+
+Name: org/eclipse/jst/jsf/core/internal/contenttype/XMLDocumentElement
+ AttributeContentDescriber.class
+SHA1-Digest: sN9eV9nPUoCXcC1NYSWLkP2EKro=
+
+Name: org/eclipse/jst/jsf/validation/internal/IJSPSemanticValidatorTes
+ t.class
+SHA1-Digest: UGgpqxWGSiJOt+bVoKJrNRvyzUc=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/IdentifierT
+ ype.class
+SHA1-Digest: wc+0BF05UDLrJnOpg4w10Wlk3AU=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ClientBehavior
+ RendererValidationVisitor$ClientBehaviorRendererClassValidationVisito
+ r.class
+SHA1-Digest: +LlyDjEa1VKuUh9CU7H3JZkjNek=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ LibraryOperation.class
+SHA1-Digest: /ifIgMjKAgV/yK0oPusuzWrORU4=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resolver/ViewBasedTaglib
+ ResolverFactory.class
+SHA1-Digest: yNGgU55xNTQrm+Z8+Q2v8tNsR/E=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/impl/Palett
+ eInfosPackageImpl.class
+SHA1-Digest: 8tDEFDlI+99CQErhjETlD3BsIyM=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/AttributeValid
+ ationVisitor$AttributeClassValidationVisitor.class
+SHA1-Digest: PCim55OpDknMh4q32S9u2NrPGQo=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/IntegerType
+ .class
+SHA1-Digest: McbL3oI5SJ9Fq6JPXPCydkMngqk=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TLDRegistryPreferences.class
+SHA1-Digest: qN2tY1JLIctH14oljMz/6E/3SvA=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryconfig/JSFLibraryReg
+ istryUtil.class
+SHA1-Digest: RztBmikaBrCztYG36acVmyiN0Hg=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/util/Constra
+ intsAdapterFactory.class
+SHA1-Digest: ypTODMA4cWal8R5ArgTlVJc4OzI=
+
+Name: org/eclipse/jst/jsf/core/metadata/internal/Messages.class
+SHA1-Digest: IKwaOBV44p6tIjUwz5xgzjk8tSU=
+
+Name: org/eclipse/jst/jsf/designtime/el/DefaultDTVariableResolver.clas
+ s
+SHA1-Digest: oOmEiPlWKTKGGAdpuLs7JVkXS8c=
+
+Name: schema/tagRegistryFactory.exsd
+SHA1-Digest: JSFKUcXOfSvgR03hBDUtsACCMis=
+
+Name: org/eclipse/jst/jsf/core/internal/contenttype/ContentDescriberFo
+ rFacelet.class
+SHA1-Digest: iJA+v9tyzKoy5Lo8Qw8GLXtWM80=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DefaultDTViewHandle
+ r$DefaultViewDefnAdapterFactory.class
+SHA1-Digest: mFrTV6OQWN9qzKwHDq9Esqp3DHQ=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/ExpressionB
+ indingType.class
+SHA1-Digest: cmvCwe3Hxo0kDLcWxs4kipU3nak=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/TestableJSFAppCon
+ figManagerProviderStrategy.class
+SHA1-Digest: 7vyAI2EmbSSIrNtUmpXFLlMnFVU=
+
+Name: org/eclipse/jst/jsf/core/internal/IJSFPreferenceModel.class
+SHA1-Digest: vZ2dmuJEPx/LQaVD6exOopuuaF4=
+
+Name: org/eclipse/jst/jsf/core/metadata/internal/INamespaceModelProvid
+ er.class
+SHA1-Digest: 6guMxs5cJcyZhzJdRwSvlUiijxM=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/J2EEUtils.class
+SHA1-Digest: pGQOtOxtGWofj1/OtAS3Asq1TLo=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/features/package-info.cla
+ ss
+SHA1-Digest: i/c0kou1aVTZ+WxqZofS5gi8eqk=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDTagEle
+ ment$TLDElementData.class
+SHA1-Digest: 3SaUGSidLYPwWZlUPpatWqsxJtE=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/IJSFAppConfigLocater.class
+SHA1-Digest: yiHPtAjUk9DEW/+FwFqalznr1LA=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/util/Constra
+ intsResourceImpl.class
+SHA1-Digest: PPmGDSui/Wjbv1UwPvg2SkBnY1Y=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FactoryValidat
+ ionVisitor$VisitContextFactoryValidationVisitor.class
+SHA1-Digest: MLA3EdwFZ/zzCkhSbJciuUAsP7M=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /util/ComponentMappingResourceFactoryImpl.class
+SHA1-Digest: 0yfZOLq+UpcMFUOWdQgaDlXbJIc=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/persisten
+ ce/MasterIndex$IndexHeader.class
+SHA1-Digest: CaG1UIcpb/2kYa5tJubh34BpqOQ=
+
+Name: org/eclipse/jst/jsf/designtime/symbols/Messages.class
+SHA1-Digest: ozfLjV4szftbq9jFVEDOuLNEOsQ=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/AbstractJSFAppConfigProvid
+ er.class
+SHA1-Digest: NKgM44HM9u2PUCJ7VthW6FDSReU=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetExceptio
+ n.class
+SHA1-Digest: FXPT8jHZ090mltReGW8lXjhEhnU=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/JSFAppConfigManag
+ erFactory$AdaptableBoolean.class
+SHA1-Digest: q6NJXUiwixyWNwzd2uuK2RiCWWM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/JSPTagRes
+ olvingStrategy$StrategyDescriptor.class
+SHA1-Digest: rKfxvLB1SprirMcla//pXRAAG8A=
+
+Name: org/eclipse/jst/jsf/core/internal/RegistryUpgradeCommitHandler.c
+ lass
+SHA1-Digest: E9PjUDlYzXUIMqqqWBFhFK1TEYM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/AbstractDTViewHandl
+ er$NullViewRoot$1.class
+SHA1-Digest: r70BC8nGX71L4DZ3Z7U175v8bpc=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor$3.
+ class
+SHA1-Digest: hkpIYsU49+ehyEz+2PqSg1nf1r0=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/RendererValida
+ tionVisitor.class
+SHA1-Digest: JoA4WpN1/q+zPKr/NL3BMT+B43M=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/RelativePat
+ hType.class
+SHA1-Digest: D1D8Okwuw0MWY6Xo0bHzrNkh0mU=
+
+Name: org/eclipse/jst/jsf/designtime/symbols/JSFSymbolFactory.class
+SHA1-Digest: sRXzUa5RrVV5Z38MQnij7rQncXY=
+
+Name: org/eclipse/jst/jsf/core/internal/contentassist/el/ContentAssist
+ Strategy.class
+SHA1-Digest: o3vVRtTjStn0iuxB7phgZ1OPk6U=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/impl/JSFLib
+ raryRegistryPackageImpl.class
+SHA1-Digest: SF5djTXJAapPdvdKYlSRuz851EQ=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ConverterValid
+ ationVisitor.class
+SHA1-Digest: xN+wJWA3YIdH1r+SsgoFprJem0M=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/ImplicitRuntimeJSFAppConfi
+ gProvider.class
+SHA1-Digest: wl159EPvSk0W9RjQfgyCBwtYjkY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/Messages.class
+SHA1-Digest: AdV99oGkWWZsgHdU4TkhzJvv9X4=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/IFaceletConstants.class
+SHA1-Digest: k1SMT16WUgUNDLRvsXZH5YM2Lzc=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /TagMapping.class
+SHA1-Digest: Hk8R9HpnZWP1e9QIyzDhf+5lw1A=
+
+Name: org/eclipse/jst/jsf/validation/internal/JSFTypeComparatorPrefere
+ nces.class
+SHA1-Digest: Z29cgz9oFx3GXq4wZpTfmc7ezqk=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDJSFTag
+ Element.class
+SHA1-Digest: qZzjWd98whmBWYwipUAYU9Sc2So=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/ContextParamSpecifiedJSFAp
+ pConfigLocater$ContextParamAdapter.class
+SHA1-Digest: xmdmVeiv4ZH+wtsyNW9JndUOS7s=
+
+Name: org/eclipse/jst/jsf/validation/internal/IJSFViewValidator$Report
+ erAdapter.class
+SHA1-Digest: +LW7qp9jj1fI2t+UaOV2Jr58Uu8=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TLDRegistryPreferences$StrategyIdentifier.class
+SHA1-Digest: OoPJlBSgCC2BbaYOvFeFqmezXjk=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ViewIdValidato
+ r.class
+SHA1-Digest: ouTBksH9MQ/TVPn4S6o/JVmYwAQ=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/ResourceBun
+ dleType.class
+SHA1-Digest: PAAQXtV5y3nY3rFJB+qB2ejVQeg=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ILocalizedMess
+ age.class
+SHA1-Digest: nd6aINxP/VO+6m2jKR2eeHMtq8w=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/AbstractEnu
+ merationType.class
+SHA1-Digest: Dte7QdbUb1MnSbhjNXqYBpjPyvQ=
+
+Name: schema/pluginProvidedJsfLibraries.exsd
+SHA1-Digest: Zvfy4ZDo9nH6lbqwgPtK7z7YmEU=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /impl/TagMappingImpl.class
+SHA1-Digest: oCcDJy5m97kR8aGXXaSeyeoP5ss=
+
+Name: org/eclipse/jst/jsf/core/internal/contentassist/el/ContentAssist
+ Parser$PrefixVisitor.class
+SHA1-Digest: 9ewFth84PIl/y/8NkW3DdOThYbQ=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DefaultDTViewHandle
+ r$ResourceModStampStalenessAdvisor$1.class
+SHA1-Digest: tWKtjhVi8WHZ/srIGZSBh4wbQ1E=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/CustomViewM
+ appingAdapter.class
+SHA1-Digest: Kd6eiMZOcFYUqTLWAv+ngZVV0kg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /impl/ConverterTypeInfo_Impl.class
+SHA1-Digest: zdPs1UGQOBe3u+s6TK5i53flaX0=
+
+Name: org/eclipse/jst/jsf/core/set/constraint/messages.properties
+SHA1-Digest: l+/HBKOlBEunV/dhfLVm2gnY+mk=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFUtils12.class
+SHA1-Digest: B0Qbs5ZerL9G8qvWWRETujqQxX0=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/JSFLibraryRefer
+ ence.class
+SHA1-Digest: jShAYEK6eDjjosllzoJofvmx6BQ=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/GreaterThan
+ EqRelationalBinaryOperator.class
+SHA1-Digest: slHNxM7mZ8CgL2/qeqR3AJdH8YY=
+
+Name: org/eclipse/jst/jsf/validation/internal/Severity$2.class
+SHA1-Digest: Lh5ietJWRDudoctlz3XRP0C8zYQ=
+
+Name: org/eclipse/jst/jsf/core/internal/contentassist/el/ContentAssist
+ Parser.class
+SHA1-Digest: 63m3UtYq2PH9bgruVGVdPgLGdfY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DTUIViewRoot$Versio
+ nStamp.class
+SHA1-Digest: TBqgpA5CHmlJHvbFSpxPJsCtYk4=
+
+Name: schema/externalcontext.exsd
+SHA1-Digest: lBcbaySwcFr8FbbGng/M2mU150E=
+
+Name: org/eclipse/jst/jsf/core/metadata/internal/TaglibMetaDataTLDTran
+ slator.class
+SHA1-Digest: I7UJS+/8BAwKvqae7R4//6CLTCk=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/TagCreation
+ Attribute.class
+SHA1-Digest: GQc8neupSPJJtfn6jSiPkzIJkNk=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/LessThanEqR
+ elationalBinaryOperator.class
+SHA1-Digest: fDok+soF+JknLnzdsdxhS1+XgOE=
+
+Name: org/eclipse/jst/jsf/core/IJSFCoreConstants.class
+SHA1-Digest: /LdKCWl9xY6U8uGwcB6FanSedyM=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/FacesConfig
+ ConverterIDType.class
+SHA1-Digest: pT7u8w1rPcJH+PQHPFbLEZr0XgY=
+
+Name: org/eclipse/jst/jsf/core/internal/region/Region2ElementAdapter$N
+ oElementException.class
+SHA1-Digest: MCl4rb13sjNrwy6tjVDk6roLZ3k=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/JSFResourceCon
+ tainer.class
+SHA1-Digest: yXTfK/tSvl87TqzT2vQHf9lhEvQ=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/DocumentTagIdentifier.clas
+ s
+SHA1-Digest: wMn8vDIpXueeiG/M689nMjOvpk4=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFLibraryValida
+ tor.class
+SHA1-Digest: WVcrqneqeL04Mtydj8SP6Z+3Qzk=
+
+Name: org/eclipse/jst/jsf/designtime/context/DefaultDTExternalContextF
+ actory.class
+SHA1-Digest: hSVQ3AeSIAvnGLLMu3cV4Irpevw=
+
+Name: org/eclipse/jst/jsf/core/internal/CompositeTagRegistryFactory$Ta
+ gRegistrySelectionStrategy.class
+SHA1-Digest: z9UiZ0Zh6NXPqe6P2WdLQTBEanc=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/IDTViewHandler.clas
+ s
+SHA1-Digest: I/aV3nAtbVk1cTk85FS/oZQUwMA=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDTagHan
+ dlerElement.class
+SHA1-Digest: RUJShRUyBvwY/CwhcP3ORWf0y6c=
+
+Name: org/eclipse/jst/jsf/core/internal/region/Region2ElementAdapter.c
+ lass
+SHA1-Digest: 9UzMyWamP+BarJGAE1+gzdSzQzw=
+
+Name: org/eclipse/jst/jsf/validation/internal/facelet/Messages.class
+SHA1-Digest: 82nJuy62k/jqwBQYes73p4AlqF0=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/JSFAppConfigManager$JSFApp
+ ConfigManagerFactory.class
+SHA1-Digest: cPVBJmvZcvxcJAfDu1WBa3Bo3Qs=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/features/PossibleValue.cl
+ ass
+SHA1-Digest: pVL14Y4J3q6CYyjBhrLYqtPBb/A=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/MethodBindi
+ ngType.class
+SHA1-Digest: /1CU/MPMnZskU8CnwQkC6xtZx/E=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor$Re
+ freshRunnable.class
+SHA1-Digest: dy8s7WqpScVy1UnzvDpZMKqEzsM=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/RenderKitValid
+ ationVisitor.class
+SHA1-Digest: VgwowXcMEBt9sFVB6UR05wlpV9w=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FactoryValidat
+ ionVisitor$TagHandlerDelegateFactoryValidationVisitor.class
+SHA1-Digest: SYUDiUFO9Lv3ix+N62qp6ZAfwRs=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/Composite
+ TagResolvingStrategy.class
+SHA1-Digest: cgSIi/wqMvYXq/pG9vu12XswnA8=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/ContextParamSpecifiedJSFAp
+ pConfigLocater.class
+SHA1-Digest: QTqdRWzxOUGFSB1mJlyokWYfqzA=
+
+Name: org/eclipse/jst/jsf/core/set/constraint/Messages.class
+SHA1-Digest: +HJfSFm1A/SXY2LDgVNuStIMbRg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/ResourceBundleMa
+ pSource$BundleFileCacheInfo.class
+SHA1-Digest: 3CfMYv1wnn6yTzMkiSrcr8uhk8U=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/package-info.class
+SHA1-Digest: RNf5MUTGs7hKe+brBgrPV5dYJ8Y=
+
+Name: org/eclipse/jst/jsf/core/internal/region/Region2ElementAdapter$R
+ egionProcessorStrategy.class
+SHA1-Digest: CA655jCjMpXT4KVdr4Fb1lnEbLU=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/CurrencyCod
+ eType.class
+SHA1-Digest: DNvXTs4Z8yha5ddfbjM01z2poSM=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/ConstraintsF
+ actory.class
+SHA1-Digest: nissR5aS312cDMjMtFmwB52uTbA=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/package-info.class
+SHA1-Digest: CQUQgTVNOINXJSV3YKBG0FiK1dg=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ComponentValid
+ atorVisitor$ComponentFacetValidationVisitor$FacetNameValidationVisito
+ r.class
+SHA1-Digest: RV8PKLhLu9VMvoUNnBvsemLUrB8=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/JSFAppConfigManag
+ erFactory$JSFAppConfigManagerProviderSelectionStrategy.class
+SHA1-Digest: lSTBF7e3AHxPLemkGcyt73Zq2xI=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/LocaleType$
+ 1.class
+SHA1-Digest: 9U0ZSDg3xAjMnTmOJNkDi5Z5lvY=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FactoryValidat
+ ionVisitor$PartialViewContextFactoryValidationVisitor.class
+SHA1-Digest: 6Fn40Hklenq3I6QRCDBe5/zf064=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/internal/AbstractMetaData
+ EnabledTypeFactory.class
+SHA1-Digest: eaaZSly3HRNC9olK+ldEJ2ifxbw=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/DataModelVariabl
+ eTestFacade.class
+SHA1-Digest: E6MFPxFVY5jBK9U3X969x3FuwWU=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DefaultDTViewHandle
+ r$ResourceModStampStalenessAdvisor.class
+SHA1-Digest: M4ZRkyX/Ya79+TNDhAutysEC/rc=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryregistry/package-info.class
+SHA1-Digest: r1WWDtd274Mnb057E4w59Lp0WUg=
+
+Name: org/eclipse/jst/jsf/core/tagmatcher/EvaluationException.class
+SHA1-Digest: JEylZUXPS51Wyj5oIRSVLyJdPLo=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/SubtractAri
+ thmeticBinaryOperator.class
+SHA1-Digest: k+RXKZersCtg2j5BaDB5UySyJ28=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/BindingType
+ .class
+SHA1-Digest: epusNvtXRC5YT/ovwHIDlAg9DIk=
+
+Name: org/eclipse/jst/jsf/core/internal/CompositeTagRegistryFactory$Ta
+ gRegistryFactoryProviderSelectionStrategy.class
+SHA1-Digest: 7DU/1tj+6SnSTLNDGJDamkb2oDA=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/WorkspaceResou
+ rceManager$JSFResourceTracker.class
+SHA1-Digest: OfbGAfigNnoqZRln8jK3nVpQZUk=
+
+Name: org/eclipse/jst/jsf/validation/internal/strategy/DiagnosticFacto
+ ry.class
+SHA1-Digest: dqSafLf9AI1FcW+Auni6OArhYV0=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/Upgrad
+ eOperation.class
+SHA1-Digest: O8sOFwTZ2KD7N1U2CiesEJfAZy8=
+
+Name: org/eclipse/jst/jsf/validation/internal/strategy/DiagnosticFacto
+ ry$MyLocalizedMessage.class
+SHA1-Digest: uJU7H1SRGe0pBgGRH5nZzmzmrno=
+
+Name: org/eclipse/jst/jsf/designtime/package-info.class
+SHA1-Digest: MEj+ZvlRYmqjwvxNDzByeua/EXk=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/StartupHandler$JSPEd
+ itorListener.class
+SHA1-Digest: C07JsCa4s1zBvds1Bj8j8wbP6do=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/JarBasedJSFRes
+ ource.class
+SHA1-Digest: CIrkj4oV9cjT+/KZaCcs+YGsg2I=
+
+Name: org/eclipse/jst/jsf/core/internal/contentassist/el/FunctionCompl
+ etionStrategy.class
+SHA1-Digest: jknmCZvZckJmX595dQGpEudr+B8=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/Messages.class
+SHA1-Digest: TXUe3kCGaKELpgCHIpzSUTEocsk=
+
+Name: org/eclipse/jst/jsf/validation/internal/ValidationPreferences.cl
+ ass
+SHA1-Digest: DeQU+MpCe/oT++IJLsoINEiN0uo=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/JSFLib
+ raryRegistryXMLProcessor.class
+SHA1-Digest: +6C4jAF6DPRB35R5mtmDeY4CJVo=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/ComponentBi
+ ndingType.class
+SHA1-Digest: 87Zk9m7ZwupN31xZR6BpBaj+Cyw=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/CompositeJSFAppCo
+ nfigLocatorProviderStrategy.class
+SHA1-Digest: tvfTyUAltNFs1oOW8MYorI6Tonw=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$ViewHandlerValidationVisitor.class
+SHA1-Digest: yoawFdeR3U1yNJ3mx78mpS3IX9E=
+
+Name: org/eclipse/jst/jsf/validation/internal/strategy/ContainmentVali
+ datingStrategy.class
+SHA1-Digest: IgAYxPMprDbtWiO29JMkXOpwoxA=
+
+Name: schema/grammar-annotations.xsd
+SHA1-Digest: DldVX/5Z9cS/0MvkHXqhtcH181s=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/DefaultTa
+ gTypeInfo.class
+SHA1-Digest: gwpcbrAUIZfBircn/ErvFV/4Q6M=
+
+Name: org/eclipse/jst/jsf/core/JSFVersion.class
+SHA1-Digest: m5lmXrlRtBFzixbhy6JT7pPW380=
+
+Name: org/eclipse/jst/jsf/designtime/el/package-info.class
+SHA1-Digest: PjoPuzUFxbCfGjwR5aVqE+ktG7U=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/impl/TagIdIm
+ pl.class
+SHA1-Digest: Wjcd3XPaEdWyOgupwCwJ/frfxQk=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/impl/Palett
+ eInfosImpl.class
+SHA1-Digest: PmvM/fiHJvQ3LfE3sjNT11vXAIk=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor$Co
+ untingMutex$4.class
+SHA1-Digest: /LFLQdJ1XctkW6q4nOySHI9K0ic=
+
+Name: org/eclipse/jst/jsf/core/metadata/internal/NamespaceMetaDataTran
+ slator.class
+SHA1-Digest: 89SHT7/gdVrVQ3bWa5O079BiX/0=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/IViewDefnAdapter.cl
+ ass
+SHA1-Digest: Uom/0rZIzzLLQorIFpG+2iER7zo=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TLDRegistryPreferences$PropertyListener.class
+SHA1-Digest: HMK5LHw6fWtnMgXtroZtP0AWYJo=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/DefaultJSFAppConfigLocater
+ $ResourceDeltaVisitor.class
+SHA1-Digest: 4me5j016FoEdM1qvG7+cmgR9Czw=
+
+Name: schema/symbolContextResolverFactory.exsd
+SHA1-Digest: EGP6pGs8sG5QOf30NpnQtjxODKY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/AbstractCus
+ tomViewMapper.class
+SHA1-Digest: taULmxKpzOBpl5+S2ZzvrpFMjwY=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/Migrat
+ eV1toV2Operation.class
+SHA1-Digest: x0ntAE95CtGx9AXwHm9RhwRlKgI=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryregistry/PluginProvidedJSFLib
+ raryCreationHelper.class
+SHA1-Digest: oXMvmqPYcv0IrfOQdEpZJzFiIy0=
+
+Name: org/eclipse/jst/jsf/designtime/context/ViewRootHolder.class
+SHA1-Digest: KCM+KumgAV0BHsO591eHTfRq7Ug=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/NavigationCase
+ ValidationVisitor$FromActionValidationVisitor.class
+SHA1-Digest: HjPj8XLi3g84Uhu9F5dBURWFwzU=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /ConverterTypeInfo_.class
+SHA1-Digest: pgyWjJ9mcOKXkKRw1aS9cHr2CZ0=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/QuickFixAssistant.cla
+ ss
+SHA1-Digest: Ac4DBgL7oQPtJCXcfy2ulBBlrKg=
+
+Name: schema/methodresolver.exsd
+SHA1-Digest: BCuLmB0o7kgEcYEax/9qV9EGcKI=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ManagedBeanVal
+ idationVisitor.class
+SHA1-Digest: 1x2Jn1HkBy2djkj5lmMhJLO9gFA=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/StartupHandler$1.cla
+ ss
+SHA1-Digest: g5bfKP3akXoEiwtRrmDUCGw62zI=
+
+Name: schema/jsfFacetConfiguration.exsd
+SHA1-Digest: nKLIB/N5UEYTCrh/HuyJu2Q8rF0=
+
+Name: org/eclipse/jst/jsf/validation/internal/facelet/FaceletDiagnosti
+ cFactory.class
+SHA1-Digest: 75z3Y/CS+fPrbXexsdaOgPBeOYU=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/util/Constra
+ intsSwitch.class
+SHA1-Digest: 6ltqc86GH8A6utRUbkC85jlMPu4=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/ViewObjectConstruct
+ ionStrategy.class
+SHA1-Digest: /duXCM1+4hMuKr4fawf2urtGnjs=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/JSFAppConfigManag
+ erFactory$CompositeFactorySelectionStrategyProvider.class
+SHA1-Digest: e5tLWdV8+wzZy9Vc3fx2HEAhSp4=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DTUIViewRoot$Stalen
+ essListener.class
+SHA1-Digest: gTxjxMF1AFCRmUQ4NVDq/CzsC5Q=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /ValidatorTypeInfo_.class
+SHA1-Digest: fsbjrxzH27KwNbwnMmjotvHxTg4=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/ITagRegistry$
+ TagRegistryChangeEvent$EventType.class
+SHA1-Digest: feWpFfnR+ialzec4RQC2mhky5LQ=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/CSSStyleTyp
+ e.class
+SHA1-Digest: fl/F1h7eJ10kybNAxJDSGA8HWLM=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/JavaClassTy
+ pe$Searcher.class
+SHA1-Digest: sHg0sr8vP1ZUAfzUD9OeG4l5duM=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/WebContentRelativeJSFAppCo
+ nfigLocater.class
+SHA1-Digest: 8Ft5/IcGhsngsuJkPUp4mdwnSrA=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/DiagnosticFact
+ ory$MyLocalizedMessage.class
+SHA1-Digest: xe1Qkkzr455OWdGxMOGZJmIp7xs=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /util/ComponentMappingAdapterFactory$1.class
+SHA1-Digest: J6JFcUrDGUqjwEYOhlX18y9oG94=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/LinkType.cl
+ ass
+SHA1-Digest: Vd6zYgJbBysNWTe8MawKAHO6pkA=
+
+Name: org/eclipse/jst/jsf/core/set/mapping/ElementToTagIdentifierMappi
+ ng.class
+SHA1-Digest: QprdUvcTqhUtK9Fmv+DegonhrrI=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/LongType.cl
+ ass
+SHA1-Digest: VKgzC2HrzPae/aQEOyJg9P5AV7k=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DTUIViewRoot$Stalen
+ essEvent.class
+SHA1-Digest: s/yv9NW3lY+CHkLQDBmpPO+RxQg=
+
+Name: org/eclipse/jst/jsf/validation/internal/ELValidationPreferences.
+ class
+SHA1-Digest: /OdxkFBLEHkmgnlcJqKKYprI9vo=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/IJSFResourceLo
+ cator.class
+SHA1-Digest: acw+LwTtRylTalSQX5zfiBtk+2A=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/TagIdentifierFactory.class
+SHA1-Digest: K4QPqe3b2F0Rnveo6ZNb4HRj7rY=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/LoadBundleUtil$LocaleDescr
+ iptor.class
+SHA1-Digest: /EsIy42LX1AWG/B4QcHwPnMiirU=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/ArchiveFile
+ .class
+SHA1-Digest: z3uqmjdhLUj8Bj1XVj89pe+m3Go=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/TagId.class
+SHA1-Digest: O5h2r+F1BlK3/JjGqy6dkFqrr0A=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/AppConfigValid
+ ationUtil$ELResultWrapper.class
+SHA1-Digest: xssrPsyj7g35d3G34ilOPkddnK4=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/features/IValidELValues.c
+ lass
+SHA1-Digest: uZlUeCv3PlEEkOqCuIXDtl8Pekc=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: 3VDEfqObUI4464gmv8s9+mQ9JQM=
+
+Name: org/eclipse/jst/jsf/core/internal/contentassist/el/IdCompletionS
+ trategy.class
+SHA1-Digest: dmRsGOv3BkPtXs7NJNGcGiuCIgU=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/AbstractMetaDataEnabledFe
+ ature.class
+SHA1-Digest: oRY8QrE3LbMjJadY9yddI5rtVlo=
+
+Name: jars/fake_el.jar
+SHA1-Digest: A7HvZOXh/55RFYjN7xiuJhPHL6Q=
+
+Name: schema/tagregistry.exsd
+SHA1-Digest: nsmX2pmAH0HJICFtM094TVdQvqs=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor$2.
+ class
+SHA1-Digest: mP4kUkumsPNunXNvgCYzDlnxKSU=
+
+Name: org/eclipse/jst/jsf/designtime/symbols/DefaultDataTableSymbolFac
+ tory.class
+SHA1-Digest: EKNwsCI3pkQFbZxbIReWxgSbQdE=
+
+Name: org/eclipse/jst/jsf/core/internal/jem/BeanProxyUtil$BeanProxyWra
+ pper.class
+SHA1-Digest: ewY0+R5Ru8Ufc2Sl6lYI0hniInc=
+
+Name: org/eclipse/jst/jsf/core/internal/ITagRegistryFactoryProvider.cl
+ ass
+SHA1-Digest: c1KEvBbRDwKz/t7+DpoPkqSwKfY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/Messages.class
+SHA1-Digest: NGwETlyPMwl4uNwfiL7bFruHbEQ=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$VariableResolverValidationVisitor.class
+SHA1-Digest: 4qeFTsDT3IsHD3CMEseV/0kDHnQ=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/FacesConfig
+ IdentifierFeatures.class
+SHA1-Digest: 0f4cpcfpDzEHw//g4L5VYaosHww=
+
+Name: .options
+SHA1-Digest: i40NaoByHYk7UBnb9naXKaGDsl0=
+
+Name: org/eclipse/jst/jsf/core/internal/contentassist/el/SymbolResolve
+ Util.class
+SHA1-Digest: oatUyNlF7F4arxlyV/Xw0az2jsY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ LibraryOperationFactory$ChangeTagLibrary.class
+SHA1-Digest: h7JZjwjUxTzjANZSuEirnE3cpU8=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/features/ICreateValues.cl
+ ass
+SHA1-Digest: /huD7MOU2eqbYAKkMiGtEGw5K4Q=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/StartupHandler.class
+SHA1-Digest: BIlFng8JGLQWy0xYepG+6Ek1CKY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/TaglibBasedViewDefn
+ Adapter.class
+SHA1-Digest: I07yinztMLyk+EfY0VUAduXXgjM=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/LocaleType.
+ class
+SHA1-Digest: cVO/u4WbTyVDdYnmI0+inXcOYuE=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FactoryValidat
+ ionVisitor$ViewDeclarationLanguageFactoryValidationVisitor.class
+SHA1-Digest: 96z/CdC0jJlOYWmbN6Y6cxOF+EM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDNamesp
+ ace.class
+SHA1-Digest: JPLA4DMax+6/K7FiHEtHM95dpSE=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TLDRegistryManager.class
+SHA1-Digest: BkodiI6eRRUognu0k+odWEULThg=
+
+Name: org/eclipse/jst/jsf/core/set/constraint/MemberConstraint.class
+SHA1-Digest: VIc5qJbhcoN9FXdINzwPyIkNpTw=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/TagCreation
+ Info.class
+SHA1-Digest: OTluAvmDhYOk3lMuSI7tLCjGTaQ=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/LegacyJSFLibrary
+ ProviderUninstallOperation.class
+SHA1-Digest: rURcyNJ61YESzpPIAk4I/blLAH0=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/internal/Abstra
+ ctJSFLibraryReferenceImpl.class
+SHA1-Digest: 0vrD0IcN+4fRvvGrBM1bXLZ5ZXI=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/internal/messag
+ es.properties
+SHA1-Digest: /yycpgJSlN5+B0mVlDxpB0VytXs=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/JSFVersion.clas
+ s
+SHA1-Digest: yWIZi247Kvls7qLkk2xCVcAl2+8=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/TernaryChoi
+ ceOperator.class
+SHA1-Digest: Ce3Qv8eIgeTx1C435Bs4CXLrgCg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/XMLViewDefnAdapter.
+ class
+SHA1-Digest: rLDbAealxH8dmQcUw96JwC91TP8=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/persisten
+ ce/MasterIndex$ProjectIndex.class
+SHA1-Digest: 0+IYX3u4gxF2Huk9+CB3tl/dkzQ=
+
+Name: plugin.properties
+SHA1-Digest: hkBhB0tkU4TfEQaHfxV1ycGAIIo=
+
+Name: org/eclipse/jst/jsf/designtime/DesignTimeApplicationManager$View
+ HandlerManager.class
+SHA1-Digest: 0h6OrO0dSCC23M8d7TfHcZfHHTI=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/OrBinaryOpe
+ rator.class
+SHA1-Digest: WwPL/6J2SiWBMz0ak7kF56PlpEU=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$LocaleConfigValidationVisitor.class
+SHA1-Digest: 4Gvv9ZYXgXi36LcwliKodM4N2MU=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/CurrencyCod
+ eType$CurrencyCodeMap.class
+SHA1-Digest: cuPSG/rXtGn0jfhE2s0Ubv4DOHk=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/IAttribut
+ eAdvisor.class
+SHA1-Digest: GkH00BTeTZQwj443cHgJnHj69q4=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFUtils11.class
+SHA1-Digest: Ds4IJpMFDFQ+Zl5+f1p6W3ClPGo=
+
+Name: org/eclipse/jst/jsf/validation/internal/Severity$1.class
+SHA1-Digest: hIryxdOaYQgiZa7RyFoX59UXVyY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TagIntros
+ pectingStrategy.class
+SHA1-Digest: ouQajOM6lltFJbK7STLGd18GXow=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/internal/JSFLib
+ raryReferencePluginProvidedImpl.class
+SHA1-Digest: KShWNotK8RZvej7Go55+3vP0ciU=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetUninstal
+ lConfig.class
+SHA1-Digest: ozgdvq2pcMv9w3DLhNTfOIaE76w=
+
+Name: org/eclipse/jst/jsf/core/internal/AbstractTagRegistryFactoryProv
+ ider.class
+SHA1-Digest: da6ShoC7RM/Veq8zoW2BRomb+v8=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/ConfigBasedDTPro
+ pertyResolver.class
+SHA1-Digest: 5VjWs4OQzghzJ1Z5UO8Nv1fuBz4=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /util/ComponentMappingResourceImpl.class
+SHA1-Digest: 8EBo2f63NlxXgoqBa7fMF7YSx6k=
+
+Name: plugin.xml
+SHA1-Digest: Q1CuKaGnDNZbjDbmHwKXafFoM58=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/ResourceIdenti
+ fierFactory.class
+SHA1-Digest: KCoxPQ+FOFOZY/UR2YTr+rcdDKc=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/AttributeIdentifierFactory
+ .class
+SHA1-Digest: X8k7YWge/PJT4yimjeiuYJx1fws=
+
+Name: org/eclipse/jst/jsf/validation/internal/strategy/messages.proper
+ ties
+SHA1-Digest: 9QBRYyHcreiMW00+rVcm/5/ssS4=
+
+Name: org/eclipse/jst/jsf/validation/internal/facelet/FaceletValidatio
+ nPreferences.class
+SHA1-Digest: fKzUlVVknB6fUIcTEwMvwmbfOr8=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/FacesConfig
+ ConverterIDFeatures.class
+SHA1-Digest: Py9Yda9im1JknB+Td6A1aDEPTnc=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/util/Palett
+ eInfosSwitch.class
+SHA1-Digest: gcI49r14AtE/OyDkLzvLjwc4lG0=
+
+Name: org/eclipse/jst/jsf/designtime/symbols/DefaultBuiltInSymbolProvi
+ der.class
+SHA1-Digest: fc/O9TSlBc73cEYMB11oMBcX/L8=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetInstallD
+ elegate$1.class
+SHA1-Digest: x7oVX8ZI6JsWtfgTN7FWAEIvMcg=
+
+Name: org/eclipse/jst/jsf/designtime/DesignTimeApplicationManager$Prop
+ ertyFileManager.class
+SHA1-Digest: gO+zb0VlqQ/CLnqATkC/cY/Khe4=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/AbstractViewDefnAda
+ pterFactory.class
+SHA1-Digest: dnh5DUGH2sGY9l3v6VNiC62evxo=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/NavigationCase
+ ValidationVisitor.class
+SHA1-Digest: TTWK3Y3aIslxlRh77tWUxnWrKAs=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/JSFLibraryR
+ egistryPackage.class
+SHA1-Digest: vnvL2Su+DtnvMst53+Jb8D8CJjg=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FactoryValidat
+ ionVisitor$RenderkitFactoryValidationVisitor.class
+SHA1-Digest: MH2X0+3YcKUKQNSzAqmpRnuLogw=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /impl/ComponentMappingFactoryImpl.class
+SHA1-Digest: iFrl617YwcSPyRpnSxbgjxJwDMg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDNamesp
+ ace$DocumentTLDNamespaceData.class
+SHA1-Digest: bg1i/U98TAv5wF4SSkd5dZbBk64=
+
+Name: org/eclipse/jst/jsf/designtime/DesignTimeApplicationManager$Prop
+ ertyFileManager$1.class
+SHA1-Digest: 9cfL93auU6xv8zcFDewqiBETdxU=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/JARFileJSFAppConfigProvide
+ r.class
+SHA1-Digest: eOjyhLqm1eXrukFjpoJE8TDhok8=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /ComponentMappingPackage$Literals.class
+SHA1-Digest: 72kGHIjtEsETFB1wuM+gET3/L1M=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDCompon
+ entTagElement.class
+SHA1-Digest: DxaUQt13uR/FwP9e3f8HUJolOvs=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/IJSFResourceCo
+ ntainer.class
+SHA1-Digest: uB70AAfIl+vrL8STtR3+nHZBvsg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/JSPTagVariableSy
+ mbolSourceProvider.class
+SHA1-Digest: 7N3bNkRpgThCWocyBP6+jaIyLis=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/features/IValidationMessa
+ ge.class
+SHA1-Digest: kTJ74dlSdPHf5NoxU3lN5xvEk2A=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/util/Constra
+ intsXMLProcessor.class
+SHA1-Digest: xcutQzlOmEXUfg/fa7dzrc7uP50=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/JSFVersion.
+ class
+SHA1-Digest: iLENZ8JETcRYzIqIVyUiW/bOt7E=
+
+Name: org/eclipse/jst/jsf/designtime/symbols/FileContextUtil.class
+SHA1-Digest: EM+6uKslBL9BHvnhTM1z2md/eM8=
+
+Name: org/eclipse/jst/jsf/designtime/el/AbstractDTMethodResolver.class
+SHA1-Digest: N/oC6Lcicq1OD1HJNcf7KWRGVlE=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/StartupHandler$1$1.c
+ lass
+SHA1-Digest: cMUvZP7Dx836GTnwLDq5kE4thIU=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$ResourceHandlerValidationVisitor.class
+SHA1-Digest: m9K5uLdYmUDonoEvUlqzMHOKLss=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DefaultDTViewHandle
+ r.class
+SHA1-Digest: 8/hku7GnUXUpDvSLUUZSR6s04dE=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/ResourceFragme
+ ntIdentifier.class
+SHA1-Digest: /KPLSFJBCGs9751oFx9NUGsc12E=
+
+Name: org/eclipse/jst/jsf/core/internal/contenttype/XMLDocumentElement
+ AttributeContentDescriber$AttributeValuePatternPair.class
+SHA1-Digest: tWLXJvzefj9SM4lSHXP+Z+7smqo=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/messages.prope
+ rties
+SHA1-Digest: j3r1LvNNSs5/MajURkfjqFvai9k=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/ASTSemanticValidator.
+ class
+SHA1-Digest: nu4Ioik/KBZFL/kWAp1bnOiW2RQ=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$NavigationHandlerValidationVisitor.class
+SHA1-Digest: pA3tVdD9RBJi0/awAHEJDdPwfNw=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/Messages.class
+SHA1-Digest: 8CVabEhObwPrtoPabk4ljNSC7Lw=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/RelationalB
+ inaryOperator.class
+SHA1-Digest: OADzB68UuwRd+PCLjlz6mos5Cg0=
+
+Name: org/eclipse/jst/jsf/core/tagmatcher/InvalidExpressionException.c
+ lass
+SHA1-Digest: G23WJnDcp+G3TcYadnxQbQkeIsI=
+
+Name: org/eclipse/jst/jsf/validation/internal/IJSFViewValidator.class
+SHA1-Digest: BUvM3/gEpb6TAf3Qwwa1ptv6DkA=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetUninstal
+ lDelegate.class
+SHA1-Digest: B/PyDhbWNGLdyDdkXvN9Y5p7zqI=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor$Sy
+ mbolContribAggregator.class
+SHA1-Digest: zavxEgfueNL6xAahzbSZPs6fo/A=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /impl/ValidatorTypeInfo_Impl.class
+SHA1-Digest: aDK5chOwZ/xpewREJu+K18HY2X8=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/CMUtil.class
+SHA1-Digest: 3vFU1APBXLDUJFfH/jtTywc8tRY=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/JSFLib
+ raryRegistryAdapterFactory.class
+SHA1-Digest: 2kC14DEEiSMctYC1T8YfPYTHuhE=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/JSFLib
+ raryRegistryResourceFactoryImpl.class
+SHA1-Digest: FPp0qXke1grVMwSTwwLrVx1xZpo=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /impl/ComponentMappingPackageImpl.class
+SHA1-Digest: eeBTIpyor8e0q4m+aKW8J5kzwpo=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/util/Palett
+ eInfosAdapterFactory.class
+SHA1-Digest: viMEJfzlGoOuUxQNgL8+HcyFXfg=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/NotUnaryOpe
+ rator.class
+SHA1-Digest: 4qIR6/jmZlcB80gYuMHDF+4Fzi0=
+
+Name: org/eclipse/jst/jsf/core/internal/RegistryUpgradeCommitHandler$H
+ andle05_to_10_migration.class
+SHA1-Digest: vyH0Yc6Bzgs0YUUStSK74FH+HLw=
+
+Name: org/eclipse/jst/jsf/core/internal/launch/JSFFileURL.class
+SHA1-Digest: omRMNRUm5sJ6TCeM71I76yvJAlY=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/JSPTagRes
+ olvingStrategy.class
+SHA1-Digest: pdmwULt7iuBtFaw/vRzBH55Z23Y=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor$Co
+ untingMutex$3.class
+SHA1-Digest: XXPAd4oB7JcheNcKIbm0h3XF+/k=
+
+Name: org/eclipse/jst/jsf/core/set/mapping/package-info.class
+SHA1-Digest: 7yjwt7nfzOC0TEH/nKEWSlc74LA=
+
+Name: org/eclipse/jst/jsf/designtime/internal/BasicExtensionFactory$Si
+ ngleInstanceExtensionData.class
+SHA1-Digest: jcLcYwta6xpYp7+rkwW+hbrsVWQ=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/internal/IMetaDataEnabled
+ FeatureExtension.class
+SHA1-Digest: l0V/+xx3Vu+si5qt3Kaz7YIUfXg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/MetadataA
+ ttributeAdvisor.class
+SHA1-Digest: HBvQjPJKJrV9wINHRKGCQ3lvVoA=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/ArtifactEditJSFAppConfigPr
+ ovider.class
+SHA1-Digest: cuObuYzXSu3k0lDxFon4OrEPQvw=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resolver/ViewBasedTaglib
+ ResolverFactory$ViewBasedTaglibResolver.class
+SHA1-Digest: gb7P3Sux/zxN8sgpzvL1UlEKIv8=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/ConfigBasedDTVar
+ iableResolver.class
+SHA1-Digest: UT2PJpmZpBqZO41VGBDZXfxKsRU=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/ContainsTagC
+ onstraint.class
+SHA1-Digest: Jfc+awUzcc8sgHDqstezLQ8gO8w=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/ConstraintsP
+ ackage$Literals.class
+SHA1-Digest: eeGplumee1hqFE+X6jgbUn1BXCk=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/ContentType
+ .class
+SHA1-Digest: +i0GFA3nxJoG4q4PfsVxtsa2M8M=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/PluginProvi
+ dedJSFLibrary.class
+SHA1-Digest: cUTBySQMjljHu6Q9hP+XkT4FFBM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DTUIViewRoot$Stalen
+ essEvent$ChangeType.class
+SHA1-Digest: fddVvqWV5wBI28hN6un6KXMOG9U=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/RenderKitValid
+ ationVisitor$RenderKitClassValidationVisitor.class
+SHA1-Digest: K5h2TuyfHiOYa+AkTNXmuhnE1nQ=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ConverterValid
+ ationVisitor$ConverterClassValidationVisitor.class
+SHA1-Digest: YbYcRHrsDusPjegon0vuVBtnBbQ=
+
+Name: org/eclipse/jst/jsf/core/internal/contentassist/el/FunctionCompl
+ etionStrategy$MyProposalFactory.class
+SHA1-Digest: V/QQCbNrIVNRXH9JGblVfIDxp3c=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/internal/Messag
+ es.class
+SHA1-Digest: MrjxMjoF3zp41afg9yuRrmmnsW4=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/JSFResourceCha
+ ngeListener$JSFResourceChangedEvent$CHANGE_TYPE.class
+SHA1-Digest: llSg7wMOEs7JPKTyOd5K3RmSww8=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/EObjectValidat
+ ionVisitor.class
+SHA1-Digest: x6bThd6kIJqxQo9ptRzzU8TVI/U=
+
+Name: org/eclipse/jst/jsf/designtime/DesignTimeApplicationManager$MyEx
+ ternalContextFactoryLocator.class
+SHA1-Digest: iiI1x9XnunXOSpSu9vxnK3y5NpQ=
+
+Name: org/eclipse/jst/jsf/designtime/resolver/IStructuredDocumentSymbo
+ lResolverFactory.class
+SHA1-Digest: Qijjr0GFkmTPjLwEstUSN6oy2kM=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/JSFLibraryR
+ egistryPackage$Literals.class
+SHA1-Digest: xczJTiJ+r/sfxCsChba2B3DG+cg=
+
+Name: schema/MetaDataEnabledFeatures.exsd
+SHA1-Digest: fyd6sKDTxeKJO5/KAGaV6VYv39E=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/JSFLibraryConfi
+ gurationHelper.class
+SHA1-Digest: k/C6G8CIqiZu9suFmzJVpKUl4S0=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDValida
+ torTagElement.class
+SHA1-Digest: XK1spL1aM/vZp98Wkk477kDH3ng=
+
+Name: org/eclipse/jst/jsf/core/internal/CompositeTagRegistryFactory$2$
+ 1.class
+SHA1-Digest: ehOKRXkkl3jvhg32hEadjbNKVEQ=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/LogicalBina
+ ryOperator.class
+SHA1-Digest: KLWmGXK6Xrg2y3+3JHP/3i22kjU=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/ICustomView
+ Mapper.class
+SHA1-Digest: CHBIXJHuWo9Rw/cCC8bnwhxr/qE=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FactoryValidat
+ ionVisitor$LifecycleFactoryValidationVisitor.class
+SHA1-Digest: 2/AbQOa/ZFEQLGnTiaxye3d/WEQ=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetInstallD
+ elegate.class
+SHA1-Digest: p1XVlod6qltAA74+stM9ihC3eUg=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/AbstractDTViewHandl
+ er$TimeBasedVersionStamp.class
+SHA1-Digest: Bi6cdEt9mzo6jIeGUrhtDnxVauo=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/ModArithmet
+ icBinaryOperator.class
+SHA1-Digest: fd0yB3SUmQA3ItdA97tCqziORk8=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/XMLViewObjectMappin
+ gService.class
+SHA1-Digest: GwJNlE2nDANrOMUUAADPx8wLroQ=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/UnaryOperat
+ or.class
+SHA1-Digest: 5cJRXf5XDSHy5pl0IDGUxua48z4=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/adapter/Mai
+ ntainDefaultImplementationAdapter.class
+SHA1-Digest: lJG9FzLc8CtDhXuG34hF52OzpjI=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDTagAtt
+ ribute$TLDAttributeData.class
+SHA1-Digest: F1rpKX4dm6eJAN+SXPOI6LrudVo=
+
+Name: org/eclipse/jst/jsf/core/metadata/internal/messages.properties
+SHA1-Digest: PDOEqcInw+0fDpGdOF/FyvbSgrg=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/ComponentID
+ Type.class
+SHA1-Digest: 13XDwCftYknrDVykGBwVpDpyRtU=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/AbstractJSFAppCon
+ figManagerProviderStrategy.class
+SHA1-Digest: ZeZaySnAP3olwuU3XkuArEMC2os=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /ComponentMappingPackage.class
+SHA1-Digest: EuFMgeovaeYctI2hJYVFcsJY4ig=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/ITLDConstants.class
+SHA1-Digest: mYGYfDrIicIsBV91JGqmlul1qLs=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor$1.
+ class
+SHA1-Digest: azjZHO6LC7Gk4KLeR62nd9cYLlA=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor$Lo
+ caleSetAggregator.class
+SHA1-Digest: Pau9KCKJaYy0WTx8BY1BrhXAKj4=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/FacesConfig
+ ConverterIDFeatures$ConverterSorter.class
+SHA1-Digest: F4eUqp3IYsma7NT+V+syYJrYErU=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/impl/TagCre
+ ationAttributeImpl.class
+SHA1-Digest: Z2zeEVpHfT6n2Eqvy99kIYop9tE=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/AttributeIdentifierFactory
+ $SimpleAttributeIdentifier.class
+SHA1-Digest: 8AIGJr+xDtbzTzwW+o//cbSo/do=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/DoubleType.
+ class
+SHA1-Digest: mAjeIRE7qfj1Jw+YP0GmIVAf+5U=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/ColorType.c
+ lass
+SHA1-Digest: fy4TKgZ4lq8Srj+r9ATpgtTNaRI=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetUninstal
+ lDelegate$RemoveJSFFromJavaEEWebAppOperation.class
+SHA1-Digest: wkR6shoXvLvm1tn0NiodU5RZWGQ=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryregistry/JSFLibraryArchiveFil
+ esDelegate.class
+SHA1-Digest: m6MFaBQP8bC5d+JZDY+Is63PDfw=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/JSFLib
+ raryRegistryAdapterFactory$1.class
+SHA1-Digest: qf2hExb+qnuMjRBWNUWNF6cF6Og=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/MetaDataContext.class
+SHA1-Digest: 6anU3hd2QWw+PebvL3wU44NNdzY=
+
+Name: org/eclipse/jst/jsf/core/internal/CompositeTagRegistryFactory$Ta
+ gRegistryIdentifier.class
+SHA1-Digest: FERfbebLap9Q2ddt7jkJtJ9Cj8g=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/IJSFResourceFr
+ agment$Type.class
+SHA1-Digest: ZUIuRxtR/y7SJA0stWBIZTId4W4=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/TimeZoneTyp
+ e.class
+SHA1-Digest: HrPtu64uvjGoeJkwT3jUGwQsaO4=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ TLDRegistryPreferences$MyOrderedListProvider.class
+SHA1-Digest: wA+yZ62+5OWppPZUXj98SS84ycc=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/internal/AbstractMetaData
+ EnabledType.class
+SHA1-Digest: 5jYHhAsPRuO4ICETM9EX4wnoA7M=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/JSFAppConfigManager$JSFApp
+ ConfigManagerFactory$AdaptableBoolean.class
+SHA1-Digest: 7SHWoR5DPNtIPKgd2BitJTce5JQ=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFFacetInstallD
+ elegate$UpdateWebXMLForJ2EE.class
+SHA1-Digest: WlSh8BIiYkipv+G4vuuetlB3E4U=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/BehaviorValida
+ tionVisitor.class
+SHA1-Digest: wm2aNqsBkunlnQfYMyJCryI6/rM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/IJSFResourceFr
+ agment.class
+SHA1-Digest: H7lC9Rk4NSL2PQXTvp0kqF953Yw=
+
+Name: org/eclipse/jst/jsf/core/internal/Messages.class
+SHA1-Digest: gk50DzsoLVpgfOYBt7+2JlKKzXM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/analyzer/
+ ServletBeanProxyContributor.class
+SHA1-Digest: D4waHEhUVrnH1GONR+MECpMVZzU=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FactoryValidat
+ ionVisitor.class
+SHA1-Digest: VzONGuhwCbj/wna+lbOelSqZudM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/registry/
+ LibraryOperationFactory$RemoveTagLibrary.class
+SHA1-Digest: Oa5tMuOdOzPwv37E4vSG2RFXwcc=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DTUIViewRoot.class
+SHA1-Digest: v2WfSuPutSh+kO9+CgzM9/gRU3c=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /util/ComponentMappingAdapterFactory.class
+SHA1-Digest: LVShGaANycUCnc1k//IObC691Cw=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resolver/ITagElementReso
+ lver.class
+SHA1-Digest: vDvOsR2+buY8N8CWa8uOEwO2svA=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JEEUtils.class
+SHA1-Digest: qUKr7vRBKtgxWTNzWE/ceVhn4p0=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /CustomViewMapperExtensionLoader.class
+SHA1-Digest: Tuet0L38QiNs7IA1gsYPqT3kT/g=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ClassNameEObje
+ ctValidationVisitor.class
+SHA1-Digest: 6Jrz/QSDMCjNf0Kz10VYhGD1ZXk=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/AbstractRootTypeDescripto
+ r.class
+SHA1-Digest: ZXcmta2n0+b6tbb/6n5wlNt3p0s=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/LtGtRelatio
+ nalBinaryOperator.class
+SHA1-Digest: wYXdRvzt8Y4neY7UZBl5tJJLex8=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/impl/Constra
+ intsFactoryImpl.class
+SHA1-Digest: eDAP6+pKWq1znwU0sZX/Pyne8C8=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/Messages.cl
+ ass
+SHA1-Digest: hfT2uLZ1i1GyoaY30VGYhzCmSV4=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/impl/Contain
+ sTagConstraintImpl.class
+SHA1-Digest: E7wmtu646nRf4vWL5fSvpZQ2uTE=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/ActionType.
+ class
+SHA1-Digest: 1qCIVnD8Y7/PnpO9PLxL2TF8TDQ=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/Messages.cl
+ ass
+SHA1-Digest: RAjgbCx5Fpzq0B0ls+A4EjCOsZo=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/mapping/viewmapping
+ /impl/ComponentTypeInfo_Impl.class
+SHA1-Digest: LMU8yEgzHLcLctAGJ+JnVkm2eL4=
+
+Name: org/eclipse/jst/jsf/validation/internal/JSFValidatorFactory.clas
+ s
+SHA1-Digest: FfTyoOf6ZmJz5vskhhfJP39j+Gg=
+
+Name: schema/jsfAppConfigLocatorProviderFactory.exsd
+SHA1-Digest: wLbsoXaZYeaKXKBooRyaE7RsSfc=
+
+Name: org/eclipse/jst/jsf/designtime/resolver/StructuredDocumentSymbol
+ ResolverFactory.class
+SHA1-Digest: P/sdqc4otdqeunWtv9Bax7tRcNQ=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/AbstractDTViewHandl
+ er$NullViewRoot.class
+SHA1-Digest: 8Rek9X2HRFxomWN3yASZs6fYQi0=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/package-info.cl
+ ass
+SHA1-Digest: Ij/7hAWh/Mtxv7o7Ic6GJ7ajdNs=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/IDTViewHandler$View
+ HandlerException$Cause.class
+SHA1-Digest: CAjeVnXJjQbe/kgTcDli5Rbp5IM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/ResourceIdenti
+ fier.class
+SHA1-Digest: iUvPU065S3YPabwX8sFZPhRcI1E=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/PaletteInfo
+ s.class
+SHA1-Digest: 00yRdwNDgVDaiTVKNOF2sdy/BGU=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/internal/MetaDataEnabledF
+ eatureAdapterFactory.class
+SHA1-Digest: f9t/KwbHJ9vyafhyl87E8MZg++8=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/NoDivArithm
+ eticBinaryOperator.class
+SHA1-Digest: 4fNN5nMIJCB4VuHjH0q4qYfgqjY=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/internal/MetaDataEnabledF
+ eatureRegistry.class
+SHA1-Digest: ClOfNxc77ghyOrRyWDUCAIu87lg=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/features/IDefaultValue.cl
+ ass
+SHA1-Digest: UhWBQQ/kQRiQhZO7mlPOgwYjpes=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/ITagRegistry$
+ ITagRegistryListener.class
+SHA1-Digest: Cwh9F8FZeaib2NKy3LzUZqtoNxw=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$DefaultValidatorsValidationVisitor.class
+SHA1-Digest: 2t7EkZQ1/htODqZPy1EmDrUHeBo=
+
+Name: org/eclipse/jst/jsf/designtime/resolver/ISymbolContextResolver.c
+ lass
+SHA1-Digest: UdNTQROoknCxjIf/7xE7vuO22Nw=
+
+Name: org/eclipse/jst/jsf/designtime/internal/BasicExtensionFactory$Ex
+ tensionDataFactory.class
+SHA1-Digest: 9eunHGmLYKIVh/aNsbL6/TOyu4s=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/StringType.
+ class
+SHA1-Digest: yq1wBodaY5G42cqoL2/Giunw5Ag=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/TagRegistryFa
+ ctory$TagRegistryFactoryException.class
+SHA1-Digest: StUk08Q4+FkKnoj6urkGpRjcpa0=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFUtilFactory.c
+ lass
+SHA1-Digest: caC9r41HYNa5yWJZ1xB8wLJxiQ4=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/EqualityRel
+ ationalBinaryOperator.class
+SHA1-Digest: XLzhTgOZ9MfdP648P/AwE44Qn9A=
+
+Name: org/eclipse/jst/jsf/tagdisplay/internal/paletteinfos/PaletteInfo
+ sPackage.class
+SHA1-Digest: tp3maTmcJs3BLGxh2BIhMKpvV14=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/WorkspaceResou
+ rceManager.class
+SHA1-Digest: kL5zvEpXeJ1Cal3gEVWj2qMzgBw=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/DataModelVariableFac
+ tory.class
+SHA1-Digest: an4pBZZ1jkn0pEr4HfBPeYLVONg=
+
+Name: org/eclipse/jst/jsf/core/jsflibraryconfiguration/JSFLibraryRefer
+ enceUserDefined.class
+SHA1-Digest: umfoR+D2Qmx9dIX/gakA/fMmfyU=
+
+Name: org/eclipse/jst/jsf/designtime/DesignTimeApplicationManager$1.cl
+ ass
+SHA1-Digest: uNnZcsEuUQqGac0eUykeXeafWTM=
+
+Name: org/eclipse/jst/jsf/designtime/context/package-info.class
+SHA1-Digest: uRcJE91B7WpUWiNY2AXW+eA1Er0=
+
+Name: org/eclipse/jst/jsf/designtime/internal/symbols/ValueExpressionS
+ ymbolFactory.class
+SHA1-Digest: drhH1+5dRLW7av2F9WIsoUokG8s=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/AbstractJSFAppCon
+ figManager.class
+SHA1-Digest: vrI9rrUsNKn1rbf2oUscL77z1Ak=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/DefaultJSFAppConf
+ igManagerProviderStrategy.class
+SHA1-Digest: ozdWCKmo1N5RqxbqJmkcGS/LHVc=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/JSFResourceCha
+ ngeListener$JSFResourceChangedEvent.class
+SHA1-Digest: UnVWyHTDCbLdDUJ9HKurSuAgmAc=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ApplicationVal
+ idationVisitor$ActionListenerValidationVisitor.class
+SHA1-Digest: 4XnE/KcYT3oBgx0IO6Gp65H/bIc=
+
+Name: org/eclipse/jst/jsf/core/internal/CompositeTagRegistryFactory$2.
+ class
+SHA1-Digest: vqCzHKrdxblSMiYrApEqisizy+E=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/internal/AttributeValueRu
+ ntimeTypeRegistry.class
+SHA1-Digest: bPqeaAVn9cG634bksUBiNdU1Sik=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/CompositeJSFAppCo
+ nfigLocatorProviderStrategy$LocatorProviderSelectionStrategy.class
+SHA1-Digest: fIwuIprVhupwfV8+A7qeL5/T5ME=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/WorkspaceJSFRe
+ sourceLocator.class
+SHA1-Digest: cy4x9fS8zQS+85toMaBDmxD+0f4=
+
+Name: org/eclipse/jst/jsf/validation/internal/constraints/impl/Constra
+ intsPackageImpl.class
+SHA1-Digest: TawZ/C4seLtfof98ELZHKHTZx+8=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/persisten
+ ce/PersistedDataTagStrategy.class
+SHA1-Digest: s/Gej9Wanq6vyGPXmEY8E1gTpqQ=
+
+Name: org/eclipse/jst/jsf/designtime/internal/resources/LibraryResourc
+ eFragmentIdentifier.class
+SHA1-Digest: FLVlSQmf/7G5T8rPhl5PizgxDmc=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/FacesConfig
+ ValidatorIDFeatures$ValidatorSorter.class
+SHA1-Digest: lGixuOoQrV0SXkksCq49KR43EGs=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/FactoryValidat
+ ionVisitor$ExternalContextFactoryValidationVisitor.class
+SHA1-Digest: 9CtJ3n/w2gFRJx787AvMIr4NCH4=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/messag
+ es.properties
+SHA1-Digest: V/xjhcQf8GRr9ajnmAS1M7D0I2g=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/messages.pr
+ operties
+SHA1-Digest: guuzpo9ZZgRzWC57iyxBi6pWMtI=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/DefaultJSFAppConf
+ igManagerProviderStrategy$DefaultProvider.class
+SHA1-Digest: WXXFSVb+PSr2YtFpbg8htqrcn7Q=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/operators/BracketOper
+ ator.class
+SHA1-Digest: q5UrWyGIJI50/aKxQAjYylz3pmc=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/ImplicitRuntimeJSFAppConfi
+ gLocater.class
+SHA1-Digest: 6LOJZjNY004ED3jU0Oiq4QAD1GM=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/DTComponentIntrospe
+ ctor.class
+SHA1-Digest: KyfUwZZDMex6FtTKtiscnZeQgGE=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/IExpressionSemanticVa
+ lidator.class
+SHA1-Digest: Et8D4fa6HLndvIj8YCBKOMUEcQ0=
+
+Name: org/eclipse/jst/jsf/validation/internal/el/diagnostics/Messages.
+ class
+SHA1-Digest: 6w1L46SRbFqI1bq7euEC0w7BQ1U=
+
+Name: org/eclipse/jst/jsf/validation/internal/IJSFViewValidator$IValid
+ ationReporter.class
+SHA1-Digest: JWJahe1tYHCezhDiA8gyTeBzy1U=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/JSFAppConfigManag
+ erFactory.class
+SHA1-Digest: /B4z3jLfrc/RkWsXGTz05LX0Ppk=
+
+Name: org/eclipse/jst/jsf/core/internal/jsflibraryregistry/util/JSFLib
+ raryRegistrySwitch.class
+SHA1-Digest: Kauog1XwO25PglJrxeexADcsaaM=
+
+Name: org/eclipse/jst/jsf/designtime/context/AbstractExternalContextFa
+ ctoryLocator.class
+SHA1-Digest: 3uFrwet4zwCOj8K/KBa9XoeICg8=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/messages.prope
+ rties
+SHA1-Digest: WHobh59AOvwkVeB8TQCr1m56GvA=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ValidatorTypeV
+ alidationVisitor.class
+SHA1-Digest: y32S83zH4CiIJdk8cci5TvwiglE=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/ScriptType.
+ class
+SHA1-Digest: uRl+sk3M6O8XuxPrYdPLVRqLNtA=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/internal/MetaDataEnabledF
+ eatureExtension.class
+SHA1-Digest: W+jVEHIgW6//1WeIBS4tHTV/F34=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/FacesConfig
+ IdentifierType.class
+SHA1-Digest: HmL+B5KzHXOQ/jhH8wDwUP7vdo4=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/DefaultJSFAppConf
+ igLocatorProviderStrategy.class
+SHA1-Digest: 6XkPyWcKG8XIaeV5AXqw9ruKTE8=
+
+Name: org/eclipse/jst/jsf/designtime/context/DTFacesContext.class
+SHA1-Digest: yYANDKVzgLlAO7tre4mYlaS3koI=
+
+Name: org/eclipse/jst/jsf/validation/internal/appconfig/ValidatorTypeV
+ alidationVisitor$ValidatorClassValidationVisitor.class
+SHA1-Digest: vo8o15ep3h+oFJQBJvsWBlR4WEQ=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JsfFacetConfigur
+ ationUtil.class
+SHA1-Digest: J4hjUszrQW1rUfHWkOGGoe75aR8=
+
+Name: org/eclipse/jst/jsf/core/tagmatcher/XPathMatchingAlgorithm.class
+SHA1-Digest: ppramZLJRQGrL20+sSL5tlQ56sY=
+
+Name: org/eclipse/jst/jsf/core/tagmatcher/package-info.class
+SHA1-Digest: MYsjLYDYUASjkz0ZFY/Ac3QAkio=
+
+Name: org/eclipse/jst/jsf/designtime/symbols/DefaultBeanSymbolSourcePr
+ ovider.class
+SHA1-Digest: 67/ov7moHGnx+MaQJhlr8mPjSzo=
+
+Name: org/eclipse/jst/jsf/core/metadata/internal/JSPContentModelMetaDa
+ taTranslator.class
+SHA1-Digest: dNC0hHAJUUm28OzfdvWo+UK0t1A=
+
+Name: org/eclipse/jst/jsf/designtime/internal/BasicExtensionFactory$Ex
+ tensionData.class
+SHA1-Digest: E4ZviPUK2IKkv99vkU65BpdLx8w=
+
+Name: org/eclipse/jst/jsf/designtime/internal/jsp/JSPModelProcessor$Co
+ untingMutex$2.class
+SHA1-Digest: vJJ4dHVitHuXMyiJ14RXjlnIhAQ=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/LanguageCod
+ eType$LanguageCodeMap.class
+SHA1-Digest: og0R91pd5k0uOEwEzxFei2zIR0w=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/TagRegistryFa
+ ctory.class
+SHA1-Digest: YobFc6/QpDyl+iqSvOzHI/2ciak=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/URIType.cla
+ ss
+SHA1-Digest: giGJfZ6F+DhGQBzusF+lzqeCkfA=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/model/jsp/TLDNamesp
+ ace$TLDNamespaceData.class
+SHA1-Digest: BL5a1RUHmBACWiDm5VtRncWgiVQ=
+
+Name: org/eclipse/jst/jsf/core/internal/tld/IJSFConstants.class
+SHA1-Digest: Mkl+h8NPoN0/OyxVGP5OcwHAkao=
+
+Name: org/eclipse/jst/jsf/core/internal/project/facet/JSFUtils.class
+SHA1-Digest: PUeagl16gQ9AKz9BTQBNmx9VkNc=
+
+Name: org/eclipse/jst/jsf/core/internal/JSFLibraryClasspathContainer.c
+ lass
+SHA1-Digest: RYZusNnT8qKUvSOMWH+k3iTk/AI=
+
+Name: org/eclipse/jst/jsf/core/jsfappconfig/internal/CompositeJSFAppCo
+ nfigLocatorProviderStrategy$JSFAppConfigLocatorProviderExtensionPoint
+ Reader.class
+SHA1-Digest: Vxy1XerVHWD25Mb00rGQw5r5bX8=
+
+Name: org/eclipse/jst/jsf/designtime/internal/view/IDTViewHandler$View
+ HandlerException.class
+SHA1-Digest: t62BEdyAbHp0SqHpJJI4KSyj/98=
+
+Name: org/eclipse/jst/jsf/taglibprocessing/attributevalues/ValueType.c
+ lass
+SHA1-Digest: XJLa18Pfbjz2oxhrPEBDq5+FiMM=
+
+Name: org/eclipse/jst/jsf/metadataprocessors/DefaultTypeDescriptor.cla
+ ss
+SHA1-Digest: rtjrQob52LttvwpQXrkFmegzwp8=
+
