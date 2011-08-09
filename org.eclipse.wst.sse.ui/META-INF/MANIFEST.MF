@@ -1,0 +1,2280 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Bundle-SymbolicName: org.eclipse.wst.sse.ui; singleton:=true
+Eclipse-LazyStart: true
+Eclipse-SourceReferences: scm:cvs:pserver:dev.eclipse.org:/cvsroot/web
+ tools:sourceediting/plugins/org.eclipse.wst.sse.ui;tag=v201105101529
+Bundle-Activator: org.eclipse.wst.sse.ui.internal.SSEUIPlugin
+Require-Bundle: org.eclipse.ui.ide;bundle-version="[3.5.0,4.0.0)",org.
+ eclipse.jface.text;bundle-version="[3.6.0,4.0.0)",org.eclipse.debug.u
+ i;bundle-version="[3.5.0,4.0.0)",org.eclipse.ui.editors;bundle-versio
+ n="[3.5.0,4.0.0)";visibility:=reexport,org.eclipse.search;bundle-vers
+ ion="[3.5.0,4.0.0)",org.eclipse.ui;bundle-version="[3.5.0,4.0.0)",org
+ .eclipse.ui.workbench.texteditor;bundle-version="[3.5.0,4.0.0)",org.e
+ clipse.ui.forms;bundle-version="[3.4.0,4.0.0)",org.eclipse.ui.views;b
+ undle-version="[3.4.0,4.0.0)",org.eclipse.wst.sse.core;bundle-version
+ ="[1.1.500,1.2.0)",org.eclipse.core.runtime;bundle-version="[3.5.0,4.
+ 0.0)",org.eclipse.wst.validation;bundle-version="[1.2.100,1.3.0)",org
+ .eclipse.emf.common;bundle-version="[2.4.0,3.0.0)",org.eclipse.core.e
+ xpressions;bundle-version="[3.4.0,4.0.0)"
+Export-Package: org.eclipse.wst.sse.ui,org.eclipse.wst.sse.ui.contenta
+ ssist,org.eclipse.wst.sse.ui.internal;x-friends:="org.eclipse.wst.dtd
+ .ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd.ui",org.eclipse.wst.ss
+ e.ui.internal.actions;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.
+ wst.xml.ui,org.eclipse.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.co
+ ntentassist;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui
+ ,org.eclipse.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.contentoutli
+ ne;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.ecli
+ pse.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.contentproperties.ui;
+ x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse
+ .wst.xsd.ui",org.eclipse.wst.sse.ui.internal.correction;x-friends:="o
+ rg.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd.ui",
+ org.eclipse.wst.sse.ui.internal.debug;x-friends:="org.eclipse.wst.dtd
+ .ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd.ui",org.eclipse.wst.ss
+ e.ui.internal.derived;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.
+ wst.xml.ui,org.eclipse.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.ed
+ it.util;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org
+ .eclipse.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.editor;x-friends
+ :="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd.
+ ui",org.eclipse.wst.sse.ui.internal.encoding.ui;x-friends:="org.eclip
+ se.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd.ui",org.ecli
+ pse.wst.sse.ui.internal.extension;x-friends:="org.eclipse.wst.dtd.ui,
+ org.eclipse.wst.xml.ui,org.eclipse.wst.xsd.ui",org.eclipse.wst.sse.ui
+ .internal.format;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.x
+ ml.ui,org.eclipse.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.handler
+ s;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclip
+ se.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.hyperlink;x-friends:="
+ org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd.ui"
+ ,org.eclipse.wst.sse.ui.internal.openon;x-friends:="org.eclipse.wst.d
+ td.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd.ui",org.eclipse.wst.
+ sse.ui.internal.preferences;x-friends:="org.eclipse.wst.dtd.ui,org.ec
+ lipse.wst.xml.ui,org.eclipse.wst.xsd.ui",org.eclipse.wst.sse.ui.inter
+ nal.preferences.ui;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst
+ .xml.ui,org.eclipse.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.proje
+ ction;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.e
+ clipse.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.properties;x-frien
+ ds:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xs
+ d.ui",org.eclipse.wst.sse.ui.internal.provisional.extensions;x-friend
+ s:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd
+ .ui",org.eclipse.wst.sse.ui.internal.provisional.extensions.breakpoin
+ t;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclip
+ se.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.provisional.preference
+ s;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclip
+ se.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.provisional.registry;x
+ -friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.
+ wst.xsd.ui",org.eclipse.wst.sse.ui.internal.provisional.style;x-frien
+ ds:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xs
+ d.ui",org.eclipse.wst.sse.ui.internal.reconcile;x-friends:="org.eclip
+ se.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd.ui",org.ecli
+ pse.wst.sse.ui.internal.reconcile.validator;x-friends:="org.eclipse.w
+ st.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd.ui",org.eclipse.
+ wst.sse.ui.internal.search;x-friends:="org.eclipse.wst.dtd.ui,org.ecl
+ ipse.wst.xml.ui,org.eclipse.wst.xsd.ui",org.eclipse.wst.sse.ui.intern
+ al.selection;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.u
+ i,org.eclipse.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.spelling;x-
+ friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.w
+ st.xsd.ui",org.eclipse.wst.sse.ui.internal.taginfo;x-friends:="org.ec
+ lipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd.ui",org.e
+ clipse.wst.sse.ui.internal.text;x-friends:="org.eclipse.wst.dtd.ui,or
+ g.eclipse.wst.xml.ui,org.eclipse.wst.xsd.ui",org.eclipse.wst.sse.ui.i
+ nternal.ui;x-friends:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,
+ org.eclipse.wst.xsd.ui",org.eclipse.wst.sse.ui.internal.util;x-friend
+ s:="org.eclipse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd
+ .ui",org.eclipse.wst.sse.ui.internal.view.events;x-friends:="org.ecli
+ pse.wst.dtd.ui,org.eclipse.wst.xml.ui,org.eclipse.wst.xsd.ui",org.ecl
+ ipse.wst.sse.ui.preferences,org.eclipse.wst.sse.ui.quickoutline,org.e
+ clipse.wst.sse.ui.reconcile,org.eclipse.wst.sse.ui.typing,org.eclipse
+ .wst.sse.ui.views.contentoutline,org.eclipse.wst.sse.ui.views.propert
+ ies
+Bundle-Version: 1.3.0.v201105101529
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Import-Package: com.ibm.icu.util; version="3.8",com.ibm.icu.text; vers
+ ion="3.8"
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/IRelevanceCompleti
+ onProposal.class
+SHA1-Digest: 7B1K0WV7n7t3/1nqTeOjlCg9JKo=
+
+Name: org/eclipse/wst/sse/ui/internal/properties/ShowPropertiesAction.
+ class
+SHA1-Digest: GfhQGUbAhFxDmxA0bgoznzkbVlo=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$8.class
+SHA1-Digest: u+rr+TU/Do6mnOtsF+dd7j9MuYI=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage$3.class
+SHA1-Digest: x3zoK1lRnWRiUEfiyYIdC+9U6sY=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/OverlayPreferenceSto
+ re$OverlayKey.class
+SHA1-Digest: lMR87EGxT/yuApsEX56ZiyE9NKw=
+
+Name: org/eclipse/wst/sse/ui/internal/debug/DebugTextEditor$ShowInTarg
+ etLister.class
+SHA1-Digest: dGSiH0iet0xdHIRHLFXLV0Yw6+o=
+
+Name: org/eclipse/wst/sse/ui/FoldingActionGroup$2.class
+SHA1-Digest: pgOU5ktLXMfF/l341BcBSIYRacw=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineFilterDescriptor.c
+ lass
+SHA1-Digest: mudOr0NXDHFA2gtC+jM0MYv47iI=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$8.class
+SHA1-Digest: PNRAQHgK6Vxk6gcuSjEBYAReMp4=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter$
+ 6.class
+SHA1-Digest: oMIXyG/sZtKL4M32SlUSUSuhkug=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$4.class
+SHA1-Digest: txEWeQd4NWAfYFuj/CJm4GI3T5I=
+
+Name: org/eclipse/wst/sse/ui/internal/selection/SelectionHistory$1.cla
+ ss
+SHA1-Digest: VQyp59kqFtiZTcc0ExfoqCMlKEg=
+
+Name: org/eclipse/wst/sse/ui/contentassist/StructuredContentAssistProc
+ essor$2.class
+SHA1-Digest: KrZMOdXM+OfjRliJjqIzkTPQVnA=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/AbstractLineSt
+ yleProvider$PropertyChangeListener.class
+SHA1-Digest: UDJ7lZVyViMzGipLowFGoxzZJCo=
+
+Name: org/eclipse/wst/sse/ui/internal/ISourceViewerActionBarContributo
+ r.class
+SHA1-Digest: 7QOY+3g+LjKaxbCFddrZj4wLGuk=
+
+Name: org/eclipse/wst/sse/ui/internal/search/OccurrencesSearchResult.c
+ lass
+SHA1-Digest: vKFGI9Gn4kqedJCupH2fj6I2vY0=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage$ShowInTarget.class
+SHA1-Digest: MfIgBLzGnBCXalYduMFd1fQ4G/A=
+
+Name: org/eclipse/wst/sse/ui/internal/IExtendedMarkupEditor.class
+SHA1-Digest: cj7Z1rV0+z/VPu2NwTLCKKUzTK0=
+
+Name: org/eclipse/wst/sse/ui/internal/handlers/ToggleLineCommentHandle
+ r.class
+SHA1-Digest: nRuRZ0JFk7UeoIorXCaMv4r91Bc=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingManage
+ r.class
+SHA1-Digest: vvuR+5/SfVH2XB2CNpLlfF2VTGA=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredResourceMarkerAnnotati
+ onModel.class
+SHA1-Digest: gUzKUITuswISm6E6SbUixlWtNTc=
+
+Name: org/eclipse/wst/sse/ui/internal/search/OccurrencesSearchQuery$Fi
+ ndRegions.class
+SHA1-Digest: /t4/dkM6xmhM833ZVQoN3BlwXds=
+
+Name: org/eclipse/wst/sse/ui/internal/actions/CleanupAction.class
+SHA1-Digest: mDs0FiVnsFGxA2JF+jfRcV8FJ7E=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$18.class
+SHA1-Digest: YCJ7gDOVzGcswA0uH4jqJ6CbENw=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractPreferenc
+ eTab.class
+SHA1-Digest: W/fRWQdKe+R6ZATn38AwxCm+PcU=
+
+Name: org/eclipse/wst/sse/ui/views/properties/PropertySheetConfigurati
+ on.class
+SHA1-Digest: AuKPM7qXEFf09I6ZOWJ32QpSy2c=
+
+Name: org/eclipse/wst/sse/ui/internal/quickoutline/QuickOutlinePopupDi
+ alog$4.class
+SHA1-Digest: cDHTDBzhEq/mSk8N79ubI4e0ouQ=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/PropertyChangeUpd
+ ateActionContributionItem.class
+SHA1-Digest: 3cUvf3yU+gLecY6mUQBBp/m4XOE=
+
+Name: org/eclipse/wst/sse/ui/internal/contentproperties/ui/ComboListOn
+ PropertyPage.class
+SHA1-Digest: BFrJu9cCfTtYed+e60+MS0pAc/E=
+
+Name: org/eclipse/wst/sse/ui/internal/TransferBuilder$1.class
+SHA1-Digest: yUw5iPhQb/saNanz8WYtsHGrkR0=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TextHoverPreferen
+ ceTab$2.class
+SHA1-Digest: rAQFwIRWXKzZ5IIQ4exEQQA0JWg=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractValidatio
+ nSettingsPage$1.class
+SHA1-Digest: Bs3xvGJ48ihYIoJQYuGG7171rt4=
+
+Name: icons/full/elcl16/synced.gif
+SHA1-Digest: KMs53utAjq8lOD1m0hYFIGPRQw8=
+
+Name: org/eclipse/wst/sse/ui/TextHoverInformationProvider.class
+SHA1-Digest: OlczKz6hwFBasCgOXM7u3iRdChQ=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TaskTagPreference
+ Page$3.class
+SHA1-Digest: 9gF9+fAEEGC5mAGXGwOnpyq8p+I=
+
+Name: org/eclipse/wst/sse/ui/internal/debug/DebugTextEditor$StorageInp
+ utDocumentProvider.class
+SHA1-Digest: 7VOyX7QJWplRlBG19rsFLYatsjM=
+
+Name: org/eclipse/wst/sse/ui/internal/handlers/RemoveBlockCommentHandl
+ er.class
+SHA1-Digest: zn3rhyv6wDbwKDnkU7dstLEXu7U=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$InformationDialog.class
+SHA1-Digest: vEzetAkRCAbSA4elSf/8Fl+n1yk=
+
+Name: org/eclipse/wst/sse/ui/internal/actions/FormatActionDelegate$1.c
+ lass
+SHA1-Digest: WEARq4UqYyL1K17kiQHyDvZA6iY=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractPreferenc
+ ePage.class
+SHA1-Digest: EkV70ZfUvgUQOSDmSsekF1Me1P0=
+
+Name: org/eclipse/wst/sse/ui/internal/handlers/CustomFilterHandler.cla
+ ss
+SHA1-Digest: 00+IAdJMzoSGBCeMZa95DbAhMDQ=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$9.class
+SHA1-Digest: QnQ+Z7u29OMzbqfxpCU1+bCK3/A=
+
+Name: org/eclipse/wst/sse/ui/internal/search/OccurrencesSearchViewPage
+ $1.class
+SHA1-Digest: KE04m4UIKVllrRVMel5LGrbbRjc=
+
+Name: org/eclipse/wst/sse/ui/internal/util/SWTUtil.class
+SHA1-Digest: pSRh4fPAjZ8zCpwkHz4mz5+Gvc4=
+
+Name: org/eclipse/wst/sse/ui/internal/text/SourceInfoProvider.class
+SHA1-Digest: l1Ne6pAgSDoJdpqscz1BknN2ERo=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$12.class
+SHA1-Digest: +vm7dAcYUSGtUxxZyk2a3Ket5gM=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/StructuredTextReconcil
+ ingStrategy.class
+SHA1-Digest: taqNk1b16/Rbc5BSFIvz0WZ51M4=
+
+Name: org/eclipse/wst/sse/ui/internal/util/PlatformStatusLineUtil.clas
+ s
+SHA1-Digest: dEdyWONpOslC10zKf+xYmwISCSg=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingManage
+ r$HighlightedRange.class
+SHA1-Digest: VFU+W0Br3Epq7lQzqi3tCPuhOcc=
+
+Name: org/eclipse/wst/sse/ui/internal/search/OccurrencesContentProvide
+ r.class
+SHA1-Digest: QMDCvcCTta2xeUBEdljrQO+UN0c=
+
+Name: org/eclipse/wst/sse/ui/internal/taginfo/DebugInfoHoverProcessor.
+ class
+SHA1-Digest: Y8YAt1Aoem7DA37pzX6aAmKKPXc=
+
+Name: icons/full/dtool16/spellcheck.gif
+SHA1-Digest: bJKOLZ4PiRpNi/nqOanccGFaDvQ=
+
+Name: org/eclipse/wst/sse/ui/internal/debug/EditBreakpointAction$1.cla
+ ss
+SHA1-Digest: o2TXQgEidxEVv34bCxAuFb/4HlY=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TaskTagPreference
+ Page.class
+SHA1-Digest: ND1+XEsd6yFS6jGMTmxR6hnEgDo=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingPresen
+ ter$YUV_RGBConverter$YUV.class
+SHA1-Digest: 0L7/5ebHp4w29/IligphBHu4U9U=
+
+Name: org/eclipse/wst/sse/ui/internal/quickoutline/StringPatternFilter
+ .class
+SHA1-Digest: 9WHxg9BL865xE1MfXUyff49IeaI=
+
+Name: icons/full/dlcl16/collapseall.gif
+SHA1-Digest: EN6RuFqPlyvDFFYtWeaHigGxVBI=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$2.class
+SHA1-Digest: 14fMUtLcxmJHUiLBi2KQPHecbto=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractColorPage
+ .class
+SHA1-Digest: HeF7dFF+HnuMppVPtrhdx+j+F0A=
+
+Name: org/eclipse/wst/sse/ui/internal/view/events/NodeSelectionChanged
+ Event.class
+SHA1-Digest: Zdq87+w/q0/1W7GL8vw93PjjxFE=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$2.class
+SHA1-Digest: uWh/g+NijgUxAVOAanQqJ+KG7y0=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage$SelectionProvider$SelectionChangedListener.class
+SHA1-Digest: EnTQGEX6ybP4G4aS/O1jZJ4+2fI=
+
+Name: org/eclipse/wst/sse/ui/internal/Logger.class
+SHA1-Digest: 4uhi2Vdpc1EfZujhUC4XqRw2Yjc=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/MainTab$TaskTagDi
+ alog.class
+SHA1-Digest: udyoxf5vaL7/dMiykRJbmQzAuGw=
+
+Name: org/eclipse/wst/sse/ui/internal/correction/IQuickAssistProcessor
+ .class
+SHA1-Digest: APzwwmXIm/K5zIBHMXuyDvHL53g=
+
+Name: org/eclipse/wst/sse/ui/internal/actions/ResourceActionDelegate.c
+ lass
+SHA1-Digest: pZjL0WAHwYBP2YE+cX3gxbwrK/8=
+
+Name: org/eclipse/wst/sse/ui/internal/properties/ConfigurablePropertyS
+ heetPage$NullPropertySheetConfiguration.class
+SHA1-Digest: nwnTNCoguUi36UV26myd9hOUJpk=
+
+Name: org/eclipse/wst/sse/ui/internal/handlers/AbstractCommentHandler.
+ class
+SHA1-Digest: G2Ue/6zUAHHifTpPowR0KkRFDz0=
+
+Name: org/eclipse/wst/sse/ui/internal/UnknownContentTypeDialog$1.class
+SHA1-Digest: OzOyHp8GMFQkWkQb7crhU09OFZY=
+
+Name: icons/sourceEditor.gif
+SHA1-Digest: hgfaPYE2g2ags3P37ChbfzhezDY=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker$5.class
+SHA1-Digest: qMjxgnmF9tIvF98xyevn4nlBAJk=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker$11.class
+SHA1-Digest: fb1z1yRNXm8QKuLKJxbOnHTFFzY=
+
+Name: org/eclipse/wst/sse/ui/internal/taginfo/BestMatchHover.class
+SHA1-Digest: 8YSVq5QcAVLsYJNemzHJvivCK60=
+
+Name: icons/full/obj16/prop_ps.gif
+SHA1-Digest: /L9j2ouY7Uskrj4cHN5iVTByPSw=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/ActionDescriptor$1.cla
+ ss
+SHA1-Digest: UjH5h2weNeDz6Bm0SVMSt6hMQM4=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineCustomFiltersDialo
+ g$5.class
+SHA1-Digest: O+qXmkcToG2hHP5T6BLlRLVzS7E=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompletionProposal
+ ComputerRegistry$Activator.class
+SHA1-Digest: rJj/xG3NKC0TtMxcDu4ISWJz7jw=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/MainTab$4.class
+SHA1-Digest: IfQDqTb2LyIml1S6F4ncun8f1gM=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredResourceMarkerAnnotati
+ onModelFactory.class
+SHA1-Digest: QSxpthX9TwORLnR3JktkrjxYa0U=
+
+Name: org/eclipse/wst/sse/ui/internal/IExtendedSimpleEditor.class
+SHA1-Digest: 4fEn0e2TS8MnYmywKRHLChqkBqU=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/IJFaceNodeAdapter
+ Factory.class
+SHA1-Digest: UdzcdffYr1sGxY28ZRtzqYtoYsU=
+
+Name: org/eclipse/wst/sse/ui/internal/correction/SourceValidationQuick
+ AssistProcessor.class
+SHA1-Digest: A5ZxYu+meuqbk/rKWWfut4E/gUo=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/StructuredRegionProces
+ sor$ModelLifecycleListener.class
+SHA1-Digest: zLWT7bmWKkl/3HVU0wfAuMQfcoM=
+
+Name: org/eclipse/wst/sse/ui/internal/debug/ToggleBreakpointsTarget.cl
+ ass
+SHA1-Digest: v20hOSF0ndp0ooJEY1CArnBWN0s=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$12.class
+SHA1-Digest: u2+K88TAkLYIZQv4wW6DeVR9GSE=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StructuredTextEdi
+ torPreferencePage$1.class
+SHA1-Digest: 4IflK2rj0IM8GQiuLhZZGYWmbj0=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker$DescriptionSorter.class
+SHA1-Digest: LMydxIfEdVzYYDOYIhCzhsTIRZQ=
+
+Name: org/eclipse/wst/sse/ui/internal/util/EditorUtility.class
+SHA1-Digest: 2QzCECEOJSHJfRL4eETGNxK4C48=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/BreakpointProviderBuil
+ der.class
+SHA1-Digest: usw6DWpYLZtlI7+8D6+Fz9vv3oU=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$KeyValuePair.class
+SHA1-Digest: ev8Fb2F6CcekyyRgFM+pDbUEwjI=
+
+Name: org/eclipse/wst/sse/ui/internal/spelling/ISpellcheckDelegate.cla
+ ss
+SHA1-Digest: cVsHojA8Elyz2MZl7lOWtKQC+ig=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/validator/AnnotationIn
+ fo.class
+SHA1-Digest: bdY0MRDd0LsUvB5rd96fesJfYVs=
+
+Name: org/eclipse/wst/sse/ui/internal/hyperlink/OpenHyperlinkAction$1.
+ class
+SHA1-Digest: OwYzF0e0UqB/nAaqXtpb5K4NqxQ=
+
+Name: org/eclipse/wst/sse/ui/internal/IPopupMenuContributor.class
+SHA1-Digest: UjEhuRRg6qfk87iT4kfS6ZYleZ8=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingManage
+ r$HighlightingStyle.class
+SHA1-Digest: CxhkSALxEY/i7EsEkjQB1Ron0d8=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/IHighlighter.c
+ lass
+SHA1-Digest: 8mU96aRzDgZ1bpTLzKHYd38ZEdA=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ExclusionsTab$Con
+ tentTypeTreeProvider.class
+SHA1-Digest: nZ8s/LPpdp9NoJsbNRGPjmSPIn8=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextMultiPassContentFormatter.c
+ lass
+SHA1-Digest: +7PZljIQ9xBXOHVdEFzeIYJO4Vo=
+
+Name: org/eclipse/wst/sse/ui/internal/format/StructuredFormattingStrat
+ egy.class
+SHA1-Digest: ovLHUoGQ/stJRajxbOHxWBNP/s4=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$7.class
+SHA1-Digest: qyeKi+hIrQRfm2bc1ug0F97tuJs=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage$2.class
+SHA1-Digest: DC3vOXk0u6fQ6pipU/u1iPsPV6s=
+
+Name: org/eclipse/wst/sse/ui/internal/UnknownContentTypeDialog.class
+SHA1-Digest: cHO7uc/9qIpsGpylcfHV12v4TUs=
+
+Name: org/eclipse/wst/sse/ui/FoldingActionGroup$1.class
+SHA1-Digest: ZUu8Ma+A4SE4fxsvVSpUVbXOhMc=
+
+Name: org/eclipse/wst/sse/ui/internal/editor/IHelpContextIds.class
+SHA1-Digest: bVaswxcsSYNSdwkm07J0A9lJ5Eg=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$7.class
+SHA1-Digest: VISmfrxX9CzI16SWdfNodmna82w=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter$
+ 5.class
+SHA1-Digest: BM3Wq2DZVa7mZC5u2+q7EHslqCA=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$3.class
+SHA1-Digest: d4hSuqpEWHkQYn5QapaQpqbF35I=
+
+Name: org/eclipse/wst/sse/ui/contentassist/StructuredContentAssistProc
+ essor$1.class
+SHA1-Digest: rZODNf/kB9gEXHjKbsHvQHHpE4U=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage$AdditionGroupAdder.class
+SHA1-Digest: 61Go2JHG0IkHc+1K7pQ3Pzx0FbM=
+
+Name: org/eclipse/wst/sse/ui/internal/IDropAction.class
+SHA1-Digest: iCLOCykBcexB+q9saH34CcCgrb4=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/MainTab.class
+SHA1-Digest: 7sCa5mn4/qobw/vXK4DN5QgTLEg=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ScrolledPageConte
+ nt.class
+SHA1-Digest: nJwPPPoYSDiWhMioYOlnV4fkfgk=
+
+Name: org/eclipse/wst/sse/ui/internal/taginfo/AbstractHoverProcessor.c
+ lass
+SHA1-Digest: Tx6Ladn77Yu/22dsqvVMmUQ8gWw=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/ReconcileAnnotationKey
+ .class
+SHA1-Digest: rWOmUG8HBwC9kVesIqPz3PUbHoA=
+
+Name: org/eclipse/wst/sse/ui/internal/util/RegistryReader$1.class
+SHA1-Digest: fyfrvpiPPZoXSMDFr7NlgsxOP+Q=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/validator/ValidatorBui
+ lder.class
+SHA1-Digest: pL+gN6NM8lKXLBPkFap4Eawvmtc=
+
+Name: org/eclipse/wst/sse/ui/internal/ExtendedEditorActionBuilder.clas
+ s
+SHA1-Digest: vbU3zr5TjzYh/j55/KsEq85STEU=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/OverlayPreferenceSto
+ re$TypeDescriptor.class
+SHA1-Digest: 54bceqBsajsH2Z/6+TpogYvjJdU=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/extensions/ISourceEd
+ itingTextTools.class
+SHA1-Digest: mtPlcdseUsP6Ap2wfR4Mb7qhAH4=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/StructuredPres
+ entationReconciler$RecordedDamage.class
+SHA1-Digest: ZNOYS04Nn3KEr1TQovNsiLLLZE0=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$17.class
+SHA1-Digest: c3ZSpMlTIs8WDuLc0SVWV8tzZWg=
+
+Name: org/eclipse/wst/sse/ui/internal/quickoutline/QuickOutlinePopupDi
+ alog$3.class
+SHA1-Digest: mhe75c1MrKTl744hGS22mjPdx88=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextViewerConfiguration.class
+SHA1-Digest: ACqppEqCE8/fZNSzi6/SLeGCKgg=
+
+Name: org/eclipse/wst/sse/ui/contentassist/StructuredContentAssistProc
+ essor$TextInputListener.class
+SHA1-Digest: vXAL7YOWDu46WuWIJzu3Ysuwc0c=
+
+Name: org/eclipse/wst/sse/ui/internal/comment/LineCommentingStrategy.c
+ lass
+SHA1-Digest: Wpk1OYmgtWV93k28tmQv6d5qWqg=
+
+Name: icons/full/elcl16/delete.gif
+SHA1-Digest: StaNVceRZsVkdmFCHsmtyZ3ZCxc=
+
+Name: org/eclipse/wst/sse/ui/internal/debug/DebugTextEditor.class
+SHA1-Digest: yRicQccK/cKouXO9uKNT4adh/30=
+
+Name: org/eclipse/wst/sse/ui/EditorExecutionContext$ReusableUIRunner.c
+ lass
+SHA1-Digest: ZGQTSREBO3IPV2N4Hurp+Z7m/aA=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompletionProposal
+ ComputerDescriptor.class
+SHA1-Digest: PSo4zlLOXet4mwQUgSwvRaI3Ozs=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter.
+ class
+SHA1-Digest: EWGztd62hHbkLtvxC4U2cb7VFgA=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextViewerConfiguration$5.class
+SHA1-Digest: NGLNBEJAnrNWC7zxk0wxKwESQpY=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TextHoverPreferen
+ ceTab$1.class
+SHA1-Digest: UpaeXSXq7tUukUK7p/vVP2YHgnI=
+
+Name: org/eclipse/wst/sse/ui/internal/AbstractDropAction.class
+SHA1-Digest: NuDMlNorwfFBWr8/Vg+9dm6Lg20=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TaskTagPreference
+ Page$2.class
+SHA1-Digest: aeiDU8Wfuu72K5+Qmv963GaBy4c=
+
+Name: org/eclipse/wst/sse/ui/internal/projection/AbstractStructuredFol
+ dingStrategy$1.class
+SHA1-Digest: VQu1Y5FFs+3d7BKyncHRa8JN1MU=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TranslucencyPrefe
+ renceTab$1.class
+SHA1-Digest: xmyfNySh+JUE5h6dkPcjsX1V+GI=
+
+Name: org/eclipse/wst/sse/ui/internal/IActionValidator.class
+SHA1-Digest: aaD1ixiy7vdl6Bjs4mvqzDHW4SA=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/PropertyChangeUpd
+ ateAction.class
+SHA1-Digest: M/KHO2y/J5QMJR7/DaSwsBegfxw=
+
+Name: org/eclipse/wst/sse/ui/internal/editor/SelectionConvertor.class
+SHA1-Digest: 8SU4er6kFroJCpL8pTgSHiLb6Kg=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/DirtyRegionProcessor$B
+ ackgroundThread.class
+SHA1-Digest: jwhu5uwCXzSMkr7ghXcqhB8Zt8o=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/DirtyRegionProcessor$T
+ extInputListener.class
+SHA1-Digest: 5UWqurB0P6XrrX0GqCCypg6wJno=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$8.class
+SHA1-Digest: KoveRtIZ+ELPOJCi/UNlgmoo6Jw=
+
+Name: org/eclipse/wst/sse/ui/internal/search/FindOccurrencesActionDele
+ gate.class
+SHA1-Digest: mbdYH9EGvzyRdyWoW5FwB3yQ+Es=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/PropertyPreferenc
+ ePage$4.class
+SHA1-Digest: Hy3jbrJ5dYphHzqpRmWjMIW3l0E=
+
+Name: org/eclipse/wst/sse/ui/views/contentoutline/ContentOutlineConfig
+ uration.class
+SHA1-Digest: PO7lROe7rZVEILkm6tHvFwaJjzU=
+
+Name: org/eclipse/wst/sse/ui/internal/properties/ConfigurablePropertyS
+ heetPage.class
+SHA1-Digest: R5ErXR5S2nrn0kx7JpZq+QU+XlM=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$11.class
+SHA1-Digest: m/G9qP8V41/DX5yF3z6LOO3exeM=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractPreferenc
+ ePage$2.class
+SHA1-Digest: l1gb9N+eaNC62AY1NWGovTRulb8=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TextHoverPreferen
+ ceTab$InternalTableLabelProvider.class
+SHA1-Digest: c5kFUZ1/+hj+Sp6SLdu3Nu4LJ8g=
+
+Name: org/eclipse/wst/sse/ui/views/contentoutline/ContentOutlineConfig
+ uration$CollapseTreeAction.class
+SHA1-Digest: soKrpMbjJUw6jIdxBp3P3/ItB5Q=
+
+Name: org/eclipse/wst/sse/ui/internal/taginfo/AbstractHoverProcessor$1
+ .class
+SHA1-Digest: I1QhHPlFkhqLg/SV3weOwjdCYro=
+
+Name: org/eclipse/wst/sse/ui/internal/selection/StructureSelectAction.
+ class
+SHA1-Digest: eGS2IdrSrbxZDzedT2Wj5DiIHpY=
+
+Name: org/eclipse/wst/sse/ui/internal/handlers/FormatHandler.class
+SHA1-Digest: opMePAMuz06iQq1pte5CUTemZ60=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingPresen
+ ter$HighlightingPositionUpdater.class
+SHA1-Digest: b+GcOwqE/Dn0gEYBz1ML2Z4SF4A=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$PartListener.class
+SHA1-Digest: ygizNhSKDOPiAAxmmxnxnC3yhR0=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/validator/ReconcileSte
+ pForValidator.class
+SHA1-Digest: YVuR11nQyayzHfkJ4PAeqEHqfJs=
+
+Name: org/eclipse/wst/sse/ui/contentassist/AutoActivationDelegate.clas
+ s
+SHA1-Digest: 4+s0XUTu2TMFXHTKnbk3hmAGgcw=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/FilePreferencePag
+ e.class
+SHA1-Digest: SnB06BmOh2BneIyRYCWSZpBQVnk=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/extensions/breakpoin
+ t/IExtendedStorageEditorInput.class
+SHA1-Digest: 8L6UmUk9doKjI3c52vu7pvWxHIo=
+
+Name: org/eclipse/wst/sse/ui/internal/actions/ActionContributor.class
+SHA1-Digest: +qvvPjd4YZzqoenIzO1XrmOv/z4=
+
+Name: org/eclipse/wst/sse/ui/internal/projection/AbstractStructuredFol
+ dingStrategy.class
+SHA1-Digest: s5MZUVAw0+QpPiVFdiVp2/siY50=
+
+Name: org/eclipse/wst/sse/ui/internal/editor/StructuredModelDocumentPr
+ ovider.class
+SHA1-Digest: 5riL3y5gBcFo0EGp/GaZN7NA0xw=
+
+Name: org/eclipse/wst/sse/ui/internal/actions/FormatActionDelegate.cla
+ ss
+SHA1-Digest: ORECFpVgrK1fw+9rs6hDXUM8AYo=
+
+Name: org/eclipse/wst/sse/ui/internal/rules/PresentationCollector.clas
+ s
+SHA1-Digest: 2MFsbCOltyP0ClRKbRbT7Bc+Dqo=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage$DoubleClickProvider.class
+SHA1-Digest: abiD7AoLI8vJOo9pI+0BZTqioh0=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$1.class
+SHA1-Digest: 77fZRFoYU0T+su31xU1VG+OOzWA=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$OutlinePageListener.
+ class
+SHA1-Digest: myF7BmiP4guWFiHXazH+6UTyDpQ=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/OverlayPreferenceSto
+ re$PropertyListener.class
+SHA1-Digest: xioY6w/WwgnsE5BFSqC7BMi3w0g=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/LineStyleProvi
+ der.class
+SHA1-Digest: ZypygggcFqJEYMcoDxKT9SD/5h4=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$1.class
+SHA1-Digest: vijWVQls2fb72qNGLExU0hScRl8=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/EmptyFilePreferen
+ cePage.class
+SHA1-Digest: dW1LGF1niT5fE4Ko+hnXpzWxqj4=
+
+Name: org/eclipse/wst/sse/ui/internal/hyperlink/HighlighterHyperlinkPr
+ esenter$1.class
+SHA1-Digest: gfpk5Bdg2rJf2tmyqzjJPzXMca0=
+
+Name: org/eclipse/wst/sse/ui/internal/correction/StructuredCorrectionP
+ rocessor.class
+SHA1-Digest: 2NUFAT96bFO/Jr19/NSbazH2jTc=
+
+Name: org/eclipse/wst/sse/ui/internal/FormatProcessorsExtensionReader.
+ class
+SHA1-Digest: Qmui5S37B1/KKpQkxGUz92hyrCI=
+
+Name: org/eclipse/wst/sse/ui/reconcile/ISourceReconcilingListener.clas
+ s
+SHA1-Digest: 8NPClVDOf7Yoaedqiy6c1UteiDo=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$StructuredSelectionP
+ rovider$StructuredTextSelection.class
+SHA1-Digest: bp0ZzFsKqOHQ4qmFKmxaxiAbMbA=
+
+Name: org/eclipse/wst/sse/ui/IContentSelectionProvider.class
+SHA1-Digest: REgKaJ5lToQf7EysBDU3i8KNtf8=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker$4.class
+SHA1-Digest: WojZ9kxPd4ghKZ3Ou0Cblf9Z5eY=
+
+Name: org/eclipse/wst/sse/ui/EditorExecutionContext.class
+SHA1-Digest: WwSqICEMYqmvkw6arSL0Z2fIkts=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker$10.class
+SHA1-Digest: bYFE9z6PEMWmqDj9osmrhZjs/zI=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineCustomFiltersDialo
+ g$4.class
+SHA1-Digest: yysGr023Hx7Aj2wJ2J8N5IUx24I=
+
+Name: org/eclipse/wst/sse/ui/internal/view/events/CaretEvent.class
+SHA1-Digest: l+Y2LDhck7l0dPjh1d4CZC3+N3Y=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StructuredTextEdi
+ torPreferencePage.class
+SHA1-Digest: QY5UHiKBRAXFWSbQ7shdjgAMySw=
+
+Name: org/eclipse/wst/sse/ui/internal/spelling/SpellcheckStrategy$Spel
+ lingProblemCollector.class
+SHA1-Digest: vt81+hK5TMrduMETnoBr2hu8D0U=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/MainTab$3.class
+SHA1-Digest: 8/3m0fuDat3CuPLjyRk/TzjWPgs=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/extensions/breakpoin
+ t/NullSourceEditingTextTools.class
+SHA1-Digest: jwSSGmqsLM12W3k3Bg+ZOSKrMfg=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$11.class
+SHA1-Digest: +SXVf8iN83b7SkDIw+v0lEyxUd8=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingPresen
+ ter$2.class
+SHA1-Digest: h0uXdkZbyUIf/od+OV2/ERdMouE=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/RegistryReader.class
+SHA1-Digest: 4oRR6fjwwczOQC9Jrk8SEOBFL5g=
+
+Name: org/eclipse/wst/sse/ui/internal/util/PixelConverter.class
+SHA1-Digest: 92dkHhYVywtgx84nGBlSsnhpnxE=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$10.class
+SHA1-Digest: uY+GkOiW48j4uM/pAeYd6I446rw=
+
+Name: org/eclipse/wst/sse/ui/internal/TransferBuilder$TransferProxyFor
+ DelayLoading.class
+SHA1-Digest: CAk5FVHM4RmJtndjiqCIG+i7oac=
+
+Name: org/eclipse/wst/sse/ui/internal/hyperlink/OpenHyperlinkAction.cl
+ ass
+SHA1-Digest: GtLzZEGBfnq1C9B4ovfQwfObZdM=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompletionProposal
+ ContentTypeContext.class
+SHA1-Digest: 3H5fqrpgOgLZ8c6ISVHBSnT7Vp8=
+
+Name: about.html
+SHA1-Digest: mUOvxSYxCUot6WW9T8TxmOQUrws=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ColorEditor$3.cla
+ ss
+SHA1-Digest: +uPiHVQ8NNR1FSbfUcB+JaMKoQ4=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/RegistryReader$1.class
+SHA1-Digest: FRhJTc3P0hdFHOFM3i6lopgJiJg=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem.class
+SHA1-Digest: vtF9IcAKEq85lrfb07uT0ECJTlg=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingReconc
+ iler$1.class
+SHA1-Digest: F0ey767AzmiiiyCo2H/pnTxtaKI=
+
+Name: org/eclipse/wst/sse/ui/internal/editor/EditorPluginImages.class
+SHA1-Digest: WWlL6au8WQW/hSybkvrtLskYsjA=
+
+Name: org/eclipse/wst/sse/ui/internal/actions/FormatActionDelegate$For
+ matJob.class
+SHA1-Digest: ys0MFGtVpq0075BdoPzpiZP1j/U=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/StringMatcher.class
+SHA1-Digest: SXBvF+4S8izkDrSlfV19Ai7Q7tE=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$AnnotationPropertySource.class
+SHA1-Digest: y2zBlOznaQD2Ce9kNQ/7wMg84c4=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$6.class
+SHA1-Digest: v5vhFhyzUR1dN4rAfCcqk6nvQI4=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/validator/ValidatorMet
+ aData.class
+SHA1-Digest: uGt/XXX7nxz5wbfFnGq7SliKX4A=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage$1.class
+SHA1-Digest: Tq5w5Mr26fESgBCFnM/Kdkzxx68=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/IConfigurableReconcile
+ r.class
+SHA1-Digest: wYGD7nd2IFim1lOd6GqGZYwAlv4=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredTextViewer.class
+SHA1-Digest: wA4PL+77BGH7vzmAOXR75GdaSgw=
+
+Name: org/eclipse/wst/sse/ui/internal/IModelProvider.class
+SHA1-Digest: EJLdSmWodwRVLVgFX/HP6OG/i8Q=
+
+Name: org/eclipse/wst/sse/ui/internal/CaretMediator$RefreshDelayJob.cl
+ ass
+SHA1-Digest: o7UfTwDKFgUs0HLjBmbNburnBCs=
+
+Name: org/eclipse/wst/sse/ui/internal/TextDropAction.class
+SHA1-Digest: 3tZc/+8lkt6mnOHowdw59XHsUiw=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$6.class
+SHA1-Digest: Ru6NN9ibsBCU/CYr8zaI6sGfzgE=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter$
+ 4.class
+SHA1-Digest: K/wAGddjvr6gLJXy2sXddqCeTos=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$2.class
+SHA1-Digest: lzoAVhQC8rYFRqrYOQNu9Wj2+4I=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompletionProposal
+ Category.class
+SHA1-Digest: apSI0EtbXDfSC7FTN2KyeB6E8fw=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/IRelevanceConstant
+ s.class
+SHA1-Digest: X1aQulA/BZIii36LYNOYUhIHt2A=
+
+Name: org/eclipse/wst/sse/ui/internal/taginfo/TextHoverManager$TextHov
+ erDescriptor.class
+SHA1-Digest: WdiZL6qyv4SLAhuXOfWCNtO7cus=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/IPreferenceTab.cl
+ ass
+SHA1-Digest: nJtn/la7urzXREDrMUhD0FcL5cc=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker$9.class
+SHA1-Digest: 9i1zF7Ks+hc5Y4YC0tdJlh+OfWQ=
+
+Name: org/eclipse/wst/sse/ui/internal/text/DocumentRegionEdgeMatcher.c
+ lass
+SHA1-Digest: Pxq4SL4WaIIzVytS1IETPsnoU38=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/TemporaryAnnotation.cl
+ ass
+SHA1-Digest: Lykm2jzy9lgsZBZMlvGzmHzeEEs=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/LineStyleProvi
+ derForNoOp.class
+SHA1-Digest: 5fxdg2WcJpAUITb8XDPY5elc7Kg=
+
+Name: org/eclipse/wst/sse/ui/internal/spelling/SpellcheckStrategy$Spel
+ lCheckPreferenceListener.class
+SHA1-Digest: psI2GO+kY5g3iZV0y8ymt63iWI4=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextViewerUndoManager$UndoNotif
+ ier.class
+SHA1-Digest: G/HVMGo2wmE9uo1U0MmvBgX4fbA=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$16.class
+SHA1-Digest: OZuSHUw2Q6anQ1EMya3+YQoPKqM=
+
+Name: org/eclipse/wst/sse/ui/contentassist/CompletionProposalInvocatio
+ nContext.class
+SHA1-Digest: VkKz86qKn9SLUQxfMoXyN+nzTts=
+
+Name: org/eclipse/wst/sse/ui/internal/quickoutline/QuickOutlinePopupDi
+ alog$2.class
+SHA1-Digest: 039qpKTjjYPncFq8rUtr8/El8e8=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/EditorPreferenceName
+ s.class
+SHA1-Digest: Rmq7UaQlOCDzCrxROl90pXnD/o0=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StructuredTextEdi
+ torPreferencePage$5.class
+SHA1-Digest: 5gRZUiiP+4yR+/c8uHOPdcgT7h4=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/ReconcilerHigh
+ lighter.class
+SHA1-Digest: NJVf5+PIqNo6+olRGsB4tVjaawk=
+
+Name: icons/full/obj16/preferences.gif
+SHA1-Digest: G6dnn+V8TABKHFXMv3UBlAvI6FU=
+
+Name: org/eclipse/wst/sse/ui/FoldingActionGroup$PreferenceAction.class
+SHA1-Digest: uT/6RWTGNrtcdyOipftt3Wg99N0=
+
+Name: icons/full/elcl16/filter_ps.gif
+SHA1-Digest: ngfJGJ/lz7Cm/kX5JfpR2rcfKXc=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage.class
+SHA1-Digest: YqVHHlyAKss0cbG6MUuctDL00Ak=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter$
+ DocumentClone.class
+SHA1-Digest: jd2URvZAoVTox24w13sWvnFpAvU=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractPreferenc
+ eTab$3.class
+SHA1-Digest: jCfD0xQ6YFFBv0ShZFUm3x+Wpws=
+
+Name: org/eclipse/wst/sse/ui/FoldingActionGroup.class
+SHA1-Digest: 1J/BNrcT7tduxvmsMWEGbVMouOU=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextViewerConfiguration$4.class
+SHA1-Digest: /Qb3sHoA/8ACeE5Jpx/ZE9dC1gI=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$ModelViewerComparator.class
+SHA1-Digest: A1rN9wPQTlTojTok8fi1bzTHeNQ=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TaskTagPreference
+ Page$1.class
+SHA1-Digest: QlXrvsJ+N5s2lSypp8ZkdwQTbp4=
+
+Name: org/eclipse/wst/sse/ui/internal/selection/StructuredSelectAction
+ Delegate.class
+SHA1-Digest: Dvt1lBKYZVKUr7iQWU7Fy0RAfD0=
+
+Name: org/eclipse/wst/sse/ui/ISemanticHighlighting.class
+SHA1-Digest: gjsTHoXX3LZyp3k1cDsTl672oDI=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage$SelectionProvider$PostSelectionChangedListener.class
+SHA1-Digest: yVIXK4XxuUvEHVUJGyVnF4BBbPk=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompoundContentAss
+ istProcessor$CompoundContentAssistValidatorEx.class
+SHA1-Digest: 1hPTQgHsLrBBhNYNPQ31CWf4yik=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ExclusionsTab$Con
+ tentTypeLabelProvider.class
+SHA1-Digest: LhpoTEVTPfJ6CA6lFHzMLAsbkBE=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/ActionDescriptor.class
+SHA1-Digest: 0KIjk3qqC3DqhF/61SENLQ/tIuE=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$7.class
+SHA1-Digest: W/teKqqosg0kuNwxQ0z8SOHNfD8=
+
+Name: icons/full/ctool16/spellcheck.gif
+SHA1-Digest: S2UnvrXXKC0y8mJ1lwNCSaV1pEE=
+
+Name: org/eclipse/wst/sse/ui/internal/encoding/ui/EncodingPreferencePa
+ ge.class
+SHA1-Digest: j5FcmotqoYou+XXVQdb5qsK9LBA=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/PropertyPreferenc
+ ePage$3.class
+SHA1-Digest: 9aYu87F7ypPGyV4kBqhs9mk3J2k=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$DefaultPageTableLabelProvider.class
+SHA1-Digest: prEkREp5sWOuRWDtQrbWbek9tcQ=
+
+Name: org/eclipse/wst/sse/ui/internal/CaretMediator.class
+SHA1-Digest: qeSHEAl0QGPe/q5Y8cmkjYkairI=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/TabFolderLayout.clas
+ s
+SHA1-Digest: GVQRzERxmv/Gd7gZlwu4GHvas1M=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/MainTab$TaskTagTa
+ bleLabelProvider.class
+SHA1-Digest: eIp61LYKS9A+/5HaLlvhx8RmOx8=
+
+Name: org/eclipse/wst/sse/ui/quickoutline/AbstractQuickOutlineConfigur
+ ation.class
+SHA1-Digest: 8hFqbMxbGCgyNeAnIZflRXZir5E=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/StructuredContentA
+ ssistant.class
+SHA1-Digest: Z27kRPo45b01/UPVcELHFv4TDJs=
+
+Name: org/eclipse/wst/sse/ui/internal/search/BasicSearchMatchElement.c
+ lass
+SHA1-Digest: 4cejItFWwapOA85uNHZ2rq+Ghps=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$10.class
+SHA1-Digest: r19NzX+n4wurWf0N8WVVV4zsccY=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/AbstractStructuredText
+ ReconcilingStrategy.class
+SHA1-Digest: kuL6Ta4FwhacQpduGdscUg5dBYE=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractPreferenc
+ ePage$1.class
+SHA1-Digest: /EdVvhc5jCNoxHVHcjAcUQp5uBI=
+
+Name: org/eclipse/wst/sse/ui/internal/contentproperties/ui/ContentSett
+ ingsPropertyPage.class
+SHA1-Digest: 2kkggp34xrTe5Ro/xd17ywz52b0=
+
+Name: org/eclipse/wst/sse/ui/internal/openon/OpenFileHyperlinkTracker.
+ class
+SHA1-Digest: HRau+/diIis3H5MRL2yK6D0c6Bw=
+
+Name: org/eclipse/wst/sse/ui/preferences/ICompletionProposalCategories
+ ConfigurationWriter.class
+SHA1-Digest: SVjKeJuQkZ+/jyRtLQLral0cHsY=
+
+Name: org/eclipse/wst/sse/ui/internal/derived/LineBreakingReader.class
+SHA1-Digest: m8kIsinIAuhT1gQkQXky0mw3q8s=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ColorEditor.class
+SHA1-Digest: EuJYgI2pcRfKQSxuN/PBj08F+RI=
+
+Name: org/eclipse/wst/sse/ui/internal/CaretMediator$1.class
+SHA1-Digest: wdF1BsQzeTwABWuhluL4W1j7QV4=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/StringMatcher$Position.cl
+ ass
+SHA1-Digest: H8AcsZHKIT/fD8VI2f3FCT9ohDQ=
+
+Name: org/eclipse/wst/sse/ui/internal/IExtendedEditorAction.class
+SHA1-Digest: TYeu3e6K39L14KfF586q/0KQVJc=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/DirtyRegionProcessor$D
+ ocumentListener.class
+SHA1-Digest: eGp2HyE7AjFr238A8ePB2vuB4/4=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/StructuredReconcileSte
+ p.class
+SHA1-Digest: ONZN8lMu0Ds1K0afnKUmRzUaEmM=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ColorNames.class
+SHA1-Digest: +hu9vycxTfecZl4k7pZattL8Zj8=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$CharacterPairListene
+ r.class
+SHA1-Digest: OUlIp1Q75ZNdOYWZn327sYBgjvU=
+
+Name: org/eclipse/wst/sse/ui/internal/handlers/FormatHandler$1.class
+SHA1-Digest: 3lYLohEn6ryPnRYbHoGM6sukEn0=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ExclusionsTab$3.c
+ lass
+SHA1-Digest: mjjrtnhAr9sw1RTz9dnX+LhFTI8=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingManage
+ r$HighlightedPosition.class
+SHA1-Digest: nmQ7dhav1yNa1ESRHueAR64fQyk=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/DocumentAdapter.class
+SHA1-Digest: BsLVTi6yb0Dc2vcdM9jpPELmC+Q=
+
+Name: org/eclipse/wst/sse/ui/internal/selection/StructureSelectHistory
+ Action.class
+SHA1-Digest: uKYiZQXBwxW9FqHjV8V+4Lue/k8=
+
+Name: org/eclipse/wst/sse/ui/internal/StorageModelProvider.class
+SHA1-Digest: I1wrJe88UbWpqyJKhhA36urWDn8=
+
+Name: org/eclipse/wst/sse/ui/internal/correction/QuickFixRegistryReade
+ r.class
+SHA1-Digest: TPhLZtfEPg9XBvUd4l81zFyRAlU=
+
+Name: org/eclipse/wst/sse/ui/internal/actions/StructuredTextEditorActi
+ onConstants.class
+SHA1-Digest: ZdrGSIZig1GWrRWrS1r2gf91vy4=
+
+Name: org/eclipse/wst/sse/ui/internal/edit/util/SharedEditorPluginImag
+ eHelper.class
+SHA1-Digest: KAxFvhWoJ5IwhRzxpLQfbZh2o2M=
+
+Name: org/eclipse/wst/sse/ui/internal/actions/ActionDefinitionIds.clas
+ s
+SHA1-Digest: n8yLt85N3O5WZLxKV+b3glZfvQE=
+
+Name: org/eclipse/wst/sse/ui/internal/openon/OpenOnProvider.class
+SHA1-Digest: u+GrVJzlFSRjPuWNPQfXRp5gxj8=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/OptionalMessageDia
+ log.class
+SHA1-Digest: 0OROEHzYePyqcuLNiB4r/aQsHTA=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/OverlayPreferenceSto
+ re.class
+SHA1-Digest: 413gtVVf8N5ssqjQft9vZx6nZ2s=
+
+Name: org/eclipse/wst/sse/ui/views/contentoutline/ContentOutlineFilter
+ Processor$FilterItem.class
+SHA1-Digest: elvom9p4gzM9yKfuuyrKGBtFIzk=
+
+Name: org/eclipse/wst/sse/ui/internal/search/OccurrencesSearchViewPage
+ .class
+SHA1-Digest: w50SB//LLO+vnFkdzB4RNMDqBZE=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter$
+ DocumentListener.class
+SHA1-Digest: R5ah8Dddbeu/cYV9qsFqYkisM4o=
+
+Name: org/eclipse/wst/sse/ui/internal/ShowViewAction.class
+SHA1-Digest: kz9YsGa0WqGbG56el7dD6aahZzw=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker$3.class
+SHA1-Digest: zH5YqK6r+gBLLwJenWJ7fhF7Yvs=
+
+Name: org/eclipse/wst/sse/ui/internal/derived/SubstitutionTextReader.c
+ lass
+SHA1-Digest: BiDeUwu5LM/ZpsXCEupCLLNnT24=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingPresen
+ ter.class
+SHA1-Digest: lb/PauMELAQFojl/JDpYyq7vZI0=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineCustomFiltersDialo
+ g$3.class
+SHA1-Digest: /xiG7+eFC6Mom73oIOFokQ/yPKQ=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/IStructuredReconcileSt
+ ep.class
+SHA1-Digest: oZZCOPKTcJ9iT6YfQSzBtfAQM6o=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/DropActionProxy.class
+SHA1-Digest: QXR0xY1envWNmiRTw6Pg/XqAvb0=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/registry/AdapterFact
+ oryRegistryImpl.class
+SHA1-Digest: GRuJsUp+T/pfeLoY2IOruc7w2QM=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/MainTab$2.class
+SHA1-Digest: We2CE0V+RmiSx0tgYSJsRIzBIlQ=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextViewerUndoManager.class
+SHA1-Digest: FCvTHAJ1ZT72fMbVxgm6JnoU6T8=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/extensions/breakpoin
+ t/NodeLocation.class
+SHA1-Digest: 6aaxtafQyCixHIKZv1zz7ntu6u0=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompletionProposoa
+ lCatigoriesConfigurationRegistry.class
+SHA1-Digest: 4dIkSB/NatoENM2RNwfoN7+MA2E=
+
+Name: org/eclipse/wst/sse/ui/internal/debug/BreakpointRulerAction.clas
+ s
+SHA1-Digest: pOU0epoaKqvnTaVxFQy3vFkpJS8=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$10.class
+SHA1-Digest: 5veb4SHgXPc2UAjwMROIGL3KVzY=
+
+Name: org/eclipse/wst/sse/ui/internal/openon/OpenOnBuilder.class
+SHA1-Digest: mY/JRezlKThMFDoyNkrkA72MYm8=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingPresen
+ ter$1.class
+SHA1-Digest: m3p8NrpDMCvW8VyG2VuXSvRzZug=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/DirtyRegionProcessor.c
+ lass
+SHA1-Digest: xGr1LonJ887T2eB0iQaCRc6A6cg=
+
+Name: org/eclipse/wst/sse/ui/internal/handlers/FormatHandler$FormatJob
+ .class
+SHA1-Digest: Frkt74lKSE8hyKLVIiLSR/cZhhI=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredTextLineBreakingReader
+ .class
+SHA1-Digest: Jz9km/GSPNxB4tbK8Exy1pTb9pQ=
+
+Name: org/eclipse/wst/sse/ui/preferences/ICompletionProposalCategories
+ ConfigurationReader.class
+SHA1-Digest: rHEQ/taCq1AgAGCIzKl93ojwbKw=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ColorEditor$2.cla
+ ss
+SHA1-Digest: Ejk1HK75QJCosbH4N3KFIDtAZc4=
+
+Name: org/eclipse/wst/sse/ui/internal/text/WordFinder.class
+SHA1-Digest: MBtZhvDLViueMSGYrzJp3A3EHA0=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/Highlighter.cl
+ ass
+SHA1-Digest: qJmNrJh/hhIbLPmnmm6Z1Rc8/SU=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompoundContentAss
+ istProcessor$CompoundContentAssistValidator.class
+SHA1-Digest: JvT3lPVIvd1CdX0hdG4VwfONXYg=
+
+Name: org/eclipse/wst/sse/ui/internal/hyperlink/HighlighterHyperlinkPr
+ esenter.class
+SHA1-Digest: mRPYQd97EJef5j+jGE95kByyxNo=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TranslucencyPrefe
+ renceTab.class
+SHA1-Digest: tbqhOFwbn+s6stDAbBLrxtB+Wxg=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompoundContentAss
+ istProcessor.class
+SHA1-Digest: SvXsgtsezj8wCZ8Y32YTDNlQTsQ=
+
+Name: org/eclipse/wst/sse/ui/internal/debug/DebugTextEditor$1.class
+SHA1-Digest: tZv8ShxXzHbl+NlQ7iuy4k1llJ4=
+
+Name: icons/full/dlcl16/synced.gif
+SHA1-Digest: JOdedCNsU5i3TmPVkh04Qi8pPCM=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$5.class
+SHA1-Digest: dWeO0RAM+p+Tv6vd66wHByvuPZs=
+
+Name: org/eclipse/wst/sse/ui/views/properties/IPropertySourceExtension
+ .class
+SHA1-Digest: 1n7fN47cpD0PD+2YNANhp1D1UOs=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$5.class
+SHA1-Digest: Dqc1yUDPwxyF11LVDQ8IcQcfSp0=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter$
+ 3.class
+SHA1-Digest: 61LQq0kPOc4ebHsME9jPZ0c8OpY=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$1.class
+SHA1-Digest: t9u1hjeCBWA5uxQOSE+4zYtFyS8=
+
+Name: org/eclipse/wst/sse/ui/internal/StorageModelProvider$InternalEle
+ mentStateListener.class
+SHA1-Digest: N/fjSBaGVscNuaVLx+oXqT2ZV4o=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/validator/ValidatorMet
+ aData$1.class
+SHA1-Digest: YJfmILIlrymlUXXh+V0iBN45eIs=
+
+Name: org/eclipse/wst/sse/ui/internal/properties/CustomPropertyDescrip
+ tor.class
+SHA1-Digest: 5IAnu2PAtBzRAM00l4Z9luH7W1E=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker$8.class
+SHA1-Digest: QcL1e6SSOHSYGcGUHnXbOXjxFDo=
+
+Name: org/eclipse/wst/sse/ui/internal/comment/CommentingStrategy.class
+SHA1-Digest: nk9XFgY1nTBzv04XA3xGMZN47K4=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/validator/IncrementalR
+ eporter.class
+SHA1-Digest: BfbxU7dYUuYo+lf3xfbktMTi/nY=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/IJFaceNodeAdapter
+ .class
+SHA1-Digest: 6Q0GZFKw2LjynnxN366CYBZ7ksk=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/MainTab$7.class
+SHA1-Digest: 28i6Y0x9kIvGM6f8UNty3RYzFis=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/DocumentRegionProcesso
+ r.class
+SHA1-Digest: oKjnDzi18ju57zgbQQJke+MeGyo=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ExclusionsTab.cla
+ ss
+SHA1-Digest: z6Be3E2VoyWzHHKmaCyzcgogOhE=
+
+Name: org/eclipse/wst/sse/ui/views/contentoutline/ContentOutlineConfig
+ uration$ToggleLinkAction.class
+SHA1-Digest: 9GpgPZxJYreuiE8x5jTaa+DbufA=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextInvocationContext.class
+SHA1-Digest: 5uJofDDNST/bw2PvBP5PZZXxbbI=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/Highlighter$YU
+ V_RGBConverter$YUV$NormalizedRGB.class
+SHA1-Digest: 2NYEc+J8kaPSvSQmLci0qU8qe30=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$15.class
+SHA1-Digest: zOyVpRfVJkVInyE2QGDT8YLF4nk=
+
+Name: org/eclipse/wst/sse/ui/internal/quickoutline/QuickOutlinePopupDi
+ alog$1.class
+SHA1-Digest: YjxirjMviSRKlKamPqks6RrHiUE=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StructuredTextEdi
+ torPreferencePage$4.class
+SHA1-Digest: FwRYX4InQlY6UOqFCExaOBObR4k=
+
+Name: org/eclipse/wst/sse/ui/internal/projection/AbstractStructuredFol
+ dingPosition.class
+SHA1-Digest: ZS3eqc1pzPlprq3OF4H5U7YUlCI=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredMarkerAnnotation.class
+SHA1-Digest: 0BK7/ou3Qbb8+oSm2aKZRaPe80I=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredTextSelectionChangedEv
+ ent.class
+SHA1-Digest: PWeZiBuwWOCkbMFnIaLsM/tzsWY=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractPreferenc
+ eTab$2.class
+SHA1-Digest: YcNyX4zGIqSAnkge41B/SpH2VWA=
+
+Name: org/eclipse/wst/sse/ui/internal/view/events/TextSelectionChanged
+ Event.class
+SHA1-Digest: cX0mka0fH77llFcyj9vfnWxuwwg=
+
+Name: org/eclipse/wst/sse/ui/internal/search/BasicSearchQuery.class
+SHA1-Digest: 7Rw+9oYAmQuGJNTcXLCU3lTiDms=
+
+Name: org/eclipse/wst/sse/ui/internal/rules/StructuredDocumentDamagerR
+ epairer.class
+SHA1-Digest: uFdWl3ete+VYv8Kjmnw7ckPjcuw=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/StructuredPres
+ entationReconciler$InternalListener.class
+SHA1-Digest: cJq/n2UhcUFpFprIT91I6HnuyV0=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextViewerConfiguration$3.class
+SHA1-Digest: 8aqm22xpJR8ZQwf3Y2AVjWy2lLM=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$ModelElement.class
+SHA1-Digest: P9pbZwyK45QBM9ZSFUt1FnB/+PM=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/registry/AdapterFact
+ oryRegistryReader.class
+SHA1-Digest: ygR+DhDFpibKpQZJgZasyvWZylw=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/PropertyPreferenc
+ ePage.class
+SHA1-Digest: rAt9JBOBUIiqNShyGIDYhxxLdJ4=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$StructuredSelectionP
+ rovider.class
+SHA1-Digest: x+Rh49UosmoH81TJwaq9R+/jqko=
+
+Name: org/eclipse/wst/sse/ui/internal/derived/HTML2TextReader.class
+SHA1-Digest: PRuhFzyZHbU1vsWwVPvaWkw8+uA=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage$5.class
+SHA1-Digest: 7FpcvHv0ab3rmcMI55EAdi3mKe4=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineFilterMessages.pro
+ perties
+SHA1-Digest: Vyfj9+MPzZQTvS8MxXmikp8+s+c=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$ShowEditorInformationAction.class
+SHA1-Digest: 6O5y7l+8m5XCPNpr9p3CXu6A5wY=
+
+Name: org/eclipse/wst/sse/ui/internal/util/RegistryReader.class
+SHA1-Digest: KdFqHtMqP6SNq3TPWD57sO45RzM=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/registry/AdapterFact
+ oryProvider.class
+SHA1-Digest: nDXIbGFRumjHThoJ5iyWW/BupiM=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter$
+ 8.class
+SHA1-Digest: XtXF6euUSoNlf/kdMxVkTSULIJ0=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$ConfigurationAndTarg
+ et.class
+SHA1-Digest: AvI/JeEAFmFEGH0qhfSJzBi7nNg=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$6.class
+SHA1-Digest: yj9+IxENDtDoNvedRN8ZhCQyf+c=
+
+Name: org/eclipse/wst/sse/ui/contentassist/StructuredContentAssistProc
+ essor$4.class
+SHA1-Digest: P3XWnNwO3HmTTRP+YgwXEvAC2Bo=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/PropertyPreferenc
+ ePage$2.class
+SHA1-Digest: 5yxoOtAeu0wUyHrmy+utSJtZJbs=
+
+Name: org/eclipse/wst/sse/ui/internal/correction/CompoundQuickAssistPr
+ ocessor.class
+SHA1-Digest: FYoKmDRhoKWx3Vrtcx7o+i3x9+k=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$OwnPageTableLabelProvider.class
+SHA1-Digest: ka6WU77TsrI/ZeE+ITBKn8aXnUY=
+
+Name: org/eclipse/wst/sse/ui/internal/correction/ContributedProcessorD
+ escriptor.class
+SHA1-Digest: CZkQxxbvk218hueeavWiP5/5I0A=
+
+Name: org/eclipse/wst/sse/ui/EncodingSupport.class
+SHA1-Digest: cWDz5nwpf19OP4wL4bHoTFazXac=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/validator/ValidatorStr
+ ategy.class
+SHA1-Digest: zDQOWe5KWwDxJcdwZgOvtE1w+vA=
+
+Name: org/eclipse/wst/sse/ui/internal/handlers/FindOccurrencesHandler.
+ class
+SHA1-Digest: ObSZruUKHrbK/JTzNwZQuoDJSbk=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/ContextInformation
+ Validator.class
+SHA1-Digest: 01X4NlMmCXmrUOiPC5tfibl+9/Y=
+
+Name: org/eclipse/wst/sse/ui/typing/AbstractCharacterPairInserter$Exit
+ Policy.class
+SHA1-Digest: cNar/RYEvDeoxnuzeZcQ7u2ZjIQ=
+
+Name: org/eclipse/wst/sse/ui/contentassist/ICompletionProposalComputer
+ .class
+SHA1-Digest: ATaTVVPTPXQjraTlRC8vHCTGPho=
+
+Name: org/eclipse/wst/sse/ui/internal/ExtendedEditorActionBuilder$1.cl
+ ass
+SHA1-Digest: ckbQ0dkFWeDS/u7BOt97EGseZXI=
+
+Name: org/eclipse/wst/sse/ui/internal/quickoutline/QuickOutlinePopupDi
+ alog$6.class
+SHA1-Digest: EBQ5B4JOgnGl3ObBGGHba2cZcbg=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/preferences/CommonEd
+ itorPreferenceNames.class
+SHA1-Digest: dOSZhtEuCgVn3gz+VYVKLRwlwuM=
+
+Name: org/eclipse/wst/sse/ui/internal/TransferBuilder.class
+SHA1-Digest: Pcptq/XMXCYCQMxZJknRCIErJwY=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ExclusionsTab$2.c
+ lass
+SHA1-Digest: tvegCWTuZIak0hpzFhHBLfHkjp8=
+
+Name: .options
+SHA1-Digest: 9Vm5MiGm0DfCxkOtlc9Lt56YgMk=
+
+Name: org/eclipse/wst/sse/ui/internal/comment/BlockCommentingStrategy.
+ class
+SHA1-Digest: VhO6klI1OKgrcO0T4tH+xTJanog=
+
+Name: org/eclipse/wst/sse/ui/internal/spelling/SpellcheckStrategy$1.cl
+ ass
+SHA1-Digest: t6rkx+40eR8803eRt4HSc3B1XzU=
+
+Name: org/eclipse/wst/sse/ui/internal/correction/CorrectionAssistantPr
+ ovider.class
+SHA1-Digest: rCA+GXboiVqGG0xXfFYLhWpYyTQ=
+
+Name: org/eclipse/wst/sse/ui/preferences/AbstractCompletionProposalCat
+ egoriesConfiguration.class
+SHA1-Digest: +3Va6Byq12VphY+WYZxsqpdVcAM=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$PreferenceModel.class
+SHA1-Digest: TkB69oEjhdywNwyVJoLZQb5kWB4=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/AbstractLineSt
+ yleProvider.class
+SHA1-Digest: 7DHpqegysC0/fwSaS95dqsHqQoU=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TextHoverPreferen
+ ceTab$4.class
+SHA1-Digest: eYbU3mvHjl/QalhI8PlfZIAKM3Y=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractValidatio
+ nSettingsPage$3.class
+SHA1-Digest: 7trzTryLhxE9cFzY8lMq9rtfWno=
+
+Name: org/eclipse/wst/sse/ui/internal/selection/SelectionHistory.class
+SHA1-Digest: 76a6dwM4MVKzsn8yPcL5eCNat+Y=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/Highlighter$1.
+ class
+SHA1-Digest: nnwjcrC9Pi5CA7zjNQfdMsOCG6I=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker.class
+SHA1-Digest: Q+b6QX990zU0uFBuoEWe1VGJmUU=
+
+Name: org/eclipse/wst/sse/ui/internal/SSEUIMessages.class
+SHA1-Digest: s6vkOAa8Iiqt87nh7CppZiUNqI8=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/IReconcileAnnotationKe
+ y.class
+SHA1-Digest: YmfrCZTF3Qo59Hypd4TL7R19T/8=
+
+Name: org/eclipse/wst/sse/ui/internal/GotoAnnotationAction$StatusLineC
+ learer.class
+SHA1-Digest: RzCx3eU6jDJyOrYFFbF+3EpKcPw=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredTextAnnotationHover.cl
+ ass
+SHA1-Digest: Jd9cldwjkgzoMVwxcTizPbJiSQY=
+
+Name: plugin.properties
+SHA1-Digest: IAa1wrfAMYGbbWIW6JkiIcyHz3M=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker$2.class
+SHA1-Digest: Kx2NgiKMIvgrWPv0uXvDBVPl1+o=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/ContentAssistUtils
+ .class
+SHA1-Digest: keLAbuCkAmYnI7JMcboI8MFKM/8=
+
+Name: org/eclipse/wst/sse/ui/internal/ExtendedConfigurationBuilder.cla
+ ss
+SHA1-Digest: ICnSIIAs5Qkky1n3HfFIY8RhS4A=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineCustomFiltersDialo
+ g$2.class
+SHA1-Digest: UGh7k8RBIl1NEdo8l17X/guQBUw=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompletionProposal
+ ComputerRegistry$1.class
+SHA1-Digest: IJyiZ3BSKeH8CZ0BOJMKfwh65Nc=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineFilterDescriptor$2
+ .class
+SHA1-Digest: qkT+CcMe/i6B30LaxjltB8IKyRA=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/MainTab$1.class
+SHA1-Digest: u+MuJRghwvptY+d0vwiLRHgoF8I=
+
+Name: plugin.xml
+SHA1-Digest: i7Qzy58O4tsK/2IYnAxbFnc+CBo=
+
+Name: org/eclipse/wst/sse/ui/views/contentoutline/ContentOutlineFilter
+ Processor.class
+SHA1-Digest: axHJ/9g6yP5feHNX6VTHlaEh+18=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$14.class
+SHA1-Digest: fDnSMa0GZoP/0JM5E0f7lECnSwc=
+
+Name: org/eclipse/wst/sse/ui/internal/taginfo/AnnotationHoverProcessor
+ .class
+SHA1-Digest: FNtYuPRgFnotyNNWq2M4wXyGApE=
+
+Name: org/eclipse/wst/sse/ui/internal/openon/OpenOnDefinition.class
+SHA1-Digest: TRkjGaGftwRJ9WKbuOMzsWjsCYA=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/ExtendedEditorActionPr
+ oxyForDelayLoading$2.class
+SHA1-Digest: TtOCldmkr7hjjL+jkHoSD4Wt58A=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingManage
+ r$1.class
+SHA1-Digest: YsPtk0tp5pJftvM6mUPEt9Qd2NU=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/extensions/Configura
+ tionPointCalculator.class
+SHA1-Digest: N0tVbyku1MFZeUA5IkYpc/bBklM=
+
+Name: org/eclipse/wst/sse/ui/internal/StorageModelProvider$ModelInfo.c
+ lass
+SHA1-Digest: /wpzF+5x9nk6cq/i7u/HSHm1kB8=
+
+Name: org/eclipse/wst/sse/ui/internal/handlers/AbstractStructuredSelec
+ tHandler.class
+SHA1-Digest: REmPRy4Y9mnUTPPfN9jD6ZjwnAg=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingReconc
+ iler.class
+SHA1-Digest: iNkN8CX6P2+5Vil3PGUjpH0jSwU=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/StructuredRegionProces
+ sor.class
+SHA1-Digest: zKpKUbdNxos9xgnsmHcYrtlGDiA=
+
+Name: org/eclipse/wst/sse/ui/internal/SSEUIPlugin.class
+SHA1-Digest: WVe2KIvA/3EEhzguIdLgx9gBtpU=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ColorEditor$1.cla
+ ss
+SHA1-Digest: JaXsz7KUw0XJkSLMRIHk/kRk1/s=
+
+Name: icons/full/dlcl16/delete.gif
+SHA1-Digest: IIQh2TsmpWsr2ig1A/tfEjEE8Ok=
+
+Name: org/eclipse/wst/sse/ui/internal/openon/AbstractOpenOn.class
+SHA1-Digest: k31tuWvcKJCD/GRVAPsufJY6MUs=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractValidatio
+ nSettingsPage.class
+SHA1-Digest: VfCCTm1x9amehj9gIsjmLlUSuQU=
+
+Name: org/eclipse/wst/sse/ui/internal/correction/IQuickFixProcessor.cl
+ ass
+SHA1-Digest: pGGO0NJMkCmPB1QlIJZGBdYf8OI=
+
+Name: org/eclipse/wst/sse/ui/internal/editor/EditorModelUtil.class
+SHA1-Digest: 8wOrPFvRefX5clY5X6E8mejG9LE=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/extensions/ISelfVali
+ dateEditAction.class
+SHA1-Digest: M45Ie73VKwJsp93jd5ilhUiqSpA=
+
+Name: org/eclipse/wst/sse/ui/internal/search/BasicSearchLabelProvider.
+ class
+SHA1-Digest: wFg1SeHtJ3K2kEVtUNf01smOtl8=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/extensions/breakpoin
+ t/IBreakpointProvider.class
+SHA1-Digest: KsMosWvPckWi61SDnath8L1UG8k=
+
+Name: org/eclipse/wst/sse/ui/internal/taginfo/TextHoverManager.class
+SHA1-Digest: md7yo9cp4uFtcoTsf4wVosI0JP8=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/Highlighter$YU
+ V_RGBConverter.class
+SHA1-Digest: YDf1Q3I1fx1gGmG7FYpI2bAAIZI=
+
+Name: org/eclipse/wst/sse/ui/internal/debug/ManageBreakpointAction.cla
+ ss
+SHA1-Digest: 6WeVQAmM141Z59dUp3B7JBLEZJ4=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$4.class
+SHA1-Digest: RYMymi6diOL+8tbM7km7PWGy4x8=
+
+Name: org/eclipse/wst/sse/ui/internal/IReleasable.class
+SHA1-Digest: BlVrXdNGI+vRTwhOF3RYNB/5p+8=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/validator/ISourceValid
+ ator.class
+SHA1-Digest: dZb0YCBzULrw3uZiGx+2EP7kHJk=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractValidatio
+ nSettingsPage$ComboData.class
+SHA1-Digest: VAWbekM+1WWVIlWBCldmEb5LsfQ=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$4.class
+SHA1-Digest: hlyXa0hOuVjUA/OlzuflhnKCFdQ=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter$
+ 2.class
+SHA1-Digest: 8h8jkSII82zVJaFqiQuoy+Nv908=
+
+Name: org/eclipse/wst/sse/ui/internal/contentproperties/ui/ComboList.c
+ lass
+SHA1-Digest: R77MugYesm69Ce+nShnlyD6rLJg=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/OptionalMessageDia
+ log$1.class
+SHA1-Digest: wQ4DmAHM/RXSD3wq0fHwH2zLLMY=
+
+Name: icons/full/etool16/spellcheck.gif
+SHA1-Digest: S2UnvrXXKC0y8mJ1lwNCSaV1pEE=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/Highlighter$YU
+ V_RGBConverter$YUV.class
+SHA1-Digest: BT0AIK+aMlGELGY2WQMXYMZgKQQ=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredLineChangeHover$1.clas
+ s
+SHA1-Digest: hYVbNQ87BIrY86t2i96easwtWek=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker$7.class
+SHA1-Digest: L8tOF+W4/7dTaxiR6WCWFGCf6qc=
+
+Name: org/eclipse/wst/sse/ui/internal/view/events/INodeSelectionListen
+ er.class
+SHA1-Digest: lzJ7fKcHl/Gm94fak/ztCVBupnc=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/registry/AdapterFact
+ oryRegistryExtension.class
+SHA1-Digest: O3PXNwkCUcYTovibHG4bzvPNmnc=
+
+Name: icons/full/elcl16/collapseall.gif
+SHA1-Digest: X2SYkCGSP2jr+iOlYBLU19jEd4Y=
+
+Name: org/eclipse/wst/sse/ui/internal/debug/BreakpointRulerAction$Mous
+ eUpdater.class
+SHA1-Digest: 7M+cyAx6McR0xeLgof15lkdIyWw=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/MainTab$6.class
+SHA1-Digest: sOrw5W/JDTvXMUpUzbyGDFCfD1w=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$14.class
+SHA1-Digest: 5nKl9iTcZnKVN4ojBEO2meJrIzo=
+
+Name: org/eclipse/wst/sse/ui/internal/util/SWTUtil$1.class
+SHA1-Digest: HY61JZUL8jBspnTeFBDLa4Ih/cs=
+
+Name: org/eclipse/wst/sse/ui/internal/spelling/SpellcheckStrategy.clas
+ s
+SHA1-Digest: U+/4p4v4LLSdMLuaW9aHPfH3gwI=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StructuredTextEdi
+ torPreferencePage$3.class
+SHA1-Digest: H3oYRtY+snDC3scfsTT4Nrvgyjw=
+
+Name: org/eclipse/wst/sse/ui/internal/ExtendedEditorDropTargetAdapter.
+ class
+SHA1-Digest: LY82nRLzBm6L+kq8ovStG7CBR0g=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TextHoverPreferen
+ ceTab.class
+SHA1-Digest: nXZX+4fzY5Ql7mRLDwIvQms4RLk=
+
+Name: org/eclipse/wst/sse/ui/internal/view/events/ICaretListener.class
+SHA1-Digest: 3rH3Yx4vj33traRhy0Q9079md9Q=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineNamePatternFilter.
+ class
+SHA1-Digest: Za07vnj0n9NUOiWgIZMhp/LVJUo=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractPreferenc
+ eTab$1.class
+SHA1-Digest: xL1eZ6Jk5dWPViwGnxVJXGR1EuY=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextViewerConfiguration$2.class
+SHA1-Digest: JA8y6R3GXwmgl6yOsa87z9WnbhA=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/StructuredTextAnnotationImage
+ Provider.class
+SHA1-Digest: kZHph0DeRM8v5Q9mi+8qN8Gwl6k=
+
+Name: org/eclipse/wst/sse/ui/contentassist/StructuredContentAssistProc
+ essor.class
+SHA1-Digest: x9FeIzSjrEfIJicTd6bovGel4LE=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingPresen
+ ter$YUV_RGBConverter$YUV$NormalizedRGB.class
+SHA1-Digest: 8tsWmEMtP2CGSKFntwhvI++rP6A=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$9.class
+SHA1-Digest: 7u33tR2J5Ik4yyaWaVetYTGKWPU=
+
+Name: org/eclipse/wst/sse/ui/internal/openon/ExternalFileEditorInput.c
+ lass
+SHA1-Digest: N403dS9H9FSFrlc3BNTTzcafNSw=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage$4.class
+SHA1-Digest: ZdqAVq+krOt2zR2aWcqbQNKCPbM=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredLineChangeHover.class
+SHA1-Digest: f36IwJKiYOJhlCY0RelhnGmtK3k=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/IExtendedEditorActionP
+ roxyForDelayLoading.class
+SHA1-Digest: 2TJIkL468+5DVOoT4Ooev8kKhIA=
+
+Name: org/eclipse/wst/sse/ui/internal/spelling/SpellingQuickAssistProc
+ essor.class
+SHA1-Digest: adj9abNHZRDVimEUbBp6qPnhNYc=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$9.class
+SHA1-Digest: ykPstiOPW/YdPjkc20Gjatmn5MI=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter$
+ 7.class
+SHA1-Digest: fnWw7WkrodsgktcNDwbfd3zpVyY=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$5.class
+SHA1-Digest: 9WLKsAXnJI4FrBgf718lq/eiox4=
+
+Name: icons/full/obj16/occ_match.gif
+SHA1-Digest: yTBODW4suGTM4c+khDJCSo5xatM=
+
+Name: org/eclipse/wst/sse/ui/internal/actions/ActiveEditorActionHandle
+ r.class
+SHA1-Digest: RkPAJEUMDcXHxyG54ZSs//qnBRM=
+
+Name: org/eclipse/wst/sse/ui/contentassist/StructuredContentAssistProc
+ essor$3.class
+SHA1-Digest: OsSj4Zg1aBdRKu3qQN703diQgsM=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/PropertyPreferenc
+ ePage$1.class
+SHA1-Digest: 1g/wZPDFWCFEjgx2m8Wt4Yrpu1Y=
+
+Name: org/eclipse/wst/sse/ui/internal/quickoutline/QuickOutlineHandler
+ .class
+SHA1-Digest: KpKh056D1B0LJhiH6yM8CJ1brH0=
+
+Name: org/eclipse/wst/sse/ui/internal/CustomFilterPropertyTester.class
+SHA1-Digest: 2Pbz2f2rMcAw1zUQrvjOvXcB7eY=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$ShowInTargetListAdap
+ ter.class
+SHA1-Digest: iu/2mCRcJ316h11e/y+x2Mov93U=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingPresen
+ ter$YUV_RGBConverter.class
+SHA1-Digest: J3/SiBJN49jZRuQa4YhC7VsovNU=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ExclusionsTab$Con
+ tentTypeSorter.class
+SHA1-Digest: 14QJS511P6dma7orr8Xz2wSze+s=
+
+Name: org/eclipse/wst/sse/ui/internal/correction/AnnotationQuery.class
+SHA1-Digest: 0tVVyE7gCknwGVVpQliWIw1FXdU=
+
+Name: org/eclipse/wst/sse/ui/internal/ExtendedConfigurationBuilder$1.c
+ lass
+SHA1-Digest: hzEoKySb40mdsKIwaH8OBk1rSgU=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ColorHelper.class
+SHA1-Digest: bt++EX/I2nSm/miRqdjAL1UTvk4=
+
+Name: org/eclipse/wst/sse/ui/internal/search/OccurrencesSearchQuery.cl
+ ass
+SHA1-Digest: ESnvHtwwd0T5pjmjgMFnsM5VU0k=
+
+Name: org/eclipse/wst/sse/ui/internal/quickoutline/QuickOutlinePopupDi
+ alog$5.class
+SHA1-Digest: dFn/dMAT76dzc8cmjSvlpBBTxoI=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/ImageUtil.class
+SHA1-Digest: 3SdniH3gOvLMdjpHrndVkWYfgFA=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ExclusionsTab$1.c
+ lass
+SHA1-Digest: VLxQQGSsp0u/zlC0x/NbqfZDI10=
+
+Name: org/eclipse/wst/sse/ui/internal/properties/RemoveAction.class
+SHA1-Digest: tUPXHN78tcrd/+Mf08PmHcxuwmM=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompoundContentAss
+ istProcessor$CompoundContentAssistValidatorPresenterEx.class
+SHA1-Digest: hRlTwSGGNgZIUvnRD1OYES8Zq2Q=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/IStructuredReconciling
+ Strategy.class
+SHA1-Digest: /sVCkkj5ME27QEw6N4eB61M1wM4=
+
+Name: org/eclipse/wst/sse/ui/internal/taginfo/ProblemAnnotationHoverPr
+ ocessor.class
+SHA1-Digest: n2qc1MXpkzyv6DyCCoByJrTbE7c=
+
+Name: org/eclipse/wst/sse/ui/internal/ExtendedEditorActionBuilder$Exte
+ ndedContributor.class
+SHA1-Digest: qy3linM7jYU6FZ1VEERtqdC2ii8=
+
+Name: org/eclipse/wst/sse/ui/internal/GotoAnnotationAction.class
+SHA1-Digest: xGsYNEovDg+LeXh5G3M2016pl7I=
+
+Name: org/eclipse/wst/sse/ui/internal/derived/HTMLTextPresenter.class
+SHA1-Digest: VelyCV/ufHrjX6sNrn6uEtYXlX8=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TextHoverPreferen
+ ceTab$3.class
+SHA1-Digest: WkHKZSvLVRJ0VXq1fj/2WsXMJzs=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractValidatio
+ nSettingsPage$2.class
+SHA1-Digest: qI80aDg1YKYEJ6/9E0NxDvuWTDM=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage$PostSelectionServiceListener.class
+SHA1-Digest: f2l0r/6dnVMReogf7+6ozwRvKjE=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/TaskTagPreference
+ Page$4.class
+SHA1-Digest: kHaUekA/hqRb6uaMFvV9CGvwYaM=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CustomCompletionPr
+ oposal.class
+SHA1-Digest: UEyd5nbw4i40EiwmkfXI7Viy5CQ=
+
+Name: org/eclipse/wst/sse/ui/StructuredSourceViewerDecorationSupport.c
+ lass
+SHA1-Digest: q21CmQFXjC/f2y62RTJORLWjehU=
+
+Name: org/eclipse/wst/sse/ui/internal/openon/OpenOnAction.class
+SHA1-Digest: CUwvMr5TFx0OV/GzmDJfdXlqDmk=
+
+Name: org/eclipse/wst/sse/ui/internal/PreferenceInitializer.class
+SHA1-Digest: C/0XLNAmyJU3ebrINI0lBL9/StI=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompletionProposal
+ ComputerRegistry.class
+SHA1-Digest: cNuaELNh9QR89YI1g9J19jQpJoY=
+
+Name: org/eclipse/wst/sse/ui/internal/handlers/StructuredSelectHistory
+ Handler.class
+SHA1-Digest: HZNTmn3rMRtfxaWQUhdfbs74Arc=
+
+Name: org/eclipse/wst/sse/ui/internal/util/PlatformStatusLineUtil$OneT
+ imeListener.class
+SHA1-Digest: Ob6yBCGkON+HxynCOq4bT3PawuE=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ExclusionsTab$Arr
+ ayTreeContentProvider.class
+SHA1-Digest: ci99BnAXnR7yYab8RVHDUP4cG+g=
+
+Name: org/eclipse/wst/sse/ui/internal/view/events/ITextSelectionListen
+ er.class
+SHA1-Digest: ML7ggloFtNbZ8XtNRttWmvuDJD4=
+
+Name: org/eclipse/wst/sse/ui/internal/util/PlatformStatusLineUtil$Clea
+ rMessage.class
+SHA1-Digest: T5kXvPuuXa/sKrPNT9x0JQxwq6w=
+
+Name: org/eclipse/wst/sse/ui/internal/search/FindOccurrencesProcessor.
+ class
+SHA1-Digest: 6eNdHZY8tuhZ1j+fVfnanLcenpk=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker$1.class
+SHA1-Digest: t4gQKW1kxINzrVEtu1lABkPmaLA=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/StructuredPres
+ entationReconciler.class
+SHA1-Digest: PXUGSmODPQa8hi1vGdlfEJ0LPjY=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineCustomFiltersDialo
+ g$1.class
+SHA1-Digest: pYJyQk4i/M39sMUhmkVoL6e06Ac=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/ExclusionsTab$Str
+ ingSorter.class
+SHA1-Digest: 5woK/GA7zGX4A5biVNiIMLqExME=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineFilterDescriptor$1
+ .class
+SHA1-Digest: /jdLKYShkLgfz7Ifac1BkDrFPgc=
+
+Name: org/eclipse/wst/sse/ui/internal/correction/QuickFixRegistry.clas
+ s
+SHA1-Digest: d1Lyt2U7vvHMrr95KyVnixq2q8o=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/ExtendedEditorActionPr
+ oxyForDelayLoading.class
+SHA1-Digest: 22YrDnREmIBO2WC2W5GLDGAKV7c=
+
+Name: org/eclipse/wst/sse/ui/internal/util/PlatformStatusLineUtil$Clea
+ rStatusLine.class
+SHA1-Digest: U+M6z7cSJKCpkXw5PjdvnK0SIs4=
+
+Name: org/eclipse/wst/sse/ui/internal/util/Assert$AssertionFailedExcep
+ tion.class
+SHA1-Digest: Xow2jFxIf+cYsYyZ9HI0RFzovRo=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter$
+ StringTextStore.class
+SHA1-Digest: 60NFoSc97uQ22c20/6qdN92P5Vc=
+
+Name: org/eclipse/wst/sse/ui/internal/quickoutline/QuickOutlinePopupDi
+ alog.class
+SHA1-Digest: JfG9GBTzZtJVilSUJvi+vErBDkY=
+
+Name: org/eclipse/wst/sse/ui/internal/correction/AnnotationQueryResult
+ .class
+SHA1-Digest: EJruThazoD8jH9/+NVI123jpKrc=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompoundContentAss
+ istProcessor$WrappedContextInformation.class
+SHA1-Digest: eeov8r4YFpegrvr1raNd+OuWTKc=
+
+Name: org/eclipse/wst/sse/ui/internal/correction/NoModificationComplet
+ ionProposal.class
+SHA1-Digest: lXJDjB9HjofTW9qL5tWcZ9eXGYc=
+
+Name: org/eclipse/wst/sse/ui/internal/editor/EditorPluginImageHelper.c
+ lass
+SHA1-Digest: DRZU7VEZK/OHrleBWigiD+O11E8=
+
+Name: org/eclipse/wst/sse/ui/internal/handlers/ToggleLineCommentHandle
+ r$ToggleLinesRunnable.class
+SHA1-Digest: RRp8b1Q34dCB/lrGrNi2XaDTFVk=
+
+Name: org/eclipse/wst/sse/ui/internal/projection/AbstractStructuredCom
+ mentFoldingPosition.class
+SHA1-Digest: fTLiKfJoVYyBLcAmmAjBlaRkXUU=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$13.class
+SHA1-Digest: 02iK5/rm8IBSyd3gTSeD8NYWGdo=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/ExtendedEditorActionPr
+ oxy.class
+SHA1-Digest: AVHPbzAjf1WmaEd2xB8jV9+JX/M=
+
+Name: org/eclipse/wst/sse/ui/internal/debug/EditBreakpointAction.class
+SHA1-Digest: RM2bi0WqIkQcKT0pPVmga8tSrPI=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/ExtendedEditorActionPr
+ oxyForDelayLoading$1.class
+SHA1-Digest: NcEyjDgrVfS195XHqU1uBsqaZ/A=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractSyntaxCol
+ oringPage$1.class
+SHA1-Digest: wL8aaT74ydLawGyqPBdy+0yvFL8=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineFilterMessages.cla
+ ss
+SHA1-Digest: b6NRjq6LDJ9+FnTbHzc92LQZHBo=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/validator/IncrementalH
+ elper.class
+SHA1-Digest: Jj7gWistrIDIBou6otj/PnJ43AA=
+
+Name: org/eclipse/wst/sse/ui/contentassist/StructuredContentAssistProc
+ essor$CompletionListener.class
+SHA1-Digest: U52vrWunz3Z2EYNTbZwSERX2Jvk=
+
+Name: org/eclipse/wst/sse/ui/internal/ITemporaryAnnotation.class
+SHA1-Digest: VCZVzRrDSQ7ppLovTdwLYkHjKVw=
+
+Name: org/eclipse/wst/sse/ui/internal/debug/ToggleBreakpointAction.cla
+ ss
+SHA1-Digest: QmCHSCA56uyG7T4qoueed0jYI94=
+
+Name: org/eclipse/wst/sse/ui/internal/IExtendedContributor.class
+SHA1-Digest: IK5T1dWm3axnLLKb6YfhKQOtTtY=
+
+Name: org/eclipse/wst/sse/ui/internal/reconcile/DirtyRegionProcessor$D
+ ocumentRewriteSessionListener.class
+SHA1-Digest: rs3T9gOLsgy5iSvZFZCiU6dlVQk=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractValidatio
+ nSettingsPage$ValidateJob.class
+SHA1-Digest: R5kG9L1ZPjwq/F2HrY9G3XQEVsY=
+
+Name: org/eclipse/wst/sse/ui/internal/actions/CleanupAction$1.class
+SHA1-Digest: YgtY7rpgceUOSj25XJI0WAe61w8=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$InternalModelStateLi
+ stener.class
+SHA1-Digest: deZmQNj8I3PqREdUTa+DL0aKfUM=
+
+Name: org/eclipse/wst/sse/ui/internal/util/Sorter.class
+SHA1-Digest: hC+P8xtcMHwmfDEVhD2GPN+diFw=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$CharacterPairing.cla
+ ss
+SHA1-Digest: xsP9v8JydxcJBrc6NTQRiiJNvWk=
+
+Name: org/eclipse/wst/sse/ui/internal/CaretMediator$CaretMediatorListe
+ ner.class
+SHA1-Digest: d5zMCxg974hQ/VAoM3IMSABFqSY=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter$
+ StructuredDocumentListener.class
+SHA1-Digest: GXjOfQ3JV+t+fC8znfHG5tyfIHA=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$GotoMatchingBracketH
+ andler.class
+SHA1-Digest: aTsmAz6M7UkT/XWMQ9o4vRMuyTk=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock$3.class
+SHA1-Digest: KMsacwb+U9XQSP3hFsS/v6CItZg=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/style/CompatibleHigh
+ lighter.class
+SHA1-Digest: zM0SiGbiba0GUxVlmHQY02r6fVA=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor$TimeOutExpired.class
+SHA1-Digest: lMN4vBFSHEroIPBAG9HUpU/PorM=
+
+Name: org/eclipse/wst/sse/ui/internal/projection/AbstractStructuredFol
+ dingStrategy$FoldingAnnotation.class
+SHA1-Digest: eb3QSqpX/L1K7p8TAQg2nz4FxkU=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StatusInfo.class
+SHA1-Digest: hmvlcI1KyzknMEEtT813gg9tSGg=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/PropertyChangeUpd
+ ateActionContributionItem$PreferenceUpdateListener.class
+SHA1-Digest: EPiQ3ENffwbGSi7ZqWmZ7941I4g=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$3.class
+SHA1-Digest: bLjn1J7ODYqJwKl9ad33eDVdvI8=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineCustomFiltersDialo
+ g.class
+SHA1-Digest: YlVZJo1y/M42zHFENeM+jfBcIzo=
+
+Name: org/eclipse/wst/sse/ui/internal/StructuredDocumentToTextAdapter$
+ 1.class
+SHA1-Digest: o8kkc19ayYQon1dU/GUz8lsbPGA=
+
+Name: org/eclipse/wst/sse/ui/internal/ReadOnlyAwareDropTargetAdapter.c
+ lass
+SHA1-Digest: dMRq2zMp8bW3/sAQ+3HI2t9Um+k=
+
+Name: org/eclipse/wst/sse/ui/internal/derived/SingleCharReader.class
+SHA1-Digest: lRbMn0dHpHrkRtS0zdveS0BMRNA=
+
+Name: org/eclipse/wst/sse/ui/internal/contentoutline/ConfigurableConte
+ ntOutlinePage$SelectionProvider.class
+SHA1-Digest: Q1ZYep/6Sjwl6/76c2ayKBIm/kQ=
+
+Name: org/eclipse/wst/sse/ui/internal/openon/OpenOnAction$1.class
+SHA1-Digest: ANm068WBknjwgW9siiHcfDyr5n0=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StyledTextColorPi
+ cker$6.class
+SHA1-Digest: de093B3Yf89TmIPB/PCmzdy2dk8=
+
+Name: org/eclipse/wst/sse/ui/internal/FileDropAction.class
+SHA1-Digest: bcHlPVHbH7YlAPsfRx8Rjs2Yteg=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/AbstractSyntaxCol
+ oringPage.class
+SHA1-Digest: wLoouKxu8m7N3miH/cmotkYHYzE=
+
+Name: org/eclipse/wst/sse/ui/internal/filter/OutlineCustomFiltersDialo
+ g$6.class
+SHA1-Digest: z4GhuFMsge29r8gHQIC45UemhF8=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/registry/AdapterFact
+ oryRegistry.class
+SHA1-Digest: 3GdZBjl0dneB3iBMdid38DBFuo0=
+
+Name: org/eclipse/wst/sse/ui/internal/IStructuredTextEditorActionConst
+ ants.class
+SHA1-Digest: I4Bl9nk0taEJeVCokKy/qeiQ8QM=
+
+Name: org/eclipse/wst/sse/ui/internal/handlers/AddBlockCommentHandler.
+ class
+SHA1-Digest: 5yRXqUZwETwc+G/Avv4JPdZdorI=
+
+Name: org/eclipse/wst/sse/ui/internal/SSEUIPluginResources.properties
+SHA1-Digest: cKU7lqS2qRVOB7mO0rKbDD15spU=
+
+Name: org/eclipse/wst/sse/ui/internal/selection/StructuredSelectHistor
+ yActionDelegate.class
+SHA1-Digest: KB74jpb9gXXo85Oswe7ziElaVxo=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/MainTab$5.class
+SHA1-Digest: ZIenzlpXI1eCFSRZvc6bnQR+UuE=
+
+Name: org/eclipse/wst/sse/ui/typing/AbstractCharacterPairInserter.clas
+ s
+SHA1-Digest: YBYhk8AzfwqUMWksGTNZ7+piGuM=
+
+Name: org/eclipse/wst/sse/ui/internal/openon/IOpenOn.class
+SHA1-Digest: 3kjY6v7ac9cIfAx8GaT2oC3FmFU=
+
+Name: org/eclipse/wst/sse/ui/internal/ui/OffsetStatusLineContributionI
+ tem$13.class
+SHA1-Digest: fVyjdb7RWGKEOJyycQTrwhWqkuk=
+
+Name: org/eclipse/wst/sse/ui/internal/contentassist/CompoundContentAss
+ istProcessor$CompoundContentAssistValidatorPresenter.class
+SHA1-Digest: FrtZ/D947b5/a18kPe9sW/D/Kg0=
+
+Name: org/eclipse/wst/sse/ui/internal/preferences/ui/StructuredTextEdi
+ torPreferencePage$2.class
+SHA1-Digest: uSdvg9MuwlVcIyYOpap8y2G7cQ4=
+
+Name: org/eclipse/wst/sse/ui/internal/style/SemanticHighlightingManage
+ r$SemanticContent.class
+SHA1-Digest: D/UQ3E8qJX47aUo9ozJWhxX1kxQ=
+
+Name: org/eclipse/wst/sse/ui/internal/properties/AdapterPropertySheetE
+ ntryLabelProvider.class
+SHA1-Digest: O9dzxYRhJERpEq5+sBVIc0F0N+0=
+
+Name: org/eclipse/wst/sse/ui/internal/openon/OpenFileHyperlinkTracker$
+ 1.class
+SHA1-Digest: TeeeFYfMMA77+TWiis+CijrPXzo=
+
+Name: org/eclipse/wst/sse/ui/internal/debug/BreakpointRulerAction$1.cl
+ ass
+SHA1-Digest: 1PE/s7Rh5QDfFM6PbrV1YYNDH/g=
+
+Name: org/eclipse/wst/sse/ui/internal/openon/OpenOnDefinition$1.class
+SHA1-Digest: BVfvhipO/DAiLuNboEkrXHSkGPI=
+
+Name: org/eclipse/wst/sse/ui/preferences/CodeAssistCyclingConfiguratio
+ nBlock.class
+SHA1-Digest: R5MLJ8gQqzwrZpyHhQtV/Rhj5s0=
+
+Name: org/eclipse/wst/sse/ui/internal/util/Assert.class
+SHA1-Digest: u9rk/kZoceNDFGfrxWRyvv2qKLE=
+
+Name: org/eclipse/wst/sse/ui/ISemanticHighlightingExtension2.class
+SHA1-Digest: syda9R8iZI5YV2bkdHJs2QSVCPk=
+
+Name: org/eclipse/wst/sse/ui/ISemanticHighlightingExtension.class
+SHA1-Digest: +B0325YRTJvlsEta90W4inTabfU=
+
+Name: org/eclipse/wst/sse/ui/internal/extension/BreakpointProviderBuil
+ der$1.class
+SHA1-Digest: l1ZnBG42BzC6phjcmT/zjtkHNeU=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextViewerConfiguration$1.class
+SHA1-Digest: lwrLoNpFeGKMaN9QRberAA9blxA=
+
+Name: org/eclipse/wst/sse/ui/internal/comment/CommentingStrategyRegist
+ ry.class
+SHA1-Digest: me9bk9Tu9b/8L+Y/DBbl71eGPWc=
+
+Name: org/eclipse/wst/sse/ui/internal/provisional/extensions/breakpoin
+ t/IBreakpointConstants.class
+SHA1-Digest: Q5oyroJayUbNUGAA8HzzoywhjLc=
+
+Name: org/eclipse/wst/sse/ui/StructuredTextEditor.class
+SHA1-Digest: 5IxJ+wmcDuJLwLWuN77jCmDI44s=
+
+Name: org/eclipse/wst/sse/ui/internal/editor/EditorModelUtil$1.class
+SHA1-Digest: latfyoW5GYWXRlcHNfYu9qB5/tE=
+
