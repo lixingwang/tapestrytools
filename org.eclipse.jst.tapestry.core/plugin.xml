@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension-point id="tapestryFacetConfiguration" name="%extension-point.name.11" schema="schema/tapestryFacetConfiguration.exsd"/>
+  <!-- Tapestry Project Facets -->
+	<extension
+       id="org.eclipse.jst.tapestry.project.facet"
+       name="%plugin.facet.extension.name"
+       point="org.eclipse.wst.common.project.facet.core.facets">
+
+    <project-facet id="jst.tapestry">
+      <label>%plugin.facet.name</label>
+      <description>%plugin.facet.description</description>
+    </project-facet>
+
+    <project-facet-version facet="jst.tapestry" version="5.2.5">
+       <constraint>
+        <and>
+          <requires facet="jst.web" version="[2.5"/>
+        </and>
+      </constraint>
+    </project-facet-version>
+     
+    <action id="jst.tapestry.v5.install" facet="jst.tapestry" type="INSTALL" version="5.2.5">
+      	<delegate class="org.eclipse.jst.tapestry.core.internal.project.facet.TapestryFacetInstallDelegate"/>
+        <config-factory class="org.eclipse.jst.tapestry.core.internal.project.facet.TapestryFacetInstallDataModelProvider"/>
+    </action>  
+      
+    <action id="jst.tapestry.v5.uninstall" facet="jst.tapestry" version="5.2.5" type="UNINSTALL">
+        <config-factory class="org.eclipse.jst.tapestry.core.internal.project.facet.TapestryFacetUninstallConfig$Factory"/>
+	 	<delegate class="org.eclipse.jst.tapestry.core.internal.project.facet.TapestryFacetUninstallDelegate"/>
+ 	</action> 
+  </extension>
+  
+	<extension point="org.eclipse.wst.common.project.facet.ui.images">
+		<image facet="jst.tapestry" path="icons/tapestry.gif"/>
+	</extension>  
+
+  <extension
+        point="org.eclipse.wst.common.project.facet.core.listeners">
+     <listener
+           class="org.eclipse.jst.tapestry.core.internal.project.facet.TapestryFacetPrimaryRuntimeChangedListener"
+           eventTypes="PRIMARY_RUNTIME_CHANGED">
+     </listener>
+  </extension>
+  
+  <extension
+        point="org.eclipse.wst.common.project.facet.core.presets">
+     <static-preset
+           id="preset.jst.tapestry.v5_25" extends="default.configuration">
+        <label>
+           %Tapestry50Project
+        </label>
+        <facet
+              id="jst.java"
+              version="1.6">
+        </facet>
+        <facet
+              id="jst.web"
+              version="3.0">
+        </facet>
+        <facet
+              id="jst.tapestry"
+              version="5.2.5">
+        </facet>
+        <description>
+           %Tapestry50PresetDesc
+        </description>
+     </static-preset>
+  </extension>
+  
+  
+
+  <extension point="org.eclipse.wst.common.project.facet.core.runtimes">
+    <supported>
+		<runtime-component any="true"/>
+        	<facet id="jst.tapestry" version="5.2.5"/> 
+    </supported>
+  </extension>
+  
+  <!--
+    ******************************************
+    * Library Provider Framework Integration *
+    ******************************************
+  -->
+  <extension point="org.eclipse.jst.common.project.facet.core.libraryProviders">
+    <provider id="tapestry-no-op-library-provider" extends="no-op-library-provider">
+      <param name="message" value="%noOpLibraryProviderMessage"/>
+      <param name="warning" value="%noOpLibraryProviderWarning"/>
+      <enablement>
+        <with variable="requestingProjectFacet">
+          <test property="org.eclipse.wst.common.project.facet.core.projectFacet" value="jst.tapestry" forcePluginActivation="true"/>
+        </with>
+      </enablement>
+    </provider>
+  </extension>
+  <extension point="org.eclipse.jst.common.project.facet.core.libraryProviders">
+    <provider id="tapestry-user-library-provider" extends="wtp-user-library-provider">
+      <enablement>
+        <with variable="requestingProjectFacet">
+          <test property="org.eclipse.wst.common.project.facet.core.projectFacet" value="jst.tapestry" forcePluginActivation="true"/>
+        </with>
+      </enablement>
+    </provider>
+  </extension>
+</plugin>
