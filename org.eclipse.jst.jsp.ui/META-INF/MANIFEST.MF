@@ -1,0 +1,1130 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-SymbolicName: org.eclipse.jst.jsp.ui; singleton:=true
+Eclipse-SourceReferences: scm:cvs:pserver:dev.eclipse.org:/cvsroot/web
+ tools:sourceediting/plugins/org.eclipse.jst.jsp.ui;tag=v201105092017
+Bundle-Activator: org.eclipse.jst.jsp.ui.internal.JSPUIPlugin
+Require-Bundle: org.eclipse.ui.ide;bundle-version="[3.5.0,4.0.0)",org.
+ eclipse.jface.text;bundle-version="[3.5.0,4.0.0)",org.eclipse.ui.work
+ bench.texteditor;bundle-version="[3.5.0,4.0.0)",org.eclipse.ui;bundle
+ -version="[3.5.0,4.0.0)",org.eclipse.ui.forms;bundle-version="[3.4.0,
+ 4.0.0]",org.eclipse.wst.sse.ui;bundle-version="[1.2.0,1.4.0)",org.ecl
+ ipse.wst.html.ui;bundle-version="[1.0.500,1.1.0)",org.eclipse.wst.css
+ .ui;bundle-version="[1.0.500,1.1.0)",org.eclipse.wst.xml.ui;bundle-ve
+ rsion="[1.1.100,1.2.0)",org.eclipse.jst.jsp.core;bundle-version="[1.2
+ .300,1.3.0)",org.eclipse.wst.html.core;bundle-version="[1.1.400,1.2.0
+ )",org.eclipse.wst.css.core;bundle-version="[1.1.300,1.2.0)",org.ecli
+ pse.wst.xml.core;bundle-version="[1.1.500,1.2.0)",org.eclipse.wst.sse
+ .core;bundle-version="[1.1.500,1.2.0)",org.eclipse.jdt.ui;bundle-vers
+ ion="[3.5.0,4.0.0)",org.eclipse.jdt.core;bundle-version="[3.5.0,4.0.0
+ )",org.eclipse.debug.core;bundle-version="[3.5.0,4.0.0)",org.eclipse.
+ jdt.debug;bundle-version="[3.5.0,4.0.0)",org.eclipse.core.runtime;bun
+ dle-version="[3.5.0,4.0.0)",org.eclipse.search;bundle-version="[3.5.0
+ ,4.0.0)",org.eclipse.ltk.core.refactoring;bundle-version="[3.5.0,4.0.
+ 0)",org.eclipse.wst.common.uriresolver;bundle-version="[1.1.301,1.2.0
+ )",org.eclipse.ui.ide;bundle-version="[3.5.0,4.0.0)",org.eclipse.ui.v
+ iews;bundle-version="[3.4.0,4.0.0)",org.eclipse.wst.validation;bundle
+ -version="[1.2.100,1.3.0)",org.eclipse.core.filesystem;bundle-version
+ ="[1.3.0,2.0.0)"
+Export-Package: org.eclipse.jst.jsp.css.ui.internal.properties;x-inter
+ nal:=true,org.eclipse.jst.jsp.css.ui.internal.registry;x-internal:=tr
+ ue,org.eclipse.jst.jsp.css.ui.internal.views.properties;x-internal:=t
+ rue,org.eclipse.jst.jsp.ui,org.eclipse.jst.jsp.ui.internal;x-internal
+ :=true,org.eclipse.jst.jsp.ui.internal.autoedit;x-internal:=true,org.
+ eclipse.jst.jsp.ui.internal.breakpointproviders;x-internal:=true,org.
+ eclipse.jst.jsp.ui.internal.contentassist;x-internal:=true,org.eclips
+ e.jst.jsp.ui.internal.contentproperties.ui;x-internal:=true,org.eclip
+ se.jst.jsp.ui.internal.derived;x-internal:=true,org.eclipse.jst.jsp.u
+ i.internal.editor;x-internal:=true,org.eclipse.jst.jsp.ui.internal.fo
+ rmat;x-internal:=true,org.eclipse.jst.jsp.ui.internal.handlers;x-inte
+ rnal:=true,org.eclipse.jst.jsp.ui.internal.hyperlink;x-internal:=true
+ ,org.eclipse.jst.jsp.ui.internal.java.refactoring;x-internal:=true,or
+ g.eclipse.jst.jsp.ui.internal.java.search;x-internal:=true,org.eclips
+ e.jst.jsp.ui.internal.java.search.ui;x-internal:=true,org.eclipse.jst
+ .jsp.ui.internal.preferences;x-internal:=true,org.eclipse.jst.jsp.ui.
+ internal.preferences.ui;x-internal:=true,org.eclipse.jst.jsp.ui.inter
+ nal.registry;x-internal:=true,org.eclipse.jst.jsp.ui.internal.style;x
+ -internal:=true,org.eclipse.jst.jsp.ui.internal.style.java;x-internal
+ :=true,org.eclipse.jst.jsp.ui.internal.style.jspel;x-internal:=true,o
+ rg.eclipse.jst.jsp.ui.internal.taginfo;x-internal:=true,org.eclipse.j
+ st.jsp.ui.internal.templates;x-internal:=true,org.eclipse.jst.jsp.ui.
+ internal.text;x-internal:=true,org.eclipse.jst.jsp.ui.internal.valida
+ tion;x-internal:=true,org.eclipse.jst.jsp.ui.internal.wizard;x-intern
+ al:=true,org.eclipse.jst.jsp.ui.views.contentoutline
+Bundle-Version: 1.1.600.v201105092017
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Import-Package: com.ibm.icu.util; version="3.8",com.ibm.icu.text; vers
+ ion="3.8"
+Bundle-ManifestVersion: 2
+
+Name: icons/full/obj16/tag-template.gif
+SHA1-Digest: p3LzvEKH6BLE6vGe5mwTS3OUuIc=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewTagTemplatesWizardPage
+ $1.class
+SHA1-Digest: Fq+zEkKjKdVLZaOdIJd26lkkVG0=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/BeanInfoProvider$J
+ avaPropertyDescriptor.class
+SHA1-Digest: FvOGR0AD9Gk8CQhvqsENsZfxXpU=
+
+Name: icons/snippets/jspdecl.gif
+SHA1-Digest: 1P6obEfxmmM1Yqb6C2g+XVCsWvE=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/java/IStyleConstantsJSPJav
+ a.class
+SHA1-Digest: +yUGDWp1RHeF7kBR3imhwsldVdk=
+
+Name: templates/jspdefault-templates.properties
+SHA1-Digest: qb27F9E3M0NYE1e7JWgsBIcx1Qw=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/jspel/IStyleConstantsJSPEL
+ .class
+SHA1-Digest: VN5iOK92mfWFMzI/cvVqmqqh3os=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$14.class
+SHA1-Digest: rbWRJwSOyIZpXVlXOSmuF0RSIZU=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/XMLJavaHyperlinkDetect
+ or$JavaElementHyperlink.class
+SHA1-Digest: EoflnoU9z9dfa689nTjgoncNmt8=
+
+Name: org/eclipse/jst/jsp/ui/internal/IActionConstantsJSP.class
+SHA1-Digest: //V8Q0xF/If48GTdSKpClFZcLZ4=
+
+Name: icons/snippets/jspscr.gif
+SHA1-Digest: Ksx9NWNAe0tZtCZXs1bQV99QqTE=
+
+Name: org/eclipse/jst/jsp/ui/internal/text/Symbols.class
+SHA1-Digest: OYp2YI572NZTiHJo2sXro1vryIc=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPPackageRenam
+ eParticipant.class
+SHA1-Digest: T+T+iyOGpPrEJZ3tvrQHI4PR41E=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/RenameElementHa
+ ndler.class
+SHA1-Digest: 9Sl1zUj/I4QILneMNKJ5E7sbyRM=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPTemplateComplet
+ ionProcessor$ProposalComparator.class
+SHA1-Digest: Mxxswwtw4suoZ2ug+2A43KPPCVs=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/WorkspaceFileHyperlink
+ .class
+SHA1-Digest: ui0zi76sceeZn0bAzlpeyawyAh0=
+
+Name: org/eclipse/jst/jsp/ui/internal/actions/JSPNodeActionManager.cla
+ ss
+SHA1-Digest: iVrQfapxJrHa7jAji1u9PjSPJaI=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$1.class
+SHA1-Digest: J2eC/CK3DtTaE7ihsMQNPaUF0F0=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPValidationPref
+ erencePage.class
+SHA1-Digest: xVH6Wwp7dJXvBhE3US9goYwI0KA=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPJavaContentAssi
+ stProcessor$PreferenceListener.class
+SHA1-Digest: KzFg6k2pj0f3nR2nf2m/RHNVIVQ=
+
+Name: icons/full/elcl16/javaassist_co.gif
+SHA1-Digest: 5CgQ5Qto1X3RfB9ujXTBxhbgHco=
+
+Name: org/eclipse/jst/jsp/css/ui/internal/views/properties/JSPedCSSPro
+ pertySheetConfiguration$CSSPropertySheetRefreshAdapter.class
+SHA1-Digest: 6tmDAt+dq6vsExHjMCmW8PsGwZs=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$9.class
+SHA1-Digest: wecQ5AoF0vzs8uGWuKZK80IgqwU=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPMoveParticip
+ ant.class
+SHA1-Digest: ViOh96kMMzwcD5tEd1cerCt635o=
+
+Name: org/eclipse/jst/jsp/ui/internal/views/contentoutline/TLDContentO
+ utlineConfiguration$ToggleShowValueAction.class
+SHA1-Digest: sZnd7wZEvJyFLgnIyfKtYJF4Gtg=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JavaTypeFinder.cla
+ ss
+SHA1-Digest: NzErTyekVsFCRlYABnD5qIz68fY=
+
+Name: org/eclipse/jst/jsp/ui/internal/registry/AdapterFactoryProviderF
+ orJSP.class
+SHA1-Digest: KDEB0J20hDlLoh/HGBAUNUwQh2M=
+
+Name: org/eclipse/jst/jsp/ui/internal/Logger.class
+SHA1-Digest: TPTN/+g3MD9u4HUd1OHTFoh7MiI=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPELCompletionPro
+ cessor.class
+SHA1-Digest: 3yeIrhDY70VOG9JGXXyBTBQimLs=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewJSPTemplatesWizardPage
+ $5.class
+SHA1-Digest: ocD/xP4wRt1uezkXlQyETf0tTy4=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/TaglibHyperlinkDetecto
+ r$1.class
+SHA1-Digest: tDE0Z9MiwxAgfJFsnJjWQnFtJyU=
+
+Name: icons/full/obj16/public_co.gif
+SHA1-Digest: 2Ke6TikiepOi0G4qQtdtHi3Aauw=
+
+Name: org/eclipse/jst/jsp/ui/internal/breakpointproviders/ClassPattern
+ Registry$1.class
+SHA1-Digest: 14D00NWs9Jtqr0LgyNvAP1KiHOM=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/URLFileHyperlink.class
+SHA1-Digest: rP3+qZvYNevLL/gD4t4e045RyZ0=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$11.class
+SHA1-Digest: jfp1LkPrsKltIXWV56tmlsDaRr0=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewTagTemplatesWizardPage
+ $6.class
+SHA1-Digest: tzLIqF7LtXZSEEtYlt1P8F8hKiw=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewTagFileWizardPage.clas
+ s
+SHA1-Digest: +1nITo46b7J01gBg6Yi+Lr6q1uM=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/AbstractPropertyP
+ referencePage$3.class
+SHA1-Digest: m6LrzHVBFtuS+j3DJwN35xozC2c=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/CustomTemplateProp
+ osal.class
+SHA1-Digest: pAu3SOImVt51VPX+TEnD3nwOEw4=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/URLFileRegionHyperlink
+ $StorageEditorInput.class
+SHA1-Digest: ejUz2HiIbgAEwhT/o2ZG9lHxwX4=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/BasicRefactorSe
+ archRequestor.class
+SHA1-Digest: plkxBUyaZtSUEy09DZZw5hmEB0E=
+
+Name: org/eclipse/jst/jsp/ui/internal/breakpointproviders/JavaScriptBr
+ eakpointProvider.class
+SHA1-Digest: QTRz53kGGW2m1NjmBvmuzHi6tdI=
+
+Name: org/eclipse/jst/jsp/ui/internal/editor/JSPEditorPluginImageHelpe
+ r.class
+SHA1-Digest: cNdH+tgVdI/cniBUF3OIeT+Ri1I=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPImportCompletio
+ nProposalComputer.class
+SHA1-Digest: Zf2V69bWDRAi0FA8GLmId7wzV24=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/IBeanInfoProvider.
+ class
+SHA1-Digest: 7LHiX41uk8JdF34msZ4MvavIlT8=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$6.class
+SHA1-Digest: 4pj+l4HzqkRx8yhsEXbW36PTxTU=
+
+Name: org/eclipse/jst/jsp/ui/internal/text/JavaCodeReader.class
+SHA1-Digest: lt5AGqg0WksP6u9k7iGGNKQiaus=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/JSPJavaHyperlinkDetect
+ or.class
+SHA1-Digest: M0d17r+UmLosGYxGh+3k0ryYPPc=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPMoveElementA
+ ctionDelegate.class
+SHA1-Digest: 9y/P2USR0Wpn45TEzF6LoN6bL0Q=
+
+Name: org/eclipse/jst/jsp/ui/internal/breakpointproviders/JavascriptLi
+ neBreakpoint.class
+SHA1-Digest: oUeonfdl0h5vqnCXjh8qSIaurdA=
+
+Name: org/eclipse/jst/jsp/ui/internal/editor/IHelpContextIds.class
+SHA1-Digest: mVaC2344n5qPc1vfHoyq7Eptb34=
+
+Name: org/eclipse/jst/jsp/ui/StructuredTextViewerConfigurationJSP$1.cl
+ ass
+SHA1-Digest: 63IgVSjJsr1sAIP8e/vxucc+1MI=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewJSPFileWizardPage.clas
+ s
+SHA1-Digest: F9u8qdl3qc/7yil0GoTpOi2GJ/c=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/TaglibJarUriHyperlink.
+ class
+SHA1-Digest: pe6HjZjdIjdtXMCuO3UsDrsSS8s=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewJSPTemplatesWizardPage
+ $2.class
+SHA1-Digest: I22GJe8Ue1XTM0D1Vn2Hnyor1lQ=
+
+Name: org/eclipse/jst/jsp/ui/internal/autoedit/StructuredAutoEditStrat
+ egyJSPJava.class
+SHA1-Digest: EO/89kJKPpFwoYBOdXaHGGGLdv4=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JavaTypeCompletion
+ Proposal.class
+SHA1-Digest: Gr2BNKDD+W22Fr+YFBo4gu7WTIw=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/BeanInfoProvider.c
+ lass
+SHA1-Digest: UJsP95Wk3/jGKM1Wmt6gDYPkgaU=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPPackageRenam
+ eChange.class
+SHA1-Digest: mpU+C+ja5JUi26IA9jupDtHJ3Fk=
+
+Name: icons/full/etool16/newjsp_wiz.gif
+SHA1-Digest: b8evq6kWXuWRw+KXOrpQ/GaSAos=
+
+Name: org/eclipse/jst/jsp/css/ui/internal/views/properties/JSPedCSSPro
+ pertySheetConfiguration$PropertiesRefreshJob.class
+SHA1-Digest: nm5y4j34SKjsXbVKQmadKKZtUHY=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/java/JavaColorProvider.cla
+ ss
+SHA1-Digest: Tp5dOhkIRco7d08KsknKZUWzYOY=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPTypeRenameRe
+ questor.class
+SHA1-Digest: 06aG5Xe68mfwebKuuwoEzkvMqzY=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/JSPUIPreferenceIniti
+ alizer.class
+SHA1-Digest: gcTPRvwHDUAiIf8pXv9qiwrvn9E=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewTagTemplatesWizardPage
+ $3.class
+SHA1-Digest: AirihPUurJf6mocAxPNN1ClBi2I=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPTypeRenamePa
+ rticipant.class
+SHA1-Digest: WPT08ikVXqDObFrjB1TrQTtergA=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPRenameChange
+ $1.class
+SHA1-Digest: 7ez+b60HGF1ZWZhtXY1bLvwF3EQ=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$16.class
+SHA1-Digest: oqP/5uFLC1BloRAvjm/QfPI1MVk=
+
+Name: icons/snippets/jspexp.gif
+SHA1-Digest: 5jOy3Ot6JBDyy5UEZUyEMWS8Zbg=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPFilesPreferenc
+ ePage.class
+SHA1-Digest: oOwpKsU3w+ONwWnFMoXlIHv2nE0=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentproperties/ui/ProjectJSPF
+ ContentSettingsPropertyPage.class
+SHA1-Digest: NjF4vXtpLSFEhNFZldeeEmh4dg0=
+
+Name: icons/full/obj16/field_protected_obj.gif
+SHA1-Digest: b2fjuZX3M4Cg30zVaPzh7r0B7zI=
+
+Name: org/eclipse/jst/jsp/ui/internal/text/JavaHeuristicScanner$NonJav
+ aIdentifierPartDefaultPartition.class
+SHA1-Digest: bMZfpo6qx6m3EuJzCW4WAIABXQU=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPCompletionPropo
+ sal.class
+SHA1-Digest: PADc9ICa1GPitglxCtvRimjtfsg=
+
+Name: icons/full/obj16/sourceEditor.gif
+SHA1-Digest: hgfaPYE2g2ags3P37ChbfzhezDY=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/XMLJavaHyperlinkDetect
+ or.class
+SHA1-Digest: ZGYiuOFSaqfLSHHhlgxsr84dRXY=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPContentAssistPr
+ ocessor.class
+SHA1-Digest: +2eenBxZssp2Wx0k4SLILinFKFU=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPRenamePartic
+ ipant.class
+SHA1-Digest: 8bn7C8fyNO/rWpw5d8XDUhodExs=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPTemplateComplet
+ ionProcessor.class
+SHA1-Digest: wi3sUPOfz7iAMHSdQQwnoC0jM80=
+
+Name: org/eclipse/jst/jsp/ui/internal/handlers/JSPFindOccurrencesHandl
+ er.class
+SHA1-Digest: UVjWNGkeE4Kfupc5t2okziZnsHI=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$3.class
+SHA1-Digest: uqRvNM1UiITlqccbDeF2wsgr6e4=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/eclipse/jst/jsp/ui/internal/validation/JSPActionSourceValida
+ tor.class
+SHA1-Digest: zU3C33u4Gsm2REU6i6UPAbzV1JI=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPTypingPreferen
+ cePage.class
+SHA1-Digest: hLlrxLOUzxuG3XliETsoNU9i4YE=
+
+Name: org/eclipse/jst/jsp/ui/internal/autoedit/AutoEditStrategyForTabs
+ .class
+SHA1-Digest: 8Dzkqb/kboZX0hd7OoaXAVpKYzE=
+
+Name: icons/snippets/tag-jsp.gif
+SHA1-Digest: RzYBQZn4vM95IxBlM+93lDvOyfQ=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPTypeMoveChan
+ ge.class
+SHA1-Digest: W3CRusPNYk3MWNvG6tim9Qkzd1M=
+
+Name: org/eclipse/jst/jsp/ui/internal/taginfo/JSPJavaJavadocHoverProce
+ ssor.class
+SHA1-Digest: 3nktDXn5w/4SnFKJ9ELVjgardpI=
+
+Name: icons/full/obj16/field_private_obj.gif
+SHA1-Digest: qAgWNXvmEa0s8NY3u5Ck8H4+sfc=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/MoveElementHand
+ ler.class
+SHA1-Digest: UN29GRHSGjgddHV/WqJp7QpYgfY=
+
+Name: org/eclipse/jst/jsp/ui/internal/derived/SingleCharReader.class
+SHA1-Digest: PLEiIwEtfwiw8fsB1ImUr3/L17U=
+
+Name: org/eclipse/jst/jsp/ui/internal/autoedit/StructuredAutoEditStrat
+ egyJSP.class
+SHA1-Digest: aNt64tSccaYkFAVsi3XMPdqmEBc=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPTemplatePrefer
+ encePage$2.class
+SHA1-Digest: ULmvbPVWriLTFOjZn+92tQV+neg=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewJSPWizard$1.class
+SHA1-Digest: WAIx3a36Tbd7X0RTvtMBlZm1wsU=
+
+Name: org/eclipse/jst/jsp/ui/views/contentoutline/JSPContentOutlineCon
+ figuration.class
+SHA1-Digest: ikiM7KGcnpTptIFy5daALuxzdTU=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/AbstractPropertyP
+ referencePage.class
+SHA1-Digest: Ba0UDGjPSh2fvw7TMHogecNwRCk=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/search/JSPOccurrencesSearch
+ Result.class
+SHA1-Digest: AxRI9qx2dGRI+UirGYA/k8dGb4g=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/JSPCompletionProposa
+ lCategoriesConfiguration.class
+SHA1-Digest: z4cUDiWwDeXVvBy5/zrNTIFJtn0=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewTagWizard.class
+SHA1-Digest: fd3ZUnZFJkXPiiFbkWE3r+JYZrU=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/jspel/JSPELCodeScanner.cla
+ ss
+SHA1-Digest: oULu0k9nxxIEgIQ09boVgPN7JLg=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPColorPage.clas
+ s
+SHA1-Digest: CFWOjiaAo6iMEmaXsr/9q75VGTE=
+
+Name: icons/snippets/jsptaglib.gif
+SHA1-Digest: nkL22+4kbPDTI1ASDZhct7YaLXQ=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPUseBeanCompleti
+ onProposalComputer.class
+SHA1-Digest: ev93J6SCgJTLkr+ZZfgpM7lcMTs=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$13.class
+SHA1-Digest: 5RHb9CkbjzWNIkP+VGLXu3qpqfw=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewTagWizard$1.class
+SHA1-Digest: j/reHN0a3PvGUbOkQ0/+9/TDeaY=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPMethodCompletio
+ nProposal$ExitPolicy.class
+SHA1-Digest: lBUwW1GyfIpLOIPIqav3tBNmwfg=
+
+Name: org/eclipse/jst/jsp/css/ui/internal/views/properties/JSPedCSSPro
+ pertySheetConfiguration$CSSPropertySourceProvider.class
+SHA1-Digest: 6/NscOKrR09umVrwOcSlSjS+xHk=
+
+Name: org/eclipse/jst/jsp/css/ui/internal/views/properties/JSPedCSSPro
+ pertySheetConfiguration.class
+SHA1-Digest: KJWem4etK+Ga5d4EIH6vboifgxI=
+
+Name: org/eclipse/jst/jsp/ui/views/contentoutline/JSPImportDirectiveFi
+ lter.class
+SHA1-Digest: uCkbUjuP+fe+vAho2mUw+6uaIhs=
+
+Name: plugin.properties
+SHA1-Digest: OH6at7+eZBuRwafcz9gCG5NwQ3s=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPTypeMoveRequ
+ estor.class
+SHA1-Digest: oVaQNmqIOxl4Ir71OMInizbhjh0=
+
+Name: org/eclipse/jst/jsp/ui/internal/text/JavaHeuristicScanner$NonWhi
+ tespace.class
+SHA1-Digest: mr1VZ9J0/qkBjV/xnlpddTPzxYc=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentproperties/ui/TagContentS
+ ettingsPropertyPage.class
+SHA1-Digest: PwIx0qvb0CkMROhl5tnblOV5NPw=
+
+Name: icons/full/obj16/innerinterface_private_obj.gif
+SHA1-Digest: STIRty0qBUADemvS4psQrWpKyCg=
+
+Name: org/eclipse/jst/jsp/ui/internal/validation/LocalizedMessage.clas
+ s
+SHA1-Digest: 4TvNn9tdjoQ/g9yx7lzuYXs8tMo=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPTemplatePrefer
+ encePage$JSPEditTemplateDialog.class
+SHA1-Digest: TgcUD2xz/rAFnnosNX+YRdPf4WE=
+
+Name: icons/full/obj16/innerclass_public_obj.gif
+SHA1-Digest: gzOR8HGC3hr5JbwG3JjzIeEjvbw=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/search/JSPSingleFileSearchR
+ equestor.class
+SHA1-Digest: 8wemzZg+nEWQQXV0mu843lkHwRU=
+
+Name: plugin.xml
+SHA1-Digest: kKNb+0pafAc7KfNtNeUIgcxzAhA=
+
+Name: icons/full/obj16/default_co.gif
+SHA1-Digest: vx4jRo7dYW9OAzcGMsmLqq/GNlA=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/java/JavaCodeScanner.class
+SHA1-Digest: hrd+TRcYEtoCjCqvFxt6V3tn+2s=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/URLFileHyperlink$URLSt
+ orage.class
+SHA1-Digest: hFAXLJIHVE3oEjC8NSn2qD11T3M=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewTagTemplatesWizardPage
+ $TemplateContentProvider.class
+SHA1-Digest: uw7wBFQ0MXbCbhpEy3ERCvmoDJY=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPProposalCollect
+ or.class
+SHA1-Digest: /5wVG2BhYZpu6LXZZDSRMDk2Kqk=
+
+Name: org/eclipse/jst/jsp/ui/internal/breakpointproviders/JavaBreakpoi
+ ntProvider.class
+SHA1-Digest: +XP5e7PzMdsTQzZWi58iIH4eTuE=
+
+Name: org/eclipse/jst/jsp/ui/internal/breakpointproviders/AbstractBrea
+ kpointProvider.class
+SHA1-Digest: t5jhtWN2zJLecM7WBlpfV5IrC6g=
+
+Name: org/eclipse/jst/jsp/ui/internal/JSPUIPlugin.class
+SHA1-Digest: eKSTVrs2wQStTuUy7XYxmkoy5Jw=
+
+Name: org/eclipse/jst/jsp/ui/StructuredTextViewerConfigurationJSP.clas
+ s
+SHA1-Digest: GYPNpUrTBOGrZfeokrPZjufg9w0=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/jspel/LineStyleProviderFor
+ JSPEL.class
+SHA1-Digest: Y/NFqFWvDXxc9NmzXQYP4n3OJbI=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$8.class
+SHA1-Digest: 7tmID7Dow/y15z5YNSkmIQ4C2Gw=
+
+Name: icons/full/obj16/class_obj.gif
+SHA1-Digest: JfbIO18nhXTH+CwE73lv8dz75MA=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPRenamePartic
+ ipant$ElementAndArgumentsPair.class
+SHA1-Digest: lLTPPzB3wpje1+Ph4KLX6qNCwuY=
+
+Name: icons/full/obj16/innerinterface_public_obj.gif
+SHA1-Digest: AgFpeoL5eVMhmNwFRGNeA5iSFek=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPContentAssistHe
+ lper.class
+SHA1-Digest: EEQIAjd1MUmwFYU4HJb3mgHJcRA=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/IJavaPropertyDescr
+ iptor.class
+SHA1-Digest: BkCBdTDfHo9jpf8b+8AZmj3vOm4=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewJSPTemplatesWizardPage
+ $4.class
+SHA1-Digest: TSWET9S88WpcAYntTqPdMOPlqeg=
+
+Name: org/eclipse/jst/jsp/ui/internal/JSPUIMessages.class
+SHA1-Digest: t4yeaQmN3kEkhPeMa2HSnFikBpg=
+
+Name: org/eclipse/jst/jsp/ui/internal/taginfo/JSPInformationProvider.c
+ lass
+SHA1-Digest: AOvClwo4Am2rYT8sTjh9rzSZEyI=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPRenameUndoCh
+ ange.class
+SHA1-Digest: LJvA7/+MGii/7dcw5qQfOP8QGzE=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$10.class
+SHA1-Digest: MnBVFl0hrvJRALSEiYLe4a7ZMWM=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewTagTemplatesWizardPage
+ $5.class
+SHA1-Digest: ypfnZGQqoq44cv8XX9kM0osBtJs=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/JSPJavaHyperlink.class
+SHA1-Digest: zcCRRQqiUdxiPx6Cx1oib16mAe0=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/AbstractPropertyP
+ referencePage$2.class
+SHA1-Digest: dPim+jN+JiEuCvmcegVVtaE2GaE=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/ExternalFileHyperlink.
+ class
+SHA1-Digest: HxRWbk20MLt73K5Ge0r+CqRoInQ=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$18.class
+SHA1-Digest: LUyqjUJXrwShqVAKuTxB5Uc7UBY=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewJSPTemplatesWizardPage
+ $TemplateLabelProvider.class
+SHA1-Digest: 0/hWWGe2p3z5Vf3evWDyV1Wow8M=
+
+Name: icons/full/obj16/innerclass_private_obj.gif
+SHA1-Digest: yCkGJcdY6ovL8iDpFIYxcY0dvOY=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPPropertyContent
+ AssistProcessor.class
+SHA1-Digest: 4yUFp336diZo/fIjXN0THMT39pk=
+
+Name: org/eclipse/jst/jsp/ui/internal/editor/ActionContributorJSP.clas
+ s
+SHA1-Digest: SdIzhV35m/5/0ObWZym/1YdCedg=
+
+Name: org/eclipse/jst/jsp/ui/internal/taginfo/JavaWordFinder.class
+SHA1-Digest: LC+FiBkkwE5xzV+PN8YnIWmaxB0=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/IStyleConstantsJSP.class
+SHA1-Digest: mbFt9RnRPHQfkIs12tiYQf/ScLM=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPRenameElemen
+ tActionDelegate.class
+SHA1-Digest: cNthA66A3k4dgI7xbUfIYvM3rrc=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPJavaSelectio
+ nProvider.class
+SHA1-Digest: /Sd+vmoaulk773yny1z1bUyNKX0=
+
+Name: org/eclipse/jst/jsp/ui/internal/text/JavaCharacterPairInserter.c
+ lass
+SHA1-Digest: W+ZEmFdCp2ENK53pIxFMcWvQq8o=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$5.class
+SHA1-Digest: 7a3rgwmY6cjri+NueIJKbg8tZmc=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/jspel/JSPELWhitespaceDetec
+ tor.class
+SHA1-Digest: aT/HJ7zrK2b/DZ8DzjZHOMRYNNc=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPFieldRenameP
+ articipant.class
+SHA1-Digest: S+A83UQg/k+lf4tSekQTERg2TLY=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPTemplatesComple
+ tionProposalComputer.class
+SHA1-Digest: am1yvLqXvWxO24NUY7JqnUI/k0o=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/AutoImportProposal
+ .class
+SHA1-Digest: Xnie/m4t3D4wO5Z3Q2y/A0G6wto=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewJSPTemplatesWizardPage
+ $1.class
+SHA1-Digest: gXSZ943itFlp+dbVTqACJjc4RrQ=
+
+Name: org/eclipse/jst/jsp/ui/internal/IActionDefinitionIdsJSP.class
+SHA1-Digest: e3DvGrkJv2WDCaV4THe/SS4XtLY=
+
+Name: icons/full/obj16/package_obj.gif
+SHA1-Digest: TAzEv4kYyock9dC9OENnoK2FF1Y=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/URLFileHyperlink$Stora
+ geEditorInput.class
+SHA1-Digest: z+gf3+xH1qRWqxwA5UISbcJo3hU=
+
+Name: org/eclipse/jst/jsp/ui/internal/editor/JSPEditorPluginImages.cla
+ ss
+SHA1-Digest: fVA/+OsEI1l6b+E851GkJ0YTNUE=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPMethodRename
+ Participant.class
+SHA1-Digest: OHnLzRVoyjdlPVMP0spJEK7uqHw=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPELCompletionPro
+ posalComputer.class
+SHA1-Digest: FOfNoOXQ73B55HaqHVAGxbUR95c=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewTagTemplatesWizardPage
+ $2.class
+SHA1-Digest: oF4vtPqVDFWbLNfmvOE7kMX7aFM=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/java/JavaWhitespaceDetecto
+ r.class
+SHA1-Digest: CTmEh+e2e6GJ/LFiubOZ+xEhgww=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$15.class
+SHA1-Digest: IubSghg6eFyjcvmwLtRnY0BifOY=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSourcePreferen
+ cePage.class
+SHA1-Digest: lacTuv+9njMgOFn1PnY4F8XyJhQ=
+
+Name: icons/full/obj16/tag-jsp.gif
+SHA1-Digest: 3L5djcH8M/H7wRwkde6uWNyazso=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPUseBeanContentA
+ ssistProcessor.class
+SHA1-Digest: Trc6kKyHZFwRhKurVvsjX9lUJb0=
+
+Name: org/eclipse/jst/jsp/ui/internal/templates/TemplateContextTypeJSP
+ .class
+SHA1-Digest: YwOY6OQTpX2Cso+lVFAo3vqHosU=
+
+Name: icons/full/obj16/protected_co.gif
+SHA1-Digest: oenduxrVzVYLM9MhnRYy2AvOh+s=
+
+Name: org/eclipse/jst/jsp/ui/internal/breakpointproviders/JavaStratumB
+ reakpointProvider.class
+SHA1-Digest: dAsSIoT5MV1EeQRXh6MMoCVudj8=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/java/JavaWordDetector.clas
+ s
+SHA1-Digest: n1ABj56F62x5X3FJxIFK1RZzNmk=
+
+Name: icons/full/obj16/localvariable_obj.gif
+SHA1-Digest: vE1jlXn3ci4Sa1PZmHq0coaWtjc=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPELProposalColle
+ ctor.class
+SHA1-Digest: /GdiB1MpVfcL8ujpWbSgBTovyVM=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewTagTemplatesWizardPage
+ $TemplateLabelProvider.class
+SHA1-Digest: 9X6wxncs3ouGh7bEHR4dkPNHAd8=
+
+Name: org/eclipse/jst/jsp/ui/internal/taginfo/XMLJavadocHoverProcessor
+ .class
+SHA1-Digest: PYLVsOkO4CTdMOmoHOLo07Vpo+g=
+
+Name: icons/full/obj16/private_co.gif
+SHA1-Digest: ZUeQ8mOPp6e5tezNS4jV63Nq0G4=
+
+Name: icons/full/obj16/tag-generic.gif
+SHA1-Digest: fwinc4V2MerciuO0q2pLyhp2aMI=
+
+Name: org/eclipse/jst/jsp/ui/internal/taginfo/JSPJavaJavadocInformatio
+ nProvider.class
+SHA1-Digest: I5nQ2P4jBjxBv+0ZAqRIRtDX08s=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/java/LineStyleProviderForJ
+ ava.class
+SHA1-Digest: iD8EFWal7899x96AfvJB/ET/Awk=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/LineStyleProviderForJSP.cl
+ ass
+SHA1-Digest: WBSSHYf4KQpPoRVspk3AjH+JWOo=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$2.class
+SHA1-Digest: F6zFOVwGQcRAM+/aTG46rJZdFSk=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPTaglibCompletio
+ nProposalComputer.class
+SHA1-Digest: GUrS8QR0Qts7g4P07HRlNBXWx2U=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/ReplaceNameTemplat
+ eContext.class
+SHA1-Digest: ya5KAHaam8IQ54pGUfjeKy1d6Y4=
+
+Name: org/eclipse/jst/jsp/ui/internal/text/JavaHeuristicScanner.class
+SHA1-Digest: FevBtAwYjNVWuVWinelRQnfRTxo=
+
+Name: about.html
+SHA1-Digest: mUOvxSYxCUot6WW9T8TxmOQUrws=
+
+Name: icons/full/obj16/field_default_obj.gif
+SHA1-Digest: WgT229fwjgJsY8rN4xBTcoP7gHM=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/search/ui/JSPMatchPresentat
+ ion.class
+SHA1-Digest: cQ3ZKDL+A4WHCuRYihD7MqbeDzo=
+
+Name: org/eclipse/jst/jsp/ui/internal/validation/JSPContentSourceValid
+ ator.class
+SHA1-Digest: Lbv/72+V1VTGpUhU07cNNexhnrU=
+
+Name: org/eclipse/jst/jsp/ui/internal/validation/HTMLValidationReporte
+ r.class
+SHA1-Digest: emWWVLmsYtt74ZPftTwDa1ni3VI=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/NoRegionContentAss
+ istProcessorForJSP.class
+SHA1-Digest: aE8kqE++nkajeIonME8k8ZSKtX4=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/search/ui/JSPQueryParticipa
+ nt.class
+SHA1-Digest: fw9KShGvVvVYhJHVK0hYXWTk6Uo=
+
+Name: org/eclipse/jst/jsp/ui/internal/text/JavaPairMatcher.class
+SHA1-Digest: dygIARRY9DSlZdYTq7hfFGQNqe4=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPTemplatePrefer
+ encePage$1.class
+SHA1-Digest: RTgEJTm2C4K22ilrhtYD6N+kxuQ=
+
+Name: org/eclipse/jst/jsp/ui/internal/templates/EncodingTemplateVariab
+ leResolverJSP.class
+SHA1-Digest: +Dq6Mq/mLGZFJSM2zyhsYm7Ubio=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPRenameChange
+ .class
+SHA1-Digest: +VFHfmRY/ETA3I1NxKWeuXoFiSI=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewJSPTemplatesWizardPage
+ $6.class
+SHA1-Digest: EsXYhnJSZ8/jdWDbY22hsxZ1fF8=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/TaglibHyperlinkDetecto
+ r$2.class
+SHA1-Digest: /04QQEbQQCF1SHFIWcQGvSc3b0E=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPMethodRename
+ Change.class
+SHA1-Digest: APB686ktcBWVGaPXeAyThzHYDo0=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPMethodRename
+ Requestor.class
+SHA1-Digest: ZwV5A0eTMxS4ikMX5R5KreSc3uc=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPMoveParticip
+ ant$ElementAndArgumentsPair.class
+SHA1-Digest: IUgUy9D47Um/3ZBe92Vdngc+0LM=
+
+Name: icons/full/obj16/innerinterface_protected_obj.gif
+SHA1-Digest: I+0llFgOMkMBsKm3ABCuTi7cVic=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPStyledTextColo
+ rPicker.class
+SHA1-Digest: MpYK5YKuHzFbnHag+ArLRDVGgw8=
+
+Name: icons/full/wizban/newjspfile_wiz.png
+SHA1-Digest: glyz/Ww9WFzDEmSojRdgiyYUu9Y=
+
+Name: templates/jspdefault-templates.xml
+SHA1-Digest: Rt5twjKUAbhx1lrSgmJf2XicAUE=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$12.class
+SHA1-Digest: xU9SwBUfFY//i1sluxpgPnm4LMY=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/java/DoubleQuotedStringRul
+ e.class
+SHA1-Digest: Q6XcUbBrVXr/JQ+/ajP8EXAIQpw=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/AbstractPropertyP
+ referencePage$4.class
+SHA1-Digest: 6rZ4xHERDvmhuvqDch1q//pj0mE=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/search/JSPFindOccurrencesPr
+ ocessor.class
+SHA1-Digest: 6k4KHWucQAmBzWXU7sjQmUOgJjI=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/search/BasicJSPSearchReques
+ tor.class
+SHA1-Digest: 2FPc3Vsk/vqGzzo2sF4NfYyjFlA=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPPropertyComplet
+ ionProposalComputer.class
+SHA1-Digest: JHueoc25YQseRrHNHWyWNyp9//8=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPStructuredConte
+ ntAssistProcessor.class
+SHA1-Digest: mquPJDh/LBk8blfHjKloyO88ZzM=
+
+Name: icons/full/obj16/innerinterface_default_obj.gif
+SHA1-Digest: JQPoxO71BbNlhXr/UajNKN4yaWo=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPTypeMovePart
+ icipant.class
+SHA1-Digest: jxPv4Ot2gSCA0yOCgMPCUc+4uM8=
+
+Name: org/eclipse/jst/jsp/ui/internal/text/JavaHeuristicScanner$NonJav
+ aIdentifierPart.class
+SHA1-Digest: 2dYRf4t12nusi8IztXQZYNWgRC8=
+
+Name: org/eclipse/jst/jsp/ui/internal/JSPUIPluginResources.properties
+SHA1-Digest: luVRpgwI7RM9pILYpQSmTNvP2YE=
+
+Name: org/eclipse/jst/jsp/ui/internal/text/JSPDocumentRegionEdgeMatche
+ r.class
+SHA1-Digest: btrU09vXnNtwdqp4sow/R1rDSgc=
+
+Name: org/eclipse/jst/jsp/ui/internal/editor/JSPSourceEditingTextTools
+ .class
+SHA1-Digest: TwbOrUaXpT3+yS35Yu5W8RY7ZNA=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPCompletionPropo
+ salComputer.class
+SHA1-Digest: gW+KGB7FzTYprrMA4ckJ4czZuKY=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPPackageRenam
+ eRequestor.class
+SHA1-Digest: rBXW/4zS3UGZOC/LgbAckTGQkAQ=
+
+Name: org/eclipse/jst/jsp/ui/internal/views/contentoutline/TLDContentO
+ utlineConfiguration.class
+SHA1-Digest: ixUBC0SaE+d7kM/gIK0eJSifLWI=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JavaParameterListV
+ alidator.class
+SHA1-Digest: cpYMFEvNcgbjgLVitP1pgkElZZo=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPMethodCompletio
+ nProposal.class
+SHA1-Digest: WZWSNJ4gB7TAM33XuRr+oUxy8QU=
+
+Name: icons/full/obj16/public.gif
+SHA1-Digest: /7Dfxu3TApYuV0jK7Fszug5lQ0I=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/search/JSPSearchRequestor.c
+ lass
+SHA1-Digest: 8WGZr7joFv8b7sm2JOWRlKH+Kbg=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPDummyContentAss
+ istProcessor.class
+SHA1-Digest: I54gY/nF0nWPBGXjjTwjjIcJwGY=
+
+Name: org/eclipse/jst/jsp/ui/internal/text/JavaHeuristicScanner$StopCo
+ ndition.class
+SHA1-Digest: QxGFO/6MjANVsPVQpZGu4+X4Wgc=
+
+Name: org/eclipse/jst/jsp/css/ui/internal/registry/AdapterFactoryProvi
+ derJSPedCSS.class
+SHA1-Digest: D41hEvweySUt5p7SXUnWf5Nj1E4=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPFieldRenameR
+ equestor.class
+SHA1-Digest: 87xhOhRilZbYH75wW+ONiH3ymVs=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$7.class
+SHA1-Digest: jhhK0Oe0eKCkBURiPy2YXKRuFGA=
+
+Name: icons/snippets/jspincl.gif
+SHA1-Digest: z8ykQC6OmozHbu/op5k6mv5DOn4=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/TLDFileHyperlink.class
+SHA1-Digest: OH7aH4zDK/kcvWOsttRRjvDSvfc=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentproperties/ui/JSPFContent
+ SettingsPropertyPage.class
+SHA1-Digest: 4yB47QVIoi5r8t16+fi98m9/UjU=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/JSPUIPreferenceNames
+ .class
+SHA1-Digest: KKSd0B0m+ozyPGkVxRHZ3qBWPMQ=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/URLFileRegionHyperlink
+ .class
+SHA1-Digest: GAgG2vA/j2pXX0QUqlPmfZL/rZ8=
+
+Name: org/eclipse/jst/jsp/css/ui/internal/properties/JSPedCSSPropertyS
+ ource.class
+SHA1-Digest: CINsVGVzThZMf50dd++tLq/Rw2g=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/jspel/JSPELWordDetector.cl
+ ass
+SHA1-Digest: aht3lXl4LU7PAFOX2XLJMcWxCm0=
+
+Name: org/eclipse/jst/jsp/ui/internal/breakpointproviders/ClassPattern
+ Registry.class
+SHA1-Digest: CAfQR19suzhKKv9kvP2pMFlwwLQ=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/search/JSPSearchQuery.class
+SHA1-Digest: mqCD6u+uuvJ8ZtUyESjI3tiNej0=
+
+Name: icons/snippets/tag-generic.gif
+SHA1-Digest: 0I4vhZElkaCeS+CVuv1V7+rGINc=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewJSPTemplatesWizardPage
+ $3.class
+SHA1-Digest: 1935dXEHFf3V14dISkf+S+NrXCM=
+
+Name: icons/full/obj16/field_public_obj.gif
+SHA1-Digest: 0mnjb9VnRH6s8+79en39co0v0sY=
+
+Name: org/eclipse/jst/jsp/ui/internal/taginfo/JSPTagInfoHoverProcessor
+ .class
+SHA1-Digest: QJK4leGcJph27FRkwlBrqVCTFeg=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/LibraryTagsComplet
+ ionProposalComputer.class
+SHA1-Digest: mPsxq9Vw1MV6qD2RzPDaI+sYgpg=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewTagTemplatesWizardPage
+ $4.class
+SHA1-Digest: TsTRMvwi1kOf9vnjKTHfCjPaawE=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPELContentAssist
+ Processor.class
+SHA1-Digest: gtIDkMtI2LD1C3HjdPBa5pqyjTo=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/AbstractPropertyP
+ referencePage$1.class
+SHA1-Digest: amxS/2wHg8iIg1Sa4GOCu1bqazc=
+
+Name: org/eclipse/jst/jsp/ui/internal/text/JavaHeuristicScanner$Charac
+ terMatch.class
+SHA1-Digest: fZiNTq+zYo82dr7k63yrxJqpnU4=
+
+Name: org/eclipse/jst/jsp/ui/internal/views/contentoutline/TLDContentO
+ utlineConfiguration$ContentLabelProvider.class
+SHA1-Digest: EgJKgTbkFuPbwpglFq0gk5lz64k=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$17.class
+SHA1-Digest: I6v6vKD6q1Z39qzoy3gHR0sVWdk=
+
+Name: icons/full/obj16/innerclass_default_obj.gif
+SHA1-Digest: hvZEvRi7LhznS8ZnahyukpwzaG8=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JavaTypeNameReques
+ tor.class
+SHA1-Digest: mG3gAxQoyrbGTr73zsxmiW54TKQ=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/TaglibJarHyperlink$Zip
+ Storage.class
+SHA1-Digest: /7WWufZFWTvpTAaruFYbzinGhT0=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPTypeRenameCh
+ ange.class
+SHA1-Digest: LkoWW/M56k9ghwro6zKLipFG4lw=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewJSPTemplatesWizardPage
+ $TemplateContentProvider.class
+SHA1-Digest: 7ScGZJ5UdSJfdAD8+7CUvn9Ozdc=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page.class
+SHA1-Digest: 8ekZRm5z8KP0zv6Cyh6Uj4PPxsY=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPJavaCompletionP
+ roposalComputer.class
+SHA1-Digest: ps84fXq8FbUsijWam2ZXoopUJY8=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPTaglibDirective
+ ContentAssistProcessor.class
+SHA1-Digest: m2VfYyfcRSSAAouwmVSaDhIkMtw=
+
+Name: org/eclipse/jst/jsp/ui/internal/text/JavaHeuristicScanner$NonWhi
+ tespaceDefaultPartition.class
+SHA1-Digest: RY2ZyySl3hnPHPKKfViYTcJ2XFc=
+
+Name: org/eclipse/jst/jsp/ui/internal/templates/TemplateContextTypeIds
+ JSP.class
+SHA1-Digest: LvrY0Il34ldiXX1ldJTEQqr5I0Y=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/refactoring/JSPRenameChange
+ $SaveJspFileOp.class
+SHA1-Digest: usMa3tp8cbqTYi2v5eWW+tzR/q0=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPContentAssistP
+ referencePage.class
+SHA1-Digest: aRNm4MzHyud7fWRaTJtQ0Dwf1LE=
+
+Name: icons/full/dtool16/newjsp_wiz.gif
+SHA1-Digest: /0WA7eJoRKZb+C2FkQrwm/tYtss=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPJavaContentAssi
+ stProcessor.class
+SHA1-Digest: dMOy1po8rR3/jAWBXf6ii16Xrwo=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPMethodCompletio
+ nProposal$FormatterPrefs.class
+SHA1-Digest: dlhvdaCLaRcAWS9W9YilvCsU+kY=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPSyntaxColoring
+ Page$4.class
+SHA1-Digest: q89lA45zUIvw0AuJ08WGimypm0c=
+
+Name: org/eclipse/jst/jsp/ui/internal/style/jspel/JSPELColorProvider.c
+ lass
+SHA1-Digest: qDTy4jW28uVXwqufyVS0ezCzDAs=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPTemplatePrefer
+ encePage.class
+SHA1-Digest: Zlu2xcaha5ZVpdnmM6FRr3XSijk=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewJSPTemplatesWizardPage
+ .class
+SHA1-Digest: MZ/OaIKhuKJjnlUVcVaJZYWVsq8=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewJSPWizard.class
+SHA1-Digest: kkIBU6rxlFI/i01kcFnXSITDB1o=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/TaglibHyperlinkDetecto
+ r.class
+SHA1-Digest: wzb9qKDjpJji5GM+zA8S9FpUtW0=
+
+Name: org/eclipse/jst/jsp/ui/internal/preferences/ui/JSPValidationPref
+ erencePage$1.class
+SHA1-Digest: TrM6/IF6BOJxRzSa6IanmzVbNQQ=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/URLFileRegionHyperlink
+ $URLStorage.class
+SHA1-Digest: q+nH+pz/8HivtShZ0+7qYZeOK0w=
+
+Name: org/eclipse/jst/jsp/ui/internal/wizard/NewTagTemplatesWizardPage
+ .class
+SHA1-Digest: eQbTYqTEIclxtXEH4LPi2n/xb5M=
+
+Name: org/eclipse/jst/jsp/ui/internal/java/search/JSPFindOccurrencesAc
+ tionDelegate.class
+SHA1-Digest: SJ/gRcmg6svjaKkTDF9Q/1FJIzc=
+
+Name: org/eclipse/jst/jsp/ui/internal/format/FormattingStrategyJSPJava
+ .class
+SHA1-Digest: mLcBQrRu2abH7C4lmhnm/2uvJ1M=
+
+Name: org/eclipse/jst/jsp/ui/internal/contentassist/JSPCompletionProce
+ ssor.class
+SHA1-Digest: J+rZcDMwXBPyyf/zn1tpySD9Ih8=
+
+Name: icons/full/obj16/innerclass_protected_obj.gif
+SHA1-Digest: tSSfHHPztCERmqmxSkH7E8jVTVk=
+
+Name: org/eclipse/jst/jsp/ui/internal/hyperlink/TaglibJarHyperlink.cla
+ ss
+SHA1-Digest: VMx/dg5f/aPsnxKVp33tHBbJp3c=
+
