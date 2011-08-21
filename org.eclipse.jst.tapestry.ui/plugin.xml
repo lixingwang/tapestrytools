@@ -81,6 +81,9 @@
             <separator
                   name="tapestryTMLGroup">
             </separator>
+            <separator
+                  name="tapestryCustomGroup">
+            </separator>
          </menu>
          <action
                label="%tapestry.find.corresponding.file"
@@ -92,8 +95,34 @@
                definitionId="org.eclipse.jst.tapestry.ui.command.actions.FindCorrespondingFile"
                id="org.eclipse.jst.tapestry.ui.actions.FindCorrespondingFileAction">
          </action>
+         <action
+               label="%tapestry.edit.customcomponents.package"
+               icon="icons/tapestry.gif"
+               class="org.eclipse.jst.tapestry.ui.internal.actions.EditCustomComponentsAction"
+               tooltip="%tapestry.edit.customcomponents.description"
+               menubarPath="tapestryTMLMenu/tapestryCustomGroup"
+               id="org.eclipse.jst.tapestry.ui.actions.EditCustomComponentsAction">
+         </action>
       </actionSet>
 	</extension>
+	
+	<extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="tapestryTools.editTCC"
+            objectClass="org.eclipse.core.resources.IProject">
+         <action
+               class="org.eclipse.jst.tapestry.ui.internal.actions.EditCustomComponentsAction"
+               enablesFor="+"
+               icon="icons/tapestry.gif"
+               id="tapestryTools.edit.customcomponents"
+               label="%tapestry.edit.customcomponents.package"
+               menubarPath="additions"
+               style="push">
+         </action>
+         </objectContribution>
+      </extension>
     
 	<extension point="org.eclipse.ui.bindings">  
 		<key  
@@ -110,5 +139,17 @@
 		name="%preferencepage.jsf.name">  
 	</command>  
 	</extension> 
+	
+	<extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.jst.tapestry.ui.internal.editor.TapestryCustomComponentEditor"
+            default="false"
+            filenames="*.tcc"
+            icon="icons/tapestry.gif"
+            id="tapestry.customComponentsEditor"
+            name="Tapestry Custom Components Editor">
+      </editor>
+    </extension>
     
 </plugin>
