@@ -10,16 +10,29 @@
  *******************************************************************************/
 package org.eclipse.jst.jsp.core.internal.modelquery;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jst.jsp.core.internal.contentmodel.JSPCMDocumentFactory;
 import org.eclipse.jst.jsp.core.internal.contenttype.DeploymentDescriptorPropertyCache;
 import org.eclipse.jst.jsp.core.internal.provisional.JSP12Namespace;
 import org.eclipse.jst.jsp.core.internal.provisional.JSP20Namespace;
 import org.eclipse.jst.jsp.core.internal.provisional.contenttype.ContentTypeIdForJSP;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.internal.Workbench;
 import org.eclipse.wst.html.core.internal.contentmodel.JSPCMDocument;
+import org.eclipse.wst.html.core.internal.contentmodel.TapestryElementCollection.ElemDecl;
 import org.eclipse.wst.sse.core.internal.provisional.IModelManager;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMDocument;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMElementDeclaration;
@@ -33,17 +46,21 @@ import org.eclipse.wst.xml.core.internal.ssemodelquery.ModelQueryAdapter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  * An implementation of {@link ModelQueryExtension} for JSP and Tapestry tags in JSP documents
  * 
  * @author gavingui2011@gmail.com - Beijing China
  *
+ * 在这个文件里修改tapestry的auto complete功能点
  */
 
 public class JSPModelQueryExtension extends ModelQueryExtension {
 	
 	private static final String TAG_JSP_ROOT = "jsp:root";
+	private static List<String> tapestryCustomComponents = null;
 
 	/**
 	 * Originally taken from JSPContentAssistProcessor
@@ -136,16 +153,30 @@ public class JSPModelQueryExtension extends ModelQueryExtension {
 							}
 						}
 						
+						
 						//Add Tapestry components into autocomplete menu
+						ElemDecl temp = null;
 						jcmdoc = getDefaultTapestryCMDocument();
 						CMNamedNodeMap tapestryelements = jcmdoc.getElements();
 						for (int j = 0; j < tapestryelements.getLength(); j++) {
+							if(j == 0) temp =  (ElemDecl) tapestryelements.item(j);
 							CMElementDeclaration ed = (CMElementDeclaration) tapestryelements.item(j);
 							if (!rejectElements.contains(ed.getNodeName())) {
 								nodeList.add(ed);
 							}
-						}
+						}	
 						
+						//load tapestry 5 custom components
+						if(temp != null){
+							collectCustomComponents();
+							if(tapestryCustomComponents != null){
+								for(int i=0; i<tapestryCustomComponents.size(); i++){
+									ElemDecl cloneElement = (ElemDecl) temp.clone();
+									cloneElement.setNodeName(tapestryCustomComponents.get(i));
+									nodeList.add(cloneElement);
+								}
+							}
+						}
 					}
 				}
 				// No cm document (such as for the Document (a non-Element) node itself)
@@ -164,6 +195,73 @@ public class JSPModelQueryExtension extends ModelQueryExtension {
 		return nodes;
 	}
 	
+	private void collectCustomComponents(){
+		IEditorPart editorPart = Workbench.getInstance()
+				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+
+		if (editorPart != null) {
+			IFileEditorInput input = (IFileEditorInput) editorPart
+					.getEditorInput();
+			IFile file = input.getFile();
+			IProject project = file.getProject();
+			final IFile res = project.getFile("/components.tcc");
+			if(res.exists()){
+				List nodeList = new ArrayList();
+				loadTapestryCustomComponentsTags(res, nodeList);
+				tapestryCustomComponents = nodeList;
+			}
+		}
+	}
+	
+	private void loadTapestryCustomComponentsTags(final IFile componentsFile, List nodeList){
+		final DocumentBuilderFactory domfac = DocumentBuilderFactory
+				.newInstance();
+		DocumentBuilder dombuilder = null;
+		
+		try {
+			dombuilder = domfac.newDocumentBuilder();
+			Document domDoc = dombuilder.parse(componentsFile.getContents());
+			Element root = domDoc.getDocumentElement();
+			NodeList components = root.getChildNodes();
+			if (components != null) {
+				for (int i = 0; i < components.getLength(); i++) {
+					Node component = components.item(i);
+					if(component.getNodeType() == Node.ELEMENT_NODE && component.getNodeName().trim().equals("components")){
+						loadCustomComponents(component, nodeList);
+						break;
+					}
+				}
+			}
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void loadCustomComponents(Node root, List nodeList){
+		NodeList components = root.getChildNodes();
+		if (components != null) {
+			for (int i = 0; i < components.getLength(); i++) {
+				Node component = components.item(i);
+				if(component.getNodeType() == Node.ELEMENT_NODE && component.getNodeName().trim().equals("component")){
+					Node name = component.getAttributes().getNamedItem("name");
+					if (name != null){
+						nodeList.add(name.getNodeValue());
+					}
+				}
+			}
+		}
+	}
+	
+	private CMElementDeclaration CMElementDeclaration(String prefix, String name, Map<String,String> attributes){
+		
+		return null;
+	} 
 	/**
 	 * <p>For JSP files and segments, this is just the JSP
 	 *         document, but when editing tag files and their fragments, it
