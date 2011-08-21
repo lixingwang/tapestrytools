@@ -12,6 +12,7 @@ package org.eclipse.wst.html.core.internal.contentmodel;
 
 
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -30,7 +31,7 @@ import org.eclipse.wst.xml.core.internal.contentmodel.CMNode;
 /**
  * Factory for element declarations of the Tapestry 5.
  */
-class TapestryElementCollection extends DeclCollection implements Tapestry5Namespace.ElementName {
+public class TapestryElementCollection extends DeclCollection implements Tapestry5Namespace.ElementName {
 
 
 	class TypePacket {
@@ -48,7 +49,7 @@ class TapestryElementCollection extends DeclCollection implements Tapestry5Names
 	}
 
 	/** Tapestry element declaration. */
-	class ElemDecl extends CMContentImpl implements HTMLElementDeclaration, HTMLPropertyDeclaration {
+	public class ElemDecl extends CMContentImpl implements HTMLElementDeclaration, HTMLPropertyDeclaration, Cloneable {
 		private TypePacket type = null;
 		private CMGroupImpl content = null;
 		private CMNamedNodeMapImpl attributes = null;
@@ -177,6 +178,16 @@ class TapestryElementCollection extends DeclCollection implements Tapestry5Names
 		public boolean isJSP() {
 			return true;
 		}
+		public Object clone(){ 
+			ElemDecl o = null; 
+			try{ 
+				o = (ElemDecl)super.clone();
+				o.setAttributes(null);
+			}catch(CloneNotSupportedException e){ 
+				e.printStackTrace(); 
+			} 
+			return o; 
+		}  
 	}
 
 	// element IDs
@@ -299,7 +310,6 @@ class TapestryElementCollection extends DeclCollection implements Tapestry5Names
 		public JACreater() {
 			declarations = new CMNamedNodeMapImpl();
 		}
-
 		public CMNamedNodeMapImpl getDeclarations(int eid) {
 			switch (eid) {
 				//case Ids.ID_DIRECTIVE_PAGE :

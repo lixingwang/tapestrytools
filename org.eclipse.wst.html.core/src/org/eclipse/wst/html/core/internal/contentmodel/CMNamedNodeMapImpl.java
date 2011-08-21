@@ -12,6 +12,7 @@ package org.eclipse.wst.html.core.internal.contentmodel;
 
 
 
+import java.io.Serializable;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Locale;
@@ -26,7 +27,7 @@ import org.eclipse.wst.xml.core.internal.contentmodel.CMNode;
  * this class is tolerant of the key name case. That is, this class does not
  * distinguish "name", "NAME", and "Name" as a key name.
  */
-class CMNamedNodeMapImpl implements CMNamedNodeMap {
+public class CMNamedNodeMapImpl implements CMNamedNodeMap {
 
 	private Hashtable items = null;
 
@@ -105,7 +106,7 @@ class CMNamedNodeMapImpl implements CMNamedNodeMap {
 	 * @param item
 	 *            java.lang.String
 	 */
-	void putNamedItem(String name, CMNode item) {
+	public void putNamedItem(String name, CMNode item) {
 		String cookedName = makeCanonicalForm(name);
 		if (items.containsKey(cookedName))
 			return; // already registered.

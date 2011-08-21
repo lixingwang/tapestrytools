@@ -17,7 +17,7 @@ import org.eclipse.wst.xml.core.internal.contentmodel.CMNode;
 
 /**
  */
-abstract class CMNodeImpl implements CMNode {
+public abstract class CMNodeImpl implements CMNode {
 
 	private java.lang.String name = null;
 
@@ -35,6 +35,10 @@ abstract class CMNodeImpl implements CMNode {
 	 */
 	public String getNodeName() {
 		return name;
+	}
+	
+	public void setNodeName(String n) {
+		name = n;
 	}
 
 	/**

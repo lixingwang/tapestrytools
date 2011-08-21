@@ -10,13 +10,15 @@
  *******************************************************************************/
 package org.eclipse.wst.html.core.internal.contentmodel;
 
+import java.io.Serializable;
+
 import org.eclipse.wst.xml.core.internal.contentmodel.CMNode;
 
 
 
 /**
  */
-class HTMLCMDataTypeImpl extends CMNodeImpl implements HTMLCMDataType {
+public class HTMLCMDataTypeImpl extends CMNodeImpl implements HTMLCMDataType, Serializable {
 
 	private int impliedValueKind = IMPLIED_VALUE_NONE;
 	private String impliedValue = null;
@@ -98,7 +100,7 @@ class HTMLCMDataTypeImpl extends CMNodeImpl implements HTMLCMDataType {
 
 	/**
 	 */
-	void setEnumValues(String[] values) {
+	public void setEnumValues(String[] values) {
 		enumValues = new String[values.length];
 		for (int i = 0; i < values.length; i++) {
 			enumValues[i] = values[i];

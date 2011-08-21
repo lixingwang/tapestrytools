@@ -12,6 +12,7 @@ package org.eclipse.wst.html.core.internal.contentmodel;
 
 
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
@@ -133,6 +134,18 @@ abstract class DeclCollection implements CMNamedNodeMap {
 	 */
 	public DeclCollection(String[] names, boolean tolerant) {
 		super();
+		//add Tapestry 5 custom components
+		/*String[] allNames = new String[names.length + 1];
+		System.arraycopy(names, 0, allNames, 0, names.length);
+		allNames[names.length] = "cc_t:guixl";
+		fDecls = new CMNode[allNames.length];
+		if (tolerant) {
+			fMap = new TolerantStringDualMap(allNames);
+		}
+		else {
+			fMap = new DualMap(allNames);
+		}*/
+		
 		fDecls = new CMNode[names.length];
 		if (tolerant) {
 			fMap = new TolerantStringDualMap(names);
@@ -140,6 +153,7 @@ abstract class DeclCollection implements CMNamedNodeMap {
 		else {
 			fMap = new DualMap(names);
 		}
+		
 	}
 
 	/**

@@ -12,13 +12,15 @@ package org.eclipse.wst.html.core.internal.contentmodel;
 
 
 
+import java.io.Serializable;
+
 import org.eclipse.wst.xml.core.internal.contentmodel.CMGroup;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMNode;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMNodeList;
 
 /**
  */
-class CMGroupImpl extends CMContentImpl implements CMGroup {
+class CMGroupImpl extends CMContentImpl implements CMGroup, Serializable {
 
 	private int operator = CMGroup.SEQUENCE;
 	private CMNodeListImpl children = null;
