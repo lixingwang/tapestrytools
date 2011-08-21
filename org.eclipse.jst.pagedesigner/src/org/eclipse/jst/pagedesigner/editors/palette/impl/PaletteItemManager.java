@@ -314,6 +314,7 @@ public class PaletteItemManager implements IPaletteItemManager,
 		if (isJSP(_tagRegId)){
 			registerJSPCategory();
 			registerTapestryCategory();	
+			registerTapestryCustomActionCategory();
 		}
 		registerTagsFromTagRegistry();	
 	}
@@ -358,6 +359,11 @@ public class PaletteItemManager implements IPaletteItemManager,
 	private void registerTapestryCategory(){
 		final CMDocument doc = HTMLCMDocumentFactory.getCMDocument(CMDocType.TAPESTRY5_DOC_TYPE);
 		_paletteHelper.getOrCreateTaglibPaletteDrawer(this, doc, CMDocType.TAPESTRY5_DOC_TYPE);
+	}
+	
+	private void registerTapestryCustomActionCategory(){
+		final CMDocument doc = HTMLCMDocumentFactory.getCMDocument(CMDocType.TAPESTRY5_CUSTOM_DOC_TYPE);
+		_paletteHelper.getOrCreateTaglibPaletteDrawer(this, doc, CMDocType.TAPESTRY5_CUSTOM_DOC_TYPE);
 	}
 
 //	/**

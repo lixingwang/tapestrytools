@@ -123,7 +123,9 @@ public final class CreationData
         // TODO: this shouldn't really add to the document
         if (uri==null || ITLDConstants.URI_HTML.equalsIgnoreCase(uri)
                 || ITLDConstants.URI_JSP.equalsIgnoreCase(uri)
-                || CMDocType.JSP11_DOC_TYPE.equalsIgnoreCase(uri) || CMDocType.TAPESTRY5_DOC_TYPE.equalsIgnoreCase(uri)) {
+                || CMDocType.JSP11_DOC_TYPE.equalsIgnoreCase(uri) 
+                || CMDocType.TAPESTRY5_DOC_TYPE.equalsIgnoreCase(uri)
+                || CMDocType.TAPESTRY5_CUSTOM_DOC_TYPE.equalsIgnoreCase(uri)) {
             return null;
         }
 

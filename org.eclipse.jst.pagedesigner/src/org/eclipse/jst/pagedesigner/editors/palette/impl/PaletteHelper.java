@@ -11,13 +11,21 @@
  *******************************************************************************/
 package org.eclipse.jst.pagedesigner.editors.palette.impl;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.gef.palette.PaletteEntry;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -46,10 +54,19 @@ import org.eclipse.jst.pagedesigner.editors.palette.IPaletteItemManager;
 import org.eclipse.jst.pagedesigner.editors.palette.ITagDropSourceData;
 import org.eclipse.jst.pagedesigner.editors.palette.TagToolCreationAdapter;
 import org.eclipse.jst.pagedesigner.editors.palette.TagToolPaletteEntry;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.internal.Workbench;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMDocument;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMElementDeclaration;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMNamedNodeMap;
 import org.eclipse.wst.xml.core.internal.provisional.contentmodel.CMDocType;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  * Helper class.
@@ -74,6 +91,10 @@ public class PaletteHelper {
 	private final static ImageDescriptor DEFAULT_LARGE_ICON = PDPlugin
 			.getDefault().getImageDescriptor(
 					"palette/GENERIC/large/PD_Palette_Default.gif"); //$NON-NLS-1$
+	
+	private final static ImageDescriptor TAPESTRY_LARGE_ICON = PDPlugin
+			.getDefault().getImageDescriptor(
+					"palette/GENERIC/large/tapestry.gif");
 
 	// how many characters to truncate a palette item's description to.
 	// TODO: add preference?
@@ -122,22 +143,13 @@ public class PaletteHelper {
 	 */
 	public TaglibPaletteDrawer getOrCreateTaglibPaletteDrawer(
 			final IPaletteItemManager manager, final CMDocument doc, final String tldURI) {
-		/*if(tldURI.equals(CMDocType.TAPESTRY5_DOC_TYPE)){
-			TaglibPaletteDrawer category = manager.createTaglibPaletteDrawer("tapestry5", "Tapestry 5");
-			String desc = "Section for Tapestry 5 components";
-			category.setDescription(formatDescription(desc));
-			category.setDefaultPrefix("t");
-
-			final boolean isVisible = true;
-			category.setVisible(isVisible);
-			category.setInitialState(PaletteDrawer.INITIAL_STATE_CLOSED);
-			if (category != null) {
-				loadTapestryTags(category, doc);
+		if(tldURI.equals(CMDocType.TAPESTRY5_CUSTOM_DOC_TYPE)){
+			IProject activeProject = manager.getTagRegistryIdentifier().getProject();
+			IFile componentsFile=activeProject.getFile("/components.tcc");
+			if(componentsFile.exists()){
+				return getOrCreateTapestryCustomTaglibPaletteDrawer(manager, doc, tldURI, componentsFile);
 			}
-			
-			
-			return category;
-		}*/
+		}
 		TaglibPaletteDrawer category = findCategory(manager, tldURI);
 		if (category != null)
 			return category;
@@ -186,16 +198,77 @@ public class PaletteHelper {
 
 	}
 
-	private void loadTapestryTags(final TaglibPaletteDrawer category, final CMDocument doc){
-		final ITagDropSourceData data = new TagToolCreationAdapter(category
-				.getURI(), "actionlink", category.getDefaultPrefix(), "actionlink");
-		final TagToolPaletteEntry item = new TagToolPaletteEntry(data, "actionlink",
-				"create t:actionlink element", null, null);
-		item.setId("actionlink");
+	public TaglibPaletteDrawer getOrCreateTapestryCustomTaglibPaletteDrawer(
+			final IPaletteItemManager manager, final CMDocument doc, final String tldURI, final IFile componentsFile) {
+		TaglibPaletteDrawer category = manager.createTaglibPaletteDrawer(CMDocType.TAPESTRY5_CUSTOM_DOC_TYPE, Messages.PaletteTapestryCustomSectionLabel);
+		category.setDescription(formatDescription(Messages.PaletteTapestryCustomSectionDesc));
+		category.setDefaultPrefix("");
 
-		item.setVisible(true);
-		category.getChildren().add(item);
-		item.setParent(category);
+		final boolean isVisible = true;
+		category.setVisible(isVisible);
+		category.setInitialState(PaletteDrawer.INITIAL_STATE_CLOSED);
+		if (category != null) {
+			loadTapestryCustomComponentsTags(category, doc, componentsFile);
+		}
+		
+		
+		return category;
+	}
+	private void loadTapestryCustomComponentsTags(final TaglibPaletteDrawer category, final CMDocument doc, final IFile componentsFile){
+		final DocumentBuilderFactory domfac = DocumentBuilderFactory
+				.newInstance();
+		DocumentBuilder dombuilder = null;
+		
+		try {
+			dombuilder = domfac.newDocumentBuilder();
+			Document domDoc = dombuilder.parse(componentsFile.getContents());
+			Element root = domDoc.getDocumentElement();
+			NodeList components = root.getChildNodes();
+			if (components != null) {
+				for (int i = 0; i < components.getLength(); i++) {
+					Node component = components.item(i);
+					if(component.getNodeType() == Node.ELEMENT_NODE && component.getNodeName().trim().equals("components")){
+						loadCustomComponents(category, doc, component);
+						break;
+					}
+				}
+			}
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
+	}
+	private void loadCustomComponents(final TaglibPaletteDrawer category, final CMDocument doc, Node root){
+		NodeList components = root.getChildNodes();
+		if (components != null) {
+			for (int i = 0; i < components.getLength(); i++) {
+				Node component = components.item(i);
+				if(component.getNodeType() == Node.ELEMENT_NODE && component.getNodeName().trim().equals("component")){
+					Node id = component.getAttributes().getNamedItem("id");
+					Node name = component.getAttributes().getNamedItem("name");
+					Node text = component.getAttributes().getNamedItem("text");
+					if (id != null && name != null && text !=null){
+						ITagDropSourceData data = new TagToolCreationAdapter(category
+								.getURI(), name.getNodeValue(), category.getDefaultPrefix(), name.getNodeValue());
+						TagToolPaletteEntry item = new TagToolPaletteEntry(data, text.getNodeValue(),
+								"create "+ text.getNodeValue() + " element", null, null);
+						item.setId(id.getNodeValue());
+						item.setLargeIcon(TAPESTRY_LARGE_ICON);
+						item.setSmallIcon(TAPESTRY_LARGE_ICON);
+
+						item.setVisible(true);
+						category.getChildren().add(item);
+						item.setParent(category);
+					}
+					
+				}
+			}
+		}
 	}
 	
 	private void loadTags(final TaglibPaletteDrawer category, final CMDocument doc,
