@@ -1,0 +1,1691 @@
+Manifest-Version: 1.0
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+Bundle-SymbolicName: org.eclipse.wst.xml.core; singleton:=true
+Eclipse-SourceReferences: scm:cvs:pserver:dev.eclipse.org:/cvsroot/web
+ tools:sourceediting/plugins/org.eclipse.wst.xml.core;tag=v20110425122
+ 7
+Bundle-Activator: org.eclipse.wst.xml.core.internal.XMLCorePlugin
+Require-Bundle: org.apache.xerces;bundle-version="[2.9.0,3.0.0)";visib
+ ility:=reexport,org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0
+ )",org.eclipse.core.resources;bundle-version="[3.5.0,4.0.0)",org.ecli
+ pse.core.filebuffers;bundle-version="[3.5.0,4.0.0)";resolution:=optio
+ nal,org.eclipse.wst.common.uriresolver;bundle-version="[1.1.301,1.2.0
+ )",org.eclipse.wst.sse.core;bundle-version="[1.1.500,1.2.0)",org.ecli
+ pse.jem.util;bundle-version="[2.0.200,3.0.0)";resolution:=optional,or
+ g.eclipse.wst.validation;bundle-version="[1.2.100,1.3.0)";resolution:
+ =optional,org.eclipse.wst.common.emf;bundle-version="[1.1.300,1.3.0)"
+ ;resolution:=optional,org.eclipse.emf.ecore.xmi;bundle-version="[2.4.
+ 0,3.0.0)";resolution:=optional,org.eclipse.wst.common.emfworkbench.in
+ tegration;bundle-version="[1.1.300,1.3.0)";resolution:=optional,org.e
+ clipse.wst.common.core;bundle-version="[1.1.201,1.3.0)",org.eclipse.o
+ sgi.services;bundle-version="[3.2.0,4.0.0)"
+Export-Package: org.eclipse.wst.xml.core.contentmodel.modelquery,org.e
+ clipse.wst.xml.core.internal; x-friends:="org.eclipse.wst.dtd.core,  
+ org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd
+ .core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.cat
+ alog; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui, 
+  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.
+ xsd.ui",org.eclipse.wst.xml.core.internal.catalog.provisional; x-frie
+ nds:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse
+ .wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.
+ eclipse.wst.xml.core.internal.cleanup; x-friends:="org.eclipse.wst.dt
+ d.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclips
+ e.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.int
+ ernal.commentelement; x-friends:="org.eclipse.wst.dtd.core,  org.ecli
+ pse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  
+ org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.commentelem
+ ent.impl; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.
+ ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.
+ wst.xsd.ui",org.eclipse.wst.xml.core.internal.commentelement.util; x-
+ friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.ecl
+ ipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",
+ org.eclipse.wst.xml.core.internal.contentmodel; x-friends:="org.eclip
+ se.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  o
+ rg.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml
+ .core.internal.contentmodel.annotation; x-friends:="org.eclipse.wst.d
+ td.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclip
+ se.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.in
+ ternal.contentmodel.basic; x-friends:="org.eclipse.wst.dtd.core,  org
+ .eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.co
+ re,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.conten
+ tmodel.factory; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.ws
+ t.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.ec
+ lipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.contentmodel.inte
+ rnal.annotation; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.w
+ st.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.e
+ clipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.contentmodel.int
+ ernal.modelqueryimpl; x-friends:="org.eclipse.wst.dtd.core,  org.ecli
+ pse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  
+ org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.contentmode
+ l.internal.util; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.w
+ st.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.e
+ clipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.contentmodel.mod
+ elquery; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.u
+ i,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.w
+ st.xsd.ui",org.eclipse.wst.xml.core.internal.contentmodel.modelquery.
+ extension; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd
+ .ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse
+ .wst.xsd.ui",org.eclipse.wst.xml.core.internal.contentmodel.modelquer
+ yimpl; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,
+   org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst
+ .xsd.ui",org.eclipse.wst.xml.core.internal.contentmodel.util; x-frien
+ ds:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.
+ wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.e
+ clipse.wst.xml.core.internal.contenttype; x-friends:="org.eclipse.wst
+ .dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.ecl
+ ipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.
+ internal.document; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse
+ .wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org
+ .eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.emf2xml; x-fri
+ ends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclips
+ e.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org
+ .eclipse.wst.xml.core.internal.encoding; x-friends:="org.eclipse.wst.
+ dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.ecli
+ pse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.i
+ nternal.formatter; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse
+ .wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org
+ .eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.modelhandler; 
+ x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.e
+ clipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui
+ ",org.eclipse.wst.xml.core.internal.modelquery; x-friends:="org.eclip
+ se.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  o
+ rg.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml
+ .core.internal.parser; x-friends:="org.eclipse.wst.dtd.core,  org.ecl
+ ipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core, 
+  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.parser.reg
+ ions; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui, 
+  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.
+ xsd.ui",org.eclipse.wst.xml.core.internal.preferences; x-friends:="or
+ g.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml
+ .ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.
+ wst.xml.core.internal.propagate; x-friends:="org.eclipse.wst.dtd.core
+ ,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.
+ xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.
+ provisional; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.d
+ td.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclip
+ se.wst.xsd.ui",org.eclipse.wst.xml.core.internal.provisional.contentm
+ odel; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui, 
+  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.
+ xsd.ui",org.eclipse.wst.xml.core.internal.provisional.contenttype; x-
+ friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.ecl
+ ipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",
+ org.eclipse.wst.xml.core.internal.provisional.document; x-friends:="o
+ rg.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xm
+ l.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse
+ .wst.xml.core.internal.provisional.format; x-friends:="org.eclipse.ws
+ t.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.ec
+ lipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core
+ .internal.provisional.text; x-friends:="org.eclipse.wst.dtd.core,  or
+ g.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.c
+ ore,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.regio
+ ns; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  o
+ rg.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xs
+ d.ui",org.eclipse.wst.xml.core.internal.search; x-friends:="org.eclip
+ se.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  o
+ rg.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml
+ .core.internal.search.impl; x-friends:="org.eclipse.wst.dtd.core,  or
+ g.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.c
+ ore,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.searc
+ h.matching; x-friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dt
+ d.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclips
+ e.wst.xsd.ui",org.eclipse.wst.xml.core.internal.search.quickscan; x-f
+ riends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.ecli
+ pse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",o
+ rg.eclipse.wst.xml.core.internal.ssemodelquery; x-friends:="org.eclip
+ se.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  o
+ rg.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml
+ .core.internal.tasks; x-friends:="org.eclipse.wst.dtd.core,  org.ecli
+ pse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  
+ org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.text; x-fri
+ ends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclips
+ e.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org
+ .eclipse.wst.xml.core.internal.text.rules; x-friends:="org.eclipse.ws
+ t.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.ec
+ lipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core
+ .internal.validate; x-friends:="org.eclipse.wst.dtd.core,  org.eclips
+ e.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  or
+ g.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.validation; x
+ -friends:="org.eclipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.ec
+ lipse.wst.xml.ui,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui"
+ ,org.eclipse.wst.xml.core.internal.validation.core; x-friends:="org.e
+ clipse.wst.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui
+ ,  org.eclipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst
+ .xml.core.internal.validation.core.logging; x-friends:="org.eclipse.w
+ st.dtd.core,  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.e
+ clipse.wst.xsd.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.cor
+ e.internal.validation.eclipse; x-friends:="org.eclipse.wst.dtd.core, 
+  org.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xs
+ d.core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.internal.va
+ lidation.errorcustomization; x-friends:="org.eclipse.wst.dtd.core,  o
+ rg.eclipse.wst.dtd.ui,  org.eclipse.wst.xml.ui,  org.eclipse.wst.xsd.
+ core,  org.eclipse.wst.xsd.ui",org.eclipse.wst.xml.core.text
+Bundle-Version: 1.1.600.v201104251227
+Bundle-ActivationPolicy: lazy; exclude:="org.eclipse.wst.xml.core.inte
+ rnal.contenttype"
+Bundle-Vendor: %providerName
+Bundle-Name: %pluginName
+Import-Package: com.ibm.icu.util; version="3.8",com.ibm.icu.text; vers
+ ion="3.8"
+Bundle-ManifestVersion: 2
+
+Name: org/eclipse/wst/xml/core/internal/search/ComponentSearchContribu
+ tor.class
+SHA1-Digest: 9WWftGKpHBiindEs1BBHIv6YTY4=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/document/IDOMNode.
+ class
+SHA1-Digest: dDvMLwu0tLfc+4WqdEqkjEbi3n4=
+
+Name: org/eclipse/wst/xml/core/internal/commentelement/CommentElementH
+ andler.class
+SHA1-Digest: 3NispROJT9TAgFhBmAhAaN9hdaQ=
+
+Name: org/eclipse/wst/xml/core/internal/formatter/DefaultXMLPartitionF
+ ormatter.class
+SHA1-Digest: oq3s5Mv/PWgNeu6YIC9qOBfpu1c=
+
+Name: org/eclipse/wst/xml/core/internal/search/XMLComponentSearchPatte
+ rn.class
+SHA1-Digest: k/Sv4hhv1eP9BkHeByYeXdo+NWs=
+
+Name: org/eclipse/wst/xml/core/internal/ssemodelquery/ModelQueryAdapte
+ rImpl.class
+SHA1-Digest: Wy8UcYuZUdun/WMJRvfbkV9MXvc=
+
+Name: org/eclipse/wst/xml/core/internal/validation/errorcustomization/
+ IErrorMessageCustomizer.class
+SHA1-Digest: Ya9ffXzMDcQrZFlyJZDJVr/RS5g=
+
+Name: org/eclipse/wst/xml/core/internal/emf2xml/EMF2DOMSSEAdapter.clas
+ s
+SHA1-Digest: 10Y0c0y1lsgVZ+qNZgDLdmYSWHk=
+
+Name: org/eclipse/wst/xml/core/internal/parser/ContextRegionContainer.
+ class
+SHA1-Digest: HI0JlEqCHdPhuVk6nrTSYponYII=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/Si
+ mpleAssociationProvider.class
+SHA1-Digest: qhhjrN9CsDtdvhsnYnSsMTfG3VI=
+
+Name: org/eclipse/wst/xml/core/internal/parser/XMLTokenizer.class
+SHA1-Digest: PXsVl6jrXlAchpJjHSpGQnlAwIA=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/CM
+ DocumentLoader.class
+SHA1-Digest: j1+bJGSyYUJtyUS4eyEUwQmtRGA=
+
+Name: org/eclipse/wst/xml/core/internal/document/StructuredDocumentReg
+ ionUtil.class
+SHA1-Digest: Vgbj4XoR/RjslNAr+Rg8QZridqk=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/basic/CMContentIm
+ pl.class
+SHA1-Digest: FOYf6h07f6EetdzITDdqq/d7Ohs=
+
+Name: org/eclipse/wst/xml/core/internal/modelquery/ModelQueryAdapterFa
+ ctoryForXML.class
+SHA1-Digest: 7tcFfOxetGZICIHbQHcJwD2beCk=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/RegionUpdateRul
+ e.class
+SHA1-Digest: rOYrWCktwd8O3Z1fpfeknQITuao=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/CMDocumentCa
+ che$Entry.class
+SHA1-Digest: oprGsOx9WAd1vgCMrqPHsMwsFNU=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMD
+ ataTypeValueHelper.class
+SHA1-Digest: dhu6UJyAToXHwvpNwdXGO1v5zbA=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/DOMVisitor.c
+ lass
+SHA1-Digest: SaIED7SFCUlUqH8YL1HMnCL5mUQ=
+
+Name: org/eclipse/wst/xml/core/internal/document/UserData.class
+SHA1-Digest: kx/uYwjfOOX5sWpVAuHCaNHjnuU=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/AttributeValueR
+ egion.class
+SHA1-Digest: 8MS89qgWu4ziwtpjtpR2ksPbrmk=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/CMDocumentCa
+ che.class
+SHA1-Digest: 953wAAfHNpRjm04+aUpx3+s8EdA=
+
+Name: org/eclipse/wst/xml/core/internal/document/ProcessingInstruction
+ Impl.class
+SHA1-Digest: mthGYGXwKvN7AXJhccsFotLW014=
+
+Name: org/eclipse/wst/xml/core/internal/search/impl/IXMLSearchConstant
+ s.class
+SHA1-Digest: OMqpZcTg3PevOQTScvFxdoP8uoA=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/document/IDOMModel
+ .class
+SHA1-Digest: zrh4FN/95uH2ay5HhA9K+QG0YPI=
+
+Name: org/eclipse/wst/xml/core/internal/validation/errorcustomization/
+ ErrorCustomizationManager.class
+SHA1-Digest: sQ4kACglf15Ou50O7Z3lmjxJE+g=
+
+Name: org/eclipse/wst/xml/core/internal/document/StructuredDocumentReg
+ ionContainer.class
+SHA1-Digest: lTCSs7j4R75oTtN+J078s/+fqCU=
+
+Name: org/eclipse/wst/xml/core/internal/document/EntityImpl.class
+SHA1-Digest: N3qHLNHiUtzlc9WLmgERZFuBpB4=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/provisional/IDelegateC
+ atalog.class
+SHA1-Digest: BwwBThMN7El7dVfL3Yi5nj1F2yY=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMDocumentation.c
+ lass
+SHA1-Digest: KVmncVHf3P/EsPehx5PQRQhfToc=
+
+Name: org/eclipse/wst/xml/core/internal/propagate/PropagatingAdapterFa
+ ctoryImpl.class
+SHA1-Digest: I38CGCT+h5X5mHRvYmwmGJvRMhA=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/basic/CMDocumentI
+ mpl.class
+SHA1-Digest: jBzk9D9pPTZ3ooLGvk+VHZd3/3E=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/document/IDOMEleme
+ nt.class
+SHA1-Digest: qwLHTkIfV/wYeakRqsIQwlROtjg=
+
+Name: org/eclipse/wst/xml/core/internal/commentelement/CommentElementA
+ dapter.class
+SHA1-Digest: ytf4uLblJgnRXeaC+29HQrrhxxI=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/NamespaceTab
+ le.class
+SHA1-Digest: YSKvmqwgS8vA7sqi57UapozIavw=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/modelque
+ ryimpl/ModelQueryExtensionManagerImpl.class
+SHA1-Digest: fo5v4HfMsGZd+UDwapsWBBkWdQw=
+
+Name: org/eclipse/wst/xml/core/internal/contenttype/XMLDeclDetector.cl
+ ass
+SHA1-Digest: imthNe6FFvjMmwB99d6KPtpc8qQ=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/ValidationMess
+ age.class
+SHA1-Digest: PZLM3T7zXSkiZZ0//Jkq/HZUg9k=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/CM
+ DocumentReferenceImpl.class
+SHA1-Digest: 6+gOrer0Bxncqnze/+Q1rLWSHpk=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/Gl
+ obalCMDocumentCache$MemoryListener.class
+SHA1-Digest: 1mJpjbfpWh8/t4Tcn3uX3BRCIoI=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMAnyElement.clas
+ s
+SHA1-Digest: Eqcydo+yrfHkjMWjnvVc0AE1Hs8=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/NamespaceInf
+ o.class
+SHA1-Digest: iqqibkblR5MPzQ1d5dwpsQfhmKg=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/DOMNamespace
+ Helper.class
+SHA1-Digest: xhx6XAanyZFTKZlQ5bWXXxnUC/c=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLNestedValidatorC
+ ontext.class
+SHA1-Digest: kudZGvKdKfQuHlTd/77KE9YRmIU=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/XMLParserRegion
+ Factory.class
+SHA1-Digest: vV/BkW3mIz1KgACKofYKLWCUvM8=
+
+Name: org/eclipse/wst/xml/core/internal/contenttype/XMLResourceEncodin
+ gDetector.class
+SHA1-Digest: tVdz9iXskWW3j9TU4lRi0D2R7n8=
+
+Name: org/eclipse/wst/xml/core/internal/document/StructuredDocumentReg
+ ionProxy.class
+SHA1-Digest: 8W0YLGHvAX4q2ehTdjsd62Na8dI=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/Gl
+ obalCMDocumentCache.class
+SHA1-Digest: 4XU8Wx5XcUnC5czymf589AcVcPI=
+
+Name: org/eclipse/wst/xml/core/internal/document/StructuredDocumentReg
+ ionChecker.class
+SHA1-Digest: 0Xw78asX8/UBDHL+Pm7kyOubyog=
+
+Name: org/eclipse/wst/xml/core/internal/document/TagAdapter.class
+SHA1-Digest: xC2lq+Qh1XYldAli/aWqJIF8FqY=
+
+Name: org/eclipse/wst/xml/core/internal/document/SourceValidator.class
+SHA1-Digest: h0h4xtS/5mwRTb3qytouX99X1/0=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/Catalog$SystemCatalogL
+ S.class
+SHA1-Digest: pUMuugI1k2jNl5BgOLq5K2dTAL0=
+
+Name: org/eclipse/wst/xml/core/internal/preferences/XMLCorePreferenceI
+ nitializer.class
+SHA1-Digest: ubva+4u4G7vuROuH+XQso2OHVVI=
+
+Name: org/eclipse/wst/xml/core/internal/contenttype/NullMemento.class
+SHA1-Digest: Qg3yDmnTrkx8cpDtM8dL1yae3A0=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/DOMContentBu
+ ilderImpl.class
+SHA1-Digest: mV7+89i1nNP6GczRsSzU1TV7APw=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelquery/extens
+ ion/ModelQueryExtensionManager.class
+SHA1-Digest: vFRGMlwyDokOv6eCs1134ht57lU=
+
+Name: org/eclipse/wst/xml/core/internal/contenttype/ContentDescriberFo
+ rXML.class
+SHA1-Digest: 9Nygzgl+vWYlbi28yUWAkrA5Orc=
+
+Name: org/eclipse/wst/xml/core/internal/emf2xml/EMF2DOMSSERendererFact
+ ory.class
+SHA1-Digest: 7X1ul5VyXx+V1A9NuUgayZ8hoSE=
+
+Name: org/eclipse/wst/xml/core/internal/XMLCorePlugin.class
+SHA1-Digest: 9PP8j0ET0VwbZiAWxE9ssWnROSc=
+
+Name: org/eclipse/wst/xml/core/internal/validation/eclipse/XMLMessageI
+ nfoHelper.class
+SHA1-Digest: +/yfCfBWAI7vmSaWQb0m70OPErg=
+
+Name: org/eclipse/wst/xml/core/internal/DebugAdapterFactory.class
+SHA1-Digest: lDqJyNOJTOpw5rrKBbSdXxoQmf8=
+
+Name: org/eclipse/wst/xml/core/internal/document/DocumentTypeAdapterIm
+ pl.class
+SHA1-Digest: BZ+rHk3NBCoBIWmib7H2gOZ8SbI=
+
+Name: org/eclipse/wst/xml/core/internal/formatter/XMLFormatterFormatPr
+ ocessor$1.class
+SHA1-Digest: +HHDVtU/7oYUQo4tB0T2Bq+3gfc=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/Catalog$3.class
+SHA1-Digest: 6DMQ+jjNy03dnqxJER4Ztb2LNcM=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/InferredGram
+ marFactory.class
+SHA1-Digest: EXzxwzmZYD2ErsgnzvefqbOE7jk=
+
+Name: org/eclipse/wst/xml/core/internal/validation/errorcustomization/
+ ErrorCustomizationRegistry.class
+SHA1-Digest: l+olvlDSN+/mFoelqi4G0ejxeYQ=
+
+Name: org/eclipse/wst/xml/core/internal/commentelement/impl/CommentEle
+ mentRegistry.class
+SHA1-Digest: YH5G2tLhAnJPVYlH99MaazjeZcU=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelquery/ModelQ
+ ueryAssociationProvider.class
+SHA1-Digest: 5jBXEg4+GU9YBlPLS8kWFlbiC+4=
+
+Name: org/eclipse/wst/xml/core/internal/document/NodeIteratorImpl.clas
+ s
+SHA1-Digest: uJ692yxtJCWCsrzEvSBfWT30PHo=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelquery/CMDocu
+ mentManagerListener.class
+SHA1-Digest: osbUticLjHg36AzRvkLHj/zMNdI=
+
+Name: org/eclipse/wst/xml/core/internal/contenttype/AbstractResourceEn
+ codingDetector.class
+SHA1-Digest: Y8TwpMHqEDosWLOqK7CYdF2dlAU=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/document/IDOMAttr.
+ class
+SHA1-Digest: EXRSQ1nStBc0wyypzbuRiXcdfIg=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/document/IDOMDocum
+ entType.class
+SHA1-Digest: X0KdXHGhCPBHmQNf+27lfDXOzL0=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/provisional/ICatalogEn
+ try.class
+SHA1-Digest: mLj0xTGnyeSatTXafhusGSnpFLg=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/Helper$1.class
+SHA1-Digest: m74vzur0YsJpcfpM2iMvTI1L4Do=
+
+Name: schema/errorCustomizer.exsd
+SHA1-Digest: dCT+kTRKla4VIEAjx33Mz7pFXKc=
+
+Name: org/eclipse/wst/xml/core/internal/document/AttrImpl.class
+SHA1-Digest: 0sSLJHXG2QZrYdUR4ZwDAyMejD8=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$GraphGenerator$Context.class
+SHA1-Digest: KJv1vX/a3i2qouZ816GqivkoYSQ=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/ContentModelManag
+ er.class
+SHA1-Digest: yHSe/1zlxZ4Yi14lF0w2N9npCbw=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/basic/CMElementDe
+ clarationImpl.class
+SHA1-Digest: PR+WLPcB+YZPhlHfelDRVteWcZo=
+
+Name: org/eclipse/wst/xml/core/internal/document/DocumentTypeImpl.clas
+ s
+SHA1-Digest: F2Inu2SOQJeyvRHzVsPEP57BbyE=
+
+Name: org/eclipse/wst/xml/core/internal/formatter/XMLFormattingPrefere
+ nces.class
+SHA1-Digest: Yw6fmohZL+2l4YpoGm6JZ32O2No=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/annotati
+ on/AnnotationFileParser.class
+SHA1-Digest: hRt2KBIaYlwm7z/VBzPuULxnCUg=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/AbstractNested
+ Validator$LocalizedMessage.class
+SHA1-Digest: YJrDTQO2trZ0DYhpug20LVukyqo=
+
+Name: org/eclipse/wst/xml/core/internal/contenttype/HeadParserToken.cl
+ ass
+SHA1-Digest: sjjtAwysQ/f+7tHL7qgdTXLFYfA=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/AbstractNested
+ Validator.class
+SHA1-Digest: pS9romKPvfW8dyt1jmD9BEFtwbI=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidator$MyDecl
+ Handler.class
+SHA1-Digest: b10kcSykElN/IRPUGpBiX+JsaL8=
+
+Name: org/eclipse/wst/xml/core/internal/document/ReadOnlyController$Sp
+ an.class
+SHA1-Digest: RZOGsXPPso0BGqPO/IhclJD/XkI=
+
+Name: org/eclipse/wst/xml/core/internal/IDebugAdapter.class
+SHA1-Digest: HUGPM128a/TNmAKwnKddrH87PC8=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/provisional/ICatalogEv
+ ent.class
+SHA1-Digest: O7BgeFOaxyVcJjjHRwm7/uipywM=
+
+Name: schema/externalSchemaLocations.exsd
+SHA1-Digest: tpjzvgLhQggpa7cWxqdbVYSgyEE=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelquery/IExter
+ nalSchemaLocationProvider.class
+SHA1-Digest: jv2lOllsY5KQvYRnXD59DtieyV0=
+
+Name: org/eclipse/wst/xml/core/internal/document/XMLModelNotifier.clas
+ s
+SHA1-Digest: fdWo5JFvf1ngda6SXyTaAbmnafY=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/Helper.class
+SHA1-Digest: /nE5+rZKzZ7CcoaMvRjmL5+saNQ=
+
+Name: org/eclipse/wst/xml/core/internal/contenttype/XMLHeadTokenizerCo
+ nstants.class
+SHA1-Digest: eg2znU/CqYJmH/rUWQUV0n5XxE4=
+
+Name: org/eclipse/wst/xml/core/internal/modelhandler/XMLModelLoader.cl
+ ass
+SHA1-Digest: 5bqleSCfsRLONh6Q30A0gKGG1Io=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/contentmodel/NullC
+ ontentModel$NullCMNamedNodeMap.class
+SHA1-Digest: 6u81xSatRy/bix5DvsFuF7uLduA=
+
+Name: org/eclipse/wst/xml/core/internal/validation/ValidatorHelper$MyC
+ ontentHandler.class
+SHA1-Digest: 19njViozG50KMVASLZY/E6kYT6g=
+
+Name: org/eclipse/wst/xml/core/internal/Logger.class
+SHA1-Digest: tPhjy7b6GDUuwjWarIZhvwtf70U=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/annotation/Annota
+ tion.class
+SHA1-Digest: XOQs+jJ7fqbetkv0G00AH7wInMI=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/CMDescriptio
+ nBuilder.class
+SHA1-Digest: FerUCahvu3ilF9QFbEhBiVeWV6M=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelquery/extens
+ ion/ModelQueryExtension.class
+SHA1-Digest: C8+XK9qoTJO/XBHKQxsY008DmHA=
+
+Name: org/eclipse/wst/xml/core/internal/validation/ValidatorHelper$1.c
+ lass
+SHA1-Digest: BMcu4GZAWvogWcQ3wfc1PnYrChQ=
+
+Name: org/eclipse/wst/xml/core/internal/document/TextImpl.class
+SHA1-Digest: jBk1bJ3xOPinBRJgrRRJK5Brbn8=
+
+Name: org/eclipse/wst/xml/core/internal/contenttype/XMLHeadTokenizer.c
+ lass
+SHA1-Digest: DWuc1w2AZvYVsCnzlEDAuE5K5AY=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/factory/CMDocumen
+ tFactoryRegistry.class
+SHA1-Digest: CJyuBQtw7eZthedcj6OLPl8WYt0=
+
+Name: org/eclipse/wst/xml/core/internal/validate/AbstractPropagatingVa
+ lidator.class
+SHA1-Digest: h3zq05g0WqRjhmI6/bwk/g2BSVU=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidator$Locati
+ onCoordinate.class
+SHA1-Digest: oJiXjNA/GeApWEcbaG34fFN+eFc=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/contentmodel/CMDoc
+ umentTracker.class
+SHA1-Digest: lyDbZ9kEMexq7rxSIFWFFQzQhhU=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/XMLCDataTextReg
+ ion.class
+SHA1-Digest: is6entSRPjnZJyH3kJsvOoBUl1g=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/NameValidator.clas
+ s
+SHA1-Digest: /tl0HjtEAEOPl5cAGV4N0gTlKlg=
+
+Name: org/eclipse/wst/xml/core/internal/commentelement/impl/CommentEle
+ mentConfiguration.class
+SHA1-Digest: poEf9q1CH7URAbChEj0xkqHSUHY=
+
+Name: org/eclipse/wst/xml/core/internal/encoding/XMLDocumentCharsetDet
+ ector.class
+SHA1-Digest: x6ffSGeKGijMNeusRxZUNFb6Dcc=
+
+Name: org/eclipse/wst/xml/core/internal/validation/xmlvalidation.prope
+ rties
+SHA1-Digest: nX+nu+ylVKmvTBC7kJd2iexe6r8=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/basic/CMGroupImpl
+ .class
+SHA1-Digest: kVdyF/R56X1DPR5qkZ+H+IzS3vE=
+
+Name: org/eclipse/wst/xml/core/internal/search/quickscan/XMLQuickScan.
+ class
+SHA1-Digest: 4abtQm0a4pGcVNMlgNzKpcTI4eg=
+
+Name: org/eclipse/wst/xml/core/internal/document/XMLModelParser.class
+SHA1-Digest: PZnh41eicTlKNHu+xBbl/Azqsds=
+
+Name: org/eclipse/wst/xml/core/internal/validation/errorcustomization/
+ ElementInformation.class
+SHA1-Digest: rbul93cjmXqlyZzj6jP+gNNdndQ=
+
+Name: org/eclipse/wst/xml/core/internal/document/CharacterDataImpl.cla
+ ss
+SHA1-Digest: /q3hGOtftLA0NeOd4ROGkiWdeXw=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMNode.class
+SHA1-Digest: zg7vFb9aoYrqAtqZ/d4CbS6XWNg=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMDataType.class
+SHA1-Digest: o/If5sLbDMySlnRgZJUI05DLbuQ=
+
+Name: org/eclipse/wst/xml/core/internal/parser/RegionFactory.class
+SHA1-Digest: 8URxIrpR6DGtW9eXWrDm3cbys3A=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/document/IDOMImple
+ mentation.class
+SHA1-Digest: UbXbA9a1Biwt0iv5goQULy1YbDk=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/format/StructuredF
+ ormatPreferencesXML.class
+SHA1-Digest: ztWwBG7CpqR8jOw16JeRO9rHBcA=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/AttributeEquals
+ Region.class
+SHA1-Digest: KDezRKvx3QgLU1WiiU9hlstuciM=
+
+Name: org/eclipse/wst/xml/core/internal/document/DocumentImpl$TagNameC
+ ache.class
+SHA1-Digest: fRcOwPDPk+Xtubw6ip5XZWnkxQI=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/contentmodel/NullC
+ ontentModel$NullIterator.class
+SHA1-Digest: 96fHBA3WHy2RVydeObR9SLF7z1I=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidator$MyStan
+ dardParserConfiguration.class
+SHA1-Digest: WJO9Y03RbAmzXycGi8+jAIW3WTw=
+
+Name: org/eclipse/wst/xml/core/internal/search/matching/SAXSearchEleme
+ nt.class
+SHA1-Digest: NVrOadjeMu36XpLCBpkBQpGiodQ=
+
+Name: org/eclipse/wst/xml/core/internal/parser/XML10Names.class
+SHA1-Digest: VaZtGP5emAksvdLzIAVDBdPn/0A=
+
+Name: org/eclipse/wst/xml/core/internal/EveryNodeDebugAdapter$Internal
+ StructuredDocumentAboutToChange.class
+SHA1-Digest: xIU7NIk4fnJnJijWgyVA4YWnd8M=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/ValidationInfo
+ .class
+SHA1-Digest: 3FLJF5i34eLhGbPYGORSk11/GVM=
+
+Name: org/eclipse/wst/xml/core/internal/search/quickscan/XMLQuickScan$
+ InternalErrorHandler.class
+SHA1-Digest: UlOVEEFSh+Ekxh0NTeIwrgHdwyw=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/Catalog$2.class
+SHA1-Digest: hBrAAn1b+dxM1+btgiDovbBGnFc=
+
+Name: org/eclipse/wst/xml/core/internal/propagate/PropagatingAdapterIm
+ pl.class
+SHA1-Digest: ly6khBYGDTr0l7wWSVBdqEJ5zyM=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$PathRecordingResult.class
+SHA1-Digest: 7EyGROxGvngsbS7L5MLCTRbZpak=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/NamespaceAtt
+ ributeVisitor.class
+SHA1-Digest: iJPDYJV5ePUIeP4WQuqi2n4uch8=
+
+Name: org/eclipse/wst/xml/core/internal/cleanup/XMLCleanupPreferencesI
+ mpl.class
+SHA1-Digest: KbCMdmRvbjUXJV2e148rXwRByqE=
+
+Name: org/eclipse/wst/xml/core/internal/search/XMLComponentDeclaration
+ Pattern.class
+SHA1-Digest: luzP5z2xbUOOgl2gf4pp0aatyMM=
+
+Name: about.html
+SHA1-Digest: mUOvxSYxCUot6WW9T8TxmOQUrws=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMAttributeDeclar
+ ation.class
+SHA1-Digest: DcFkWko3sJGLK1mcEifbi5h7Aa4=
+
+Name: org/eclipse/wst/xml/core/internal/document/JSPTag.class
+SHA1-Digest: rakWUa0hIytpgOes/MDcdgAaVDk=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/provisional/IRewriteEn
+ try.class
+SHA1-Digest: 979eMSEUHd7VZS8whE8sDaapnWg=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMNamedNodeMap.cl
+ ass
+SHA1-Digest: y6JOUEcKz++BDlY97XEpLT/h+0o=
+
+Name: org/eclipse/wst/xml/core/internal/search/TargetNamespaceReferenc
+ ePattern.class
+SHA1-Digest: K9c5dLjBC7+Z5Z7BhHvtCiBZxr4=
+
+Name: org/eclipse/wst/xml/core/internal/search/XMLComponentReferencePa
+ ttern.class
+SHA1-Digest: xrBaOYsk0AWU4nmbGuobAJSFCuE=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelquery/CMDocu
+ mentReference.class
+SHA1-Digest: xf+uSQOtlxyOt5+LSJgqYlL04QQ=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/annotati
+ on/AnnotationFileRegistry.class
+SHA1-Digest: bNjglKikbc6wbxFR3aGOmG6Un2w=
+
+Name: org/eclipse/wst/xml/core/internal/document/CharacterStringPool$L
+ imitedHashMap.class
+SHA1-Digest: sny1E+yhUt9JMofq5RTZUavqUQs=
+
+Name: org/eclipse/wst/xml/core/internal/document/TextImpl$StringPair.c
+ lass
+SHA1-Digest: XuMnpGvDn1fQ7/7IvcbH06mSXmk=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/factory/CMDocumen
+ tFactoryDescriptor.class
+SHA1-Digest: OiUO5SU+z4m0T8F+tlD0aIKWMYk=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/DOMWriter$XM
+ LVisitor.class
+SHA1-Digest: 44Ku6XDLJCLQ+svof4nLciit1cY=
+
+Name: org/eclipse/wst/xml/core/internal/search/XMLSearchParticipant$DO
+ MVisitor.class
+SHA1-Digest: aklkeT5gWmKzsKWPgE+EvogPXGc=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidator$3.clas
+ s
+SHA1-Digest: JYWgTqPDGmj/5UkCKcXX8+wwWAA=
+
+Name: org/eclipse/wst/xml/core/internal/ssemodelquery/MovableModelQuer
+ y.class
+SHA1-Digest: PTLXJ+Efa4Puj0+GsfQXwjr75lk=
+
+Name: org/eclipse/wst/xml/core/internal/formatter/XMLFormatterFormatPr
+ ocessor.class
+SHA1-Digest: MdscCy/NalZZHtNtUvfLbXhdtJ8=
+
+Name: org/eclipse/wst/xml/core/internal/formatter/XMLFormattingConstra
+ ints.class
+SHA1-Digest: ffoliV+QiZ/+DumqGbOClCEQ3jA=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/provisional/INextCatal
+ og.class
+SHA1-Digest: 6iuFjx34ibDZDiC4Q+UaNsZDnzc=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/SuffixEntry.class
+SHA1-Digest: uNjlL5w9C1NXziGc36LgX3iuSYE=
+
+Name: org/eclipse/wst/xml/core/internal/document/XMLGeneratorImpl.clas
+ s
+SHA1-Digest: AI4qGIJtKa+iat0Gm9BJWU6V1AE=
+
+Name: org/eclipse/wst/xml/core/internal/document/NodeContainer.class
+SHA1-Digest: XT66ydh+0G6V0/0KhbF+M8MtJ5k=
+
+Name: org/eclipse/wst/xml/core/internal/document/NotationImpl.class
+SHA1-Digest: uhCl/Z/5ofyAv0Pe2mBp17Pip9s=
+
+Name: org/eclipse/wst/xml/core/internal/document/NodeContainer$ChildNo
+ desCache.class
+SHA1-Digest: PTmiCeulJetV3gyxgpJRAVUDHo8=
+
+Name: org/eclipse/wst/xml/core/internal/search/impl/Messages.class
+SHA1-Digest: cfgF7/FtiBOA2zNSVFXAcD5YC98=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidationConfig
+ uration.class
+SHA1-Digest: kyeKgEQEi1mObIhRFgVX6fAtL2w=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/WhiteSpaceOnlyR
+ egion.class
+SHA1-Digest: Zj4rEfp5tyzT76zkeKsnePhXVDs=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/IXMLNamespace.clas
+ s
+SHA1-Digest: CPbkQqfI82kWkvJCaNdWqN9n/NM=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/contentmodel/CMNod
+ eWrapper.class
+SHA1-Digest: ypfs5Xi7mlACXZXZeszNAFZl1v4=
+
+Name: org/eclipse/wst/xml/core/internal/contenttype/EncodingParserCons
+ tants.class
+SHA1-Digest: 08qLHjHEbpxA5KwCrV77PFXUzaI=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/Ex
+ ternalSchemaLocationProviderRegistry.class
+SHA1-Digest: ng5H5zuPIDj72Bg9AjS9/ewEVXc=
+
+Name: org/eclipse/wst/xml/core/internal/document/CharacterStringPool$C
+ harArray.class
+SHA1-Digest: Q21anBnn8n9HSvqxVGYiWh4Jbl0=
+
+Name: org/eclipse/wst/xml/core/internal/document/CDATASectionImpl.clas
+ s
+SHA1-Digest: aIU3QxQ7ua8Je/jujKFrG0L/FRc=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelquery/ModelQ
+ ueryAction.class
+SHA1-Digest: oyQE1pmG1P8u5UDtL76zyD9+Ews=
+
+Name: org/eclipse/wst/xml/core/internal/emf2xml/EMF2DOMSSERenderer.cla
+ ss
+SHA1-Digest: RAdIy8NjgyBCB4MxSAyY5t6l7NY=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/annotati
+ on/AnnotationFileParser$AnnotationMapContentHandler.class
+SHA1-Digest: J/vBIAC05nJjzLV6hbqfeootG6A=
+
+Name: org/eclipse/wst/xml/core/internal/encoding/XMLDocumentLoader.cla
+ ss
+SHA1-Digest: CeDuLdFAJ5ZD9gcz76fg+dd+3pI=
+
+Name: org/eclipse/wst/xml/core/internal/regions/DOMRegionContext.class
+SHA1-Digest: 8wglhho61ib5CRAI5p9oMMssOQw=
+
+Name: org/eclipse/wst/xml/core/internal/validation/ValidatorHelper.cla
+ ss
+SHA1-Digest: /HLqsF6ctUsE6OTgfn0os138jDs=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$MatchModelNode.class
+SHA1-Digest: Okv5PN9IdqwMbQLEwqQiWen1LMc=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/provisional/ICatalog.c
+ lass
+SHA1-Digest: EWjtT4xm3ssPz5/CH1sTRBocVl4=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/CM
+ DocumentManagerImpl$1.class
+SHA1-Digest: +a0Ff45MZ/JbUW9TGUcp4xrqOGw=
+
+Name: org/eclipse/wst/xml/core/internal/document/DocumentImpl$LimitedC
+ ache.class
+SHA1-Digest: 5xunWXW7+dTEdBRmuDATOHNKbro=
+
+Name: org/eclipse/wst/xml/core/internal/parser/BlockStructuredDocument
+ Region.class
+SHA1-Digest: wgADUfbYYKc6KeEUXR4dpC4VLng=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelquery/CMDocu
+ mentReferenceProvider.class
+SHA1-Digest: QV5wBNoHlHHaAVtKf+TH6USXIPk=
+
+Name: org/eclipse/wst/xml/core/internal/validation/errorcustomization/
+ ErrorMessageCustomizerDelegate.class
+SHA1-Digest: v/gdJYPylwsvUmCoPq4SG6YYJhk=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$ElementList.class
+SHA1-Digest: buavBo3xs7Eurvswg5x78kl1gNo=
+
+Name: org/eclipse/wst/xml/core/internal/parser/XMLStructuredDocumentRe
+ Parser.class
+SHA1-Digest: 8XUMo8ZVJz4bk3j0+VYUJhvVD4U=
+
+Name: org/eclipse/wst/xml/core/internal/tasks/XMLFileTaskScanner.class
+SHA1-Digest: CiIqJAgzj10YWO/U3IyZAo54++A=
+
+Name: org/eclipse/wst/xml/core/internal/search/quickscan/XMLQuickScanC
+ ontentHandler.class
+SHA1-Digest: FvKlU1ZMxj4zv0v7UbL/Gqxo/z8=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/XMLHeadParserRe
+ gion.class
+SHA1-Digest: 6S+gNU6AS0L4gOd83LWYSWvNqyo=
+
+Name: org/eclipse/wst/xml/core/internal/document/NodeListImpl.class
+SHA1-Digest: GjKdYcodbQD1fyJt2JGgyt7HF+0=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/NestedValidato
+ rContext.class
+SHA1-Digest: iUm9FT8fTbpNT3awyiXBo+cdqco=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelquery/CMDocu
+ mentManager.class
+SHA1-Digest: kmOq335iT0x2eD+A5CItLF/HOg0=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/In
+ ferredGrammarBuildingCMDocumentLoader.class
+SHA1-Digest: 6rPjZqdaXRDFSzIJtcE+x9pCebw=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/logging/Comman
+ dLineLogger.class
+SHA1-Digest: n7nMzpmEzShN2d7ZBGbs5og+knY=
+
+Name: org/eclipse/wst/xml/core/internal/commentelement/impl/CommentEle
+ mentConfiguration$1.class
+SHA1-Digest: 5/ki+gxpaiGGIngJdPZ18h0ut2Y=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/basic/CMDataTypeI
+ mpl.class
+SHA1-Digest: gSE2oGhOd7D75PbCB/1N6fcVfJc=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidationMessag
+ es.class
+SHA1-Digest: 7tRvyGEn5Jik7atpZWTKj7FIDcM=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/DOM
+ Validator$CMGroupContentVisitor.class
+SHA1-Digest: PqYwyiHxIDX2hIQhaBloHUAvt9k=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/DOMContentBu
+ ilderImpl$ExternalCMDocumentSupport.class
+SHA1-Digest: qcFJbHQ7auUPAfjQ/8ePHc2KoFw=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/TagCloseRegion.
+ class
+SHA1-Digest: sdbH88TWfyK2TDzWQzhyJSlXpmk=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/format/CommentNode
+ Formatter.class
+SHA1-Digest: 40ZyPh0cVS81jJqIB8ha7sVWCg8=
+
+Name: org/eclipse/wst/xml/core/internal/validate/ValidationComponent.c
+ lass
+SHA1-Digest: Ln7+6B6RZaV6NYYSrkjA9otbHeg=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/Mo
+ delQueryImpl.class
+SHA1-Digest: 8tQXnugllmZW9RHNpMx5khDldVM=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/CatalogElement.class
+SHA1-Digest: D2/lj9rUQuVM2mLxsOVMtfcMr2Q=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/TagNameRegion.c
+ lass
+SHA1-Digest: E1YC9CyfJ3oXPNhuGM54ANsBvBI=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/AttributeNameRe
+ gion.class
+SHA1-Digest: EXtN+6DJo9TcuVJsYQvmX7xnFkg=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/DOMWriter.cl
+ ass
+SHA1-Digest: EQ8eTTjLmAiDriNv9jtIDLsOKqE=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/provisional/ICatalogEl
+ ement.class
+SHA1-Digest: tbCjKhMCl9LXnvGIFtXGr2MmNKc=
+
+Name: org/eclipse/wst/xml/core/internal/document/XMLModelUpdater.class
+SHA1-Digest: aOND6hRisdjF4l1iV1iHIh3llR0=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/Catalog$1.class
+SHA1-Digest: GXbi8eZROW2hDPweSBpIJasvx7o=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelquery/ModelQ
+ ueryCMProvider.class
+SHA1-Digest: KnnZp3t2zqC8l5IwRPYxtANYgw0=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$Result.class
+SHA1-Digest: hBWwQYESbX/lYr5UbWhi2zIiHsg=
+
+Name: org/eclipse/wst/xml/core/internal/document/CommentImpl.class
+SHA1-Digest: Zbom9uox/sJ5SQ1q0Lzd0vrVwvY=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/XM
+ LAssociationProvider.class
+SHA1-Digest: Ljj56Wq8HXn4KSi7GBNwWVzHbdE=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/Catalog$UserCatalogLS.
+ class
+SHA1-Digest: OK+qM29x8olQ01LFFZ8+n9FLh2c=
+
+Name: org/eclipse/wst/xml/core/internal/search/matching/PatternMatcher
+ .class
+SHA1-Digest: 8BmgTtt2tTg8TfvfNJw5lXkNvZk=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/CatalogWriter.class
+SHA1-Digest: mNEu1e5yBFpyHQ2RrEX9aR/xXwk=
+
+Name: org/eclipse/wst/xml/core/internal/search/matching/XMLSearchPatte
+ rnMatcher.class
+SHA1-Digest: K15fpnc2ZIprAilWMzDfX24cIb0=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/contentmodel/Conte
+ ntModelAdapter.class
+SHA1-Digest: kjvi0aS5RJ65MaIqaX5YnR160aM=
+
+Name: org/eclipse/wst/xml/core/internal/document/ModelParserAdapter.cl
+ ass
+SHA1-Digest: oIacdzQm6pLvFv/0wdIadSl7d8k=
+
+Name: org/eclipse/wst/xml/core/internal/document/CharOperation.class
+SHA1-Digest: WalTH6HgZWUB/SYUkBj7tETQAeA=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/factory/CMDocumen
+ tFactoryRegistryReader.class
+SHA1-Digest: zPz5hPmR/YEou3HZcA6JZZ+0bO0=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/GenericTemplate
+ Region.class
+SHA1-Digest: bV0kzi5w4ntZqzQN0hZV1b0bg68=
+
+Name: org/eclipse/wst/xml/core/internal/EveryNodeDebugAdapter$Internal
+ StructuredDocumentListener.class
+SHA1-Digest: OCzcBDODdFjJf/kdBoSGcpdLhOc=
+
+Name: org/eclipse/wst/xml/core/internal/modelquery/ModelQueryUtil.clas
+ s
+SHA1-Digest: 3rzcMZKQ69ME8AbBLBZ4SQycIw8=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/format/ElementNode
+ Formatter.class
+SHA1-Digest: a+Pfy+Pd3LLpjXX2biuQoksUGao=
+
+Name: org/eclipse/wst/xml/core/internal/validation/eclipse/XMLValidato
+ r.class
+SHA1-Digest: QLLZuFNu2+T2vnwEK0zQaxaEA+s=
+
+Name: org/eclipse/wst/xml/core/internal/search/XMLSearchParticipant.cl
+ ass
+SHA1-Digest: R3Gv32EmWEIGOJU+6PHDvCMDdgc=
+
+Name: org/eclipse/wst/xml/core/internal/document/DOMMessages.propertie
+ s
+SHA1-Digest: u1CHiuhUnSoSw04H99ceVQ9gKcQ=
+
+Name: org/eclipse/wst/xml/core/internal/modelhandler/ModelHandlerForXM
+ L.class
+SHA1-Digest: H7JN5ZrXMvttgBu6V8a4svqwA7A=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidator$2.clas
+ s
+SHA1-Digest: hvvmKAl4WwgJF0Q1xh8p9m/KR4Y=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/contentmodel/CMDoc
+ Type.class
+SHA1-Digest: CMIw2LaaCCBwFJVPdJJe27+iNyY=
+
+Name: org/eclipse/wst/xml/core/internal/ssemodelquery/ModelQueryAdapte
+ r.class
+SHA1-Digest: txqzbSLX39dE3AKU1n4MsnwlUiw=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMElementDeclarat
+ ion.class
+SHA1-Digest: 0z0OtyQnN1lFSdl22Ogdpzd4XTI=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/contentmodel/NullC
+ ontentModel.class
+SHA1-Digest: zjisdzD9qJkspd6fIP5tmFPFMr0=
+
+Name: org/eclipse/wst/xml/core/internal/parser/XMLSourceParser.class
+SHA1-Digest: 8/iD4Hl1wwB8GEZOAs4xTehsd2w=
+
+Name: org/eclipse/wst/xml/core/internal/modelquery/XMLModelQueryAssoci
+ ationProvider.class
+SHA1-Digest: TgVVZMSFYBr5vqeqSMU6DNRBcC8=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/XMLCatalogURIResolverE
+ xtension.class
+SHA1-Digest: vwiOxeLfzixBPAqKGbXssW8P4EI=
+
+Name: org/eclipse/wst/xml/core/internal/modelquery/ModelQueryAdapterFa
+ ctoryForXML$InternalModelStateListener.class
+SHA1-Digest: W2Wue+IhjbgbUWyYJit/HDtKLS4=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator.class
+SHA1-Digest: vUUwdalskt6FAWhmx+DKnpA7jPQ=
+
+Name: org/eclipse/wst/xml/core/internal/document/DOMModelImpl.class
+SHA1-Digest: M7zZC/Lz6xWR/aGl2Vp4pniONUg=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/Mo
+ delQueryActionHelper.class
+SHA1-Digest: pUVzj3/4l9zljeHx5Guf89rVTgo=
+
+Name: org/eclipse/wst/xml/core/internal/document/DOMMessages.class
+SHA1-Digest: FplXrmqmnKUgpS8eXhLEn/KOH4A=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$Arc.class
+SHA1-Digest: k4PX+KxOVana9N/q950nJd2sa28=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/CatalogReader.class
+SHA1-Digest: Eq427BSGPOXGBHLGVEk1FAAQpiA=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/Mo
+ delQueryImpl$AvailableContentCMVisitor.class
+SHA1-Digest: Nn/oUH1Mjsh8Z24lob7868FJus4=
+
+Name: org/eclipse/wst/xml/core/internal/parser/IntStack.class
+SHA1-Digest: 9eFoxdpWRPCPgai3mBVJsDBIn9Q=
+
+Name: org/eclipse/wst/xml/core/internal/contenttype/ByteReader.class
+SHA1-Digest: zWGM/dfSh++AIhgFfASenv4pC/4=
+
+Name: org/eclipse/wst/xml/core/internal/document/ElementImpl.class
+SHA1-Digest: OaW33I00myR5dyiVuJkIqBj21SQ=
+
+Name: org/eclipse/wst/xml/core/internal/document/XMLModelContext.class
+SHA1-Digest: +mHGyUMp52OyR2OpIxIJLDdcafU=
+
+Name: org/eclipse/wst/xml/core/internal/document/ElementImpl$Attribute
+ s.class
+SHA1-Digest: 24UtO7P+vevh80wywlG+d7d+lYY=
+
+Name: org/eclipse/wst/xml/core/internal/cleanup/ElementNodeCleanupHand
+ ler.class
+SHA1-Digest: jiAhP5pRBDOQJ/ynpSTxPgtFnec=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$StringElementContentComparator.class
+SHA1-Digest: UZmez5rqBII9MOl7HNxrjc6ql08=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/modelque
+ ryimpl/ModelQueryExtensionDescriptor.class
+SHA1-Digest: yr2Aaaxpn2xXRvWxmQycz9M8ioE=
+
+Name: org/eclipse/wst/xml/core/internal/XMLCorePluginResources.propert
+ ies
+SHA1-Digest: 687HZyw7YIgwSmSC47zMhMw+c4M=
+
+Name: org/eclipse/wst/xml/core/internal/EveryNodeDebugAdapter$Internal
+ DocumentListener.class
+SHA1-Digest: LYqosJk70zYH9TLDvm5HQ/MbiuU=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/RegionToStringU
+ til.class
+SHA1-Digest: 0XN2QTTBD0Vd0OdmjZrTPKU0T3U=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$MatchModelNodeBuilder.class
+SHA1-Digest: vbIP/y+y5Ejbw7H6K/0PwRFtCsE=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/modelque
+ ryimpl/ModelQueryExtensionRegistry.class
+SHA1-Digest: co3UPdQsfFtMD158/GkTBI/r8Io=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/text/IXMLPartition
+ s.class
+SHA1-Digest: Tc2zfA1MN5s3qFSmBzCOUiJpclQ=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/annotati
+ on/ResourceBundleHelper.class
+SHA1-Digest: O0OSwJvII0hAIwKYY5HqJE+L+u0=
+
+Name: org/eclipse/wst/xml/core/internal/EveryNodeDebugAdapter$Internal
+ ModelStateListener.class
+SHA1-Digest: e/t5tr0G3AfQhy9C5CkGEQj2e8Q=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/format/DocumentNod
+ eFormatter.class
+SHA1-Digest: kKC9F4e9lu8+0IC51UKNar0VhVI=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/Ba
+ seAssociationProvider.class
+SHA1-Digest: /AavI1wsuO1XrVv6k+venYG0jos=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/provisional/ICatalogLi
+ stener.class
+SHA1-Digest: fDrd0gDMPWlHhNxM0cF1cwMj6mY=
+
+Name: org/eclipse/wst/xml/core/internal/commentelement/util/CommentEle
+ mentFactory.class
+SHA1-Digest: FYH7jZIISkSRKf7x7Ajvax7RlCg=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/TypedCatalogElement.cl
+ ass
+SHA1-Digest: kcQvgl0FaCUCYhzzZfzI5kQAwpc=
+
+Name: org/eclipse/wst/xml/core/internal/validation/ValidatorHelper$Int
+ ernalErrorHandler.class
+SHA1-Digest: TM9o3i3ExfroRbytBaASW+b6BoY=
+
+Name: org/eclipse/wst/xml/core/internal/validation/eclipse/Validator.c
+ lass
+SHA1-Digest: lXuYQvl8hX1ZtZD+2YvxSwaYdow=
+
+Name: org/eclipse/wst/xml/core/internal/validation/MarkupValidator.cla
+ ss
+SHA1-Digest: l36aCM1snQMryYqb3mToMq3xBwE=
+
+Name: META-INF/eclipse.inf
+SHA1-Digest: KyT9FF7C7t86NoBoa2kZT3ZJBfw=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/CatalogContributorRegi
+ stryReader.class
+SHA1-Digest: axaT/xOzCHJwPXJjRPkYqbIxhpI=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/document/IDOMEntit
+ y.class
+SHA1-Digest: 0/Be1LHFuJwyX9fWM8A1oglW0SM=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/Mo
+ delQueryActionHelper$Action.class
+SHA1-Digest: LnhAygg/cN2uq9cpxfz13sJLlnQ=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/format/NodeFormatt
+ er.class
+SHA1-Digest: 0pQs7VUSpH0J91FrDysgNrDGv8s=
+
+Name: .options
+SHA1-Digest: l6dvQ+bgIZ56u4ZouIzuJrAV5zc=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/basic/CMNodeListI
+ mpl.class
+SHA1-Digest: tMCmT6EnYiTHtth+3orSTUmB6g4=
+
+Name: org/eclipse/wst/xml/core/internal/modelquery/XMLModelQueryImpl.c
+ lass
+SHA1-Digest: FnBju6FbIcAtzzmyFBIJJw81fhA=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/IXMLPreferenceName
+ s.class
+SHA1-Digest: x2VjUx0pmciDvxXtjSnxU0b+Ups=
+
+Name: org/eclipse/wst/xml/core/internal/validation/ProblemIDsXML.class
+SHA1-Digest: bzeookiRMTqLU+cM3zN5X41MmGg=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/format/NoMoveForma
+ tter.class
+SHA1-Digest: zbSPPULRUr9iqAPIwxAbHKh9kao=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/ContentBuild
+ er.class
+SHA1-Digest: uMvvmf+l4YyYIE1/biEXQS1AzuM=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/format/TextNodeFor
+ matter.class
+SHA1-Digest: xInbR1gXgV0EPu4Z8WYRA+sqY7E=
+
+Name: org/eclipse/wst/xml/core/internal/document/StructuredDocumentReg
+ ionManagementException.class
+SHA1-Digest: +6vMeNOWnZFx/XusYnoGI52q6nE=
+
+Name: org/eclipse/wst/xml/core/internal/commentelement/impl/BasicComme
+ ntElementHandler.class
+SHA1-Digest: HcHrr8wnwBxjxEXBKMHK9nODFgQ=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidator$XMLErr
+ orHandler.class
+SHA1-Digest: h98M98juT9B1Yw7grI8KZzP1N8Y=
+
+Name: plugin.properties
+SHA1-Digest: zs+6qQg2zfnzhG0vumbudKNNQh4=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/annotation/Annota
+ tionMap.class
+SHA1-Digest: fczEJQI/kHASIKHo0A95BZ6yq0A=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/Gl
+ obalCMDocumentCache$GlobalCacheQueryResponse.class
+SHA1-Digest: Tu1JSMAS0Q7LzYOjRwxCRi+i6EU=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidationInfo.c
+ lass
+SHA1-Digest: xoMicRfZ9KGHo6sQV8+0uQW/UcA=
+
+Name: org/eclipse/wst/xml/core/internal/formatter/DefaultXMLPartitionF
+ ormatter$DOMRegion.class
+SHA1-Digest: 19TnBMHRFFQsp5I7qrR2wDTnbp8=
+
+Name: plugin.xml
+SHA1-Digest: wB+4I0Iwl3ibSZn0KqcApi1nla0=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/XMLContentRegio
+ n.class
+SHA1-Digest: HQ/+j+OTHUHI+g6D29H8+oAE8Fs=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelquery/ModelQ
+ uery.class
+SHA1-Digest: sqhwY1bL/lFiJp4UEazA/Wrry9M=
+
+Name: org/eclipse/wst/xml/core/internal/search/XMLSearchPattern.class
+SHA1-Digest: UQv1k55CJSHocjvklImWrMfgLys=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/basic/CMAnyElemen
+ tImpl.class
+SHA1-Digest: ZLtbjapAGXt+JydG/1ulqWU728g=
+
+Name: org/eclipse/wst/xml/core/internal/document/NodeImpl$UserDataAndH
+ andler.class
+SHA1-Digest: 3vuzS4B2XFZOpVy+ZepuMPIilag=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/Catalog$CatalogLS.clas
+ s
+SHA1-Digest: 0tcvkA7a9LNgaqwtDKTig3suWrU=
+
+Name: org/eclipse/wst/xml/core/internal/document/DocumentFragmentImpl.
+ class
+SHA1-Digest: im5ZPcnpeL3LEyODKovyt7g7RGw=
+
+Name: org/eclipse/wst/xml/core/contentmodel/modelquery/IExternalSchema
+ LocationProvider.class
+SHA1-Digest: Kk2Uf+40/xXulZhIdM3Qyh1Wzok=
+
+Name: org/eclipse/wst/xml/core/internal/document/CMNodeUtil.class
+SHA1-Digest: Cd9BtRuSt+Fgd7Wb88Q+Y+fffJ0=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$ElementPathRecordingResult.class
+SHA1-Digest: WpuvuGHBfES2bQSQpp+XY84RCDs=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/modelque
+ ryimpl/InferredGrammarFactory.class
+SHA1-Digest: un7aQWgLM6rIIlGA7ThP4/4a2Ds=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/document/IDOMText.
+ class
+SHA1-Digest: 9S8dHj7dWQt4ebpwh5lCbyyi41s=
+
+Name: org/eclipse/wst/xml/core/internal/document/ReadOnlyController.cl
+ ass
+SHA1-Digest: huWyWUQxqLmtCOsMaGSqCjzBEsA=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/XMLHeadParserFa
+ ctory.class
+SHA1-Digest: lhwXLDewKPLktzs2F9+QVaOUkz8=
+
+Name: org/eclipse/wst/xml/core/internal/text/rules/StructuredTextParti
+ tionerForXML.class
+SHA1-Digest: X9xTb6cjiYsjJ3YQVS+IhNNaesE=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMContent.class
+SHA1-Digest: C2DDK1VoxVcHmY1TPmXkLNxaV+I=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidator$1.clas
+ s
+SHA1-Digest: wTTSRHXKhYxmwz+ucyAvxESZXZM=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$ArcStackItem.class
+SHA1-Digest: hDOsf5as8X+STEG7wK45vtpQ6L0=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/CMDocumentCa
+ cheListener.class
+SHA1-Digest: NLTzEbBjCauQ8bXMO4OIMKItDLA=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/Catalog.class
+SHA1-Digest: TOpJ3C3c9JpgSxC9K0fekrX3sdc=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMDocument.class
+SHA1-Digest: tb/7eY6pCnFINDEWpyGfVCoHaQ0=
+
+Name: org/eclipse/wst/xml/core/internal/commentelement/util/TagScanner
+ .class
+SHA1-Digest: g771eLMmYCGwD1Q1Dfg/xU+Ag5o=
+
+Name: org/eclipse/wst/xml/core/internal/modelhandler/EmbeddedXML.class
+SHA1-Digest: pb8HoYQSjf1QobOO36CQ+tuCrHs=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/Catalog$DefaultCatalog
+ LS.class
+SHA1-Digest: VseT5S+oGK/0cRwb0Cqw2iDOR+g=
+
+Name: org/eclipse/wst/xml/core/text/IXMLPartitions.class
+SHA1-Digest: llbXw57KJYbogSMv/3gbkpWHElc=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/LazyURLInputSt
+ ream.class
+SHA1-Digest: oP1pyYCpb+0/EKs8SoRbLTlJ2Bw=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/annotati
+ on/AnnotationUtility.class
+SHA1-Digest: k+Ot4Z7sjOmigiHMdxf6VhTZzW4=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$GraphGenerator.class
+SHA1-Digest: iZooLyg3dv/hWLJ01QmoAszkP0s=
+
+Name: org/eclipse/wst/xml/core/internal/cleanup/NodeCleanupHandler.cla
+ ss
+SHA1-Digest: y4a1FsVPohIb/09KirSNVPkhW3E=
+
+Name: org/eclipse/wst/xml/core/internal/document/EntityReferenceImpl.c
+ lass
+SHA1-Digest: AfeAG7u0uo6lEBDMCLZdXVT4E4I=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/annotati
+ on/AnnotationFileInfo.class
+SHA1-Digest: JnJ+wW8ueZyJ+fX8RclKhtxnh/4=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/basic/CMNamedNode
+ MapImpl.class
+SHA1-Digest: N1U/XA9wdVG6RIHd3xxe904gJuw=
+
+Name: org/eclipse/wst/xml/core/internal/document/XMLModelNotifierImpl.
+ class
+SHA1-Digest: 3RSUIxA+vyYdkhE+ysUB6ILdxgs=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/CatalogReader$Compatab
+ ilityConstants.class
+SHA1-Digest: P8et8d6had96D8Eh0C89qEoVQkk=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/contenttype/Conten
+ tTypeIdForXML.class
+SHA1-Digest: vC3HkPd1neT/wa0LmSjItJTuxFE=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/basic/CMEntityDec
+ larationImpl.class
+SHA1-Digest: lzBXQFDhyc3BnxDuarolVN4dvSk=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/DOMContentBu
+ ilder.class
+SHA1-Digest: cnPNb9v/RjcnllNt8Z+SGIQgCus=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/CMVisitor.cl
+ ass
+SHA1-Digest: 4ZaJk4fTJ7ZtQG2m/Q+VBjgvPek=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/CatalogEntry.class
+SHA1-Digest: c2w5sPIe41r5Ui8p9WFxaOgRPzU=
+
+Name: org/eclipse/wst/xml/core/internal/EveryNodeDebugAdapter.class
+SHA1-Digest: O5ztktRZ5mTj7BXv4BYCR46WxsM=
+
+Name: org/eclipse/wst/xml/core/internal/validation/eclipse/ErrorCustom
+ izationPluginRegistryReader.class
+SHA1-Digest: 5kdCaIs0dg2xSPUOhs7Qc1Tc5qQ=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMGroup.class
+SHA1-Digest: xA2yAPbu4w2p3h9Om/8tGnBeNHU=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/TagOpenRegion.c
+ lass
+SHA1-Digest: DRlEI1HPCtV8zCXrSGrFjbQLQHg=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/provisional/ISuffixEnt
+ ry.class
+SHA1-Digest: vULlKb49P3BM8RyH5LIAD3uvt5M=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/DOM
+ Validator.class
+SHA1-Digest: bgN7PcdszSTSwEVxg59+BX+Jy5Q=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/logging/Eclips
+ eLogger.class
+SHA1-Digest: LSNiiz85E9R4u2bPGLCoUQ0ef6g=
+
+Name: org/eclipse/wst/xml/core/internal/document/DocumentTypeAdapter.c
+ lass
+SHA1-Digest: YySjrlOVJv6batxMEzBaQqJkk5c=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidationReport
+ .class
+SHA1-Digest: f+UVCcmlxeqHzVfWSa0FQgvErgc=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/annotati
+ on/AnnotationFileRegistryReader.class
+SHA1-Digest: jWIdCGOdpJAY/6S43ncoSl5G/GA=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/document/IDOMDocum
+ ent.class
+SHA1-Digest: /e6nOonug9rh9HQ5zMDJ8TmJQCc=
+
+Name: org/eclipse/wst/xml/core/internal/text/XMLStructuredDocumentRegi
+ on.class
+SHA1-Digest: uDd/sRORvmdBubx1pdRZaIUPBwI=
+
+Name: org/eclipse/wst/xml/core/internal/parser/XMLStructuredRegionFact
+ ory.class
+SHA1-Digest: XkFVFUBQmeY/0+yqBWKIV4TEp10=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/CatalogEvent.class
+SHA1-Digest: ED8S1vYErG5mGKZ0IW0ogsnXesk=
+
+Name: org/eclipse/wst/xml/core/internal/XMLCoreMessages.class
+SHA1-Digest: Rj1K9RYvsYTTDhUVwnrM+83gxNQ=
+
+Name: org/eclipse/wst/xml/core/internal/search/impl/messages.propertie
+ s
+SHA1-Digest: IVqIc+SMskKUTzXepn2NX+dUy9A=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/CatalogSet.class
+SHA1-Digest: 5VxgLAG2tBSDJZqsZCVwyBOlQ9M=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/factory/CMDocumen
+ tFactory.class
+SHA1-Digest: HrFTasTDaYZejQ4e/+s8vbDioGU=
+
+Name: org/eclipse/wst/xml/core/internal/validation/MarkupValidator$1.c
+ lass
+SHA1-Digest: 5H0JtazLPFdD+opmYUvJ4jz4m7Q=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/basic/CMNodeImpl.
+ class
+SHA1-Digest: ZamqrMcQqneGH1Kijr4PDkCpYKE=
+
+Name: schema/documentFactories.exsd
+SHA1-Digest: XGJQChWisqeo5Xz+KPSfAZM9iuc=
+
+Name: org/eclipse/wst/xml/core/internal/document/DocumentImpl.class
+SHA1-Digest: PjeTtw+Ytw4dqXRg88E4Nc2GOTY=
+
+Name: org/eclipse/wst/xml/core/internal/document/RangeImpl.class
+SHA1-Digest: dQi2tjVcCZQS/V+9QqX/K1J306U=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidator.class
+SHA1-Digest: tGs+9/sUzokKDbdSlG4d83fe4ss=
+
+Name: org/eclipse/wst/xml/core/internal/document/XMLModelNotifierImpl$
+ NotifyEvent.class
+SHA1-Digest: rMvfzl1WIILFELTMNu5TOM5bTJU=
+
+Name: org/eclipse/wst/xml/core/internal/validation/errorcustomization/
+ ErrorCustomizationManager$ErrorMessageInformation.class
+SHA1-Digest: v83qNSIqDe+pr8HCOhE4F4ICtME=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/DelegateCatalog.class
+SHA1-Digest: goyyXDpmBrRX9n9mA35dENb10Cc=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/IXMLCharEntity.cla
+ ss
+SHA1-Digest: 3YmcF4jpCQCTwu7sRdbobb+zC7I=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/Mo
+ delQueryActionHelper$MatchModelVisitor.class
+SHA1-Digest: QvF+m8wlYCEsW2L3ogdwg+mc44E=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$GraphNode.class
+SHA1-Digest: yWhap5PaXeTt4TztrAwqWL27/Hs=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$ElementContentComparator.class
+SHA1-Digest: APAHowIuRzPkhAGz80D7XRtZkaM=
+
+Name: org/eclipse/wst/xml/core/internal/document/CharacterStringPool.c
+ lass
+SHA1-Digest: lg110W0FjyX+IQhD9gM1xmmXvfc=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/OASISCatalogConstants.
+ class
+SHA1-Digest: qIZ7JKFQxkF1K6cyk6OdHVToQB4=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/ValidationRepo
+ rt.class
+SHA1-Digest: 78Y07oT7LALwmNpIGeunbsu/L5I=
+
+Name: org/eclipse/wst/xml/core/internal/validation/XMLValidator$MyEnti
+ tyResolver.class
+SHA1-Digest: dlN4L5C+Ko3xC6H/NzsSqbdnku4=
+
+Name: schema/annotationFiles.exsd
+SHA1-Digest: dH8f7426zGRvmINcXhpO6R8N1b4=
+
+Name: org/eclipse/wst/xml/core/internal/search/impl/XMLSearchDocument.
+ class
+SHA1-Digest: NkU5l0QHDOK8XeeSNQ+GS+VH7Zo=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/document/ISourceGe
+ nerator.class
+SHA1-Digest: C4CdweGpL9g9e3GAz1F4Wsp6x5M=
+
+Name: org/eclipse/wst/xml/core/internal/document/NodeImpl.class
+SHA1-Digest: 1YqiowJsisZtrTwuUMt+98gNSKk=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/DOMNamespace
+ InfoManager.class
+SHA1-Digest: 3dg5upPZcZfk4xKwZWCwQm7Csew=
+
+Name: org/eclipse/wst/xml/core/internal/validate/Propagator.class
+SHA1-Digest: njPhFWSnfITwsrPg2ZrF0N93sHI=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMNamespace.class
+SHA1-Digest: URhvY3H3Ch8oBYy43lcBAZVp9SY=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/EndTagOpenRegio
+ n.class
+SHA1-Digest: /6VFjJtW6ZA+eVT71xP9apopCvY=
+
+Name: org/eclipse/wst/xml/core/internal/cleanup/CleanupProcessorXML.cl
+ ass
+SHA1-Digest: 5HukfaJC535tDGGuA2CkOt0HDrU=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/DOMNamespace
+ InfoManager$NamespaceInfoReader.class
+SHA1-Digest: gDvhT9Do4aCq+YZuqPxP82zvkU4=
+
+Name: org/eclipse/wst/xml/core/internal/parser/regions/EmptyTagCloseRe
+ gion.class
+SHA1-Digest: ViTzfmS1zuYLFLawaatreUWJ7CU=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/basic/CMAttribute
+ DeclarationImpl.class
+SHA1-Digest: 3Gty/v3ePFJOWVMVD2dDCJ56vJU=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/CatalogReader$CatalogC
+ ontentHandler.class
+SHA1-Digest: 8/959xViAtRuK1Yni2SH5iB96QY=
+
+Name: org/eclipse/wst/xml/core/internal/modelquery/ModelQueryAdapterFa
+ ctoryForEmbeddedXML.class
+SHA1-Digest: WPlnwRh7UhpnE+Kmms3zN6VL+mA=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/logging/Logger
+ Factory.class
+SHA1-Digest: xsHej1ilPfKQUg/Ss2wfyIDHPUw=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/CM
+ DocumentManagerImpl.class
+SHA1-Digest: lVFxLZrdn2w2jATqpkTI70zXxz0=
+
+Name: schema/modelQueryExtensions.exsd
+SHA1-Digest: D5HjTAYJN4LtpkRJuoWFgyfkCaE=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/Catalog$InternalResolv
+ er.class
+SHA1-Digest: mger0Z+YcuIfBll9O782VjaW/SQ=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/internal/util/CMV
+ alidator$ItemCount.class
+SHA1-Digest: EE3i2gej5XuikaeOwuGRKc9S1m0=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/NextCatalog.class
+SHA1-Digest: hIXGUWRChYdw/MkFcAtcJKoYA1k=
+
+Name: org/eclipse/wst/xml/core/internal/modelquery/XMLCatalogIdResolve
+ r.class
+SHA1-Digest: IVjPDzxk1Q5VKp6w1ASClqcifLE=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMEntityDeclarati
+ on.class
+SHA1-Digest: klM5dDD4xtRKw2811rfVH3A/ygU=
+
+Name: org/eclipse/wst/xml/core/internal/preferences/XMLCorePreferenceN
+ ames.class
+SHA1-Digest: uK89VqPq2Cm0suFgHvUkEWwLrQA=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/modelqueryimpl/CM
+ DocumentLoader$CMDocumentLoadingNamespaceTable.class
+SHA1-Digest: efr6FVEpqCwt4vdPWhdC28ydJ2Y=
+
+Name: org/eclipse/wst/xml/core/internal/contenttype/IntStack.class
+SHA1-Digest: o3GdJv6asobUujRcKDOzX9WHzno=
+
+Name: org/eclipse/wst/xml/core/internal/catalog/RewriteEntry.class
+SHA1-Digest: 2C3bwKNiXjHHqWaKjZ5nf0IqnOI=
+
+Name: org/eclipse/wst/xml/core/internal/validation/AnnotationMsg.class
+SHA1-Digest: Y+DtlyJUhxoaB3oGLogY823WmO8=
+
+Name: org/eclipse/wst/xml/core/internal/provisional/format/FormatProce
+ ssorXML.class
+SHA1-Digest: ggCgFqPOuTnifrXM83M/xjzxCBQ=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/CMNodeList.class
+SHA1-Digest: vPggkmJGLZ8+uFHoOfZVNuPlG2E=
+
+Name: org/eclipse/wst/xml/core/internal/validation/core/logging/ILogge
+ r.class
+SHA1-Digest: W5z5dvOfCud6/KGTNffp1ZfxT5k=
+
+Name: org/eclipse/wst/xml/core/internal/document/InvalidCharacterExcep
+ tion.class
+SHA1-Digest: GfHPpILNKO8A9Ir55Awm4kXmXw8=
+
+Name: schema/catalogContributions.exsd
+SHA1-Digest: WO3Cz8ORVw5HGSX//bEDpZ7u9oU=
+
+Name: org/eclipse/wst/xml/core/internal/contentmodel/util/DOMNamespace
+ InfoManager$NamespaceInfoRemover.class
+SHA1-Digest: WQ2V+MCWO3tb7q43PIN4Q0QwOXw=
+
