@@ -124,9 +124,9 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 						"Add new custom components package", "Please input packages which includes Tapestry custom components:",
 						"", null);
 				if (input.open() == Window.OK) {
-					String newBundleName = input.getValue();
+					String newBundleName = input.getValue().trim();
 					List<String> tmp = model.getPackageList();
-					if(newBundleName != null && !newBundleName.trim().equals("")&& !tmp.contains(newBundleName)){
+					if(newBundleName != null && !newBundleName.equals("")&& !tmp.contains(newBundleName)){
 						List<String> added = new LinkedList<String>();
 						model.addPackageByPath(newBundleName);
 						added.add(newBundleName);
