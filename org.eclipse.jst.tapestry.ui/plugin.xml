@@ -14,7 +14,7 @@
             name="%NewTapestryPage_tml"
             icon="icons/tapestry.gif"
             category="org.eclipse.wst.web.tapestry.ui"
-            project="true"
+            project="false"
             class="org.eclipse.jst.tapestry.ui.internal.wizard.AddTapestryNewWizard"
             finalPerspective="org.eclipse.wst.web.ui.webDevPerspective"
             id="org.eclipse.wst.web.tapestry.ui.internal.wizards.TapestryPageWizard">
@@ -30,7 +30,7 @@
             name="%NewTapestryComponent_tml"
             icon="icons/tapestry.gif"
             category="org.eclipse.wst.web.tapestry.ui"
-            project="true"
+            project="false"
             class="org.eclipse.jst.tapestry.ui.internal.wizard.AddTapestryComponentWizard"
             finalPerspective="org.eclipse.wst.web.ui.webDevPerspective"
             id="org.eclipse.wst.web.tapestry.ui.internal.wizards.TapestryComponentWizard">
