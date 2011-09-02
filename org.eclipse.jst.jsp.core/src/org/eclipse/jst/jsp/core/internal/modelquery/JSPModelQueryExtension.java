@@ -48,7 +48,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 /**
  * An implementation of {@link ModelQueryExtension} for JSP and Tapestry tags in JSP documents
  * 
@@ -60,7 +59,7 @@ import org.xml.sax.SAXException;
 public class JSPModelQueryExtension extends ModelQueryExtension {
 	
 	private static final String TAG_JSP_ROOT = "jsp:root";
-	private static List<String> tapestryCustomComponents = null;
+	private static List<TapestryComponentModel> tapestryCustomComponents = null;
 
 	/**
 	 * Originally taken from JSPContentAssistProcessor
@@ -171,8 +170,8 @@ public class JSPModelQueryExtension extends ModelQueryExtension {
 							collectCustomComponents();
 							if(tapestryCustomComponents != null){
 								for(int i=0; i<tapestryCustomComponents.size(); i++){
-									ElemDecl cloneElement = (ElemDecl) temp.clone();
-									cloneElement.setNodeName(tapestryCustomComponents.get(i));
+									TapestryComponentModel tcm = tapestryCustomComponents.get(i);
+									ElemDecl cloneElement = (ElemDecl) temp.clone(tcm.nodeName, tcm.attributes);
 									nodeList.add(cloneElement);
 								}
 							}
@@ -195,6 +194,8 @@ public class JSPModelQueryExtension extends ModelQueryExtension {
 		return nodes;
 	}
 	
+
+	
 	private void collectCustomComponents(){
 		IEditorPart editorPart = Workbench.getInstance()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
@@ -206,14 +207,14 @@ public class JSPModelQueryExtension extends ModelQueryExtension {
 			IProject project = file.getProject();
 			final IFile res = project.getFile("/components.tcc");
 			if(res.exists()){
-				List nodeList = new ArrayList();
+				List<TapestryComponentModel> nodeList = new ArrayList<TapestryComponentModel>();
 				loadTapestryCustomComponentsTags(res, nodeList);
 				tapestryCustomComponents = nodeList;
 			}
 		}
 	}
 	
-	private void loadTapestryCustomComponentsTags(final IFile componentsFile, List nodeList){
+	private void loadTapestryCustomComponentsTags(final IFile componentsFile, List<TapestryComponentModel> nodeList){
 		final DocumentBuilderFactory domfac = DocumentBuilderFactory
 				.newInstance();
 		DocumentBuilder dombuilder = null;
@@ -243,7 +244,7 @@ public class JSPModelQueryExtension extends ModelQueryExtension {
 		}
 	}
 	
-	private void loadCustomComponents(Node root, List nodeList){
+	private void loadCustomComponents(Node root, List<TapestryComponentModel> nodeList){
 		NodeList components = root.getChildNodes();
 		if (components != null) {
 			for (int i = 0; i < components.getLength(); i++) {
@@ -251,7 +252,13 @@ public class JSPModelQueryExtension extends ModelQueryExtension {
 				if(component.getNodeType() == Node.ELEMENT_NODE && component.getNodeName().trim().equals("component")){
 					Node name = component.getAttributes().getNamedItem("name");
 					if (name != null){
-						nodeList.add(name.getNodeValue());
+						TapestryComponentModel tcm = new TapestryComponentModel();
+						tcm.nodeName = name.getNodeValue();
+						Node attributes = component.getAttributes().getNamedItem("attributes");
+						if(attributes != null){
+							tcm.attributes = attributes.getNodeValue().trim().split(",");
+						}
+						nodeList.add(tcm);
 					}
 				}
 			}
@@ -317,4 +324,9 @@ public class JSPModelQueryExtension extends ModelQueryExtension {
 		}
 		return result;
 	}
+	
+}
+class TapestryComponentModel{
+	public String nodeName;
+	public String[] attributes;
 }
