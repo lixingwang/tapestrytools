@@ -2,6 +2,7 @@ package org.eclipse.jst.tapestry.ui.internal.editor;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -21,6 +22,16 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.core.dom.AST;
+import org.eclipse.jdt.core.dom.ASTParser;
+import org.eclipse.jdt.core.dom.ASTVisitor;
+import org.eclipse.jdt.core.dom.AnnotationTypeDeclaration;
+import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.dom.FieldDeclaration;
+import org.eclipse.jdt.core.dom.MethodDeclaration;
+import org.eclipse.jdt.core.dom.Modifier;
+import org.eclipse.jdt.core.dom.SimpleName;
+import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -65,6 +76,8 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 	private Table table;
 	private TableViewer viewer;
     private IManagedForm managedForm;
+    
+    private String attributeList;
 
 	public PackagesPart(Composite parent, FormToolkit toolkit, int style) {
 		super(parent, toolkit, style);
@@ -205,7 +218,8 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 									String fullPath = file.getFullPath().toString();
 									String classFile = fullPath.replace(".tml", ".java").substring(1);
 									classFile = classFile.substring(classFile.indexOf("/"));
-									if(fullPath.endsWith(".tml") && file.getType() == IResource.FILE && project.getFile(classFile).exists()){
+									IFile classStream = project.getFile(classFile);
+									if(fullPath.endsWith(".tml") && file.getType() == IResource.FILE && classStream.exists()){
 										IFile componentFile = (IFile) file;
 										Element rootElement = getRootElementOfXML(componentFile.getContents());
 										if(rootElement.getNodeName().trim().equals("t:container")){
@@ -218,6 +232,8 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 											ci.setPath(pi);
 											ci.setPrefix("t");
 											ci.setText(componentName);
+											String attributes = goThroughClass(inputStream2String(classStream.getContents()));
+											ci.setAttributes(attributes);
 											componentList.add(ci);
 										}
 									}
@@ -234,6 +250,59 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private String goThroughClass(String ClassContent) {
+		attributeList = "";
+		ASTParser parser = ASTParser.newParser(AST.JLS3);
+		parser.setSource(ClassContent.toCharArray());
+		parser.setKind(ASTParser.K_COMPILATION_UNIT);
+		CompilationUnit cu = (CompilationUnit) parser.createAST(null);
+		cu.accept(new ASTVisitor() {
+			public boolean visit(FieldDeclaration node) {
+				String attr_name = "";
+				List list = node.fragments();
+				for(int i=0; i<list.size(); i++){
+					attr_name = list.get(i).toString();
+					break;
+				}
+				
+				List prefixs = node.modifiers();
+				for(int i=0; i<prefixs.size(); i++){
+					String each = prefixs.get(i).toString();
+					if(each.startsWith("@Parameter")){
+						int start = each.indexOf("(");
+						int end = each.indexOf(")");
+						if(start > -1 && end > each.indexOf("(") + 1 ){
+							String longName = each.substring(start+1, end).trim();
+							if(longName.startsWith("name=\"") && longName.endsWith("\"")) attr_name = longName.substring(6, longName.length()-1);
+						}
+						if(!attributeList.trim().equals("")) attributeList = attributeList +"," +attr_name;
+						else attributeList = attr_name;
+					}
+						
+				}
+				return false;
+			}
+		});
+		return attributeList;
+	}
+	
+	private String inputStream2String(InputStream ins) {
+		String all_content = null;
+		try {
+			all_content = new String();
+			ByteArrayOutputStream outputstream = new ByteArrayOutputStream();
+			byte[] str_b = new byte[1024];
+			int i = -1;
+			while ((i = ins.read(str_b)) > 0) {
+				outputstream.write(str_b, 0, i);
+			}
+			all_content = outputstream.toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return all_content;
 	}
 	
 	private Element getRootElementOfXML(InputStream stream){
