@@ -178,11 +178,12 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 		public boolean isJSP() {
 			return true;
 		}
-		public Object clone(){ 
+		public Object clone(String nodeName, String[] attributes){ 
 			ElemDecl o = null; 
 			try{ 
 				o = (ElemDecl)super.clone();
-				o.setAttributes(null);
+				o.setNodeName(nodeName);
+				o.setAttributes((CMNamedNodeMapImpl)o.attributes.clone(attributes));
 			}catch(CloneNotSupportedException e){ 
 				e.printStackTrace(); 
 			} 
@@ -262,7 +263,7 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 	// attribute creater
 	class JACreater implements Tapestry5Namespace {
 		// attribute declaration
-		class AttrDecl extends CMNodeImpl implements HTMLAttributeDeclaration {
+		class AttrDecl extends CMNodeImpl implements HTMLAttributeDeclaration, Cloneable {
 			HTMLCMDataTypeImpl type = null;
 			int usage = CMAttributeDeclaration.OPTIONAL;
 
@@ -278,7 +279,11 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 			public CMDataType getAttrType() {
 				return type;
 			}
-
+			
+			public void setAttrType(HTMLCMDataTypeImpl type){
+				type = type;
+			}
+			
 			/** @deprecated by superclass */
 			public String getDefaultValue() {
 				if (type.getImpliedValueKind() != CMDataType.IMPLIED_VALUE_DEFAULT)
@@ -302,6 +307,17 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 
 			public boolean shouldIgnoreCase() {
 				return false;
+			}
+			
+			public Object clone(String attribute){
+				AttrDecl o = null; 
+				try{ 
+					o = (AttrDecl)super.clone();
+					o.setNodeName(attribute);
+				}catch(CloneNotSupportedException e){ 
+					e.printStackTrace(); 
+				} 
+				return o; 
 			}
 		}
 

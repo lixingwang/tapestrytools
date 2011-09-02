@@ -17,6 +17,8 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Locale;
 
+import org.eclipse.wst.html.core.internal.contentmodel.TapestryElementCollection.ElemDecl;
+import org.eclipse.wst.html.core.internal.contentmodel.TapestryElementCollection.JACreater.AttrDecl;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMNamedNodeMap;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMNode;
 
@@ -27,7 +29,7 @@ import org.eclipse.wst.xml.core.internal.contentmodel.CMNode;
  * this class is tolerant of the key name case. That is, this class does not
  * distinguish "name", "NAME", and "Name" as a key name.
  */
-public class CMNamedNodeMapImpl implements CMNamedNodeMap {
+public class CMNamedNodeMapImpl implements CMNamedNodeMap, Cloneable {
 
 	private Hashtable items = null;
 
@@ -112,4 +114,23 @@ public class CMNamedNodeMapImpl implements CMNamedNodeMap {
 			return; // already registered.
 		items.put(cookedName, item);
 	}
+	
+	public Object clone(String[] attributes){ 
+		CMNamedNodeMapImpl o = null; 
+		try{ 
+			o = (CMNamedNodeMapImpl)super.clone();
+			Hashtable items = new Hashtable();
+			if(o.items.size() > 0 && o.item(0) instanceof AttrDecl){
+				AttrDecl one = (AttrDecl) o.item(0);
+				for(int i=0; i<attributes.length; i++){
+					String attribute = attributes[i];
+					items.put(attribute, one.clone(attribute));
+				}
+			}
+			o.items = items;
+		}catch(CloneNotSupportedException e){ 
+			e.printStackTrace(); 
+		} 
+		return o; 
+	}  
 }
