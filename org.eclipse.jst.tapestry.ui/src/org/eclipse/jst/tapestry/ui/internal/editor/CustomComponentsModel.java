@@ -178,6 +178,9 @@ public class CustomComponentsModel  {
 		Node path = cycle.getAttributes().getNamedItem("path");
 		if (path != null)
 			cc.setPath(path.getNodeValue());
+		Node attributes = cycle.getAttributes().getNamedItem("attributes");
+		if (attributes != null)
+			cc.setAttributes(attributes.getNodeValue());
 	}
 	
 	
@@ -238,12 +241,13 @@ public class CustomComponentsModel  {
 		return ret;
 	}
 	private String getCustomComponentContent(ComponentInstance ci){
-		String ret ="<component id=\"$id$\" name=\"$name$\" text=\"$text$\" prefix=\"$prefix$\" path=\"$path$\"/>\n";
+		String ret ="<component id=\"$id$\" name=\"$name$\" text=\"$text$\" prefix=\"$prefix$\" path=\"$path$\" attributes=\"$attributes$\"/>\n";
 		ret = ret.replace("$id$", ci.getId());
 		ret = ret.replace("$name$", ci.getName());
 		ret = ret.replace("$text$", ci.getText());
 		ret = ret.replace("$prefix$", ci.getPrefix());
 		ret = ret.replace("$path$", ci.getPath());
+		ret = ret.replace("$attributes$", ci.getAttributes()==null ? "":ci.getAttributes());
 		return ret;
 	}
 

@@ -6,6 +6,7 @@ public class ComponentInstance {
 	private String name;
 	private String text;
 	private String path;
+	private String attributes;
 	public String getPrefix() {
 		return prefix;
 	}
@@ -35,6 +36,12 @@ public class ComponentInstance {
 	}
 	public void setPath(String path) {
 		this.path = path;
+	}
+	public String getAttributes() {
+		return attributes;
+	}
+	public void setAttributes(String attributes) {
+		this.attributes = attributes;
 	}
 	
 }
