@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*******************************************************************************
+ * Contributors:
+ *   Gavingui2011@gmail.com Beijing China
+ *******************************************************************************/
+ -->
+<templates>
+    <template name="%Templates.actionlink.name" description="%Templates.actionlink.desc" id="org.apache.tapestrytools.components.actionlink" context="tml_components"  enabled="true">&lt;t:actionlink&gt; &lt;/t:actionlink&gt;</template>
+    <template name="%Templates.addrowlink.name" description="%Templates.addrowlink.desc" id="org.apache.tapestrytools.components.addrowlink" context="tml_components"  enabled="true">&lt;t:addrowlink&gt; &lt;/t:addrowlink&gt;</template>
+    <template name="%Templates.any.name" description="%Templates.any.desc" id="org.apache.tapestrytools.components.any" context="tml_components"  enabled="true">&lt;t:any&gt; &lt;/t:any&gt;</template>
+    <template name="%Templates.beandisplay.name" description="%Templates.beandisplay.desc" id="org.apache.tapestrytools.components.beandisplay" context="tml_components"  enabled="true">&lt;t:beandisplay&gt; &lt;/t:beandisplay&gt;</template>
+    <template name="%Templates.beaneditform.name" description="%Templates.beaneditform.desc" id="org.apache.tapestrytools.components.beaneditform" context="tml_components"  enabled="true">&lt;t:beaneditform&gt; &lt;/t:beaneditform&gt;</template>
+    <template name="%Templates.beaneditor.name" description="%Templates.beaneditor.desc" id="org.apache.tapestrytools.components.beaneditor" context="tml_components"  enabled="true">&lt;t:beaneditor&gt; &lt;/t:beaneditor&gt;</template>
+    <template name="%Templates.checkbox.name" description="%Templates.checkbox.desc" id="org.apache.tapestrytools.components.checkbox" context="tml_components"  enabled="true">&lt;t:checkbox&gt; &lt;/t:checkbox&gt;</template>
+    
+    
+ 	<template name="%Templates.attributes.id.name" description="%Templates.attributes.id.desc" id="org.apache.tapestrytools.components.attribute.id" context="tml_attributes"  enabled="true">id</template>
+ 	<template name="%Templates.attributes.value.true" description="%Templates.attributes.value.true.desc" id="org.apache.tapestrytools.components.attribute.value.true" context="tml_attributes_value"  enabled="true">true</template>
+ 	<template name="%Templates.attributes.value.false" description="%Templates.attributes.value.false.desc" id="org.apache.tapestrytools.components.attribute.value.false" context="tml_attributes_value"  enabled="true">false</template>
+ </templates>
