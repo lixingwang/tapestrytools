@@ -13,11 +13,14 @@ package org.eclipse.wst.xml.core.internal.contentmodel.tapestry;
 
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 
+import org.eclipse.jface.text.templates.Template;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMAttributeDeclaration;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMContent;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMDataType;
@@ -28,11 +31,12 @@ import org.eclipse.wst.xml.core.internal.contentmodel.CMNode;
 /**
  * Factory for element declarations of the Tapestry 5.
  */
-public class TapestryElementCollection extends DeclCollection implements Tapestry5Namespace.ElementName {
-
+public class TapestryElementCollection extends DeclCollection implements Tapestry5Namespace.ElementName, Tapestry5Namespace.ElementLabel {
+	public static final String componentsContextTypeId = "tml_components";
 
 	class TypePacket {
 		public String name = null;
+		public String label = null;
 		public int content = CMElementDeclaration.EMPTY;
 		public int omit = HTMLElementDeclaration.OMIT_NONE;
 		public int lineBreak = HTMLElementDeclaration.BREAK_NONE;
@@ -55,6 +59,7 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 			super(t.name, 1, 1);
 			type = t;
 		}
+		
 
 		public void setContent(CMGroupImpl group) {
 			content = group;
@@ -115,6 +120,10 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 
 		public String getElementName() {
 			return getNodeName();
+		}
+		
+		public String getElementLabel(){
+			return type.label;
 		}
 
 		public CMNamedNodeMap getLocalElements() {
@@ -1471,6 +1480,40 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 	public TapestryElementCollection() {
 		super(names, TOLERANT_CASE);
 	}
+	
+	public Template[] getTemplateList(String contextTypeId){
+		List result = new ArrayList();
+		if(contextTypeId.equals(componentsContextTypeId)){
+			for(int i=0; i< this.getLength(); i++){
+				CMNode node = this.item(i);
+				if(node instanceof ElemDecl){
+					ElemDecl element = (ElemDecl) node;
+					Template template = new Template(element.getElementLabel(), buildDescription(element), contextTypeId, buildInsertCode(element), true);
+					result.add(template);
+				}
+			}
+		}
+		return (Template[])result.toArray(new Template[0]);
+	}
+	
+	/**
+	 * TODO: improve this method to create description for components
+	 * @param element
+	 * @return
+	 */
+	private String buildDescription(ElemDecl element){
+		return "Standard";
+	}
+	
+	/**
+	 * TODO: improve this method for different components
+	 * @param element
+	 * @return auto-complete insert code
+	 */
+	private String buildInsertCode(ElemDecl element){
+		String ret = "<"+element.getElementName()+"></"+element.getElementName()+">";
+		return ret;
+	}
 
 	/**
 	 * @return org.eclipse.wst.xml.core.internal.contentmodel.CMNode
@@ -1553,229 +1596,273 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 		switch (eid) {
 			case Ids.ID_ACTIONLINK :
 				packet.name = ACTIONLINK;
+				packet.label = ACTIONLINK_Label;
 				packet.content = CMElementDeclaration.CDATA;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				packet.format = HTMLElementDeclaration.FORMAT_TAPESTRY_ACTIONLINK;
 				break;
 			case Ids.ID_ADDROWLINK :
 				packet.name = ADDROWLINK;
+				packet.label = ADDROWLINK_Label;
 				packet.content = CMElementDeclaration.CDATA;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				packet.format = HTMLElementDeclaration.FORMAT_JSP_SCRIPT;
 				break;
 			case Ids.ID_ANY :
 				packet.name = ANY;
+				packet.label = ANY_Label;
 				packet.content = CMElementDeclaration.CDATA;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				packet.format = HTMLElementDeclaration.FORMAT_JSP_SCRIPT;
 				break;
 			case Ids.ID_BEANDISPLAY :
 				packet.name = BEANDISPLAY;
+				packet.label = BEANDISPLAY_Label;
 				packet.content = CMElementDeclaration.CDATA;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				packet.format = HTMLElementDeclaration.FORMAT_JSP_DIRECTIVE;
 				break;
 			case Ids.ID_BeanEditForm :
 				packet.name = BeanEditForm;
+				packet.label = BeanEditForm_Label;
 				packet.content = CMElementDeclaration.CDATA;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				packet.format = HTMLElementDeclaration.FORMAT_JSP_SCRIPT;
 				break;
 			case Ids.ID_BeanEditor :
 				packet.name = BeanEditor;
+				packet.label = BeanEditor_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				packet.format = HTMLElementDeclaration.FORMAT_JSP_DIRECTIVE;
 				break;
 			case Ids.ID_Checkbox :
 				packet.name = Checkbox;
+				packet.label = Checkbox_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				packet.format = HTMLElementDeclaration.FORMAT_JSP_DIRECTIVE;
 				break;
 			case Ids.ID_DateField :
 				packet.name = DateField;
+				packet.label = DateField_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Delegate :
 				packet.name = Delegate;
+				packet.label = Delegate_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				break;
 			case Ids.ID_Error :
 				packet.name = Error;
+				packet.label = Error_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				break;
 			case Ids.ID_Errors:
 				packet.name = Errors;
+				packet.label = Errors_Label;
 				packet.content = CMElementDeclaration.CDATA;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				packet.format = HTMLElementDeclaration.FORMAT_JSP_SCRIPT;
 				break;
 			case Ids.ID_EventLink :
 				packet.name = EventLink;
+				packet.label = EventLink_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				break;
 			case Ids.ID_ExceptionDisplay :
 				packet.name = ExceptionDisplay;
+				packet.label = ExceptionDisplay_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				break;
 			case Ids.ID_Form :
 				packet.name = Form;
+				packet.label = Form_Label;
 				packet.content = CMElementDeclaration.CDATA;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_FormFragment :
 				packet.name = FormFragment;
+				packet.label = FormFragment_Label;
 				packet.content = CMElementDeclaration.CDATA;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_FormInjector :
 				packet.name = FormInjector;
+				packet.label = FormInjector_Label;
 				packet.content = CMElementDeclaration.ELEMENT;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Grid :
 				packet.name = Grid;
+				packet.label = Grid_Label;
 				packet.content = CMElementDeclaration.ELEMENT;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_GridCell:
 				packet.name = GridCell;
+				packet.label = GridCell_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				break;
 			case Ids.ID_GridColumns :
 				packet.name = GridColumns;
+				packet.label = GridColumns_Label;
 				packet.content = CMElementDeclaration.ELEMENT;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_GridPager:
 				packet.name = GridPager;
+				packet.label = GridPager_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				break;
 			case Ids.ID_GridRows:
 				packet.name = GridRows;
+				packet.label = GridRows_Label;
 				packet.content = CMElementDeclaration.ELEMENT;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Hidden:
 				packet.name = Hidden;
+				packet.label = Hidden_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_OBJECT;
 				break;
 			case Ids.ID_If:
 				packet.name = IfElement;
+				packet.label = IfElement_Label;
 				packet.content = CMElementDeclaration.ELEMENT;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Label:
 				packet.name = Label;
+				packet.label = Label_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_LinkSubmit:
 				packet.name = LinkSubmit;
+				packet.label = LinkSubmit_Label;
 				packet.content = CMElementDeclaration.ELEMENT;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Loop:
 				packet.name = Loop;
+				packet.label = Loop_Label;
 				packet.content = CMElementDeclaration.ELEMENT;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Output:
 				packet.name = Output;
+				packet.label = Output_Label;
 				packet.content = CMElementDeclaration.ELEMENT;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_OutputRaw:
 				packet.name = OutputRaw;
+				packet.label = OutputRaw_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_PageLink:
 				packet.name = PageLink;
+				packet.label = PageLink_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Palette:
 				packet.name = Palette;
+				packet.label = Palette_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_PasswordField:
 				packet.name = PasswordField;
+				packet.label = PasswordField_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_ProgressiveDisplay:
 				packet.name = ProgressiveDisplay;
+				packet.label = ProgressiveDisplay_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_PropertyDisplay:
 				packet.name = PropertyDisplay;
+				packet.label = PropertyDisplay_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_PropertyEditor:
 				packet.name = PropertyEditor;
+				packet.label = PropertyEditor_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Radio:
 				packet.name = Radio;
+				packet.label = Radio_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_RadioGroup:
 				packet.name = RadioGroup;
+				packet.label = RadioGroup_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Select:
 				packet.name = Select;
+				packet.label = Select_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Submit:
 				packet.name = Submit;
+				packet.label = Submit_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_TextArea:
 				packet.name = TextArea;
+				packet.label = TextArea_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_TextField:
 				packet.name = TextField;
+				packet.label = TextField_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_TextOutput:
 				packet.name = TextOutput;
+				packet.label = TextOutput_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Trigger:
 				packet.name = Trigger;
+				packet.label = Trigger_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Unless:
 				packet.name = Unless;
+				packet.label = Unless_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;
 			case Ids.ID_Zone:
 				packet.name = Zone;
+				packet.label = Zone_Label;
 				packet.omit = HTMLElementDeclaration.OMIT_END;
 				packet.layout = HTMLElementDeclaration.LAYOUT_HIDDEN;
 				break;

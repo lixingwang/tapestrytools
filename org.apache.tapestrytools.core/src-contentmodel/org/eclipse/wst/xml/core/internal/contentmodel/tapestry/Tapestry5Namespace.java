@@ -59,6 +59,54 @@ public interface Tapestry5Namespace {
 		public static final String Unless = "t:unless";
 		public static final String Zone = "t:zone";
 	}
+	
+	public static interface ElementLabel {
+		// Element names
+		public static final String ACTIONLINK_Label = "ActionLink";
+		public static final String ADDROWLINK_Label = "AddrowLink";
+		public static final String ANY_Label = "Any";
+		public static final String BEANDISPLAY_Label = "Beandisplay";
+		public static final String BeanEditForm_Label = "Beaneditform";
+		public static final String BeanEditor_Label = "Beaneditor";
+		public static final String Checkbox_Label = "Checkbox";
+		public static final String DateField_Label = "Datefield";
+		public static final String Delegate_Label = "Delegate";
+		public static final String Error_Label = "Error";
+		public static final String Errors_Label = "Errors";
+		public static final String EventLink_Label = "Eventlink";
+		public static final String ExceptionDisplay_Label = "Exceptiondisplay";
+		public static final String Form_Label = "Form";
+		public static final String FormFragment_Label = "Formfragment";
+		public static final String FormInjector_Label = "Forminjector";
+		public static final String Grid_Label = "Grid";
+		public static final String GridCell_Label = "Gridcell";
+		public static final String GridColumns_Label = "Gridcolumns";
+		public static final String GridPager_Label = "Gridpager";
+		public static final String GridRows_Label = "Gridrows";
+		public static final String Hidden_Label = "Hidden";
+		public static final String IfElement_Label = "If";
+		public static final String Label_Label = "Label";
+		public static final String LinkSubmit_Label = "Linksubmit";
+		public static final String Loop_Label = "Loop";
+		public static final String Output_Label = "Output";
+		public static final String OutputRaw_Label = "Outputraw";
+		public static final String PageLink_Label = "Pagelink";
+		public static final String Palette_Label = "Palette";
+		public static final String PasswordField_Label = "Passwordfield";
+		public static final String ProgressiveDisplay_Label = "Progressivedisplay";
+		public static final String PropertyDisplay_Label = "Propertydisplay";
+		public static final String PropertyEditor_Label = "Propertyeditor";
+		public static final String Radio_Label = "Radio";
+		public static final String RadioGroup_Label = "Radiogroup";
+		public static final String Select_Label = "Select";
+		public static final String Submit_Label = "Submit";
+		public static final String TextArea_Label = "Textarea";
+		public static final String TextField_Label = "Textfield";
+		public static final String TextOutput_Label = "Textoutput";
+		public static final String Trigger_Label = "Trigger";
+		public static final String Unless_Label = "Unless";
+		public static final String Zone_Label = "Zone";
+	}
 
 	public static final String Tapestry_URI = ""; //$NON-NLS-1$
 	public static final String Tapestry_TAG_PREFIX = "t"; //$NON-NLS-1$

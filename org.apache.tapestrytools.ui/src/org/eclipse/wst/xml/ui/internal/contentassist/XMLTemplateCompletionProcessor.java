@@ -32,6 +32,7 @@ import org.eclipse.jface.text.templates.TemplateException;
 import org.eclipse.jface.text.templates.TemplateProposal;
 import org.eclipse.jface.text.templates.persistence.TemplateStore;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.TapestryElementCollection;
 import org.eclipse.wst.xml.ui.internal.XMLUIPlugin;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImageHelper;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImages;
@@ -165,14 +166,19 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	 * TODO: 修改这个方法,从TapestryElementCollection中获取 Template[]
 	 */
 	protected Template[] getTemplates(String contextTypeId) {
-		Template templates[] = null;
+		if(contextTypeId.equals("tml_components")){
+			TapestryElementCollection collection = new TapestryElementCollection();
+			Template[] tapestryTemplates = collection.getTemplateList(contextTypeId);
+			return tapestryTemplates;
+		}else{
+			Template templates[] = null;
+			TemplateStore store = getTemplateStore();
+			if (store != null) {
+				templates = store.getTemplates(contextTypeId);
+			}
 
-		TemplateStore store = getTemplateStore();
-		if (store != null) {
-			templates = store.getTemplates(contextTypeId);
+			return templates;
 		}
-
-		return templates;
 	}
 
 	private TemplateStore getTemplateStore() {
