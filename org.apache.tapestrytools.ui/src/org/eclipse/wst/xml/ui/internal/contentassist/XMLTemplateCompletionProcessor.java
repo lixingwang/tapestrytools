@@ -32,16 +32,22 @@ import org.eclipse.jface.text.templates.TemplateException;
 import org.eclipse.jface.text.templates.TemplateProposal;
 import org.eclipse.jface.text.templates.persistence.TemplateStore;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.wst.sse.core.internal.provisional.IndexedRegion;
+import org.eclipse.wst.sse.ui.internal.contentassist.ContentAssistUtils;
 import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.TapestryElementCollection;
 import org.eclipse.wst.xml.ui.internal.XMLUIPlugin;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImageHelper;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImages;
+import org.w3c.dom.Node;
 
 
 /**
  * <p>Completion computer for XML templates</p>
  */
 class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
+	//Represent Tapestry component when try to pop up attributes list in components
+	private Node currentTapestryComponent = null;
+	
 	private static final class ProposalComparator implements Comparator {
 		public int compare(Object o1, Object o2) {
 			return ((TemplateProposal) o2).getRelevance() - ((TemplateProposal) o1).getRelevance();
@@ -71,18 +77,23 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			return new ICompletionProposal[0];
 		}
 
+		IndexedRegion treeNode = ContentAssistUtils.getNodeAt(viewer, offset);
+
+		currentTapestryComponent = (Node) treeNode;
+		while ((currentTapestryComponent != null) && (currentTapestryComponent.getNodeType() == Node.TEXT_NODE) && (currentTapestryComponent.getParentNode() != null)) {
+			currentTapestryComponent = currentTapestryComponent.getParentNode();
+		}
+
 		// name of the selection variables {line, word}_selection
 		context.setVariable("selection", selection.getText()); //$NON-NLS-1$
 		
-		System.out.println(">>>>> Get template list by context id:" + context.getContextType().getId());
+		System.out.println(">>>>> Get template list by context id:" + context.getContextType().getId() + "  selection:" + selection.getText());
 
 		Template[] templates = getTemplates(context.getContextType().getId());
-		//Template[] templates = getTemplates("tml_components");//NOTICE: this line is just test code
 
 		List matches = new ArrayList();
 		for (int i = 0; i < templates.length; i++) {
 			Template template = templates[i];
-			System.out.println("Template:" + template.getName() + "      des:" + template.getDescription());
 			try {
 				context.getContextType().validate(template.getPattern());
 			}
@@ -131,11 +142,6 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	}
 
 	protected ICompletionProposal createProposal(Template template, TemplateContext context, IRegion region, int relevance) {
-		System.out.println("template:" + template);
-		System.out.println("context:" + context);
-		System.out.println("region:" + region);
-		System.out.println("relevance:" + relevance);
-		
 		return new CustomTemplateProposal(template, context, region, getImage(template), relevance);
 	}
 
@@ -151,9 +157,10 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	}
 
 	protected Image getImage(Template template) {
-		// just return the same image for now
-		if(template.getContextTypeId().startsWith("tml_"))
+		if(template.getContextTypeId().equals(TapestryElementCollection.componentsContextTypeId))
 			return XMLEditorPluginImageHelper.getInstance().getImage(XMLEditorPluginImages.IMG_TAPESTRY_DEFAULT);
+		else if(template.getContextTypeId().equals(TapestryElementCollection.attributesContextTypeId))
+			return XMLEditorPluginImageHelper.getInstance().getImage(XMLEditorPluginImages.IMG_TAPESTRY_ATTRIBUTE);
 		else 
 			return XMLEditorPluginImageHelper.getInstance().getImage(XMLEditorPluginImages.IMG_OBJ_TAG_MACRO);
 	}
@@ -166,11 +173,16 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	 * TODO: 修改这个方法,从TapestryElementCollection中获取 Template[]
 	 */
 	protected Template[] getTemplates(String contextTypeId) {
-		if(contextTypeId.equals("tml_components")){
-			TapestryElementCollection collection = new TapestryElementCollection();
+		TapestryElementCollection collection = new TapestryElementCollection();
+		
+		if(contextTypeId.equals(TapestryElementCollection.componentsContextTypeId) ){
 			Template[] tapestryTemplates = collection.getTemplateList(contextTypeId);
 			return tapestryTemplates;
-		}else{
+		}if(contextTypeId.equals(TapestryElementCollection.attributesContextTypeId)){
+			Template[] tapestryTemplates = collection.getAttributeList(contextTypeId, currentTapestryComponent);
+			return tapestryTemplates;
+		}
+		else{
 			Template templates[] = null;
 			TemplateStore store = getTemplateStore();
 			if (store != null) {
@@ -188,4 +200,5 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	void setContextType(String contextTypeId) {
 		fContextTypeId = contextTypeId;
 	}
+
 }

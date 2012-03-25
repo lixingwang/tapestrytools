@@ -27,12 +27,14 @@ import org.eclipse.wst.xml.core.internal.contentmodel.CMDataType;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMElementDeclaration;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMNamedNodeMap;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMNode;
+import org.w3c.dom.Node;
 
 /**
  * Factory for element declarations of the Tapestry 5.
  */
 public class TapestryElementCollection extends DeclCollection implements Tapestry5Namespace.ElementName, Tapestry5Namespace.ElementLabel {
 	public static final String componentsContextTypeId = "tml_components";
+	public static final String attributesContextTypeId = "tml_attributes";
 
 	class TypePacket {
 		public String name = null;
@@ -1496,6 +1498,23 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 		return (Template[])result.toArray(new Template[0]);
 	}
 	
+	public Template[] getAttributeList(String contextTypeId, Node currentTapestryComponent){
+		String name = currentTapestryComponent.getNodeName();
+		CMNode node = this.getNamedItem(name);
+		List result = new ArrayList();
+		if(node instanceof ElemDecl){
+			ElemDecl element = (ElemDecl) node;
+			CMNamedNodeMap attributes = element.getAttributes();
+			Iterator ite = attributes.iterator();
+			while(ite.hasNext()){
+				CMNode attr = (CMNode) ite.next();
+				Template template = new Template(attr.getNodeName(), buildAttributeDescription(attr, element), contextTypeId, buildAttributeInsertCode(attr), true);
+				result.add(template);
+			}
+		}
+		return (Template[])result.toArray(new Template[0]);
+	}
+	
 	/**
 	 * TODO: improve this method to create description for components
 	 * @param element
@@ -1505,6 +1524,10 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 		return "Standard";
 	}
 	
+	private String buildAttributeDescription(CMNode attr, ElemDecl element){
+		return element.getElementLabel() + " Attrubite";
+	}
+	
 	/**
 	 * TODO: improve this method for different components
 	 * @param element
@@ -1512,6 +1535,11 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 	 */
 	private String buildInsertCode(ElemDecl element){
 		String ret = "<"+element.getElementName()+"></"+element.getElementName()+">";
+		return ret;
+	}
+	
+	private String buildAttributeInsertCode(CMNode attr){
+		String ret = attr.getNodeName()+"=\"\"";
 		return ret;
 	}
 

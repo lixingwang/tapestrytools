@@ -60,4 +60,5 @@ public class XMLEditorPluginImages {
 	public static final String IMG_OBJ_DEFAULT = "icons/full/obj16/default.gif"; //$NON-NLS-1$
 	
 	public static final String IMG_TAPESTRY_DEFAULT = "icons/tmldoc.gif";
+	public static final String IMG_TAPESTRY_ATTRIBUTE = "icons/full/obj16/attribute_obj.gif";
 }

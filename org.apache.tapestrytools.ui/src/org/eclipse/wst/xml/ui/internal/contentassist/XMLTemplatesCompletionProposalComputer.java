@@ -43,7 +43,7 @@ public class XMLTemplatesCompletionProposalComputer extends
 			ContentAssistRequest contentAssistRequest,
 			CompletionProposalInvocationContext context) {
 		addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAPESTRY_COMPONENTS_ATTR, context);
-		addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.ATTRIBUTE, context);
+		//addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.ATTRIBUTE, context);
 	}
 
 	/**
@@ -53,7 +53,7 @@ public class XMLTemplatesCompletionProposalComputer extends
 			ContentAssistRequest contentAssistRequest,
 			CompletionProposalInvocationContext context) {
 		addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAPESTRY_COMPONENTS_ATTR_VALUE, context);
-		addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.ATTRIBUTE_VALUE, context);
+		//addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.ATTRIBUTE_VALUE, context);
 	}
 	
 	/**
@@ -63,7 +63,7 @@ public class XMLTemplatesCompletionProposalComputer extends
 			ContentAssistRequest contentAssistRequest,
 			CompletionProposalInvocationContext context) {
 		
-		addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.NEW, context);
+		//addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.NEW, context);
 	}
 	
 	/**
@@ -73,7 +73,7 @@ public class XMLTemplatesCompletionProposalComputer extends
 			ContentAssistRequest contentAssistRequest, int childPosition,
 			CompletionProposalInvocationContext context) {
 		addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAPESTRY_COMPONENTS, context);
-		addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAG, context);
+		//addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAG, context);
 	}
 	
 	/**

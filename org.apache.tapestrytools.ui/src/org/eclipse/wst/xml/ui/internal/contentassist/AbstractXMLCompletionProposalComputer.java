@@ -109,7 +109,7 @@ public abstract class AbstractXMLCompletionProposalComputer implements ICompleti
 			node = node.getParentNode();
 		}
 		
-		System.out.println("-----------------" + node);
+		System.out.println("-----------------" + node + " name:" + node.getNodeName());
 		
 		IDOMNode xmlnode = (IDOMNode) node;
 
