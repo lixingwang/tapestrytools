@@ -103,7 +103,8 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			if (template.matches(prefix, context.getContextType().getId())) {
 			//if (template.matches(prefix, "tml_components")) {//NOTICE: this line is just test code
 				System.out.println("PREFIX:" + prefix + "    context.getContextType().getId():" + context.getContextType().getId());
-				matches.add(createProposal(template, context, (IRegion) region, getRelevance(template, prefix)));
+				int place = getRelevance(template, prefix);
+				matches.add(createProposal(template, context, (IRegion) region, place));
 			}
 		}
 
@@ -174,12 +175,21 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	 */
 	protected Template[] getTemplates(String contextTypeId) {
 		TapestryElementCollection collection = new TapestryElementCollection();
-		
 		if(contextTypeId.equals(TapestryElementCollection.componentsContextTypeId) ){
-			Template[] tapestryTemplates = collection.getTemplateList(contextTypeId);
+			Node preNode = currentTapestryComponent.getLastChild();
+			Template[] tapestryTemplates = null;
+			if(currentTapestryComponent.getNodeName().equals("t:"))
+				tapestryTemplates = collection.getTemplateList(contextTypeId, 3);
+			else if(preNode != null && preNode.getTextContent().trim().equals("<"))
+				tapestryTemplates = collection.getTemplateList(contextTypeId, 2);
+			else
+				tapestryTemplates = collection.getTemplateList(contextTypeId, 1);
 			return tapestryTemplates;
-		}if(contextTypeId.equals(TapestryElementCollection.attributesContextTypeId)){
+		}else if(contextTypeId.equals(TapestryElementCollection.attributesContextTypeId)){
 			Template[] tapestryTemplates = collection.getAttributeList(contextTypeId, currentTapestryComponent);
+			return tapestryTemplates;
+		}else if(contextTypeId.equals(TapestryElementCollection.attributesValueContextTypeId)){
+			Template[] tapestryTemplates = collection.getAttributeValueList(contextTypeId, currentTapestryComponent);
 			return tapestryTemplates;
 		}
 		else{

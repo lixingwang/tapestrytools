@@ -12,10 +12,15 @@ package org.eclipse.wst.xml.ui.internal.contentassist;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
+import java.util.Vector;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
+import org.eclipse.wst.sse.core.internal.provisional.text.IStructuredDocumentRegion;
+import org.eclipse.wst.sse.core.internal.provisional.text.ITextRegion;
 import org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext;
+import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
 import org.eclipse.wst.xml.ui.internal.templates.TemplateContextTypeIdsXML;
 
 /**
@@ -74,6 +79,129 @@ public class XMLTemplatesCompletionProposalComputer extends
 			CompletionProposalInvocationContext context) {
 		addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAPESTRY_COMPONENTS, context);
 		//addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAG, context);
+	}
+	
+	/**
+	 * Default behavior is do to nothing.
+	 * 
+	 * @see org.eclipse.wst.xml.ui.internal.contentassist.AbstractXMLCompletionProposalComputer#addCommentProposal(org.eclipse.wst.xml.ui.internal.contentassist.ContentAssistRequest, org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext)
+	 */
+	protected void addCommentProposal(
+			ContentAssistRequest contentAssistRequest,
+			CompletionProposalInvocationContext context) {
+		//default behavior is to do nothing
+		System.out.println("=======================addCommentProposal===========================");
+	}
+
+	/**
+	 * Default behavior is do to nothing.
+	 * 
+	 * @see org.eclipse.wst.xml.ui.internal.contentassist.AbstractXMLCompletionProposalComputer#addDocTypeProposal(org.eclipse.wst.xml.ui.internal.contentassist.ContentAssistRequest, org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext)
+	 */
+	protected void addDocTypeProposal(
+			ContentAssistRequest contentAssistRequest,
+			CompletionProposalInvocationContext context) {
+		//default behavior is to do nothing
+		System.out.println("=======================addDocTypeProposal===========================");
+	}
+
+	/**
+	 * Default behavior is do to nothing.
+	 * 
+	 * @see org.eclipse.wst.xml.ui.internal.contentassist.AbstractXMLCompletionProposalComputer#addEndTagNameProposals(org.eclipse.wst.xml.ui.internal.contentassist.ContentAssistRequest, org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext)
+	 */
+	protected void addEndTagNameProposals(
+			ContentAssistRequest contentAssistRequest,
+			CompletionProposalInvocationContext context) {
+		//default behavior is to do nothing
+		System.out.println("=======================addEndTagNameProposals===========================");
+	}
+
+	/**
+	 * Default behavior is do to nothing.
+	 * 
+	 * @see org.eclipse.wst.xml.ui.internal.contentassist.AbstractXMLCompletionProposalComputer#addEndTagProposals(org.eclipse.wst.xml.ui.internal.contentassist.ContentAssistRequest, org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext)
+	 */
+	protected void addEndTagProposals(
+			ContentAssistRequest contentAssistRequest,
+			CompletionProposalInvocationContext context) {
+		//default behavior is to do nothing
+		System.out.println("=======================addEndTagProposals===========================");
+	}
+
+	/**
+	 * Default behavior is do to nothing.
+	 * 
+	 * @see org.eclipse.wst.xml.ui.internal.contentassist.AbstractXMLCompletionProposalComputer#addEntityProposals(org.eclipse.wst.xml.ui.internal.contentassist.ContentAssistRequest, org.eclipse.wst.sse.core.internal.provisional.text.ITextRegion, org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode, org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext)
+	 */
+	protected void addEntityProposals(
+			ContentAssistRequest contentAssistRequest,
+			ITextRegion completionRegion, IDOMNode treeNode,
+			CompletionProposalInvocationContext context) {
+		//default behavior is to do nothing
+		System.out.println("=======================addEntityProposals===========================");
+	}
+
+	/**
+	 * Default behavior is do to nothing.
+	 * 
+	 * @see org.eclipse.wst.xml.ui.internal.contentassist.AbstractXMLCompletionProposalComputer#addEntityProposals(java.util.Vector, java.util.Properties, java.lang.String, int, org.eclipse.wst.sse.core.internal.provisional.text.IStructuredDocumentRegion, org.eclipse.wst.sse.core.internal.provisional.text.ITextRegion, org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext)
+	 */
+	protected void addEntityProposals(Vector proposals, Properties map,
+			String key, int nodeOffset, IStructuredDocumentRegion sdRegion,
+			ITextRegion completionRegion,
+			CompletionProposalInvocationContext context) {
+		//default behavior is to do nothing
+		System.out.println("=======================addEntityProposals===========================");
+	}
+
+	/**
+	 * Default behavior is do to nothing.
+	 * 
+	 * @see org.eclipse.wst.xml.ui.internal.contentassist.AbstractXMLCompletionProposalComputer#addPCDATAProposal(java.lang.String, org.eclipse.wst.xml.ui.internal.contentassist.ContentAssistRequest, org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext)
+	 */
+	protected void addPCDATAProposal(String nodeName,
+			ContentAssistRequest contentAssistRequest,
+			CompletionProposalInvocationContext context) {
+		//default behavior is to do nothing
+		System.out.println("=======================addPCDATAProposal===========================");
+	}
+
+	/**
+	 * Default behavior is do to nothing.
+	 * 
+	 * @see org.eclipse.wst.xml.ui.internal.contentassist.AbstractXMLCompletionProposalComputer#addStartDocumentProposals(org.eclipse.wst.xml.ui.internal.contentassist.ContentAssistRequest, org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext)
+	 */
+	protected void addStartDocumentProposals(
+			ContentAssistRequest contentAssistRequest,
+			CompletionProposalInvocationContext context) {
+		//default behavior is to do nothing
+		System.out.println("=======================addStartDocumentProposals===========================");
+	}
+
+	/**
+	 * Default behavior is do to nothing.
+	 * 
+	 * @see org.eclipse.wst.xml.ui.internal.contentassist.AbstractXMLCompletionProposalComputer#addTagCloseProposals(org.eclipse.wst.xml.ui.internal.contentassist.ContentAssistRequest, org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext)
+	 */
+	protected void addTagCloseProposals(
+			ContentAssistRequest contentAssistRequest,
+			CompletionProposalInvocationContext context) {
+		//default behavior is to do nothing
+		System.out.println("=======================addTagCloseProposals===========================");
+	}
+
+	/**
+	 * Default behavior is do to nothing.
+	 * 
+	 * @see org.eclipse.wst.xml.ui.internal.contentassist.AbstractXMLCompletionProposalComputer#addTagNameProposals(org.eclipse.wst.xml.ui.internal.contentassist.ContentAssistRequest, int, org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext)
+	 */
+	protected void addTagNameProposals(
+			ContentAssistRequest contentAssistRequest, int childPosition,
+			CompletionProposalInvocationContext context) {
+		//default behavior is to do nothing
+		System.out.println("=======================addTagNameProposals===========================");
+		addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAPESTRY_COMPONENTS, context);
 	}
 	
 	/**

@@ -664,6 +664,7 @@ public abstract class AbstractXMLCompletionProposalComputer implements ICompleti
 		int documentPosition = context.getInvocationOffset();
 		ContentAssistRequest contentAssistRequest = null;
 		IStructuredDocumentRegion sdRegion = getStructuredDocumentRegion(documentPosition);
+		System.out.println(sdRegion.toString());
 		ITextRegion valueRegion = node.getStartStructuredDocumentRegion().getRegionAtCharacterOffset(sdRegion.getStartOffset(completionRegion) + completionRegion.getLength());
 		if ((valueRegion != null) && (valueRegion.getType() == DOMRegionContext.XML_TAG_ATTRIBUTE_VALUE) && (sdRegion.getStartOffset(valueRegion) <= documentPosition)) {
 			// replace the adjacent attribute value

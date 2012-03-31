@@ -35,6 +35,7 @@ import org.w3c.dom.Node;
 public class TapestryElementCollection extends DeclCollection implements Tapestry5Namespace.ElementName, Tapestry5Namespace.ElementLabel {
 	public static final String componentsContextTypeId = "tml_components";
 	public static final String attributesContextTypeId = "tml_attributes";
+	public static final String attributesValueContextTypeId = "tml_attributes_value";
 
 	class TypePacket {
 		public String name = null;
@@ -1483,14 +1484,20 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 		super(names, TOLERANT_CASE);
 	}
 	
-	public Template[] getTemplateList(String contextTypeId){
+	/**
+	 * 
+	 * @param contextTypeId
+	 * @param type 1=>start with blank, 2=>start with "<", 3=>start with "t:"
+	 * @return
+	 */
+	public Template[] getTemplateList(String contextTypeId, int type){
 		List result = new ArrayList();
 		if(contextTypeId.equals(componentsContextTypeId)){
 			for(int i=0; i< this.getLength(); i++){
 				CMNode node = this.item(i);
 				if(node instanceof ElemDecl){
 					ElemDecl element = (ElemDecl) node;
-					Template template = new Template(element.getElementLabel(), buildDescription(element), contextTypeId, buildInsertCode(element), true);
+					Template template = new Template(element.getElementLabel(), buildDescription(element), contextTypeId, buildInsertCode(element, type), true);
 					result.add(template);
 				}
 			}
@@ -1500,6 +1507,7 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 	
 	public Template[] getAttributeList(String contextTypeId, Node currentTapestryComponent){
 		String name = currentTapestryComponent.getNodeName();
+		//System.out.println("current tapestry component :" + name);
 		CMNode node = this.getNamedItem(name);
 		List result = new ArrayList();
 		if(node instanceof ElemDecl){
@@ -1512,6 +1520,23 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 				result.add(template);
 			}
 		}
+		return (Template[])result.toArray(new Template[0]);
+	}
+	
+	public Template[] getAttributeValueList(String contextTypeId, Node currentTapestryComponent){
+		//String name = currentTapestryComponent.getNodeName();
+		//CMNode node = this.getNamedItem(name);
+		List result = new ArrayList();
+		/*if(node instanceof ElemDecl){
+			ElemDecl element = (ElemDecl) node;
+			CMNamedNodeMap attributes = element.getAttributes();
+			Iterator ite = attributes.iterator();
+			while(ite.hasNext()){
+				CMNode attr = (CMNode) ite.next();
+				Template template = new Template(attr.getNodeName(), buildAttributeDescription(attr, element), contextTypeId, buildAttributeInsertCode(attr), true);
+				result.add(template);
+			}
+		}*/
 		return (Template[])result.toArray(new Template[0]);
 	}
 	
@@ -1533,13 +1558,27 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 	 * @param element
 	 * @return auto-complete insert code
 	 */
-	private String buildInsertCode(ElemDecl element){
-		String ret = "<"+element.getElementName()+"></"+element.getElementName()+">";
+	private String buildInsertCode(ElemDecl element, int type){
+		String ret = "";
+		switch(type){
+		case 1:
+			ret = "<"+element.getElementName()+"></"+element.getElementName()+">";
+			break;
+		case 2:
+			ret = element.getElementName()+"></"+element.getElementName()+">";
+			break;
+		case 3:
+			ret = element.getElementName()+"></"+element.getElementName()+">";
+			if(ret.length() > 2)
+				ret = ret.substring(2);
+			break;
+		}
+		
 		return ret;
 	}
 	
 	private String buildAttributeInsertCode(CMNode attr){
-		String ret = attr.getNodeName()+"=\"\"";
+		String ret = attr.getNodeName() + "=\"\"";
 		return ret;
 	}
 
