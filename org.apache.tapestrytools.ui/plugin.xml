@@ -1179,7 +1179,7 @@
       <actionSet
             label="%tapestry.corresponding.file"
             visible="true"
-            id="org.eclipse.jst.tapestry.ui.actionSet">
+            id="org.apache.tapestrytools.ui.actionSet">
          <menu
                label="%preferencepage.tapestry.name"
                id="tapestryTMLMenu">
@@ -1188,14 +1188,14 @@
             </separator>
          </menu>
          <action
-               label="%tapestry.find.corresponding.file"
-               icon="icons/tapestry.gif"
                class="org.eclipse.wst.xml.ui.internal.actions.FindCorrespondingFileAction"
-               tooltip="%tapestry.corresponding.file.description"
+               definitionId="org.apache.tapestrytools.ui.command.actions.FindCorrespondingFile"
+               icon="icons/tapestry.gif"
+               id="org.apache.tapestrytools.ui.actions.FindCorrespondingFileAction"
+               label="%tapestry.find.corresponding.file"
                menubarPath="tapestryTMLMenu/tapestryTMLGroup"
                toolbarPath="tapestryTMLGroup"
-               definitionId="org.apache.tapestrytools.ui.command.actions.FindCorrespondingFile"
-               id="org.apache.tapestrytools.ui.actions.FindCorrespondingFileAction">
+               tooltip="%tapestry.corresponding.file.description">
          </action>
       </actionSet>
 	</extension>

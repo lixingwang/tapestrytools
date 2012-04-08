@@ -28,8 +28,8 @@ public class FindCorrespondingFileAction extends Action implements
 	 * The constructor.
 	 */
 	public FindCorrespondingFileAction() {
-		setId("org.eclipse.jst.tapestry.ui.actions.FindCorrespondingFileAction");
-		setActionDefinitionId("org.eclipse.jst.tapestry.ui.command.actions.FindCorrespondingFile");
+		setId("org.apache.tapestrytools.ui.actions.FindCorrespondingFileAction");
+		setActionDefinitionId("org.apache.tapestrytools.ui.command.actions.FindCorrespondingFile");
 	}
 
 	/**
