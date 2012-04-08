@@ -1196,7 +1196,7 @@
                menubarPath="tapestryTMLMenu/tapestryTMLGroup"
                toolbarPath="tapestryTMLGroup"
                tooltip="%tapestry.corresponding.file.description">
-         </action>
+		 </action>
       </actionSet>
 	</extension>
     

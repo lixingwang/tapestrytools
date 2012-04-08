@@ -132,7 +132,7 @@ public class FindCorrespondingFileAction extends Action implements
 	 * @see IWorkbenchWindowActionDelegate#selectionChanged
 	 */
 	public void selectionChanged(IAction action, ISelection selection) {
-
+		 
 	}
 
 	/**
