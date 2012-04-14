@@ -1201,18 +1201,19 @@
 	</extension>
     
 	<extension point="org.eclipse.ui.bindings">  
-		<key  
-            commandId="org.apache.tapestrytools.ui.command.actions.FindCorrespondingFile"  
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"  
-            sequence="Ctrl+R">  
+		<key
+        commandId="org.apache.tapestrytools.ui.command.actions.FindCorrespondingFile"
+        schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+        sequence="Ctrl+R">  
 		</key>  
 	</extension> 
    
 	<extension point="org.eclipse.ui.commands">  
 	<command  
-		description="%tapestry.corresponding.file.description"  
+		description="%tapestry.corresponding.file.description"
+		categoryId="org.eclipse.ui.category.edit"  
 		id="org.apache.tapestrytools.ui.command.actions.FindCorrespondingFile"  
-		name="%preferencepage.tapestry.name">  
+		name="%tml.switch.commands">  
 	</command>  
 	</extension> 
 </plugin>

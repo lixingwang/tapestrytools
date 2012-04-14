@@ -47,6 +47,8 @@ public class FindCorrespondingFileAction extends Action implements
 					.getEditorInput();
 			IFile file = input.getFile();
 			IProject activeProject = file.getProject();
+			String root = file.getProjectRelativePath().toString();
+			root = root.substring(0, root.indexOf("/"));
 			
 			String fileName = file.getFullPath().toString();
 			String aimFileName = null;
@@ -74,7 +76,7 @@ public class FindCorrespondingFileAction extends Action implements
 					}
 				});
 			}else{
-				searchPartenerFile(activeProject, aimNameShort);
+				searchPartenerFile(activeProject, aimNameShort, root);
 				if(this.partenerFile != null){
 					final IResource res2 = activeProject.findMember(partenerFile.substring(("/" + activeProject.getName()).length()));
 					if(res2 != null && res2.getType() == IResource.FILE){
@@ -101,10 +103,21 @@ public class FindCorrespondingFileAction extends Action implements
 		}
 	}
 	
-	private void searchPartenerFile(IProject project, String fileName){
+	private void searchPartenerFile(IProject project, String fileName, String root){
 		IResource[] fileList = null;
 		try {
 			fileList = project.members(false);
+			//Confirm travel current root directory first
+			for(int i=0; i<fileList.length; i++){
+				String path = fileList[i].getProjectRelativePath().toString();
+				if(fileList[i].getType() == IResource.FOLDER && path.equals(root)){
+					IResource temp = fileList[0];
+					fileList[0] = fileList[i];
+					fileList[i] = temp;
+					break;
+				}
+			}
+			//Travel all the project
 			travelAllFolder(fileList, fileName);
 		} catch (CoreException e) {
 			e.printStackTrace();
@@ -112,6 +125,8 @@ public class FindCorrespondingFileAction extends Action implements
 	}
 	
 	private void travelAllFolder(IResource[] fileList, String fileName) throws CoreException{
+		if(this.partenerFile != null)
+			return;
 		for(int i=0; i<fileList.length; i++){
 			IResource eachFile = fileList[i];
 			if(eachFile.getType() == IResource.FILE && eachFile.getName().equals(fileName)){
