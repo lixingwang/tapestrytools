@@ -57,9 +57,13 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	private static final Comparator fgProposalComparator = new ProposalComparator();
 	private String fContextTypeId = null;
 
-	/*
-	 * Copied from super class except instead of calling createContext(viewer,
-	 * region) call createContext(viewer, region, offset) instead
+	/**
+	 * This method is used to generate content assit for:
+	 * 1. blank space to list Tapestry components
+	 * 2. input '<' to list Tapestry components
+	 * 3. int '<t:' to list Tapestry components
+	 * 4. list attributes for Tapestry component
+	 * 5. list attributes values
 	 */
 	public ICompletionProposal[] computeCompletionProposals(ITextViewer viewer, int offset) {
 
@@ -79,7 +83,24 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 
 		IndexedRegion treeNode = ContentAssistUtils.getNodeAt(viewer, offset);
 
-		currentTapestryComponent = (Node) treeNode;
+		currentTapestryComponent = (Node) treeNode;	
+
+		char preChar=0,preChar2=0;
+		//In situation user input <, we should store the char before cursor into preChar and even preChar2
+		if(currentTapestryComponent.getNodeValue() != null){
+			for(int i=offset-treeNode.getStartOffset()-1; i>=0; i--){
+				char temp = currentTapestryComponent.getNodeValue().charAt(i);
+				if(temp != 9 && temp != 10 && temp != 32){
+					if(preChar == 0)
+						preChar = temp;
+					else{
+						preChar2 = temp;
+						break;
+					}
+				}
+			}
+		}
+		
 		while ((currentTapestryComponent != null) && (currentTapestryComponent.getNodeType() == Node.TEXT_NODE) && (currentTapestryComponent.getParentNode() != null)) {
 			currentTapestryComponent = currentTapestryComponent.getParentNode();
 		}
@@ -89,7 +110,7 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 		
 		System.out.println(">>>>> Get template list by context id:" + context.getContextType().getId() + "  selection:" + selection.getText());
 
-		Template[] templates = getTemplates(context.getContextType().getId());
+		Template[] templates = getTemplates(context.getContextType().getId(), preChar, preChar2);
 
 		List matches = new ArrayList();
 		for (int i = 0; i < templates.length; i++) {
@@ -101,8 +122,6 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 				continue;
 			}
 			if (template.matches(prefix, context.getContextType().getId())) {
-			//if (template.matches(prefix, "tml_components")) {//NOTICE: this line is just test code
-				System.out.println("PREFIX:" + prefix + "    context.getContextType().getId():" + context.getContextType().getId());
 				int place = getRelevance(template, prefix);
 				matches.add(createProposal(template, context, (IRegion) region, place));
 			}
@@ -162,6 +181,8 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			return XMLEditorPluginImageHelper.getInstance().getImage(XMLEditorPluginImages.IMG_TAPESTRY_DEFAULT);
 		else if(template.getContextTypeId().equals(TapestryElementCollection.attributesContextTypeId))
 			return XMLEditorPluginImageHelper.getInstance().getImage(XMLEditorPluginImages.IMG_TAPESTRY_ATTRIBUTE);
+		else if(template.getContextTypeId().equals(TapestryElementCollection.entitiesContextTypeId))
+			return XMLEditorPluginImageHelper.getInstance().getImage(XMLEditorPluginImages.IMG_TAPESTRY_ENTITY);
 		else 
 			return XMLEditorPluginImageHelper.getInstance().getImage(XMLEditorPluginImages.IMG_OBJ_TAG_MACRO);
 	}
@@ -171,16 +192,23 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	}
 
 	/**
-	 * TODO: 修改这个方法,从TapestryElementCollection中获取 Template[]
+	 * This method does not used, just implement abstract method
 	 */
 	protected Template[] getTemplates(String contextTypeId) {
+		
+		return null;
+	}
+	
+	/**
+	 * TODO: 修改这个方法,从TapestryElementCollection中获取 Template[]
+	 */
+	protected Template[] getTemplates(String contextTypeId, char preChar, char preChar2) {
 		TapestryElementCollection collection = new TapestryElementCollection();
 		if(contextTypeId.equals(TapestryElementCollection.componentsContextTypeId) ){
-			Node preNode = currentTapestryComponent.getLastChild();
 			Template[] tapestryTemplates = null;
-			if(currentTapestryComponent.getNodeName().equals("t:"))
+			if(currentTapestryComponent.getNodeName().equals("t:"))//if(preChar2 == 't' && preChar == ':')//
 				tapestryTemplates = collection.getTemplateList(contextTypeId, 3);
-			else if(preNode != null && preNode.getTextContent().trim().equals("<"))
+			else if(preChar == '<')//else if(preNode != null && preNode.getTextContent().trim().equals("<"))
 				tapestryTemplates = collection.getTemplateList(contextTypeId, 2);
 			else
 				tapestryTemplates = collection.getTemplateList(contextTypeId, 1);
@@ -210,5 +238,6 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	void setContextType(String contextTypeId) {
 		fContextTypeId = contextTypeId;
 	}
+
 
 }

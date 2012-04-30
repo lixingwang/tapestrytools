@@ -16,6 +16,7 @@ public class TemplateContextTypeIdsXML {
 	public static final String TAPESTRY_COMPONENTS = getTapestryComponents();
 	public static final String TAPESTRY_COMPONENTS_ATTR = getTapestryComponentsAttribute();
 	public static final String TAPESTRY_COMPONENTS_ATTR_VALUE = getTapestryComponentsAttributeValue();
+	public static final String TAPESTRY_ENTITIES = getTapestryEntities();
 
 	public static final String ALL = getAll();
 
@@ -33,6 +34,10 @@ public class TemplateContextTypeIdsXML {
 	
 	private static String getTapestryComponentsAttribute(){
 		return getTapestryPrefix() + "_attributes";
+	}
+	
+	private static String getTapestryEntities(){
+		return getTapestryPrefix() + "_entities";
 	}
 	
 	private static String getTapestryComponentsAttributeValue(){

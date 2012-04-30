@@ -109,7 +109,7 @@ public abstract class AbstractXMLCompletionProposalComputer implements ICompleti
 			node = node.getParentNode();
 		}
 		
-		System.out.println("-----------------" + node + " name:" + node.getNodeName());
+System.out.println("-----------------" + node + " name:" + node.getNodeName());
 		
 		IDOMNode xmlnode = (IDOMNode) node;
 
@@ -277,6 +277,17 @@ public abstract class AbstractXMLCompletionProposalComputer implements ICompleti
 	 */
 	protected abstract void addEntityProposals(ContentAssistRequest contentAssistRequest,
 			ITextRegion completionRegion, IDOMNode treeNode, CompletionProposalInvocationContext context);
+	
+	/**
+	 * Add Tapestry page class attributes auto-complete proposals
+	 * 
+	 * @param contentAssistRequest
+	 * @param completionRegion
+	 * @param treeNode
+	 * @param context
+	 */
+	protected abstract void addTapestryAttributesProposals(ContentAssistRequest contentAssistRequest,
+			ITextRegion completionRegion, IDOMNode treeNode, CompletionProposalInvocationContext context);
 
 	/**
 	 * add entity proposals
@@ -367,9 +378,10 @@ public abstract class AbstractXMLCompletionProposalComputer implements ICompleti
 	 */
 	protected ContentAssistRequest computeCompletionProposals(String matchString, ITextRegion completionRegion,
 			IDOMNode treeNode, IDOMNode xmlnode, CompletionProposalInvocationContext context) {
-		
+System.out.println("开始当前字符分析：");		
+
 		int documentPosition = context.getInvocationOffset();
-		
+
 		ContentAssistRequest contentAssistRequest = null;
 		String regionType = completionRegion.getType();
 		IStructuredDocumentRegion sdRegion = getStructuredDocumentRegion(documentPosition);
@@ -412,9 +424,8 @@ public abstract class AbstractXMLCompletionProposalComputer implements ICompleti
 			}
 			else if ((regionType == DOMRegionContext.XML_CONTENT) || (regionType == DOMRegionContext.XML_CHAR_REFERENCE) ||
 					(regionType == DOMRegionContext.XML_ENTITY_REFERENCE) || (regionType == DOMRegionContext.XML_PE_REFERENCE)) {
-				
-				contentAssistRequest = computeContentProposals(matchString, completionRegion,
-						treeNode, xmlnode, context);
+					contentAssistRequest = computeContentProposals(matchString, completionRegion,
+							treeNode, xmlnode, context);
 			}
 
 			// These ITextRegion types begin DOM Elements as well and although
@@ -600,6 +611,26 @@ public abstract class AbstractXMLCompletionProposalComputer implements ICompleti
 		return contentAssistRequest;
 	}
 
+	private boolean isTapestryELRequest(String matchString, ITextRegion completionRegion,
+			IDOMNode nodeAtOffset, IDOMNode node, CompletionProposalInvocationContext context){
+		int documentPosition = context.getInvocationOffset();
+		char preChar=0,preChar2=0;
+		for(int i=documentPosition-node.getStartOffset()-1; i>=0; i--){
+			char temp = node.getSource().charAt(i);
+			if(temp != 9 && temp != 10 && temp != 32){
+				if(preChar == 0)
+					preChar = temp;
+				else{
+					preChar2 = temp;
+					break;
+				}
+			}
+		}
+		if(preChar=='{' && preChar2 == '$')
+			return true;
+		else return false;
+	}
+	
 	private ContentAssistRequest computeContentProposals(String matchString, ITextRegion completionRegion,
 			IDOMNode nodeAtOffset, IDOMNode node, CompletionProposalInvocationContext context) {
 		
@@ -608,16 +639,23 @@ public abstract class AbstractXMLCompletionProposalComputer implements ICompleti
 
 		// setup to add children at the content node's position
 		contentAssistRequest = new ContentAssistRequest(nodeAtOffset, node, getStructuredDocumentRegion(documentPosition), completionRegion, documentPosition, 0, matchString);
-		if ((node != null) && (node.getNodeType() == Node.DOCUMENT_NODE) && (((Document) node).getDoctype() == null)) {
-			addStartDocumentProposals(contentAssistRequest, context);
+		
+		if(isTapestryELRequest(matchString, completionRegion, nodeAtOffset, node, context)){
+			//Compute ${} tapestry class entities auto-complate list
+			addTapestryAttributesProposals(contentAssistRequest, completionRegion, node, context);
+		}else{
+			if ((node != null) && (node.getNodeType() == Node.DOCUMENT_NODE) && (((Document) node).getDoctype() == null)) {
+				addStartDocumentProposals(contentAssistRequest, context);
+			}
+			addTagInsertionProposals(contentAssistRequest, getElementPosition(nodeAtOffset), context);
+			if (node.getNodeType() != Node.DOCUMENT_NODE) {
+				addEndTagProposals(contentAssistRequest, context);
+			}
+			// entities?
+			addEntityProposals(contentAssistRequest, completionRegion, node, context);
+			// addEntityProposals(contentAssistRequest);
 		}
-		addTagInsertionProposals(contentAssistRequest, getElementPosition(nodeAtOffset), context);
-		if (node.getNodeType() != Node.DOCUMENT_NODE) {
-			addEndTagProposals(contentAssistRequest, context);
-		}
-		// entities?
-		addEntityProposals(contentAssistRequest, completionRegion, node, context);
-		// addEntityProposals(contentAssistRequest);
+		
 		return contentAssistRequest;
 	}
 
@@ -980,16 +1018,24 @@ public abstract class AbstractXMLCompletionProposalComputer implements ICompleti
 			region = getCompletionRegion(offset, flatNode);
 		}
 		else {
+//Start test code added by Gavin Lei
+System.out.println("Build ITextRegion instance with char '< or $' start    node instance:" + node.getClass());
+IStructuredDocumentRegion preFlatNode = node.getStructuredDocument().getRegionAtCharacterOffset(offset-1);
+System.out.println(node.getStructuredDocument().getClass());
+System.out.println(preFlatNode.getPrevious().toString());
+
+
 			// the docPosition is neither within the start nor the end, so it
 			// must be content
 			flatNode = node.getStructuredDocument().getRegionAtCharacterOffset(offset);
+					
 			// (pa) ITextRegion refactor
 			// if (flatNode.contains(documentPosition)) {
 			if ((flatNode.getStartOffset() <= documentPosition) && (flatNode.getEndOffset() >= documentPosition)) {
 				// we're interesting in completing/extending the previous
 				// IStructuredDocumentRegion if the current
 				// IStructuredDocumentRegion isn't plain content or if it's
-				// preceded by an orphan '<'
+				// preceded by an orphan '<'				
 				if ((offset == flatNode.getStartOffset()) &&
 						(flatNode.getPrevious() != null) &&
 						(((flatNode.getRegionAtCharacterOffset(documentPosition) != null) &&

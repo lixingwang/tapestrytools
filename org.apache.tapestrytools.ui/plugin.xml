@@ -198,6 +198,11 @@
 			class="org.eclipse.wst.xml.ui.internal.templates.TemplateContextTypeXML"
 			id="tml_attributes_value">
 		</contextType>
+		<contextType
+			name="Tapestry class entities"
+			class="org.eclipse.wst.xml.ui.internal.templates.TemplateContextTypeXML"
+			id="tml_entities">
+		</contextType>
 		<include
 			file="templates/xmldefault-templates.xml"
 			translations="$nl$/templates/xmldefault-templates.properties">

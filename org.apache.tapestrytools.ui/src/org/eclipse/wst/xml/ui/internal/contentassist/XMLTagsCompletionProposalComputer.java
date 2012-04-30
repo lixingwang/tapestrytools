@@ -16,8 +16,10 @@ import java.util.List;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.text.contentassist.IContextInformationValidator;
 import org.eclipse.wst.sse.core.internal.provisional.text.IStructuredDocument;
+import org.eclipse.wst.sse.core.internal.provisional.text.ITextRegion;
 import org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext;
 import org.eclipse.wst.xml.core.internal.contentmodel.CMNode;
+import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
 
 /**
  * <p>{@link AbstractXMLModelQueryCompletionProposalComputer} used to
@@ -90,5 +92,12 @@ public class XMLTagsCompletionProposalComputer extends
 			fContextInformationValidator = new AttributeContextInformationPresenter();
 		}
 		return fContextInformationValidator;
+	}
+
+	protected void addTapestryAttributesProposals(
+			ContentAssistRequest contentAssistRequest,
+			ITextRegion completionRegion, IDOMNode treeNode,
+			CompletionProposalInvocationContext context) {
+		
 	}
 }

@@ -7,6 +7,8 @@
  * 
  * Contributors:
  *     IBM Corporation - initial API and implementation
+ *     
+ *     Gavin Lei (gavingui2011@gmail.com) - Tapestry features implemention
  *******************************************************************************/
 package org.eclipse.wst.xml.ui.internal.contentassist;
 
@@ -20,7 +22,9 @@ import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.wst.sse.core.internal.provisional.text.IStructuredDocumentRegion;
 import org.eclipse.wst.sse.core.internal.provisional.text.ITextRegion;
 import org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext;
+import org.eclipse.wst.sse.ui.internal.contentassist.CustomCompletionProposal;
 import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
+import org.eclipse.wst.xml.ui.internal.contentassist.tapestry.TapestryELCompletionProposalComputer;
 import org.eclipse.wst.xml.ui.internal.templates.TemplateContextTypeIdsXML;
 
 /**
@@ -33,12 +37,14 @@ public class XMLTemplatesCompletionProposalComputer extends
 	/** <p>The template processor used to create the proposals</p> */
 	private XMLTemplateCompletionProcessor fTemplateProcessor = null;
 
+	private TapestryELCompletionProposalComputer tapestryELProposalComputer = null;
 	/**
 	 * Create the computer
 	 */
 	public XMLTemplatesCompletionProposalComputer() {
 		super();
 		fTemplateProcessor = new XMLTemplateCompletionProcessor();
+		tapestryELProposalComputer = new TapestryELCompletionProposalComputer();
 	}
 
 	/**
@@ -153,6 +159,33 @@ public class XMLTemplatesCompletionProposalComputer extends
 			CompletionProposalInvocationContext context) {
 		//default behavior is to do nothing
 		System.out.println("=======================addEntityProposals===========================");
+	}
+	
+	protected void addTapestryAttributesProposals(
+			ContentAssistRequest contentAssistRequest,
+			ITextRegion completionRegion, IDOMNode treeNode,
+			CompletionProposalInvocationContext context){
+		System.out.println("=======================addTapestryAttributesProposals===========================");
+		System.out.println(completionRegion);
+		System.out.println(treeNode);
+		
+		
+		List<CustomCompletionProposal> results = tapestryELProposalComputer.computeCompletionProposals(context);
+		for(CustomCompletionProposal proposal: results)
+			contentAssistRequest.addProposal(proposal);
+		/**
+		 * We use CustomCompletionProposal here, give up CustomTemplateProposal
+		 * 
+		 * If we decides to use CustomTemplateProposal, just use the following method
+		 * addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAPESTRY_ENTITIES, context);
+		 */
+		
+		/*CustomCompletionProposal each = new CustomCompletionProposal( "prop:name", context.getInvocationOffset(), 0,0, entityImage, "name", null,
+				"variable name", 1);
+		CustomCompletionProposal each2 = new CustomCompletionProposal( "prop:age", context.getInvocationOffset(), 0,0, entityImage, "age", null,
+				"variable age", 1);
+		contentAssistRequest.addProposal(each);
+		contentAssistRequest.addProposal(each2);*/
 	}
 
 	/**

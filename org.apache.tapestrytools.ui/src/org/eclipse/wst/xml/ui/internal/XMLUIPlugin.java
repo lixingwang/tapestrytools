@@ -89,6 +89,7 @@ public class XMLUIPlugin extends AbstractUIPlugin {
 	public ContextTypeRegistry getTemplateContextRegistry() {
 		if (fContextTypeRegistry == null) {
 			ContributionContextTypeRegistry registry = new ContributionContextTypeRegistry();
+			registry.addContextType(TemplateContextTypeIdsXML.TAPESTRY_ENTITIES);
 			registry.addContextType(TemplateContextTypeIdsXML.ALL);
 			registry.addContextType(TemplateContextTypeIdsXML.NEW);
 			registry.addContextType(TemplateContextTypeIdsXML.TAG);
@@ -97,6 +98,7 @@ public class XMLUIPlugin extends AbstractUIPlugin {
 			registry.addContextType(TemplateContextTypeIdsXML.TAPESTRY_COMPONENTS_ATTR);
 			registry.addContextType(TemplateContextTypeIdsXML.TAPESTRY_COMPONENTS_ATTR_VALUE);
 			registry.addContextType(TemplateContextTypeIdsXML.TAPESTRY_COMPONENTS);
+			
 
 			fContextTypeRegistry = registry;
 		}
