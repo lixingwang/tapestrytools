@@ -36,6 +36,7 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 	public static final String componentsContextTypeId = "tml_components";
 	public static final String attributesContextTypeId = "tml_attributes";
 	public static final String attributesValueContextTypeId = "tml_attributes_value";
+	public static final String entitiesContextTypeId = "tml_entities";
 
 	class TypePacket {
 		public String name = null;
