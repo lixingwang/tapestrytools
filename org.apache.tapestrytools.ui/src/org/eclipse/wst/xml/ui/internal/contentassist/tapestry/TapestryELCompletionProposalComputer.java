@@ -38,8 +38,8 @@ import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImages;
 public class TapestryELCompletionProposalComputer {
 
 	private String partenerFile = null;
-	private ArrayList<String> propList = new ArrayList<String>();
-	private ArrayList<String> methodList = new ArrayList<String>();
+	private ArrayList propList = new ArrayList();
+	private ArrayList methodList = new ArrayList();
 
 	/**
 	 * @see org.eclipse.jst.jsp.ui.internal.contentassist.JSPJavaCompletionProposalComputer#computeCompletionProposals(org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext,
@@ -47,7 +47,7 @@ public class TapestryELCompletionProposalComputer {
 	 */
 	public List computeCompletionProposals(
 			CompletionProposalInvocationContext context) {
-		List<CustomCompletionProposal> results = new ArrayList<CustomCompletionProposal>();
+		List results = new ArrayList();
 		// Add Tapestry content assist
 		IEditorPart editorPart = Workbench.getInstance()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
@@ -131,14 +131,14 @@ public class TapestryELCompletionProposalComputer {
 		sortList(propList);
 		sortList(methodList);
 		for (int i = 0; i < propList.size(); i++) {
-			String prop = propList.get(i);
+			String prop = (String) propList.get(i);
 			CustomCompletionProposal each = new CustomCompletionProposal(
 					"prop:" + prop, offset, replacementLength,
 					replacementLength, image, prop, null, "variable " + prop, 1);
 			completionList.add(each);
 		}
 		for (int i = 0; i < methodList.size(); i++) {
-			String method = methodList.get(i);
+			String method = (String) methodList.get(i);
 			CustomCompletionProposal each = new CustomCompletionProposal(
 					"prop:" + method, offset, replacementLength,
 					replacementLength, image, method, null, "method " + method,
@@ -148,11 +148,11 @@ public class TapestryELCompletionProposalComputer {
 		return completionList;
 	}
 
-	private void sortList(ArrayList<String> list) {
+	private void sortList(ArrayList list) {
 		for (int i = 0; i < list.size(); i++) {
 			for (int j = i + 1; j < list.size(); j++) {
-				String strI = list.get(i);
-				String strJ = list.get(j);
+				String strI = (String) list.get(i);
+				String strJ = (String) list.get(j);
 				if (strJ.compareTo(strI) < 0) {
 					list.set(i, strJ);
 					list.set(j, strI);
@@ -188,9 +188,9 @@ public class TapestryELCompletionProposalComputer {
 		});
 	}
 
-	private void addIfNotExist(String newItem, List<String> list) {
+	private void addIfNotExist(String newItem, List list) {
 		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).trim().equals(newItem.trim())) {
+			if (((String) list.get(i)).trim().equals(newItem.trim())) {
 				return;
 			}
 		list.add(newItem);

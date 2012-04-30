@@ -170,9 +170,11 @@ public class XMLTemplatesCompletionProposalComputer extends
 		System.out.println(treeNode);
 		
 		
-		List<CustomCompletionProposal> results = tapestryELProposalComputer.computeCompletionProposals(context);
-		for(CustomCompletionProposal proposal: results)
+		List results = tapestryELProposalComputer.computeCompletionProposals(context);
+		for(int i=0; i< results.size(); i++){
+			CustomCompletionProposal proposal = (CustomCompletionProposal) results.get(i);
 			contentAssistRequest.addProposal(proposal);
+		}
 		/**
 		 * We use CustomCompletionProposal here, give up CustomTemplateProposal
 		 * 
