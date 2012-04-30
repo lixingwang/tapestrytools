@@ -378,7 +378,6 @@ System.out.println("-----------------" + node + " name:" + node.getNodeName());
 	 */
 	protected ContentAssistRequest computeCompletionProposals(String matchString, ITextRegion completionRegion,
 			IDOMNode treeNode, IDOMNode xmlnode, CompletionProposalInvocationContext context) {
-System.out.println("开始当前字符分析：");		
 
 		int documentPosition = context.getInvocationOffset();
 
