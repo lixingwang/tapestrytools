@@ -16,8 +16,13 @@ import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.dom.FieldDeclaration;
+import org.eclipse.jdt.core.dom.MarkerAnnotation;
+import org.eclipse.jdt.core.dom.MemberValuePair;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
+import org.eclipse.jdt.core.dom.NormalAnnotation;
+import org.eclipse.jdt.core.dom.PrimitiveType;
 import org.eclipse.jdt.core.dom.SimpleName;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jface.text.ITextViewer;
@@ -167,10 +172,43 @@ public class TapestryELCompletionProposalComputer {
 		parser.setKind(ASTParser.K_COMPILATION_UNIT);
 		final CompilationUnit cu = (CompilationUnit) parser.createAST(null);
 		cu.accept(new ASTVisitor() {
-			public boolean visit(VariableDeclarationFragment node) {
-				SimpleName name = node.getName();
-				addIfNotExist(name.toString(), propList);
-				return false;
+			/*
+			 * public boolean visit(VariableDeclarationFragment node) {
+			 * SimpleName name = node.getName(); addIfNotExist(name.toString(),
+			 * propList); return false; }
+			 */
+
+			private String elNodeName;
+			private boolean intoEL;
+
+			public void endVisit(FieldDeclaration node) {
+				elNodeName = "";
+				intoEL= false;
+				node.accept(new ASTVisitor() {
+					public void endVisit(MarkerAnnotation node) {
+						intoEL = node.getTypeName().toString().equals("Property");
+						super.endVisit(node);
+					}
+					
+					public void endVisit(NormalAnnotation node) {
+						intoEL = node.getTypeName().toString().equals("Property");
+						List values = node.values();
+						for(int i=0; i< values.size(); i++){
+							MemberValuePair pair = (MemberValuePair) values.get(i);
+							if(pair.getName().toString().equals("read") && pair.getValue().toString().equals("false"))
+								intoEL = false;
+						}
+						super.endVisit(node);
+					}
+
+					public void endVisit(VariableDeclarationFragment node) {
+						elNodeName = node.getName().toString();
+						super.endVisit(node);
+					}
+				});
+				super.endVisit(node);
+				if(intoEL)
+					addIfNotExist(elNodeName, propList);
 			}
 
 			public boolean visit(MethodDeclaration node) {
@@ -179,11 +217,29 @@ public class TapestryELCompletionProposalComputer {
 				if (node.getModifiers() == Modifier.PUBLIC
 						&& methodName.startsWith("get")
 						&& methodName.length() > 3) {
-					String propName = methodName.substring(3).toLowerCase();
+					String propName = getPropertyName(methodName.substring(3));
 					addIfNotExist(propName, propList);
-					methodList.add(methodName + "()");
+					// methodList.add(methodName + "()");
+				}
+				
+				if(node.getReturnType2().isPrimitiveType()){
+					PrimitiveType type = (PrimitiveType) node.getReturnType2();
+					if(type.getPrimitiveTypeCode() == PrimitiveType.BOOLEAN
+							&& node.getModifiers() == Modifier.PUBLIC
+							&& methodName.startsWith("is")
+							&& methodName.length() > 2){
+						String propName = getPropertyName(methodName.substring(2));
+						addIfNotExist(propName, propList);
+					}
 				}
 				return false;
+			}
+			
+			private String getPropertyName(String name){
+				if(name.length() > 1)
+					return name.substring(0,1).toLowerCase() + name.substring(1);
+				else
+					return name.toLowerCase();
 			}
 		});
 	}
