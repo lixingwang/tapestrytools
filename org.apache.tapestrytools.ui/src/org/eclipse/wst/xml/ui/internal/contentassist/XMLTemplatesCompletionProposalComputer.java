@@ -165,12 +165,8 @@ public class XMLTemplatesCompletionProposalComputer extends
 			ContentAssistRequest contentAssistRequest,
 			ITextRegion completionRegion, IDOMNode treeNode,
 			CompletionProposalInvocationContext context){
-		System.out.println("=======================addTapestryAttributesProposals===========================");
-		System.out.println(completionRegion);
-		System.out.println(treeNode);
-		
-		
-		List results = tapestryELProposalComputer.computeCompletionProposals(context);
+		System.out.println("=======================addTapestryAttributesProposals===========================");		
+		List results = tapestryELProposalComputer.computeCompletionProposals(context, treeNode);
 		for(int i=0; i< results.size(); i++){
 			CustomCompletionProposal proposal = (CustomCompletionProposal) results.get(i);
 			contentAssistRequest.addProposal(proposal);

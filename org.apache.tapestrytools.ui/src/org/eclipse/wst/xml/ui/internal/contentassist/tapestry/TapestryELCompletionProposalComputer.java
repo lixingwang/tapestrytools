@@ -32,6 +32,7 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.internal.Workbench;
 import org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext;
 import org.eclipse.wst.sse.ui.internal.contentassist.CustomCompletionProposal;
+import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImageHelper;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImages;
 
@@ -51,9 +52,10 @@ public class TapestryELCompletionProposalComputer {
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
 	public List computeCompletionProposals(
-			CompletionProposalInvocationContext context) {
+			CompletionProposalInvocationContext context, IDOMNode node) {
 		List results = new ArrayList();
-		// Add Tapestry content assist
+		String suffix = computeSuffix(context, node);
+
 		IEditorPart editorPart = Workbench.getInstance()
 				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 		if (editorPart != null) {
@@ -85,11 +87,32 @@ public class TapestryELCompletionProposalComputer {
 				if (res != null && res.getType() == IResource.FILE)
 					results.addAll(getTapestryPropProposals("",
 							context.getViewer(), context.getInvocationOffset(),
-							getTapestryImage(), 0, 0, res.getFullPath()));
+							getTapestryImage(), 0, 5, res.getFullPath(), suffix));
 			}
 		}
 
 		return results;
+	}
+
+	private String computeSuffix(CompletionProposalInvocationContext context,
+			IDOMNode node) {
+		String suffix = "}";
+		int documentPosition = context.getInvocationOffset();
+		for (int i = documentPosition; i < node.getSource().length(); i++) {
+			char temp = node.getSource().charAt(i);
+			if (temp == '}') {
+				suffix = "";
+				break;
+			} else if (temp == 32 || temp >= 48 && temp <= 57 || temp >= 65
+					&& temp <= 90 || temp >= 97 && temp <= 122)
+				continue;
+			else {
+				suffix = "}";
+				break;
+			}
+		}
+
+		return suffix;
 	}
 
 	private void searchPartenerFile(IProject project, String fileName) {
@@ -123,7 +146,7 @@ public class TapestryELCompletionProposalComputer {
 
 	private List getTapestryPropProposals(String prefix, ITextViewer viewer,
 			int offset, Image image, int replacementLength, int cursorPosition,
-			IPath classFile) {
+			IPath classFile, String suffix) {
 		ArrayList completionList = new ArrayList();
 		try {
 			propList.clear();
@@ -138,16 +161,15 @@ public class TapestryELCompletionProposalComputer {
 		for (int i = 0; i < propList.size(); i++) {
 			String prop = (String) propList.get(i);
 			CustomCompletionProposal each = new CustomCompletionProposal(
-					"prop:" + prop, offset, replacementLength,
-					replacementLength, image, prop, null, "variable " + prop, 1);
+					"prop:" + prop + suffix, offset, replacementLength,
+					cursorPosition, image, prop, null, "variable " + prop, 1);
 			completionList.add(each);
 		}
 		for (int i = 0; i < methodList.size(); i++) {
 			String method = (String) methodList.get(i);
 			CustomCompletionProposal each = new CustomCompletionProposal(
-					"prop:" + method, offset, replacementLength,
-					replacementLength, image, method, null, "method " + method,
-					1);
+					"prop:" + method + suffix, offset, replacementLength,
+					cursorPosition, image, method, null, "method " + method, 1);
 			completionList.add(each);
 		}
 		return completionList;
@@ -172,30 +194,30 @@ public class TapestryELCompletionProposalComputer {
 		parser.setKind(ASTParser.K_COMPILATION_UNIT);
 		final CompilationUnit cu = (CompilationUnit) parser.createAST(null);
 		cu.accept(new ASTVisitor() {
-			/*
-			 * public boolean visit(VariableDeclarationFragment node) {
-			 * SimpleName name = node.getName(); addIfNotExist(name.toString(),
-			 * propList); return false; }
-			 */
 
 			private String elNodeName;
 			private boolean intoEL;
 
 			public void endVisit(FieldDeclaration node) {
 				elNodeName = "";
-				intoEL= false;
+				intoEL = false;
 				node.accept(new ASTVisitor() {
 					public void endVisit(MarkerAnnotation node) {
-						intoEL = node.getTypeName().toString().equals("Property");
+						intoEL = node.getTypeName().toString()
+								.equals("Property");
 						super.endVisit(node);
 					}
-					
+
 					public void endVisit(NormalAnnotation node) {
-						intoEL = node.getTypeName().toString().equals("Property");
+						intoEL = node.getTypeName().toString()
+								.equals("Property");
 						List values = node.values();
-						for(int i=0; i< values.size(); i++){
-							MemberValuePair pair = (MemberValuePair) values.get(i);
-							if(pair.getName().toString().equals("read") && pair.getValue().toString().equals("false"))
+						for (int i = 0; i < values.size(); i++) {
+							MemberValuePair pair = (MemberValuePair) values
+									.get(i);
+							if (pair.getName().toString().equals("read")
+									&& pair.getValue().toString()
+											.equals("false"))
 								intoEL = false;
 						}
 						super.endVisit(node);
@@ -207,7 +229,7 @@ public class TapestryELCompletionProposalComputer {
 					}
 				});
 				super.endVisit(node);
-				if(intoEL)
+				if (intoEL)
 					addIfNotExist(elNodeName, propList);
 			}
 
@@ -221,23 +243,25 @@ public class TapestryELCompletionProposalComputer {
 					addIfNotExist(propName, propList);
 					// methodList.add(methodName + "()");
 				}
-				
-				if(node.getReturnType2().isPrimitiveType()){
+
+				if (node.getReturnType2().isPrimitiveType()) {
 					PrimitiveType type = (PrimitiveType) node.getReturnType2();
-					if(type.getPrimitiveTypeCode() == PrimitiveType.BOOLEAN
+					if (type.getPrimitiveTypeCode() == PrimitiveType.BOOLEAN
 							&& node.getModifiers() == Modifier.PUBLIC
 							&& methodName.startsWith("is")
-							&& methodName.length() > 2){
-						String propName = getPropertyName(methodName.substring(2));
+							&& methodName.length() > 2) {
+						String propName = getPropertyName(methodName
+								.substring(2));
 						addIfNotExist(propName, propList);
 					}
 				}
 				return false;
 			}
-			
-			private String getPropertyName(String name){
-				if(name.length() > 1)
-					return name.substring(0,1).toLowerCase() + name.substring(1);
+
+			private String getPropertyName(String name) {
+				if (name.length() > 1)
+					return name.substring(0, 1).toLowerCase()
+							+ name.substring(1);
 				else
 					return name.toLowerCase();
 			}
