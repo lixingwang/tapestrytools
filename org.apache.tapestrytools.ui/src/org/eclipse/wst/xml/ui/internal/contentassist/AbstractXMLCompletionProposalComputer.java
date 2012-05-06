@@ -325,7 +325,7 @@ public abstract class AbstractXMLCompletionProposalComputer implements
 	 * @param treeNode
 	 * @param context
 	 */
-	protected abstract void addTapestryAttributesProposals(
+	protected abstract void addTapestryELProposals(
 			ContentAssistRequest contentAssistRequest,
 			ITextRegion completionRegion, IDOMNode treeNode,
 			CompletionProposalInvocationContext context);
@@ -764,7 +764,7 @@ public abstract class AbstractXMLCompletionProposalComputer implements
 		if (isTapestryELRequest(matchString, completionRegion, nodeAtOffset,
 				node, context)) {
 			// Compute ${} tapestry class entities auto-complate list
-			addTapestryAttributesProposals(contentAssistRequest,
+			addTapestryELProposals(contentAssistRequest,
 					completionRegion, node, context);
 		} else {
 			if ((node != null) && (node.getNodeType() == Node.DOCUMENT_NODE)

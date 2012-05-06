@@ -94,7 +94,7 @@ public class XMLTagsCompletionProposalComputer extends
 		return fContextInformationValidator;
 	}
 
-	protected void addTapestryAttributesProposals(
+	protected void addTapestryELProposals(
 			ContentAssistRequest contentAssistRequest,
 			ITextRegion completionRegion, IDOMNode treeNode,
 			CompletionProposalInvocationContext context) {

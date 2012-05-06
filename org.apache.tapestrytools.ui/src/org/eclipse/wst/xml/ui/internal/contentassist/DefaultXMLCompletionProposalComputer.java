@@ -198,7 +198,7 @@ public class DefaultXMLCompletionProposalComputer extends
 		//default behavior is to do nothing
 	}
 
-	protected void addTapestryAttributesProposals(
+	protected void addTapestryELProposals(
 			ContentAssistRequest contentAssistRequest,
 			ITextRegion completionRegion, IDOMNode treeNode,
 			CompletionProposalInvocationContext context) {

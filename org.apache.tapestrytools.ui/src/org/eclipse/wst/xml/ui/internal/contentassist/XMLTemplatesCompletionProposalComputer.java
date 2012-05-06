@@ -164,7 +164,7 @@ public class XMLTemplatesCompletionProposalComputer extends
 		System.out.println("=======================addEntityProposals===========================");
 	}
 	
-	protected void addTapestryAttributesProposals(
+	protected void addTapestryELProposals(
 			ContentAssistRequest contentAssistRequest,
 			ITextRegion completionRegion, IDOMNode treeNode,
 			CompletionProposalInvocationContext context){
