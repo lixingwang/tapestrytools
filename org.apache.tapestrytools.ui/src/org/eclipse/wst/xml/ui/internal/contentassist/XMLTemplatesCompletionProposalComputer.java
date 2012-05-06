@@ -175,19 +175,7 @@ public class XMLTemplatesCompletionProposalComputer extends
 			CustomCompletionProposal proposal = (CustomCompletionProposal) results.get(i);
 			contentAssistRequest.addProposal(proposal);
 		}
-		/**
-		 * We use CustomCompletionProposal here, give up CustomTemplateProposal
-		 * 
-		 * If we decides to use CustomTemplateProposal, just use the following method
-		 * addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAPESTRY_ENTITIES, context);
-		 */
-		
-		/*CustomCompletionProposal each = new CustomCompletionProposal( "prop:name", context.getInvocationOffset(), 0,0, entityImage, "name", null,
-				"variable name", 1);
-		CustomCompletionProposal each2 = new CustomCompletionProposal( "prop:age", context.getInvocationOffset(), 0,0, entityImage, "age", null,
-				"variable age", 1);
-		contentAssistRequest.addProposal(each);
-		contentAssistRequest.addProposal(each2);*/
+		//addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAPESTRY_ENTITIES, context);
 	}
 
 	/**
