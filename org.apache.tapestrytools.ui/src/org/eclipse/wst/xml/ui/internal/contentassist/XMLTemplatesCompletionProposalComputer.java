@@ -25,6 +25,7 @@ import org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext;
 import org.eclipse.wst.sse.ui.internal.contentassist.CustomCompletionProposal;
 import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
 import org.eclipse.wst.xml.ui.internal.contentassist.tapestry.TapestryELCompletionProposalComputer;
+import org.eclipse.wst.xml.ui.internal.contentassist.tapestry.TapestryMessageCompletionProposalComputer;
 import org.eclipse.wst.xml.ui.internal.templates.TemplateContextTypeIdsXML;
 
 /**
@@ -38,6 +39,7 @@ public class XMLTemplatesCompletionProposalComputer extends
 	private XMLTemplateCompletionProcessor fTemplateProcessor = null;
 
 	private TapestryELCompletionProposalComputer tapestryELProposalComputer = null;
+	private TapestryMessageCompletionProposalComputer tapestryMessageProposalComputer = null;
 	/**
 	 * Create the computer
 	 */
@@ -45,6 +47,7 @@ public class XMLTemplatesCompletionProposalComputer extends
 		super();
 		fTemplateProcessor = new XMLTemplateCompletionProcessor();
 		tapestryELProposalComputer = new TapestryELCompletionProposalComputer();
+		tapestryMessageProposalComputer = new TapestryMessageCompletionProposalComputer();
 	}
 
 	/**
@@ -166,7 +169,8 @@ public class XMLTemplatesCompletionProposalComputer extends
 			ITextRegion completionRegion, IDOMNode treeNode,
 			CompletionProposalInvocationContext context){
 		System.out.println("=======================addTapestryAttributesProposals===========================");		
-		List results = tapestryELProposalComputer.computeCompletionProposals(context, treeNode);
+		List results = tapestryELProposalComputer.computeCompletionProposals("prop:", context, treeNode);
+		results.addAll(tapestryMessageProposalComputer.computeCompletionProposals("message:", context, treeNode));
 		for(int i=0; i< results.size(); i++){
 			CustomCompletionProposal proposal = (CustomCompletionProposal) results.get(i);
 			contentAssistRequest.addProposal(proposal);

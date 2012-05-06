@@ -51,8 +51,7 @@ public class TapestryELCompletionProposalComputer {
 	 * @see org.eclipse.jst.jsp.ui.internal.contentassist.JSPJavaCompletionProposalComputer#computeCompletionProposals(org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public List computeCompletionProposals(
-			CompletionProposalInvocationContext context, IDOMNode node) {
+	public List computeCompletionProposals(String prefix, CompletionProposalInvocationContext context, IDOMNode node) {
 		List results = new ArrayList();
 		String suffix = computeSuffix(context, node);
 
@@ -85,7 +84,7 @@ public class TapestryELCompletionProposalComputer {
 				}
 
 				if (res != null && res.getType() == IResource.FILE)
-					results.addAll(getTapestryPropProposals("",
+					results.addAll(getTapestryPropProposals(prefix,
 							context.getViewer(), context.getInvocationOffset(),
 							getTapestryImage(), 0, 5, res.getFullPath(), suffix));
 			}
@@ -156,36 +155,22 @@ public class TapestryELCompletionProposalComputer {
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
-		sortList(propList);
-		sortList(methodList);
+
 		for (int i = 0; i < propList.size(); i++) {
 			String prop = (String) propList.get(i);
 			CustomCompletionProposal each = new CustomCompletionProposal(
-					"prop:" + prop + suffix, offset, replacementLength,
-					cursorPosition, image, prop, null, "variable " + prop, 1);
+					prefix + prop + suffix, offset, replacementLength,
+					cursorPosition, image, prop, null, "Tapestry page property: " + prop, 1);
 			completionList.add(each);
 		}
 		for (int i = 0; i < methodList.size(); i++) {
 			String method = (String) methodList.get(i);
 			CustomCompletionProposal each = new CustomCompletionProposal(
-					"prop:" + method + suffix, offset, replacementLength,
+					prefix + method + suffix, offset, replacementLength,
 					cursorPosition, image, method, null, "method " + method, 1);
 			completionList.add(each);
 		}
 		return completionList;
-	}
-
-	private void sortList(ArrayList list) {
-		for (int i = 0; i < list.size(); i++) {
-			for (int j = i + 1; j < list.size(); j++) {
-				String strI = (String) list.get(i);
-				String strJ = (String) list.get(j);
-				if (strJ.compareTo(strI) < 0) {
-					list.set(i, strJ);
-					list.set(j, strI);
-				}
-			}
-		}
 	}
 
 	private void goThroughClass(String ClassContent) {

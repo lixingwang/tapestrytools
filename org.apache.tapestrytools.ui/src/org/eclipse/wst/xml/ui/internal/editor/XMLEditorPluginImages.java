@@ -62,4 +62,5 @@ public class XMLEditorPluginImages {
 	public static final String IMG_TAPESTRY_DEFAULT = "icons/tmldoc.gif";
 	public static final String IMG_TAPESTRY_ATTRIBUTE = "icons/full/obj16/attribute_obj.gif";
 	public static final String IMG_TAPESTRY_ENTITY = "icons/full/obj16/doctype.gif";
+	public static final String IMG_TAPESTRY_MESSAGES = "icons/full/dtool16/constrainoff.gif";
 }
