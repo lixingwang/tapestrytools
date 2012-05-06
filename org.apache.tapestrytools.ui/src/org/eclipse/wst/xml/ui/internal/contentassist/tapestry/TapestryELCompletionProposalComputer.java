@@ -51,7 +51,7 @@ public class TapestryELCompletionProposalComputer {
 	 * @see org.eclipse.jst.jsp.ui.internal.contentassist.JSPJavaCompletionProposalComputer#computeCompletionProposals(org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public List computeCompletionProposals(String prefix, CompletionProposalInvocationContext context, IDOMNode node) {
+	public List computeCompletionProposals(String prefix, CompletionProposalInvocationContext context, IDOMNode node, int cursoroffset) {
 		List results = new ArrayList();
 		String suffix = computeSuffix(context, node);
 
@@ -86,7 +86,7 @@ public class TapestryELCompletionProposalComputer {
 				if (res != null && res.getType() == IResource.FILE)
 					results.addAll(getTapestryPropProposals(prefix,
 							context.getViewer(), context.getInvocationOffset(),
-							getTapestryImage(), 0, 5, res.getFullPath(), suffix));
+							getTapestryImage(), 0, cursoroffset, res.getFullPath(), suffix));
 			}
 		}
 
@@ -189,13 +189,13 @@ public class TapestryELCompletionProposalComputer {
 				node.accept(new ASTVisitor() {
 					public void endVisit(MarkerAnnotation node) {
 						intoEL = node.getTypeName().toString()
-								.equals("Property");
+								.equals(TapestryContants.ANNOTATION_PROPERTY);
 						super.endVisit(node);
 					}
 
 					public void endVisit(NormalAnnotation node) {
 						intoEL = node.getTypeName().toString()
-								.equals("Property");
+								.equals(TapestryContants.ANNOTATION_PROPERTY);
 						List values = node.values();
 						for (int i = 0; i < values.size(); i++) {
 							MemberValuePair pair = (MemberValuePair) values

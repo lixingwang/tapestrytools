@@ -24,6 +24,7 @@ import org.eclipse.wst.sse.core.internal.provisional.text.ITextRegion;
 import org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext;
 import org.eclipse.wst.sse.ui.internal.contentassist.CustomCompletionProposal;
 import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
+import org.eclipse.wst.xml.ui.internal.contentassist.tapestry.TapestryContants;
 import org.eclipse.wst.xml.ui.internal.contentassist.tapestry.TapestryELCompletionProposalComputer;
 import org.eclipse.wst.xml.ui.internal.contentassist.tapestry.TapestryMessageCompletionProposalComputer;
 import org.eclipse.wst.xml.ui.internal.templates.TemplateContextTypeIdsXML;
@@ -168,9 +169,21 @@ public class XMLTemplatesCompletionProposalComputer extends
 			ContentAssistRequest contentAssistRequest,
 			ITextRegion completionRegion, IDOMNode treeNode,
 			CompletionProposalInvocationContext context){
-		System.out.println("=======================addTapestryAttributesProposals===========================");		
-		List results = tapestryELProposalComputer.computeCompletionProposals("prop:", context, treeNode);
-		results.addAll(tapestryMessageProposalComputer.computeCompletionProposals("message:", context, treeNode));
+		System.out.println("=======================addTapestryELProposals===========================");		
+		List results = tapestryELProposalComputer.computeCompletionProposals(TapestryContants.PREFIX_PROP, context, treeNode, 5);
+		results.addAll(tapestryMessageProposalComputer.computeCompletionProposals(TapestryContants.PREFIX_MESSAGE, context, treeNode, 8));
+		for(int i=0; i< results.size(); i++){
+			CustomCompletionProposal proposal = (CustomCompletionProposal) results.get(i);
+			contentAssistRequest.addProposal(proposal);
+		}
+		//addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAPESTRY_ENTITIES, context);
+	}
+	
+	protected void addTapestryELMessagesProposals(
+			ContentAssistRequest contentAssistRequest,
+			ITextRegion completionRegion, IDOMNode treeNode,
+			CompletionProposalInvocationContext context){	
+		List results = tapestryMessageProposalComputer.computeCompletionProposals(TapestryContants.PREFIX_BLANK, context, treeNode, 0);
 		for(int i=0; i< results.size(); i++){
 			CustomCompletionProposal proposal = (CustomCompletionProposal) results.get(i);
 			contentAssistRequest.addProposal(proposal);

@@ -100,4 +100,12 @@ public class XMLTagsCompletionProposalComputer extends
 			CompletionProposalInvocationContext context) {
 		
 	}
+
+	protected void addTapestryELMessagesProposals(
+			ContentAssistRequest contentAssistRequest,
+			ITextRegion completionRegion, IDOMNode treeNode,
+			CompletionProposalInvocationContext context) {
+		// TODO Auto-generated method stub
+		
+	}
 }

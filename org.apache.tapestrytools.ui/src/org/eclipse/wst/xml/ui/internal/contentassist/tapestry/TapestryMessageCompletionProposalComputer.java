@@ -34,7 +34,7 @@ public class TapestryMessageCompletionProposalComputer {
 	private String partenerFile = null;
 	private ArrayList propList = new ArrayList();
 
-	public List computeCompletionProposals(String prefix,CompletionProposalInvocationContext context, IDOMNode node) {
+	public List computeCompletionProposals(String prefix,CompletionProposalInvocationContext context, IDOMNode node, int cursoroffset) {
 		List results = new ArrayList();
 		String suffix = computeSuffix(context, node);
 
@@ -69,7 +69,7 @@ public class TapestryMessageCompletionProposalComputer {
 				if (res != null && res.getType() == IResource.FILE)
 					results.addAll(getMessageProposals(prefix,
 							context.getViewer(), context.getInvocationOffset(),
-							getTapestryImage(), 0, 8, res.getFullPath(), suffix));
+							getTapestryImage(), 0, cursoroffset, res.getFullPath(), suffix));
 			}
 		}
 
