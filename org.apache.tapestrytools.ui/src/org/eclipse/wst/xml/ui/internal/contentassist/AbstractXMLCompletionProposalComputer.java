@@ -203,10 +203,11 @@ public abstract class AbstractXMLCompletionProposalComputer implements
 			// Compute ${message: } tapestry messages auto-complate list
 			contentAssistRequest = computeTapestryMessageProposals(matchString,
 					completionRegion, (IDOMNode) treeNode, xmlnode, context);
-		} else
-		// compute normal proposals
-		contentAssistRequest = computeCompletionProposals(matchString,
-				completionRegion, (IDOMNode) treeNode, xmlnode, context);
+		} else {
+			// compute normal proposals
+			contentAssistRequest = computeCompletionProposals(matchString,
+					completionRegion, (IDOMNode) treeNode, xmlnode, context);
+		}
 
 		if (contentAssistRequest == null) {
 			contentAssistRequest = new ContentAssistRequest((Node) treeNode,
