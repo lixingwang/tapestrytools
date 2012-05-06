@@ -466,17 +466,6 @@ public abstract class AbstractXMLCompletionProposalComputer implements
 		String regionType = completionRegion.getType();
 		IStructuredDocumentRegion sdRegion = getStructuredDocumentRegion(documentPosition);
 
-		/*if (isTapestryELRequest(matchString, completionRegion, treeNode,
-				xmlnode, context)) {
-			// Compute ${} tapestry class entities auto-complate list
-			contentAssistRequest = computeTapestryELProposals(matchString,
-					completionRegion, treeNode, xmlnode, context);
-		} else if (isTapestryELMessageRequest(matchString, completionRegion,
-				treeNode, xmlnode, context)) {
-			// Compute ${message: } tapestry messages auto-complate list
-			contentAssistRequest = computeTapestryMessageProposals(matchString,
-					completionRegion, treeNode, xmlnode, context);
-		} else*/
 		// Handle the most common and best supported cases
 		if ((xmlnode.getNodeType() == Node.ELEMENT_NODE)
 				|| (xmlnode.getNodeType() == Node.DOCUMENT_NODE)) {
