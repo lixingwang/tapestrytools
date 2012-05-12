@@ -117,8 +117,7 @@ public abstract class AbstractXMLCompletionProposalComputer implements
 			node = node.getParentNode();
 		}
 
-		System.out.println("-----------------" + node + "  instance:"
-				+ node.getClass() + " name:" + node.getNodeName());
+		//System.out.println("-----------------" + node + "  instance:" + node.getClass() + " name:" + node.getNodeName());
 
 		IDOMNode xmlnode = (IDOMNode) node;
 		ContentAssistRequest contentAssistRequest = null;
@@ -202,6 +201,11 @@ public abstract class AbstractXMLCompletionProposalComputer implements
 				(IDOMNode) treeNode, xmlnode, context)) {
 			// Compute ${message: } tapestry messages auto-complate list
 			contentAssistRequest = computeTapestryMessageProposals(matchString,
+					completionRegion, (IDOMNode) treeNode, xmlnode, context);
+		} else if (isTapestryELPropRequest(matchString, completionRegion,
+				(IDOMNode) treeNode, xmlnode, context)) {
+			// Compute ${prop: } tapestry messages auto-complate list
+			contentAssistRequest = computeTapestryPropProposals(matchString,
 					completionRegion, (IDOMNode) treeNode, xmlnode, context);
 		} else {
 			// compute normal proposals
@@ -354,6 +358,19 @@ public abstract class AbstractXMLCompletionProposalComputer implements
 	 * @param context
 	 */
 	protected abstract void addTapestryELMessagesProposals(
+			ContentAssistRequest contentAssistRequest,
+			ITextRegion completionRegion, IDOMNode treeNode,
+			CompletionProposalInvocationContext context);
+	
+	/**
+	 * Add Tapestry page class property auto-complete proposals
+	 * 
+	 * @param contentAssistRequest
+	 * @param completionRegion
+	 * @param treeNode
+	 * @param context
+	 */
+	protected abstract void addTapestryELPropProposals(
 			ContentAssistRequest contentAssistRequest,
 			ITextRegion completionRegion, IDOMNode treeNode,
 			CompletionProposalInvocationContext context);
@@ -802,6 +819,30 @@ public abstract class AbstractXMLCompletionProposalComputer implements
 		}
 		return false;
 	}
+	
+	private boolean isTapestryELPropRequest(String matchString,
+			ITextRegion completionRegion, IDOMNode nodeAtOffset, IDOMNode node,
+			CompletionProposalInvocationContext context) {
+		int documentPosition = context.getInvocationOffset();
+		for (int i = documentPosition - node.getStartOffset() - 1; i >= 0; i--) {
+			char temp = node.getSource().charAt(i);
+			if (temp == 10)
+				break;
+			else if (temp == '{') {
+				if (i - 1 >= 0 && node.getSource().charAt(i - 1) == '$'
+						&& i + 1 < documentPosition - node.getStartOffset()) {
+					String prefix = node.getSource().substring(i + 1,
+							documentPosition - node.getStartOffset());
+					if (prefix.trim().equals(TapestryContants.PREFIX_PROP))
+						return true;
+					else
+						break;
+				} else
+					break;
+			}
+		}
+		return false;
+	}
 
 	private ContentAssistRequest computeTapestryMessageProposals(
 			String matchString, ITextRegion completionRegion,
@@ -813,6 +854,20 @@ public abstract class AbstractXMLCompletionProposalComputer implements
 				getStructuredDocumentRegion(documentPosition),
 				completionRegion, documentPosition, 0, matchString);
 		addTapestryELMessagesProposals(contentAssistRequest, completionRegion,
+				node, context);
+		return contentAssistRequest;
+	}
+	
+	private ContentAssistRequest computeTapestryPropProposals(
+			String matchString, ITextRegion completionRegion,
+			IDOMNode nodeAtOffset, IDOMNode node,
+			CompletionProposalInvocationContext context) {
+		int documentPosition = context.getInvocationOffset();
+		ContentAssistRequest contentAssistRequest = new ContentAssistRequest(
+				nodeAtOffset, node,
+				getStructuredDocumentRegion(documentPosition),
+				completionRegion, documentPosition, 0, matchString);
+		addTapestryELPropProposals(contentAssistRequest, completionRegion,
 				node, context);
 		return contentAssistRequest;
 	}

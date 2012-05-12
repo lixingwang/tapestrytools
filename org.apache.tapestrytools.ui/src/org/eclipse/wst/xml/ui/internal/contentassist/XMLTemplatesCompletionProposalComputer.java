@@ -188,7 +188,17 @@ public class XMLTemplatesCompletionProposalComputer extends
 			CustomCompletionProposal proposal = (CustomCompletionProposal) results.get(i);
 			contentAssistRequest.addProposal(proposal);
 		}
-		//addTemplates(contentAssistRequest, TemplateContextTypeIdsXML.TAPESTRY_ENTITIES, context);
+	}
+	
+	protected void addTapestryELPropProposals(
+			ContentAssistRequest contentAssistRequest,
+			ITextRegion completionRegion, IDOMNode treeNode,
+			CompletionProposalInvocationContext context) {
+		List results = tapestryELProposalComputer.computeCompletionProposals(TapestryContants.PREFIX_BLANK, context, treeNode, 0);
+		for(int i=0; i< results.size(); i++){
+			CustomCompletionProposal proposal = (CustomCompletionProposal) results.get(i);
+			contentAssistRequest.addProposal(proposal);
+		}
 	}
 
 	/**
@@ -249,12 +259,9 @@ public class XMLTemplatesCompletionProposalComputer extends
 	 */
 	private void addTemplates(ContentAssistRequest contentAssistRequest, String templateContext,
 			CompletionProposalInvocationContext context) {
-		
 		if (contentAssistRequest != null) {
 
 			boolean useProposalList = !contentAssistRequest.shouldSeparate();
-	
-			//ICompletionProposal = new CustomTemplateProposal(null, null, null, null, 0);
 			
 			if (fTemplateProcessor != null) {
 				fTemplateProcessor.setContextType(templateContext);
