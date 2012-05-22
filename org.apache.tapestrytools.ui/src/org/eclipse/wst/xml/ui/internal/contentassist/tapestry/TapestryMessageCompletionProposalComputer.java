@@ -1,10 +1,15 @@
 package org.eclipse.wst.xml.ui.internal.contentassist.tapestry;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -23,6 +28,11 @@ import org.eclipse.wst.sse.ui.internal.contentassist.CustomCompletionProposal;
 import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImageHelper;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImages;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  * <p>
@@ -32,10 +42,14 @@ import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImages;
 public class TapestryMessageCompletionProposalComputer {
 
 	private String partenerFile = null;
+	private String webFile = null;
 	private ArrayList propList = new ArrayList();
 
 	public List computeCompletionProposals(String prefix,CompletionProposalInvocationContext context, IDOMNode node, int cursoroffset) {
 		List results = new ArrayList();
+		partenerFile = null;
+		webFile = null;
+		
 		String suffix = computeSuffix(context, node);
 
 		IEditorPart editorPart = Workbench.getInstance()
@@ -52,24 +66,83 @@ public class TapestryMessageCompletionProposalComputer {
 				aimFileName = fileName.substring(0, fileName.length() - 4)
 						+ ".properties";
 				IResource res = null;
+				IResource webRes = null;
 				if (aimFileName.indexOf("/") > -1)
 					aimNameShort = aimFileName.substring(aimFileName
 							.lastIndexOf("/") + 1);
 				res = activeProject.findMember(aimFileName
 						.substring(("/" + activeProject.getName()).length()));
-				if (res == null) {
-					searchPartenerFile(activeProject, aimNameShort);
-					if (this.partenerFile != null) {
-						res = activeProject.findMember(partenerFile
-								.substring(("/" + activeProject.getName())
-										.length()));
-					}
+				if(res != null)
+					this.partenerFile = aimFileName;
+				
+				searchPartenerFile(activeProject, aimNameShort);
+				if (this.partenerFile != null) {
+					res = activeProject.findMember(partenerFile
+							.substring(("/" + activeProject.getName())
+									.length()));
+				}
+				if(this.webFile != null){
+					webRes = activeProject.findMember(webFile.substring(("/" + activeProject.getName())
+									.length()));
 				}
 
 				if (res != null && res.getType() == IResource.FILE)
 					results.addAll(getMessageProposals(prefix,
 							context.getViewer(), context.getInvocationOffset(),
 							getTapestryImage(), 0, cursoroffset, res.getFullPath(), suffix));
+				
+				if(webRes != null && webRes.getType() == IResource.FILE){
+					try {
+						InputStream webStream = ResourcesPlugin.getWorkspace().getRoot()
+								.getFile(webRes.getFullPath()).getContents();
+						DocumentBuilder db=DocumentBuilderFactory.newInstance().newDocumentBuilder();
+						Document document=db.parse(webStream);
+						Element web = document.getDocumentElement();
+						NodeList filters = web.getChildNodes();
+						String appName = null;
+			            boolean tapestryFilter = false;
+						for(int i=0; i<filters.getLength(); i++){
+				            Node filter=filters.item(i);
+				            if(filter.getNodeType() != Node.ELEMENT_NODE || !filter.getNodeName().equals(TapestryContants.WEB_FILTER))
+				            	continue;
+				            NodeList filterChildren = filter.getChildNodes();
+				            appName = null;
+				            tapestryFilter = false;
+				            for(int j=0; j<filterChildren.getLength(); j++){
+				            	Node element = filterChildren.item(j);
+				            	if(element.getNodeType() != Node.ELEMENT_NODE)
+				            		continue;
+				            	if(element.getNodeName().equals(TapestryContants.WEB_FILTER_CLASS)){
+				            		if(element.getTextContent().trim().equals(TapestryContants.TAPESTRY_5_FILTER)){
+				            			tapestryFilter = true;
+				            		}
+				            	}else if(element.getNodeName().equals(TapestryContants.WEB_FILTER_NAME)){
+				            		appName = element.getTextContent().trim();
+				            	}
+				            }
+				            if(appName != null && tapestryFilter)
+				            	break;
+				        }
+						if(appName != null && tapestryFilter){
+							String appMessageFile = webFile.substring(0, webFile.lastIndexOf("/")) + "/" +appName + ".properties";
+							res = activeProject.findMember(appMessageFile
+									.substring(("/" + activeProject.getName())
+											.length()));
+							if (res != null && res.getType() == IResource.FILE)
+								results.addAll(getMessageProposals(prefix,
+										context.getViewer(), context.getInvocationOffset(),
+										getTapestryImage(), 0, cursoroffset, res.getFullPath(), suffix));
+						}
+					} catch (CoreException e) {
+						e.printStackTrace();
+					} catch (ParserConfigurationException e) {
+						e.printStackTrace();
+					} catch (SAXException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 
@@ -114,6 +187,11 @@ public class TapestryMessageCompletionProposalComputer {
 			if (eachFile.getType() == IResource.FILE
 					&& eachFile.getName().equals(fileName)) {
 				this.partenerFile = eachFile.getFullPath().toString();
+				if(this.webFile != null) return;
+			}else if(eachFile.getType() == IResource.FILE && eachFile.getName().equals(TapestryContants.WEB_XML)){
+				this.webFile = eachFile.getFullPath().toString();
+				if(this.partenerFile != null)
+					return;
 			} else if (eachFile.getType() == IResource.FOLDER) {
 				IFolder file = (IFolder) eachFile;
 				travelAllFolder(file.members(), fileName);
