@@ -35,7 +35,9 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.wst.sse.core.internal.provisional.IndexedRegion;
 import org.eclipse.wst.sse.ui.internal.contentassist.ContentAssistUtils;
 import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.TapestryElementCollection;
+import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
 import org.eclipse.wst.xml.ui.internal.XMLUIPlugin;
+import org.eclipse.wst.xml.ui.internal.contentassist.tapestry.TapestryComponentCompletionProposalComputer;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImageHelper;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImages;
 import org.w3c.dom.Node;
@@ -84,7 +86,6 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 		IndexedRegion treeNode = ContentAssistUtils.getNodeAt(viewer, offset);
 
 		currentTapestryComponent = (Node) treeNode;	
-
 		char preChar=0,preChar2=0;
 		//In situation user input <, we should store the char before cursor into preChar and even preChar2
 		if(currentTapestryComponent.getNodeValue() != null){
@@ -109,8 +110,8 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 		context.setVariable("selection", selection.getText()); //$NON-NLS-1$
 		
 		System.out.println(">>>>> Get template list by context id:" + context.getContextType().getId() + "  selection:" + selection.getText());
-
-		Template[] templates = getTemplates(context.getContextType().getId(), preChar, preChar2);
+		
+		Template[] templates = getTemplates((IDOMNode) treeNode, offset, context.getContextType().getId(), preChar, preChar2);
 
 		List matches = new ArrayList();
 		for (int i = 0; i < templates.length; i++) {
@@ -183,6 +184,8 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			return XMLEditorPluginImageHelper.getInstance().getImage(XMLEditorPluginImages.IMG_TAPESTRY_ATTRIBUTE);
 		else if(template.getContextTypeId().equals(TapestryElementCollection.entitiesContextTypeId))
 			return XMLEditorPluginImageHelper.getInstance().getImage(XMLEditorPluginImages.IMG_TAPESTRY_ENTITY);
+		else if(template.getContextTypeId().equals(TapestryElementCollection.attributesValueContextTypeId))
+			return XMLEditorPluginImageHelper.getInstance().getImage(XMLEditorPluginImages.IMG_TAPESTRY_DEFAULT);
 		else 
 			return XMLEditorPluginImageHelper.getInstance().getImage(XMLEditorPluginImages.IMG_OBJ_TAG_MACRO);
 	}
@@ -202,7 +205,7 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	/**
 	 * TODO: 修改这个方法,从TapestryElementCollection中获取 Template[]
 	 */
-	protected Template[] getTemplates(String contextTypeId, char preChar, char preChar2) {
+	protected Template[] getTemplates(IDOMNode node, int offset, String contextTypeId, char preChar, char preChar2) {
 		TapestryElementCollection collection = new TapestryElementCollection();
 		if(contextTypeId.equals(TapestryElementCollection.componentsContextTypeId) ){
 			Template[] tapestryTemplates = null;
@@ -217,7 +220,12 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			Template[] tapestryTemplates = collection.getAttributeList(contextTypeId, currentTapestryComponent);
 			return tapestryTemplates;
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesValueContextTypeId)){
-			Template[] tapestryTemplates = collection.getAttributeValueList(contextTypeId, currentTapestryComponent);
+			Template[] tapestryTemplates = null;
+			if(isComponentContentassist(node, offset)){
+				tapestryTemplates = (Template[]) TapestryComponentCompletionProposalComputer.getInstance().computeCompletionProposals("", node, offset).toArray(new Template[0]);
+			}else{
+				tapestryTemplates = collection.getAttributeValueList(contextTypeId, currentTapestryComponent);
+			}
 			return tapestryTemplates;
 		}
 		else{
@@ -228,6 +236,28 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			}
 
 			return templates;
+		}
+	}
+	
+	//Decide whether in condition <span t:id="
+	private boolean isComponentContentassist(IDOMNode node, int offset){
+		int sp=0, ep=0;
+		for (int i = offset - node.getStartOffset() - 1; i >= 0; i--) {
+			char temp = node.getSource().charAt(i);
+			if(ep ==0 && temp == '=')
+				ep = i;
+			else if(sp ==0 && temp == ' ')
+				sp = i;
+			if(sp != 0 && ep != 0)
+				break;
+		}
+		if(sp == 0 || ep == 0)
+			return false;
+		else{
+			if(node.getNodeName().trim().equals("span") && node.getSource().substring(sp, ep).trim().equals("t:id"))
+				return true;
+			else
+				return false;
 		}
 	}
 

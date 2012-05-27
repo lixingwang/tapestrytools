@@ -6,6 +6,7 @@ public class TapestryContants {
 	public static String PREFIX_PROP = "prop:";
 	
 	public static String ANNOTATION_PROPERTY = "Property";
+	public static String COMPONENT_PROPERTY = "Component";
 	
 	public static String WEB_XML = "web.xml";
 	public static String WEB_FILTER = "filter";
