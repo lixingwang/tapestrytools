@@ -221,7 +221,9 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			return tapestryTemplates;
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesValueContextTypeId)){
 			Template[] tapestryTemplates = null;
-			if(isComponentContentassist(node, offset)){
+			if(isComponentTypeContentAssist(node, offset)){
+				tapestryTemplates = collection.getTapestryComponentNameList(contextTypeId);
+			}else if(isComponentContentassist(node, offset)){
 				tapestryTemplates = (Template[]) TapestryComponentCompletionProposalComputer.getInstance().computeCompletionProposals("", node, offset).toArray(new Template[0]);
 			}else{
 				tapestryTemplates = collection.getAttributeValueList(contextTypeId, currentTapestryComponent);
@@ -255,6 +257,28 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			return false;
 		else{
 			if(node.getSource().substring(sp, ep).trim().equals("t:id"))
+				return true;
+			else
+				return false;
+		}
+	}
+	
+	//Decide whether in condition <a t:type=""></a>
+	private boolean isComponentTypeContentAssist(IDOMNode node, int offset){
+		int sp=0, ep=0;
+		for (int i = offset - node.getStartOffset() - 1; i >= 0; i--) {
+			char temp = node.getSource().charAt(i);
+			if(ep ==0 && temp == '=')
+				ep = i;
+			else if(sp ==0 && temp == ' ')
+				sp = i;
+			if(sp != 0 && ep != 0)
+				break;
+		}
+		if(sp == 0 || ep == 0)
+			return false;
+		else{
+			if(node.getSource().substring(sp, ep).trim().equals("t:type"))
 				return true;
 			else
 				return false;
