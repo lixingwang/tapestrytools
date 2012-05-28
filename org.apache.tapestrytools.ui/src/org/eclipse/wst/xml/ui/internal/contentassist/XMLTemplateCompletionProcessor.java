@@ -254,7 +254,7 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 		if(sp == 0 || ep == 0)
 			return false;
 		else{
-			if(node.getNodeName().trim().equals("span") && node.getSource().substring(sp, ep).trim().equals("t:id"))
+			if(node.getSource().substring(sp, ep).trim().equals("t:id"))
 				return true;
 			else
 				return false;

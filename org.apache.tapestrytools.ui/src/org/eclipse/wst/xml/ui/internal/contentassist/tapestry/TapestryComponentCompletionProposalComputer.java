@@ -18,6 +18,7 @@ import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.MarkerAnnotation;
+import org.eclipse.jdt.core.dom.MemberValuePair;
 import org.eclipse.jdt.core.dom.NormalAnnotation;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jface.text.templates.Template;
@@ -170,6 +171,7 @@ public class TapestryComponentCompletionProposalComputer {
 
 			private String elNodeName;
 			private boolean intoEL;
+			private boolean definedId;
 
 			public void endVisit(FieldDeclaration node) {
 				elNodeName = "";
@@ -184,11 +186,26 @@ public class TapestryComponentCompletionProposalComputer {
 					public void endVisit(NormalAnnotation node) {
 						intoEL = node.getTypeName().toString()
 								.equals(TapestryContants.COMPONENT_PROPERTY);
+						List values = node.values();
+						for (int i = 0; i < values.size(); i++) {
+							MemberValuePair pair = (MemberValuePair) values
+									.get(i);
+							if (pair.getName().toString().equals("id")
+									&& !pair.getValue().toString().trim().isEmpty()){
+								definedId = true;
+								elNodeName = pair.getValue().toString().trim();
+								if(elNodeName.startsWith("\""))
+									elNodeName = elNodeName.substring(1);
+								if(elNodeName.endsWith("\""))
+									elNodeName = elNodeName.substring(0, elNodeName.length() - 1);
+							}
+						}
 						super.endVisit(node);
 					}
 
 					public void endVisit(VariableDeclarationFragment node) {
-						elNodeName = node.getName().toString();
+						if(!definedId)
+							elNodeName = node.getName().toString();
 						super.endVisit(node);
 					}
 				});
