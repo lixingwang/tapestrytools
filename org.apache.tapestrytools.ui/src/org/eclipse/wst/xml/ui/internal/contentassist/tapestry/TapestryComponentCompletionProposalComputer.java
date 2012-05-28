@@ -101,18 +101,6 @@ public class TapestryComponentCompletionProposalComputer {
 		return results;
 	}
 
-	/*
-	 * private String computeSuffix(CompletionProposalInvocationContext context,
-	 * IDOMNode node) { String suffix = "}"; int documentPosition =
-	 * context.getInvocationOffset(); for (int i = documentPosition; i <
-	 * node.getSource().length(); i++) { char temp = node.getSource().charAt(i);
-	 * if (temp == '}') { suffix = ""; break; } else if (temp == 32 || temp >=
-	 * 48 && temp <= 57 || temp >= 65 && temp <= 90 || temp >= 97 && temp <=
-	 * 122) continue; else { suffix = "}"; break; } }
-	 * 
-	 * return suffix; }
-	 */
-
 	private void searchPartenerFile(IProject project, String fileName) {
 		IResource[] fileList = null;
 		try {
