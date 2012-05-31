@@ -1506,6 +1506,19 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 		return (Template[])result.toArray(new Template[0]);
 	}
 	
+	public Template[] getTapestryComponentNameList(String contextTypeId){
+		List result = new ArrayList();
+		for(int i=0; i< this.getLength(); i++){
+			CMNode node = this.item(i);
+			if(node instanceof ElemDecl){
+				ElemDecl element = (ElemDecl) node;
+				Template template = new Template(element.getElementLabel(), buildDescription(element), contextTypeId, element.getElementLabel(), true);
+				result.add(template);
+			}
+		}
+		return (Template[])result.toArray(new Template[0]);
+	}
+	
 	public Template[] getAttributeList(String contextTypeId, Node currentTapestryComponent){
 		String name = currentTapestryComponent.getNodeName();
 		//System.out.println("current tapestry component :" + name);
