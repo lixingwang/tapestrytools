@@ -35,8 +35,9 @@ import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImages;
  * <p>
  * Compute Tapestry components completion proposals Such as:
  * 
- * @Component(parameters = { "page=start" }) private PageLink goToStart;
- *                       </p>
+ * @Component(parameters = { "page=start" })
+ * private PageLink goToStart;
+ * </p>
  */
 public class TapestryComponentCompletionProposalComputer {
 	private static TapestryComponentCompletionProposalComputer computer = null;
