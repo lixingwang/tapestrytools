@@ -57,63 +57,6 @@
 			target="org.eclipse.wst.xml.core.tmlsource" />
 	</extension>
 	
-	<!--extension point="org.eclipse.ui.contexts">
-		<context
-			name="%scope.structured.text.editor.xml.name"
-			parentId="org.eclipse.wst.sse.ui.structuredTextEditorScope"
-			description="%scope.structured.text.editor.xml.description"
-			id="org.eclipse.core.runtime.xml">
-		</context>
-		<context
-			name="%scope.structured.text.editor.xml.navigation.name"
-			parentId="org.eclipse.wst.sse.ui.structuredTextEditorScope"
-			description="%scope.structured.text.editor.xml.navigation.description"
-			id="org.eclipse.wst.xml.navigation">
-		</context>
-		<context
-			name="%scope.structured.text.editor.xml.cleanup.name"
-			parentId="org.eclipse.wst.sse.ui.structuredTextEditorScope"
-			description="%scope.structured.text.editor.xml.cleanup.description"
-			id="org.eclipse.wst.xml.cleanup">
-		</context>
-		<context
-			name="%scope.structured.text.editor.xml.comments.name"
-			parentId="org.eclipse.wst.sse.ui.structuredTextEditorScope"
-			description="%scope.structured.text.editor.xml.comments.description"
-			id="org.eclipse.wst.xml.comments">
-		</context>
-		<context
-			name="%scope.structured.text.editor.xml.selection.name"
-			parentId="org.eclipse.wst.sse.ui.structuredTextEditorScope"
-			description="%scope.structured.text.editor.xml.selection.description"
-			id="org.eclipse.wst.xml.selection">
-		</context>
-		<context
-			name="%scope.structured.text.editor.xml.dependencies.name"
-			parentId="org.eclipse.wst.sse.ui.structuredTextEditorScope"
-			description="%scope.structured.text.editor.xml.dependencies.description"
-			id="org.eclipse.wst.xml.dependencies">
-		</context>
-		<context
-			name="%scope.structured.text.editor.xml.grammar.name"
-			parentId="org.eclipse.wst.sse.ui.structuredTextEditorScope"
-			description="%scope.structured.text.editor.xml.grammar.description"
-			id="org.eclipse.wst.xml.grammar">
-		</context>
-		<context
-			name="%scope.structured.text.editor.xml.expand.name"
-			parentId="org.eclipse.wst.sse.ui.structuredTextEditorScope"
-			description="%scope.structured.text.editor.xml.expand.description"
-			id="org.eclipse.wst.xml.expand">
-		</context>
-		<context
-			name="%scope.structured.text.editor.xml.occurrences.name"
-			parentId="org.eclipse.wst.sse.ui.structuredTextEditorScope"
-			description="%scope.structured.text.editor.xml.occurrences.description"
-			id="org.eclipse.wst.xml.occurrences">
-		</context>
-	</extension-->
-	
 	<extension
 		point="org.eclipse.core.filebuffers.annotationModelCreation">
 		<factory
@@ -244,21 +187,6 @@
 			</part>
 		</actionSetPartAssociation>
 	</extension>
-
-	<!--extension point="org.eclipse.core.runtime.adapters">
-		<factory
-			adaptableType="org.eclipse.wst.xml.core.internal.provisional.document.IDOMModel"
-			class="org.eclipse.wst.xml.ui.internal.editor.DOMSelectionConvertorFactory">
-			<adapter
-            	type="org.eclipse.wst.sse.ui.internal.editor.SelectionConvertor"/>
-		</factory>
-		<factory
-			adaptableType="org.eclipse.wst.xml.core.internal.provisional.document.IDOMModel"
-			class="org.eclipse.wst.xml.ui.internal.spelling.SpellcheckDelegateAdapterFactory">
-			<adapter
-            	type="org.eclipse.wst.sse.ui.internal.spelling.ISpellcheckDelegate"/>
-		</factory>
-	</extension-->
 
 	<!-- initialize xml ui preferences -->
 	<extension point="org.eclipse.core.runtime.preferences">
@@ -397,41 +325,6 @@
 		</definition>
 	</extension>	 
 
-	<!--extension point="org.eclipse.ui.editorActions">
-        <editorContribution
-            targetID="org.eclipse.core.runtime.xml.source"
-            id="org.eclipse.core.runtime.xml.source.ruler.actions">
-         <action
-               label="%AddBookmark.label"
-               helpContextId="org.eclipse.ui.bookmark_action_context"
-               class="org.eclipse.ui.texteditor.BookmarkRulerAction"
-               actionID="RulerDoubleClick"
-               id="org.eclipse.ui.texteditor.BookmarkRulerAction"/>
-         <action
-               label="%SelectRuler.label"
-               class="org.eclipse.ui.texteditor.SelectRulerAction"
-               actionID="RulerClick"
-               id="org.eclipse.ui.texteditor.SelectRulerAction"/>
-        </editorContribution>
-	</extension-->
-
-	<!--extension
-		point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectorTargets">
-		<target
-			id="org.eclipse.core.runtime.xml"
-			name="%XML_Source_target_name">
-		</target>
-	</extension>
-	<extension
-		point="org.eclipse.ui.workbench.texteditor.hyperlinkDetectors">
-		<hyperlinkDetector
-			class="org.eclipse.wst.xml.ui.internal.hyperlink.XMLHyperlinkDetector"
-			id="org.eclipse.wst.xml.ui.internal.hyperlink.XMLHyperlinkDetector"
-			name="%XML_hyperlink"
-			targetId="org.eclipse.core.runtime.xml">
-		</hyperlinkDetector>
-   </extension-->
-
 	<extension point="org.eclipse.ui.commands">
 		<!-- Navigate commands -->
 		<command
@@ -464,14 +357,7 @@
 <!--
 		<menuContribution locationURI="menu:org.eclipse.search.menu">
 -->
-	    <menuContribution locationURI="menu:goTo?after=matchingEnd">
-<!--		
-	       <command commandId="org.eclipse.wst.xml.ui.gotoMatchingTag" id="GoToMatchingTag" label="%GoToMatchingTag_label" style="push">
-			   <visibleWhen checkEnabled="false">
-				   <reference definitionId="org.eclipse.wst.sse.ui.sseActiveContext.definition"></reference>
-			   </visibleWhen>
-	       </command>
--->		
+	    <menuContribution locationURI="menu:goTo?after=matchingEnd">	
 	       <separator name="goToSiblingsBegin" visible="true"></separator>
 	       <command commandId="org.eclipse.wst.xml.ui.nextSibling" id="GoToNextSibling" label="%ActionDefinition.nextSibling.name" style="push">
 			   <visibleWhen checkEnabled="false">
@@ -646,19 +532,6 @@
         </toolbar>
      </menuContribution>
 	</extension>
-	
-	
-	<!--extension point="org.eclipse.core.expressions.definitions">
-		<definition id="org.eclipse.core.runtime.xml">
-			<with variable="activeContexts">
-				<iterate operator="or">
-					<equals value="org.eclipse.core.runtime.xml"/>
-				</iterate>
-			</with>
-		</definition>
-	</extension-->
-	
-	
 	
 	<extension point="org.eclipse.core.expressions.propertyTesters">
 		<propertyTester
@@ -1032,10 +905,6 @@
 			</or>
 		</definition>
 	</extension>
-
-
-
-
 	
  <extension
        point="org.eclipse.wst.sse.ui.characterPairing">
@@ -1049,25 +918,6 @@
  </extension>
  <extension
        point="org.eclipse.wst.sse.ui.completionProposal">
-    <!--proposalCategory
-          icon="icons/tmcdoc.gif"
-          id="org.apache.tapestrytools.ui.proposalCategory.xmlTags"
-          name="%proposalCategory.xmlTags">
-    </proposalCategory>
-    <proposalCategory
-          icon="icons/tmldoc.gif"
-          id="org.apache.tapestrytools.xml.ui.proposalCategory.xmlTemplates"
-          name="%proposalCategory.xmlTemplates">
-    </proposalCategory>
-    <proposalComputer
-          activate="false"
-          categoryId="org.apache.tapestrytools.ui.proposalCategory.xmlTags"
-          class="org.eclipse.wst.xml.ui.internal.contentassist.XMLTagsCompletionProposalComputer"
-          id="org.apache.tapestrytools.ui.proposalComputer.xmlTags">
-       <contentType
-             id="org.eclipse.wst.xml.core.tmlsource">
-       </contentType>
-    </proposalComputer-->
     <proposalComputer
           activate="false"
           categoryId="org.apache.tapestrytools.ui.proposalCategory.xmlTemplates"
@@ -1079,106 +929,6 @@
     </proposalComputer>
  </extension>
  
- 
- <!--extension
-       point="org.eclipse.wst.sse.ui.completionProposalCategoriesConfiguration">
-    <categoriesConfiguration
-          class="org.eclipse.wst.xml.ui.internal.preferences.XMLCompletionProposalCategoriesConfiguration"
-          contentTypeID="org.eclipse.core.runtime.xml">
-    </categoriesConfiguration>
- </extension-->
- 
-  <!--extension
-        point="org.eclipse.ui.views">
-     <category      
-            name="%XML.name"
-            id="org.apache.tapestrytools.tml"/>
-     <view category="org.apache.tapestrytools.tml"
-           class="org.eclipse.wst.xml.ui.internal.views.annotations.XMLAnnotationsView"
-           id="org.apache.tapestrytools.ui.views.annotations.XMLAnnotationsView"
-           icon="icons/full/obj16/comment_obj.gif"
-           name="%xmlannotations"
-           restorable="true">
-     </view>
-  </extension-->
-
-	<!-- XML Content Model View -->
-	<!--extension
-		point="org.eclipse.ui.views">
-		<view
-			category="org.apache.tapestrytools.tml"
-			class="org.eclipse.wst.xml.ui.internal.views.contentmodel.ContentModelView"
-			icon="icons/full/view16/hierarchy.gif"
-			id="org.apache.tapestrytools.ui.contentmodel.view"
-			name="%contentModel.view.name"
-			restorable="true">
-		</view>
-	</extension-->
-	<!--extension point="org.eclipse.core.runtime.adapters">		
-		<factory 
-			class="org.eclipse.wst.xml.ui.internal.views.contentmodel.ContentModelAdapterFactory" 
-			adaptableType="org.w3c.dom.Element">
-			<adapter type="org.eclipse.ui.model.IWorkbenchAdapter"/>
-		</factory>
-	</extension>
-	<extension
-		point="org.eclipse.ui.menus">
-			<menuContribution
-				locationURI="toolbar:org.apache.tapestrytools.ui.contentmodel.view">
-				<command
-					commandId="org.eclipse.wst.xml.ui.cmnd.contentmodel.sych"
-					id="org.eclipse.wst.xml.ui.command.contentmodel.synch"
-					icon="icons/full/view16/synced.gif"
-					style="toggle"
-					tooltip="%contentModel.view.synch.tooltip">
-				</command>
-			</menuContribution>
-	</extension>
-	<extension
-		point="org.eclipse.ui.handlers">
-		<handler
-			class="org.eclipse.wst.xml.ui.internal.handlers.ContentModelSynchWithEditorHandler"
-			commandId="org.eclipse.wst.xml.ui.cmnd.contentmodel.sych">
-		</handler>
-	</extension>
-	<extension
-		point="org.eclipse.ui.commands">
-		<command
-			id="org.eclipse.wst.xml.ui.cmnd.contentmodel.sych"
-			name="%contentModel.command.synch.name">
-			<state
-				class="org.eclipse.ui.handlers.RegistryToggleState:true"
-				id="org.eclipse.ui.commands.toggleState">
-			</state>
-		</command>
-	</extension-->  
-	<!--extension
-       point="org.eclipse.wst.sse.ui.outlineFilters">
-       <filter
-            targetId="org.eclipse.wst.xml.ui.OutlinePage"
-            name="%HideComments.label"
-            enabled="false"
-            description="%HideComments.description"
-            class="org.eclipse.wst.xml.ui.views.contentoutline.XMLCommentFilter"
-            id="org.apache.tapestrytools.ui.views.contentoutline.XMLCommentFilter">
-      </filter>
-      <filter
-            targetId="org.eclipse.wst.xml.ui.OutlinePage"
-            name="%HideProcessingInstruction.label"
-            enabled="false"
-            description="%HideProcessingInstruction.description"
-            class="org.eclipse.wst.xml.ui.views.contentoutline.XMLProcessingInstructionFilter"
-            id="org.apache.tapestrytools.ui.views.contentoutline.XMLProcessingInstructionFilter">
-      </filter>
-      <filter
-            targetId="org.eclipse.wst.xml.ui.OutlinePage"
-            name="%HideCDATASection.label"
-            enabled="false"
-            description="%HideCDATASection.description"
-            class="org.eclipse.wst.xml.ui.views.contentoutline.XMLCDATASectionFilter"
-            id="org.apache.tapestrytools.ui.views.contentoutline.XMLCDATASectionFilter">
-      </filter>
-	</extension-->
 	<extension
          point="org.eclipse.ui.actionSets">
       <actionSet
@@ -1221,4 +971,24 @@
 		name="%tml.switch.commands">  
 	</command>  
 	</extension> 
+	
+	<!-- ================================================== -->
+	<!-- Contribute a 'New Wizard' for Tapestry             -->
+	<!-- ================================================== -->
+	<extension point="org.eclipse.ui.newWizards">
+		<category
+			name="%tapestry.wizard.category"
+			id="org.apache.tapestrytools.wizard.new.category">
+		</category>
+		<wizard
+			name="%tapestry.wizard.newpage"
+			icon="/icons/tmldoc.gif"
+			category="org.apache.tapestrytools.wizard.new.category"
+			class="org.eclipse.wst.xml.ui.internal.wizards.NewXMLWizard"
+			id="org.apache.tapestrytools.wizards.NewXMLWizard">
+			<description>%_UI_CREATE_NEW_XML_FILE</description>
+			<selection class="org.eclipse.core.resources.IResource">
+			</selection>
+		</wizard>
+	</extension>
 </plugin>
