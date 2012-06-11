@@ -60,7 +60,7 @@ import org.eclipse.ui.views.contentoutline.ContentOutline;
  * @author gavingui2011@gmail.com - Beijing China
  *
  */
-public class NewTapestryComponentClassWizard extends WizardPage {
+public class NewTapestryComponentPage extends WizardPage {
 	private Text folderText;
 	private Button folderButton;
 	protected Text packageText;
@@ -80,10 +80,10 @@ public class NewTapestryComponentClassWizard extends WizardPage {
 	 * 
 	 * @param pageName
 	 */
-	public NewTapestryComponentClassWizard(ISelection selection) {
+	public NewTapestryComponentPage(ISelection selection) {
 		super("wizardPage");
-		setTitle("new componenet title");
-		setDescription("new component message");
+		setTitle(WizardConstants.NEW_COMPONENT_TITLE);
+		setDescription(WizardConstants.NEW_COMPONENT_DESC);
 	}
 	
 	/**

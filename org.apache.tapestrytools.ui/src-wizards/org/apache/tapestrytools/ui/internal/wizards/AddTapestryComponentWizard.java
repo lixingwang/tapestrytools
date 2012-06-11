@@ -39,7 +39,7 @@ import org.eclipse.ui.ide.IDE;
 public class AddTapestryComponentWizard extends Wizard implements INewWizard,
 		IExecutableExtension {
 
-	private NewTapestryComponentClassWizard page;
+	private NewTapestryComponentPage page;
 	private ISelection selection;
 
 	/**
@@ -55,7 +55,7 @@ public class AddTapestryComponentWizard extends Wizard implements INewWizard,
 	 */
 
 	public void addPages() {
-		page = new NewTapestryComponentClassWizard(selection);
+		page = new NewTapestryComponentPage(selection);
 		addPage(page);
 	}
 

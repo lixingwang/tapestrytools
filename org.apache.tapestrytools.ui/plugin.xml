@@ -985,8 +985,18 @@
 			icon="/icons/tmldoc.gif"
 			category="org.apache.tapestrytools.wizard.new.category"
 			class="org.apache.tapestrytools.ui.internal.wizards.AddTapestryComponentWizard"
-			id="org.apache.tapestrytools.wizards.NewXMLWizard">
-			<description>%_UI_CREATE_NEW_XML_FILE</description>
+			id="org.apache.tapestrytools.wizards.NewPageWizard">
+			<description>%tapestry.wizard.newpage.description</description>
+			<selection class="org.eclipse.core.resources.IResource">
+			</selection>
+		</wizard>
+		<wizard
+			name="%tapestry.wizard.component"
+			icon="/icons/tmldoc.gif"
+			category="org.apache.tapestrytools.wizard.new.category"
+			class="org.apache.tapestrytools.ui.internal.wizards.AddTapestryComponentWizard"
+			id="org.apache.tapestrytools.wizards.NewComponentWizard">
+			<description>%tapestry.wizard.component.description</description>
 			<selection class="org.eclipse.core.resources.IResource">
 			</selection>
 		</wizard>
