@@ -984,7 +984,7 @@
 			name="%tapestry.wizard.newpage"
 			icon="/icons/tmldoc.gif"
 			category="org.apache.tapestrytools.wizard.new.category"
-			class="org.eclipse.wst.xml.ui.internal.wizards.NewXMLWizard"
+			class="org.apache.tapestrytools.ui.internal.wizards.AddTapestryComponentWizard"
 			id="org.apache.tapestrytools.wizards.NewXMLWizard">
 			<description>%_UI_CREATE_NEW_XML_FILE</description>
 			<selection class="org.eclipse.core.resources.IResource">
