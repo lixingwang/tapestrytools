@@ -303,8 +303,8 @@ public class NewTapestryComponentPage extends WizardPage {
 				.getDecoratorManager().getLabelDecorator());
 		ElementTreeSelectionDialog dialog = new ElementTreeSelectionDialog(getShell(), labelProvider, contentProvider);
 		dialog.setValidator(validator);
-		dialog.setTitle("CONTAINER_SELECTION_DIALOG_TITLE");
-		dialog.setMessage("CONTAINER_SELECTION_DIALOG_DESC");
+		dialog.setTitle(WizardConstants.CONTAINER_SELECTION_DIALOG_TITLE);
+		dialog.setMessage(WizardConstants.CONTAINER_SELECTION_DIALOG_DESC);
 		dialog.addFilter(filter);
 		String projectName = projectNameCombo.getText();;
 		if (projectName==null || projectName.length()==0)
@@ -340,14 +340,20 @@ public class NewTapestryComponentPage extends WizardPage {
 					IProject project = (IProject) element;
 					return project.getName().equals(projectNameCombo.getText());
 				} else if (element instanceof IFolder) {
-					//IFolder folder = (IFolder) element;
+					IFolder folder = (IFolder) element;
 					// only show source folders
-					//IProject project = ResourcesPlugin.getWorkspace().getRoot().findMember(projectNameCombo.getText()).getProject();//ProjectUtilities.getProject(projectNameCombo.getText());
-					/*IPackageFragmentRoot[] sourceFolders = J2EEProjectUtilities.getSourceContainers(project);
-					for (int i = 0; i < sourceFolders.length; i++) {
-						if (sourceFolders[i].getResource()!= null && sourceFolders[i].getResource().equals(folder))
-							return true;
-					}*/
+					IProject project = ResourcesPlugin.getWorkspace().getRoot().findMember(projectNameCombo.getText()).getProject();
+					IPackageFragmentRoot[] sourceFolders;
+					try {
+						sourceFolders = JavaCore.create(project).getAllPackageFragmentRoots();
+						for (int i = 0; i < sourceFolders.length; i++) {
+							if (sourceFolders[i].getResource()!= null && sourceFolders[i].getResource().equals(folder))
+								return true;
+						}
+					} catch (JavaModelException e) {
+						e.printStackTrace();
+					}
+					
 				}
 				return false;
 			}
