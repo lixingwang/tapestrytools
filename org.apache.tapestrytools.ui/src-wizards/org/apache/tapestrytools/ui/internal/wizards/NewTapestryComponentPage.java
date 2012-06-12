@@ -10,7 +10,6 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jdt.core.ICompilationUnit;
@@ -261,7 +260,7 @@ public class NewTapestryComponentPage extends WizardPage {
 	private void addFolderGroup(Composite composite) {
 		// folder
 		Label folderLabel = new Label(composite, SWT.LEFT);
-		folderLabel.setText("FOLDER_LABEL");
+		folderLabel.setText("Source folder:");
 		folderLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 
 		folderText = new Text(composite, SWT.SINGLE | SWT.BORDER);
@@ -270,7 +269,7 @@ public class NewTapestryComponentPage extends WizardPage {
 		IPackageFragmentRoot root = getSelectedPackageFragmentRoot();
 		String projectName = projectNameCombo.getText();
 		if (projectName != null && projectName.length() > 0) {
-			IProject targetProject = ResourcesPlugin.getWorkspace().getRoot().findMember(projectName).getProject();//ProjectUtilities.getProject(projectName);
+			IProject targetProject = ResourcesPlugin.getWorkspace().getRoot().findMember(projectName).getProject();
 			if (root == null || !root.getJavaProject().getProject().equals(targetProject)) {
 				IFolder folder = getDefaultJavaSourceFolder(targetProject);
 				if (folder != null)
@@ -281,7 +280,7 @@ public class NewTapestryComponentPage extends WizardPage {
 		}
 		
 		folderButton = new Button(composite, SWT.PUSH);
-		folderButton.setText("BROWSE_BUTTON_LABEL_O");
+		folderButton.setText("Browse");
 		folderButton.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL));
 		folderButton.addSelectionListener(new SelectionListener() {
 			public void widgetSelected(SelectionEvent e) {
@@ -371,8 +370,6 @@ public class NewTapestryComponentPage extends WizardPage {
 		ISelection selection = window.getSelectionService().getSelection();
 		if (selection == null)
 			return null;
-		// StructuredSelection stucturedSelection = (StructuredSelection)
-		// selection;
 		IJavaElement element = getInitialJavaElement(selection);
 		if (element != null) {
 			if (element.getElementType() == IJavaElement.PACKAGE_FRAGMENT_ROOT)
@@ -384,6 +381,14 @@ public class NewTapestryComponentPage extends WizardPage {
 	private IFolder getDefaultJavaSourceFolder(IProject project) {
 		if (project == null)
 			return null;
+		try {
+			IPackageFragmentRoot[] roots = JavaCore.create(project).getAllPackageFragmentRoots();
+			if(roots != null && roots.length > 0){
+				return (IFolder) roots[0].getCorrespondingResource();
+			}
+		} catch (JavaModelException e) {
+			e.printStackTrace();
+		}
 		/*IPackageFragmentRoot[] sources = J2EEProjectUtilities.getSourceContainers(project);
 		// Try and return the first source folder
 		if (sources.length > 0) {
@@ -402,7 +407,7 @@ public class NewTapestryComponentPage extends WizardPage {
 	private void addProjectNameGroup(Composite parent) {
 		// set up project name label
 		projectNameLabel = new Label(parent, SWT.NONE);
-		projectNameLabel.setText("Web Project:"); 
+		projectNameLabel.setText("Project:"); 
 		GridData data = new GridData();
 		projectNameLabel.setLayoutData(data);
 		// set up project name entry field
@@ -422,7 +427,7 @@ public class NewTapestryComponentPage extends WizardPage {
 	}
 	
 	private void initializeProjectList() {
-		IProject[] workspaceProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();//ProjectUtilities.getAllProjects();
+		IProject[] workspaceProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		List items = new ArrayList();
 		for (int i = 0; i < workspaceProjects.length; i++) {
 			IProject project = workspaceProjects[i];
@@ -436,16 +441,13 @@ public class NewTapestryComponentPage extends WizardPage {
 		}
 		projectNameCombo.setItems(names);
 		IProject selectedProject = null;
-		try {
-			if (selectedProject == null)
-				selectedProject = getSelectedProject();
-			if (selectedProject != null && selectedProject.isAccessible()
-					&& selectedProject.hasNature("java")) {
-				projectNameCombo.setText(selectedProject.getName());
-			}
-		} catch (CoreException ce) {
-			// Ignore
+
+		if (selectedProject == null)
+			selectedProject = getSelectedProject();
+		if (selectedProject != null && selectedProject.isAccessible()) {
+			projectNameCombo.setText(selectedProject.getName());
 		}
+
 		if (projectName == null && names.length > 0)
 			projectName = names[0];
 
@@ -513,7 +515,7 @@ public class NewTapestryComponentPage extends WizardPage {
 						jelem = (IJavaElement) resource.getAdapter(IJavaElement.class);
 					}
 					if (jelem == null) {
-						jelem = JavaCore.create(resource); // java project
+						jelem = JavaCore.create(resource); 
 					}
 				}
 			}
@@ -542,7 +544,6 @@ public class NewTapestryComponentPage extends WizardPage {
 					jelem = projects[0];
 				}
 			} catch (JavaModelException e) {
-				//JavaPlugin.log(e);
 				e.printStackTrace();
 			}
 		}
