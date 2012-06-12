@@ -182,8 +182,26 @@ public class NewTapestryComponentPage extends WizardPage {
 			}
 		});
 	}
-	protected void handlePackageButtonPressed() {
+	protected void handlePackageButtonPressed()  {
 		IPackageFragmentRoot packRoot = (IPackageFragmentRoot) model.get("JAVA_PACKAGE_FRAGMENT_ROOT");
+		if (packRoot == null && !this.folderText.getText().isEmpty()){
+			String projectName = this.projectNameCombo.getText();
+			String folderName = this.folderText.getText();
+			if (projectName != null && projectName.length() > 0) {
+				IProject targetProject = ResourcesPlugin.getWorkspace().getRoot().findMember(projectName).getProject();
+				try {
+					IPackageFragmentRoot[] roots = JavaCore.create(targetProject).getAllPackageFragmentRoots();
+					for(IPackageFragmentRoot root : roots){
+						if(folderName.equals("/" + projectName + "/" + root.getElementName())){
+							packRoot = root;
+							break;
+						}
+					}
+				} catch (JavaModelException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		if (packRoot == null)
 			return;
 		IJavaElement[] packages = null;
@@ -195,9 +213,9 @@ public class NewTapestryComponentPage extends WizardPage {
 		if (packages == null)
 			packages = new IJavaElement[0];
 		ElementListSelectionDialog dialog = new ElementListSelectionDialog(getShell(), new JavaElementLabelProvider(1));
-		dialog.setTitle("PACKAGE_SELECTION_DIALOG_TITLE");
-		dialog.setMessage("PACKAGE_SELECTION_DIALOG_DESC");
-		dialog.setEmptyListMessage("PACKAGE_SELECTION_DIALOG_MSG_NONE");
+		dialog.setTitle(WizardConstants.PACKAGE_SELECTION_DIALOG_TITLE);
+		dialog.setMessage(WizardConstants.PACKAGE_SELECTION_DIALOG_DESC);
+		dialog.setEmptyListMessage(WizardConstants.PACKAGE_SELECTION_DIALOG_MSG_NONE);
 		dialog.setElements(packages);
 		if (dialog.open() == Window.OK) {
 			IPackageFragment fragment = (IPackageFragment) dialog.getFirstResult();
@@ -395,15 +413,6 @@ public class NewTapestryComponentPage extends WizardPage {
 		} catch (JavaModelException e) {
 			e.printStackTrace();
 		}
-		/*IPackageFragmentRoot[] sources = J2EEProjectUtilities.getSourceContainers(project);
-		// Try and return the first source folder
-		if (sources.length > 0) {
-			try {
-				return (IFolder) sources[0].getCorrespondingResource();
-			} catch (Exception e) {
-				return null;
-			}
-		}*/
 		return null;
 	}
 
