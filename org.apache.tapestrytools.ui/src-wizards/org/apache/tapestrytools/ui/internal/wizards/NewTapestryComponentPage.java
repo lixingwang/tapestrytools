@@ -327,7 +327,7 @@ public class NewTapestryComponentPage extends WizardPage {
 		String projectName = projectNameCombo.getText();;
 		if (projectName==null || projectName.length()==0)
 			return;
-		IProject project = ResourcesPlugin.getWorkspace().getRoot().findMember(projectName).getProject();//ProjectUtilities.getProject(projectName);
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().findMember(projectName).getProject();
 		dialog.setInput(ResourcesPlugin.getWorkspace().getRoot());
 
 		if (project != null)
@@ -338,7 +338,7 @@ public class NewTapestryComponentPage extends WizardPage {
 				if (element instanceof IContainer) {
 					IContainer container = (IContainer) element;
 					folderText.setText(container.getFullPath().toString());
-					// dealWithSelectedContainerResource(container);
+					model.put("JAVA_PACKAGE_FRAGMENT_ROOT", null);
 				}
 			} catch (Exception ex) {
 				// Do nothing
