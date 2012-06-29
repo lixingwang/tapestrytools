@@ -10,5 +10,8 @@ public class WizardConstants {
 	public static String PACKAGE_SELECTION_DIALOG_TITLE = "Destination package";
 	public static String PACKAGE_SELECTION_DIALOG_DESC = "Select target package from the list";
 	public static String PACKAGE_SELECTION_DIALOG_MSG_NONE = "There is not any packages, create first";
+	
+	public static String NEW_PAGE_TITLE = "Add Tapestry 5 Page";
+	public static String NEW_PAGE_DESC = "This will help to create Tapestry 5 page (including both tempalte fild and class file)";
 
 }
