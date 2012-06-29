@@ -165,6 +165,7 @@ public class TapestryComponentCompletionProposalComputer {
 			public void endVisit(FieldDeclaration node) {
 				elNodeName = "";
 				intoEL = false;
+				definedId = false;
 				node.accept(new ASTVisitor() {
 					public void endVisit(MarkerAnnotation node) {
 						intoEL = node.getTypeName().toString()
