@@ -984,7 +984,7 @@
 			name="%tapestry.wizard.newpage"
 			icon="/icons/tmldoc.gif"
 			category="org.apache.tapestrytools.wizard.new.category"
-			class="org.apache.tapestrytools.ui.internal.wizards.AddTapestryComponentWizard"
+			class="org.apache.tapestrytools.ui.internal.wizards.AddTapestryPageWizard"
 			id="org.apache.tapestrytools.wizards.NewPageWizard">
 			<description>%tapestry.wizard.newpage.description</description>
 			<selection class="org.eclipse.core.resources.IResource">
