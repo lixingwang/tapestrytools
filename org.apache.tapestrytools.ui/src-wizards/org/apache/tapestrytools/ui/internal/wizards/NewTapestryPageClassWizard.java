@@ -189,7 +189,7 @@ public class NewTapestryPageClassWizard extends WizardPage {
 				try {
 					IPackageFragmentRoot[] roots = JavaCore.create(targetProject).getAllPackageFragmentRoots();
 					for(IPackageFragmentRoot root : roots){
-						if(folderName.equals("/" + projectName + "/" + root.getElementName())){
+						if(folderName.toString().replace('\\', '/').equals(root.getPath().toString())){
 							packRoot = root;
 							break;
 						}
@@ -362,7 +362,7 @@ public class NewTapestryPageClassWizard extends WizardPage {
 					try {
 						sourceFolders = JavaCore.create(project).getAllPackageFragmentRoots();
 						for (int i = 0; i < sourceFolders.length; i++) {
-							if (sourceFolders[i].getResource()!= null && sourceFolders[i].getResource().equals(folder))
+							if (sourceFolders[i].getResource()!= null && !sourceFolders[i].isArchive() && sourceFolders[i].getResource().toString().startsWith(folder.toString()))
 								return true;
 						}
 					} catch (JavaModelException e) {
