@@ -287,8 +287,10 @@ public class NewTapestryPageClassWizard extends WizardPage {
 			IProject targetProject = ResourcesPlugin.getWorkspace().getRoot().findMember(projectName).getProject();
 			if (root == null || !root.getJavaProject().getProject().equals(targetProject)) {
 				IFolder folder = getDefaultJavaSourceFolder(targetProject);
-				if (folder != null)
-					folderText.setText(folder.getFullPath().toOSString());
+				if (folder != null){
+					folderText.setText(folder.getFullPath().toString());
+				}
+					
 			} else {
 				folderText.setText(root.getPath().toString());
 			}
