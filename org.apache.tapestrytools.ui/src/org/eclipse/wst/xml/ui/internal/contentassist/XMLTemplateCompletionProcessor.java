@@ -49,6 +49,7 @@ import org.w3c.dom.Node;
 class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	//Represent Tapestry component when try to pop up attributes list in components
 	private Node currentTapestryComponent = null;
+	private TapestryElementCollection collection = new TapestryElementCollection();
 	
 	private static final class ProposalComparator implements Comparator {
 		public int compare(Object o1, Object o2) {
@@ -206,7 +207,6 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	 * TODO: 修改这个方法,从TapestryElementCollection中获取 Template[]
 	 */
 	protected Template[] getTemplates(IDOMNode node, int offset, String contextTypeId, char preChar, char preChar2) {
-		TapestryElementCollection collection = new TapestryElementCollection();
 		if(contextTypeId.equals(TapestryElementCollection.componentsContextTypeId) ){
 			Template[] tapestryTemplates = null;
 			if(currentTapestryComponent.getNodeName().equals("t:"))//if(preChar2 == 't' && preChar == ':')//
