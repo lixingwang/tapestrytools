@@ -1492,7 +1492,7 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 	 * @param type 1=>start with blank, 2=>start with "<", 3=>start with "t:"
 	 * @return
 	 */
-	public Template[] getTemplateList(String contextTypeId, int type){
+	public Template[] getHardCodeTemplateList(String contextTypeId, int type){
 		List result = new ArrayList();
 		if(contextTypeId.equals(componentsContextTypeId)){
 			for(int i=0; i< this.getLength(); i++){

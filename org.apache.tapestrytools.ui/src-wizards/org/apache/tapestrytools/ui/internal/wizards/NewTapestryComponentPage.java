@@ -182,7 +182,7 @@ public class NewTapestryComponentPage extends WizardPage {
 			}
 		});
 	}
-	protected void handlePackageButtonPressed()  {
+	protected void handlePackageButtonPressed()  {		
 		IPackageFragmentRoot packRoot = (IPackageFragmentRoot) model.get("JAVA_PACKAGE_FRAGMENT_ROOT");
 		if (packRoot == null && !this.folderText.getText().isEmpty()){
 			String projectName = this.projectNameCombo.getText();
@@ -191,7 +191,7 @@ public class NewTapestryComponentPage extends WizardPage {
 				IProject targetProject = ResourcesPlugin.getWorkspace().getRoot().findMember(projectName).getProject();
 				try {
 					IPackageFragmentRoot[] roots = JavaCore.create(targetProject).getAllPackageFragmentRoots();
-					for(IPackageFragmentRoot root : roots){
+					for(IPackageFragmentRoot root : roots){			
 						if(folderName.toString().replace('\\', '/').equals(root.getPath().toString())){
 							packRoot = root;
 							break;

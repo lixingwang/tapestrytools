@@ -15,8 +15,21 @@ package org.eclipse.wst.xml.ui.internal.contentassist;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IPackageFragmentRoot;
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.internal.compiler.classfmt.ClassFileReader;
+import org.eclipse.jdt.internal.compiler.classfmt.ClassFormatException;
+import org.eclipse.jdt.internal.compiler.env.IBinaryAnnotation;
+import org.eclipse.jdt.internal.compiler.env.IBinaryField;
+import org.eclipse.jdt.internal.core.ClassFile;
+import org.eclipse.jdt.internal.core.PackageFragment;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextSelection;
@@ -32,9 +45,14 @@ import org.eclipse.jface.text.templates.TemplateException;
 import org.eclipse.jface.text.templates.TemplateProposal;
 import org.eclipse.jface.text.templates.persistence.TemplateStore;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.internal.Workbench;
 import org.eclipse.wst.sse.core.internal.provisional.IndexedRegion;
 import org.eclipse.wst.sse.ui.internal.contentassist.ContentAssistUtils;
 import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.TapestryElementCollection;
+import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.travelpackage.CoreComponentsUtil;
+import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.travelpackage.TapestryCoreComponents;
 import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
 import org.eclipse.wst.xml.ui.internal.XMLUIPlugin;
 import org.eclipse.wst.xml.ui.internal.contentassist.tapestry.TapestryComponentCompletionProposalComputer;
@@ -50,6 +68,7 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	//Represent Tapestry component when try to pop up attributes list in components
 	private Node currentTapestryComponent = null;
 	private TapestryElementCollection collection = new TapestryElementCollection();
+	private HashMap<String, TapestryCoreComponents[]> templateCacheMap = new HashMap<String, TapestryCoreComponents[]>();
 	
 	private static final class ProposalComparator implements Comparator {
 		public int compare(Object o1, Object o2) {
@@ -203,18 +222,99 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 		return null;
 	}
 	
+	private IProject getCurrentProject(){
+		IEditorPart editorPart = Workbench.getInstance()
+				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
+		IFile file = input.getFile();
+		return file.getProject();
+	}
+	
+	private PackageFragment getTapestryCoreLibrary() {
+		IPackageFragmentRoot[] roots2;
+		try {
+			roots2 = JavaCore.create(getCurrentProject()).getAllPackageFragmentRoots();
+			for (IPackageFragmentRoot root : roots2) {
+				String jarName = root.getPath().toString().substring(root.getPath().toString().lastIndexOf('/'));
+				if (jarName.startsWith("/tapestry-core") && jarName.endsWith(".jar")) {
+					for (IJavaElement pack : root.getChildren()) {
+						if (pack.getElementName().equals("org.apache.tapestry5.corelib.components")
+								&& (pack instanceof PackageFragment)) {
+							return (PackageFragment) pack;
+						}
+					}
+				}
+			}
+		} catch (JavaModelException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	/**
 	 * TODO: 修改这个方法,从TapestryElementCollection中获取 Template[]
 	 */
 	protected Template[] getTemplates(IDOMNode node, int offset, String contextTypeId, char preChar, char preChar2) {
 		if(contextTypeId.equals(TapestryElementCollection.componentsContextTypeId) ){
-			Template[] tapestryTemplates = null;
+			int type = 1;
 			if(currentTapestryComponent.getNodeName().equals("t:"))//if(preChar2 == 't' && preChar == ':')//
-				tapestryTemplates = collection.getTemplateList(contextTypeId, 3);
+				type = 3;
 			else if(preChar == '<')//else if(preNode != null && preNode.getTextContent().trim().equals("<"))
-				tapestryTemplates = collection.getTemplateList(contextTypeId, 2);
-			else
-				tapestryTemplates = collection.getTemplateList(contextTypeId, 1);
+				type = 2;
+			
+			IProject project = getCurrentProject();
+			String mapKey = project.getName();
+			Template[] tapestryTemplates = null;
+			TapestryCoreComponents[] coreList = this.templateCacheMap.get(mapKey);
+			if(coreList != null && coreList.length > 0){
+				return CoreComponentsUtil.buildTemplateListFromComponents(coreList, contextTypeId, type);
+			}
+			
+			PackageFragment tapestryCorePackage = getTapestryCoreLibrary();
+			if(tapestryCorePackage == null){
+				//Get hardcode tapestry components
+				tapestryTemplates = collection.getHardCodeTemplateList(contextTypeId, type);
+			}else{
+				//Get tapestry components from classpath
+				List<TapestryCoreComponents> list = new ArrayList<TapestryCoreComponents>();
+				try {
+					for(Object packo : tapestryCorePackage.getChildrenOfType(IJavaElement.CLASS_FILE)){
+						ClassFile packi = (ClassFile) packo;
+						if(packi.getElementName().indexOf('$') < 0){
+							TapestryCoreComponents component = new TapestryCoreComponents();
+							ClassFileReader reader = new ClassFileReader(packi.getBytes(), null);
+							component.setName(String.valueOf(reader.getSourceName()));
+							if(reader.getFields() != null)
+							for(IBinaryField  field : reader.getFields()){
+								boolean parameter = false;
+								if(field.getAnnotations() == null)
+									continue;
+								for(IBinaryAnnotation anno : field.getAnnotations()){
+									if(String.valueOf(anno.getTypeName()).endsWith("/Parameter;")){
+										parameter = true;
+										break;
+									}
+								}
+								if(parameter){
+									component.addParameter(String.valueOf(field.getName()));
+								}
+							}
+							list.add(component);
+						}
+						
+					}
+				} catch (JavaModelException e) {
+					e.printStackTrace();
+				} catch (ClassFormatException e) {
+					e.printStackTrace();
+				}
+				if(list != null && list.size() > 0){
+					coreList = list.toArray(new TapestryCoreComponents[0]);
+					this.templateCacheMap.put(mapKey, coreList);
+					tapestryTemplates = CoreComponentsUtil.buildTemplateListFromComponents(coreList, contextTypeId, type);
+				}
+			}
+			
 			return tapestryTemplates;
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesContextTypeId)){
 			Template[] tapestryTemplates = collection.getAttributeList(contextTypeId, currentTapestryComponent);
