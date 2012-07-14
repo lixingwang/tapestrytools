@@ -107,9 +107,10 @@ public abstract class AbstractXMLCompletionProposalComputer implements
 		int documentPosition = context.getInvocationOffset();
 		setErrorMessage(null);
 		fTextViewer = textViewer;
-
-		IndexedRegion treeNode = ContentAssistUtils.getNodeAt(textViewer,
-				documentPosition);
+		IndexedRegion treeNode = null;
+		try{
+			treeNode = ContentAssistUtils.getNodeAt(textViewer, documentPosition);
+		}catch(Exception e){}
 
 		Node node = (Node) treeNode;
 		while ((node != null) && (node.getNodeType() == Node.TEXT_NODE)

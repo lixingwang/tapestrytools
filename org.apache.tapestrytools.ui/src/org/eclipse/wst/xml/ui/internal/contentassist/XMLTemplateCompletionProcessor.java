@@ -22,7 +22,6 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
-import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.internal.compiler.classfmt.ClassFileReader;
 import org.eclipse.jdt.internal.compiler.classfmt.ClassFormatException;
@@ -52,6 +51,7 @@ import org.eclipse.wst.sse.core.internal.provisional.IndexedRegion;
 import org.eclipse.wst.sse.ui.internal.contentassist.ContentAssistUtils;
 import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.TapestryElementCollection;
 import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.travelpackage.CoreComponentsUtil;
+import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.travelpackage.TapestryClassLoader;
 import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.travelpackage.TapestryCoreComponents;
 import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
 import org.eclipse.wst.xml.ui.internal.XMLUIPlugin;
@@ -69,6 +69,7 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	private Node currentTapestryComponent = null;
 	private TapestryElementCollection collection = new TapestryElementCollection();
 	private HashMap<String, TapestryCoreComponents[]> templateCacheMap = new HashMap<String, TapestryCoreComponents[]>();
+	private TapestryClassLoader tapestryClassLoader = new TapestryClassLoader();
 	
 	private static final class ProposalComparator implements Comparator {
 		public int compare(Object o1, Object o2) {
@@ -231,23 +232,18 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	}
 	
 	private PackageFragment getTapestryCoreLibrary() {
-		IPackageFragmentRoot[] roots2;
+		IPackageFragmentRoot root = tapestryClassLoader.getTapestryCoreJar(getCurrentProject());
 		try {
-			roots2 = JavaCore.create(getCurrentProject()).getAllPackageFragmentRoots();
-			for (IPackageFragmentRoot root : roots2) {
-				String jarName = root.getPath().toString().substring(root.getPath().toString().lastIndexOf('/'));
-				if (jarName.startsWith("/tapestry-core") && jarName.endsWith(".jar")) {
-					for (IJavaElement pack : root.getChildren()) {
-						if (pack.getElementName().equals("org.apache.tapestry5.corelib.components")
-								&& (pack instanceof PackageFragment)) {
-							return (PackageFragment) pack;
-						}
-					}
+			for (IJavaElement pack : root.getChildren()) {
+				if (pack.getElementName().equals("org.apache.tapestry5.corelib.components")
+						&& (pack instanceof PackageFragment)) {
+					return (PackageFragment) pack;
 				}
 			}
 		} catch (JavaModelException e) {
 			e.printStackTrace();
 		}
+
 		return null;
 	}
 	
@@ -255,69 +251,75 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	 * TODO: 修改这个方法,从TapestryElementCollection中获取 Template[]
 	 */
 	protected Template[] getTemplates(IDOMNode node, int offset, String contextTypeId, char preChar, char preChar2) {
+		IProject project = getCurrentProject();
+		String mapKey = project.getName();
+		TapestryCoreComponents[] coreList = this.templateCacheMap.get(mapKey);
+		if(coreList == null || coreList.length <= 0){
+			PackageFragment tapestryCorePackage = getTapestryCoreLibrary();
+			//Get tapestry components from classpath
+			List<TapestryCoreComponents> list = new ArrayList<TapestryCoreComponents>();
+			try {
+				for(Object packo : tapestryCorePackage.getChildrenOfType(IJavaElement.CLASS_FILE)){
+					ClassFile packi = (ClassFile) packo;
+					if(packi.getElementName().indexOf('$') < 0){
+						ClassFileReader reader = new ClassFileReader(packi.getBytes(), null);	
+						TapestryCoreComponents component = new TapestryCoreComponents();
+						component.setName(String.valueOf(reader.getSourceName()));
+						component.setElementLabel("t:" + component.getName().toLowerCase());
+						if(reader.getFields() != null)
+						for(IBinaryField  field : reader.getFields()){
+							boolean parameter = false;
+							if(field.getAnnotations() == null)
+								continue;
+							for(IBinaryAnnotation anno : field.getAnnotations()){
+								if(String.valueOf(anno.getTypeName()).endsWith("/Parameter;")){
+									parameter = true;
+									break;
+								}
+							}
+							if(parameter){
+								component.addParameter(String.valueOf(field.getName()));
+							}
+						}
+						
+						String parentClassName = String.valueOf(reader.getSuperclassName());
+						if(parentClassName != null && !parentClassName.isEmpty() && !parentClassName.equals("java/lang/Object")){
+							List<String> parameters = tapestryClassLoader.loadComponentsFromClassFile(tapestryClassLoader.getTapestryCoreJar(getCurrentProject()), parentClassName);
+							for(String parameter : parameters){
+								component.addParameter(parameter);
+							}
+						}
+						
+						list.add(component);
+					}
+					
+				}
+			} catch (JavaModelException e) {
+				e.printStackTrace();
+			} catch (ClassFormatException e) {
+				e.printStackTrace();
+			}
+			if(list != null && list.size() > 0){
+				coreList = list.toArray(new TapestryCoreComponents[0]);
+				this.templateCacheMap.put(mapKey, coreList);
+			}
+		}
+		
 		if(contextTypeId.equals(TapestryElementCollection.componentsContextTypeId) ){
 			int type = 1;
 			if(currentTapestryComponent.getNodeName().equals("t:"))//if(preChar2 == 't' && preChar == ':')//
 				type = 3;
 			else if(preChar == '<')//else if(preNode != null && preNode.getTextContent().trim().equals("<"))
 				type = 2;
-			
-			IProject project = getCurrentProject();
-			String mapKey = project.getName();
-			Template[] tapestryTemplates = null;
-			TapestryCoreComponents[] coreList = this.templateCacheMap.get(mapKey);
 			if(coreList != null && coreList.length > 0){
 				return CoreComponentsUtil.buildTemplateListFromComponents(coreList, contextTypeId, type);
-			}
-			
-			PackageFragment tapestryCorePackage = getTapestryCoreLibrary();
-			if(tapestryCorePackage == null){
-				//Get hardcode tapestry components
-				tapestryTemplates = collection.getHardCodeTemplateList(contextTypeId, type);
 			}else{
-				//Get tapestry components from classpath
-				List<TapestryCoreComponents> list = new ArrayList<TapestryCoreComponents>();
-				try {
-					for(Object packo : tapestryCorePackage.getChildrenOfType(IJavaElement.CLASS_FILE)){
-						ClassFile packi = (ClassFile) packo;
-						if(packi.getElementName().indexOf('$') < 0){
-							TapestryCoreComponents component = new TapestryCoreComponents();
-							ClassFileReader reader = new ClassFileReader(packi.getBytes(), null);
-							component.setName(String.valueOf(reader.getSourceName()));
-							if(reader.getFields() != null)
-							for(IBinaryField  field : reader.getFields()){
-								boolean parameter = false;
-								if(field.getAnnotations() == null)
-									continue;
-								for(IBinaryAnnotation anno : field.getAnnotations()){
-									if(String.valueOf(anno.getTypeName()).endsWith("/Parameter;")){
-										parameter = true;
-										break;
-									}
-								}
-								if(parameter){
-									component.addParameter(String.valueOf(field.getName()));
-								}
-							}
-							list.add(component);
-						}
-						
-					}
-				} catch (JavaModelException e) {
-					e.printStackTrace();
-				} catch (ClassFormatException e) {
-					e.printStackTrace();
-				}
-				if(list != null && list.size() > 0){
-					coreList = list.toArray(new TapestryCoreComponents[0]);
-					this.templateCacheMap.put(mapKey, coreList);
-					tapestryTemplates = CoreComponentsUtil.buildTemplateListFromComponents(coreList, contextTypeId, type);
-				}
+				//Get hardcode tapestry components
+				return collection.getHardCodeTemplateList(contextTypeId, type);
 			}
-			
-			return tapestryTemplates;
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesContextTypeId)){
-			Template[] tapestryTemplates = collection.getAttributeList(contextTypeId, currentTapestryComponent);
+			//Template[] tapestryTemplates = collection.getAttributeList(contextTypeId, currentTapestryComponent);
+			Template[] tapestryTemplates = CoreComponentsUtil.getAttributeList(coreList, contextTypeId, currentTapestryComponent);
 			return tapestryTemplates;
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesValueContextTypeId)){
 			Template[] tapestryTemplates = null;
