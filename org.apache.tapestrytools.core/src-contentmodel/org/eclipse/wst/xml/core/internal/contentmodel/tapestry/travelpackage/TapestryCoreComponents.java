@@ -5,6 +5,7 @@ import java.util.List;
 
 public class TapestryCoreComponents {
 	private String name;
+	private String elementLabel;
 	private List<String> pamameters = new ArrayList<String>();
 	
 	public String getName() {
@@ -21,5 +22,11 @@ public class TapestryCoreComponents {
 	}
 	public void addParameter(String parameter){
 		this.pamameters.add(parameter);
+	}
+	public String getElementLabel() {
+		return elementLabel;
+	}
+	public void setElementLabel(String elementLabel) {
+		this.elementLabel = elementLabel;
 	}
 }
