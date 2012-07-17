@@ -233,6 +233,10 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	
 	private PackageFragment getTapestryCoreLibrary() {
 		IPackageFragmentRoot root = tapestryClassLoader.getTapestryCoreJar(getCurrentProject());
+		
+		if(root == null)
+			return null;
+		
 		try {
 			for (IJavaElement pack : root.getChildren()) {
 				if (pack.getElementName().equals("org.apache.tapestry5.corelib.components")
@@ -255,45 +259,45 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 		String mapKey = project.getName();
 		TapestryCoreComponents[] coreList = this.templateCacheMap.get(mapKey);
 		if(coreList == null || coreList.length <= 0){
-			PackageFragment tapestryCorePackage = getTapestryCoreLibrary();
 			//Get tapestry components from classpath
 			List<TapestryCoreComponents> list = new ArrayList<TapestryCoreComponents>();
+			PackageFragment tapestryCorePackage = getTapestryCoreLibrary();
 			try {
-				for(Object packo : tapestryCorePackage.getChildrenOfType(IJavaElement.CLASS_FILE)){
-					ClassFile packi = (ClassFile) packo;
-					if(packi.getElementName().indexOf('$') < 0){
-						ClassFileReader reader = new ClassFileReader(packi.getBytes(), null);	
-						TapestryCoreComponents component = new TapestryCoreComponents();
-						component.setName(String.valueOf(reader.getSourceName()));
-						component.setElementLabel("t:" + component.getName().toLowerCase());
-						if(reader.getFields() != null)
-						for(IBinaryField  field : reader.getFields()){
-							boolean parameter = false;
-							if(field.getAnnotations() == null)
-								continue;
-							for(IBinaryAnnotation anno : field.getAnnotations()){
-								if(String.valueOf(anno.getTypeName()).endsWith("/Parameter;")){
-									parameter = true;
-									break;
+				if(tapestryCorePackage !=null)
+					for(Object packo : tapestryCorePackage.getChildrenOfType(IJavaElement.CLASS_FILE)){
+						ClassFile packi = (ClassFile) packo;
+						if(packi.getElementName().indexOf('$') < 0){
+							ClassFileReader reader = new ClassFileReader(packi.getBytes(), null);	
+							TapestryCoreComponents component = new TapestryCoreComponents();
+							component.setName(String.valueOf(reader.getSourceName()));
+							component.setElementLabel("t:" + component.getName().toLowerCase());
+							if(reader.getFields() != null)
+							for(IBinaryField  field : reader.getFields()){
+								boolean parameter = false;
+								if(field.getAnnotations() == null)
+									continue;
+								for(IBinaryAnnotation anno : field.getAnnotations()){
+									if(String.valueOf(anno.getTypeName()).endsWith("/Parameter;")){
+										parameter = true;
+										break;
+									}
+								}
+								if(parameter){
+									component.addParameter(String.valueOf(field.getName()));
 								}
 							}
-							if(parameter){
-								component.addParameter(String.valueOf(field.getName()));
+							
+							String parentClassName = String.valueOf(reader.getSuperclassName());
+							if(parentClassName != null && !parentClassName.isEmpty() && !parentClassName.equals("java/lang/Object")){
+								List<String> parameters = tapestryClassLoader.loadComponentsFromClassFile(tapestryClassLoader.getTapestryCoreJar(getCurrentProject()), parentClassName);
+								for(String parameter : parameters){
+									component.addParameter(parameter);
+								}
 							}
+							
+							list.add(component);
 						}
-						
-						String parentClassName = String.valueOf(reader.getSuperclassName());
-						if(parentClassName != null && !parentClassName.isEmpty() && !parentClassName.equals("java/lang/Object")){
-							List<String> parameters = tapestryClassLoader.loadComponentsFromClassFile(tapestryClassLoader.getTapestryCoreJar(getCurrentProject()), parentClassName);
-							for(String parameter : parameters){
-								component.addParameter(parameter);
-							}
-						}
-						
-						list.add(component);
 					}
-					
-				}
 			} catch (JavaModelException e) {
 				e.printStackTrace();
 			} catch (ClassFormatException e) {
@@ -311,12 +315,11 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 				type = 3;
 			else if(preChar == '<')//else if(preNode != null && preNode.getTextContent().trim().equals("<"))
 				type = 2;
-			if(coreList != null && coreList.length > 0){
-				return CoreComponentsUtil.buildTemplateListFromComponents(coreList, contextTypeId, type);
-			}else{
-				//Get hardcode tapestry components
-				return collection.getHardCodeTemplateList(contextTypeId, type);
-			}
+			//if(coreList != null && coreList.length > 0){
+			return CoreComponentsUtil.buildTemplateListFromComponents(coreList, contextTypeId, type);
+			//}else{
+			//	return collection.getHardCodeTemplateList(contextTypeId, type);
+			//}
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesContextTypeId)){
 			//Template[] tapestryTemplates = collection.getAttributeList(contextTypeId, currentTapestryComponent);
 			Template[] tapestryTemplates = CoreComponentsUtil.getAttributeList(coreList, contextTypeId, currentTapestryComponent);
