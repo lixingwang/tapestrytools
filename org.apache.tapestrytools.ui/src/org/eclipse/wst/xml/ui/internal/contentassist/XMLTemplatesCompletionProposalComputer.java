@@ -41,6 +41,7 @@ public class XMLTemplatesCompletionProposalComputer extends
 
 	private TapestryELCompletionProposalComputer tapestryELProposalComputer = null;
 	private TapestryMessageCompletionProposalComputer tapestryMessageProposalComputer = null;
+	
 	/**
 	 * Create the computer
 	 */

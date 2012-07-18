@@ -13,4 +13,9 @@ public class TapestryContants {
 	public static String WEB_FILTER_CLASS = "filter-class";
 	public static String TAPESTRY_5_FILTER = "org.apache.tapestry5.TapestryFilter";
 	public static String WEB_FILTER_NAME = "filter-name";
+	
+	public static String CONTEXT_PARAM = "context-param";
+	public static String PARAM_NAME = "param-name";
+	public static String PARAM_VALUE = "param-value";
+	public static String PARAM_NAME_DEFINE = "tapestry.app-package";
 }

@@ -56,6 +56,7 @@ import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.travelpackage.Tap
 import org.eclipse.wst.xml.core.internal.provisional.document.IDOMNode;
 import org.eclipse.wst.xml.ui.internal.XMLUIPlugin;
 import org.eclipse.wst.xml.ui.internal.contentassist.tapestry.TapestryComponentCompletionProposalComputer;
+import org.eclipse.wst.xml.ui.internal.contentassist.tapestry.TapestryRootComponentsProposalComputer;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImageHelper;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImages;
 import org.w3c.dom.Node;
@@ -70,7 +71,7 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	private TapestryElementCollection collection = new TapestryElementCollection();
 	private HashMap<String, TapestryCoreComponents[]> templateCacheMap = new HashMap<String, TapestryCoreComponents[]>();
 	private TapestryClassLoader tapestryClassLoader = new TapestryClassLoader();
-	
+	private TapestryRootComponentsProposalComputer tapestryRootComponentsProposalComputer = new TapestryRootComponentsProposalComputer();
 	private static final class ProposalComparator implements Comparator {
 		public int compare(Object o1, Object o2) {
 			return ((TemplateProposal) o2).getRelevance() - ((TemplateProposal) o1).getRelevance();
@@ -315,13 +316,12 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 				type = 3;
 			else if(preChar == '<')//else if(preNode != null && preNode.getTextContent().trim().equals("<"))
 				type = 2;
-			//if(coreList != null && coreList.length > 0){
-			return CoreComponentsUtil.buildTemplateListFromComponents(coreList, contextTypeId, type);
-			//}else{
-			//	return collection.getHardCodeTemplateList(contextTypeId, type);
-			//}
+			List<Template> components = CoreComponentsUtil.buildTemplateListFromComponents(coreList, contextTypeId, type);
+			List<Template> rootComponents = tapestryRootComponentsProposalComputer.getRootComponentsTemplates(this.getCurrentProject(), contextTypeId, type);
+			if(rootComponents != null && rootComponents.size() > 0)
+				components.addAll(rootComponents);
+			return components.toArray(new Template[0]);
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesContextTypeId)){
-			//Template[] tapestryTemplates = collection.getAttributeList(contextTypeId, currentTapestryComponent);
 			Template[] tapestryTemplates = CoreComponentsUtil.getAttributeList(coreList, contextTypeId, currentTapestryComponent);
 			return tapestryTemplates;
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesValueContextTypeId)){
