@@ -23,14 +23,16 @@ public class CoreComponentsUtil {
 	}
 	
 	
-	public static Template[] buildTemplateListFromComponents(TapestryCoreComponents[] components, String contextTypeId, int type){
+	public static List<Template> buildTemplateListFromComponents(TapestryCoreComponents[] components, String contextTypeId, int type){
 		List<Template> result = new ArrayList<Template>();
-		for(TapestryCoreComponents comp : components){
-			Template template = new Template(comp.getName(), buildDescription(comp), contextTypeId, buildInsertCode(comp, type), true);
-			result.add(template);
-		}
-		
-		return result.toArray(new Template[0]);
+		for(TapestryCoreComponents comp : components)
+			result.add(createComponentTemplate(comp, contextTypeId, type));
+		return result;
+	}
+	
+	public static Template createComponentTemplate(TapestryCoreComponents comp, String contextTypeId, int type){
+		Template template = new Template(comp.getName(), buildDescription(comp), contextTypeId, buildInsertCode(comp, type), true);
+		return template;
 	}
 	
 	private static String buildAttributeInsertCode(String parameter){

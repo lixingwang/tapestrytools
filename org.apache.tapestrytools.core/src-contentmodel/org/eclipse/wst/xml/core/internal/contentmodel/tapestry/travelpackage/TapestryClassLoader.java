@@ -1,9 +1,7 @@
 package org.eclipse.wst.xml.core.internal.contentmodel.tapestry.travelpackage;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jdt.core.IJavaElement;
@@ -18,30 +16,6 @@ import org.eclipse.jdt.internal.core.ClassFile;
 import org.eclipse.jdt.internal.core.PackageFragment;
 
 public class TapestryClassLoader extends ClassLoader {
-
-	public Map<String, PackageFragment> loadTapestryJar(IProject project) {
-		Map<String, PackageFragment> packageMap = new HashMap<String, PackageFragment>();
-		IPackageFragmentRoot[] roots2;
-		try {
-			roots2 = JavaCore.create(project).getAllPackageFragmentRoots();
-			for (IPackageFragmentRoot root : roots2) {
-				String jarName = root.getPath().toString()
-						.substring(root.getPath().toString().lastIndexOf('/'));
-				if (jarName.startsWith("/tapestry-core")
-						&& jarName.endsWith(".jar")) {
-					for (IJavaElement pack : root.getChildren()) {
-						if (pack instanceof PackageFragment)
-							packageMap.put(pack.getElementName(),
-									(PackageFragment) pack);
-						System.out.println(pack.getElementName());
-					}
-				}
-			}
-		} catch (JavaModelException e) {
-			e.printStackTrace();
-		}
-		return packageMap;
-	}
 
 	public IPackageFragmentRoot getTapestryCoreJar(IProject project) {
 		IPackageFragmentRoot[] roots2;
