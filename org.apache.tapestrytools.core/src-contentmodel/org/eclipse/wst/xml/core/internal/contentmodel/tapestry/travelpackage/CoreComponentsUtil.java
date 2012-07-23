@@ -7,9 +7,9 @@ import org.eclipse.jface.text.templates.Template;
 import org.w3c.dom.Node;
 
 public class CoreComponentsUtil {
-	public static Template[] getAttributeList(TapestryCoreComponents[] components, String contextTypeId, Node currentTapestryComponent){
+	public static List<Template> getAttributeList(TapestryCoreComponents[] components, String contextTypeId, Node currentTapestryComponent){
 		String name = currentTapestryComponent.getNodeName();
-		List result = new ArrayList();
+		List<Template> result = new ArrayList<Template>();
 		for(TapestryCoreComponents comp : components){
 			if(comp.getElementLabel().equals(name)){
 				for(String parameter : comp.getPamameters()){
@@ -19,7 +19,7 @@ public class CoreComponentsUtil {
 			}
 		}
 
-		return (Template[])result.toArray(new Template[0]);
+		return result;
 	}
 	
 	
