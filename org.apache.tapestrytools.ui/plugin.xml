@@ -952,6 +952,14 @@
                toolbarPath="tapestryTMLGroup"
                tooltip="%tapestry.corresponding.file.description">
 		 </action>
+		 <action
+               label="%tapestry.edit.customcomponents.package"
+               icon="icons/tapestry.gif"
+               class="org.apache.tapestrytools.ui.internal.tcc.actions.EditCustomComponentsAction"
+               tooltip="%tapestry.edit.customcomponents.description"
+               menubarPath="tapestryTMLMenu/tapestryCustomGroup"
+               id="org.eclipse.jst.tapestry.ui.actions.EditCustomComponentsAction">
+         </action>
       </actionSet>
 	</extension>
     
@@ -1001,4 +1009,34 @@
 			</selection>
 		</wizard>
 	</extension>
+	
+	<extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="tapestryTools.editTCC"
+            objectClass="org.eclipse.core.resources.IProject">
+         <action
+               class="org.apache.tapestrytools.ui.internal.tcc.actions.EditCustomComponentsAction"
+               enablesFor="+"
+               icon="icons/tapestry.gif"
+               id="tapestryTools.edit.customcomponents"
+               label="%tapestry.edit.customcomponents.package"
+               menubarPath="additions"
+               style="push">
+         </action>
+         </objectContribution>
+      </extension>
+      
+	<extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.apache.tapestrytools.ui.internal.tcc.editor.TapestryCustomComponentEditor"
+            default="false"
+            filenames="*.tcc"
+            icon="icons/tapestry.gif"
+            id="tapestry.customComponentsEditor"
+            name="%tapestry.customcomponents.editor">
+      </editor>
+    </extension>
 </plugin>
