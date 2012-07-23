@@ -310,6 +310,9 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			}
 		}
 		
+		if(coreList == null)
+			return new Template[0];
+		
 		if(contextTypeId.equals(TapestryElementCollection.componentsContextTypeId) ){
 			int type = 1;
 			if(currentTapestryComponent.getNodeName().equals("t:"))//if(preChar2 == 't' && preChar == ':')//
@@ -322,8 +325,10 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 				components.addAll(rootComponents);
 			return components.toArray(new Template[0]);
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesContextTypeId)){
-			Template[] tapestryTemplates = CoreComponentsUtil.getAttributeList(coreList, contextTypeId, currentTapestryComponent);
-			return tapestryTemplates;
+			List<Template> tapestryTemplates = CoreComponentsUtil.getAttributeList(coreList, contextTypeId, currentTapestryComponent);
+			if(tapestryTemplates == null || tapestryTemplates.size() ==0)
+				tapestryTemplates = tapestryRootComponentsProposalComputer.getRootComponentsAttributes(project, contextTypeId, currentTapestryComponent);
+			return tapestryTemplates.toArray(new Template[0]);
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesValueContextTypeId)){
 			Template[] tapestryTemplates = null;
 			if(isComponentTypeContentAssist(node, offset)){

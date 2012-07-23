@@ -18,4 +18,6 @@ public class TapestryContants {
 	public static String PARAM_NAME = "param-name";
 	public static String PARAM_VALUE = "param-value";
 	public static String PARAM_NAME_DEFINE = "tapestry.app-package";
+	
+	public static String ANNOTATION_PARAMETER = "Parameter";
 }

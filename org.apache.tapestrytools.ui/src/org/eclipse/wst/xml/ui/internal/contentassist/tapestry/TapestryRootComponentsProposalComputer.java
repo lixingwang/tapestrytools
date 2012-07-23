@@ -14,10 +14,20 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.core.dom.AST;
+import org.eclipse.jdt.core.dom.ASTParser;
+import org.eclipse.jdt.core.dom.ASTVisitor;
+import org.eclipse.jdt.core.dom.CompilationUnit;
+import org.eclipse.jdt.core.dom.FieldDeclaration;
+import org.eclipse.jdt.core.dom.MarkerAnnotation;
+import org.eclipse.jdt.core.dom.MemberValuePair;
+import org.eclipse.jdt.core.dom.NormalAnnotation;
+import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jdt.internal.core.PackageFragment;
 import org.eclipse.jface.text.templates.Template;
 import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.travelpackage.TapestryCoreComponents;
@@ -29,28 +39,20 @@ import org.xml.sax.SAXException;
 
 public class TapestryRootComponentsProposalComputer {
 	private String webXMLPath = null;
+	private List<Template> components = new ArrayList<Template>();
 	
-	public List<Template> getRootComponentsTemplates(IProject project, String contextTypeId, int type){
-		findWEBXML(project);
-		if(this.webXMLPath == null)
-			return null;
-		String rootPackage = parseRootPackage(project);
-		if(rootPackage == null || rootPackage.isEmpty())
-			return null;
-		rootPackage = rootPackage + ".components";
-		PackageFragment pack = getTapestryRootComponentsPackage(project, rootPackage);
-		IJavaElement[] elements;
+	public List<Template> getRootComponentsAttributes(IProject project, String contextTypeId, Node currentTapestryComponent){
 		try {
-			elements = pack.getChildren();
-			List<Template> components = new ArrayList<Template>();
+			IJavaElement[] elements = getComponentsJavaElements(project);
+			components.clear();
 			for(IJavaElement ele : elements){
 				if(ele.getElementType() == IJavaElement.COMPILATION_UNIT && ele.getElementName().endsWith(".java")){
-					TapestryCoreComponents component = new TapestryCoreComponents();
 					String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
-					component.setName(name);
-					component.setElementLabel("t:" + name.toLowerCase());
-					//goThroughClass((ICompilationUnit) ele);
-					components.add(new Template(component.getName(), buildDescription(component, rootPackage), contextTypeId, buildInsertCode(component, type), true));
+					if( ("t:" + name).toLowerCase().equals(currentTapestryComponent.getNodeName().toLowerCase())){
+						goThroughClass((ICompilationUnit) ele, contextTypeId);
+					}
+					
+					//components.add(new Template(component.getName(), buildDescription(component, "root package"), contextTypeId, buildInsertCode(component, type), true));
 				}
 			}
 			return components;
@@ -61,21 +63,101 @@ public class TapestryRootComponentsProposalComputer {
 		return null;
 	}
 	
-/*	private void goThroughClass(ICompilationUnit ClassContent) {
+	private void goThroughClass(ICompilationUnit ClassContent, final String contextTypeId) {
 		ASTParser parser = ASTParser.newParser(AST.JLS3);
 		parser.setSource(ClassContent);
 		parser.setKind(ASTParser.K_COMPILATION_UNIT);
 		final CompilationUnit cu = (CompilationUnit) parser.createAST(null);
 		cu.accept(new ASTVisitor() {
+			private boolean parameter = false;
+			private String paramName = "";
 			public void endVisit(FieldDeclaration node) {
+				paramName = "";
+				parameter = false;
+				node.accept(new ASTVisitor() {
+					public void endVisit(MarkerAnnotation node) {
+						parameter = node.getTypeName().toString()
+								.equals(TapestryContants.ANNOTATION_PARAMETER);
+						super.endVisit(node);
+					}
+
+					public void endVisit(NormalAnnotation node) {
+						parameter = node.getTypeName().toString()
+								.equals(TapestryContants.ANNOTATION_PARAMETER);
+						List values = node.values();
+						for (int i = 0; i < values.size(); i++) {
+							MemberValuePair pair = (MemberValuePair) values
+									.get(i);
+							if (pair.getName().toString().equals("read")
+									&& pair.getValue().toString()
+											.equals("false"))
+								parameter = false;
+						}
+						super.endVisit(node);
+					}
+
+					public void endVisit(VariableDeclarationFragment node) {
+						paramName = node.getName().toString();
+						super.endVisit(node);
+					}
+				});
+				super.endVisit(node);
+				if (parameter){
+					Template template = new Template(paramName, "add attribute " + paramName, contextTypeId, buildAttributeInsertCode(paramName), true);
+					components.add(template);
+				}
+			}
+			
+			/*public void endVisit(FieldDeclaration node) {
 				System.out.println("FieldDeclaration" + node.toString());
 			}
+
 			public void endVisit(VariableDeclarationFragment node) {
-				System.out.println("VariableDeclarationFragment" + node.getName().toString());
+				System.out.println("VariableDeclarationFragment"
+						+ node.getName().toString());
 				super.endVisit(node);
-			}
+			}*/
 		});
-	}*/
+	}
+	
+	private static String buildAttributeInsertCode(String parameter){
+		String ret = parameter + "=\"\"";
+		return ret;
+	}
+	
+	public List<Template> getRootComponentsTemplates(IProject project, String contextTypeId, int type){
+		try {
+			IJavaElement[] elements = getComponentsJavaElements(project);
+			List<Template> components = new ArrayList<Template>();
+			for(IJavaElement ele : elements){
+				if(ele.getElementType() == IJavaElement.COMPILATION_UNIT && ele.getElementName().endsWith(".java")){
+					TapestryCoreComponents component = new TapestryCoreComponents();
+					String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
+					component.setName(name);
+					component.setElementLabel("t:" + name.toLowerCase());
+					components.add(new Template(component.getName(), buildDescription(component, "root package"), contextTypeId, buildInsertCode(component, type), true));
+				}
+			}
+			return components;
+		} catch (JavaModelException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	private IJavaElement[] getComponentsJavaElements(IProject project) throws JavaModelException{
+		findWEBXML(project);
+		if(this.webXMLPath == null)
+			return null;
+		String rootPackage = parseRootPackage(project);
+		if(rootPackage == null || rootPackage.isEmpty())
+			return null;
+		rootPackage = rootPackage + ".components";
+		PackageFragment pack = getTapestryRootComponentsPackage(project, rootPackage);
+		IJavaElement[] elements = pack.getChildren();
+		return elements;
+	}
 	
 	private String buildDescription(TapestryCoreComponents component, String rootPackage){
 		return "Custom Component in " + rootPackage;
