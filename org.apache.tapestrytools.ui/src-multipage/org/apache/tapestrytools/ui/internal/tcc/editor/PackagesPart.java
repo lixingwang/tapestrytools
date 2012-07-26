@@ -149,10 +149,6 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 						}
 					}
 				}
-				
-				/*InputDialog input = new InputDialog(getSection().getShell(),
-						"Add new custom components package", "Please input packages which includes Tapestry custom components:",
-						"", null);*/
 			}
 		});
 		removeItem.addSelectionListener(new SelectionAdapter() {
