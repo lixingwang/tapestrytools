@@ -8,20 +8,24 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.tapestrytools.ui.internal.wizards.WizardConstants;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
-import org.eclipse.jface.dialogs.InputDialog;
+import org.eclipse.jdt.ui.JavaElementLabelProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
@@ -43,6 +47,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.SectionPart;
 import org.eclipse.ui.forms.editor.IFormPage;
@@ -119,24 +124,35 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 		addItem.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				InputDialog input = new InputDialog(getSection().getShell(),
-						"Add new custom components package", "Please input packages which includes Tapestry custom components:",
-						"", null);
-				if (input.open() == Window.OK) {
-					String newBundleName = input.getValue().trim();
-					List<String> tmp = model.getPackageList();
-					if(newBundleName != null && !newBundleName.equals("")&& !tmp.contains(newBundleName)){
-						List<String> added = new LinkedList<String>();
-						model.addPackageByPath(newBundleName);
-						added.add(newBundleName);
-						
-						// Update the model and view
-						if(!added.isEmpty()) {
-							viewer.add(added.toArray(new String[added.size()]));
-							markDirty();
+				IProject project = Utils.getCurrentProject();
+				Set<IJavaElement> list = Utils.getSrcDirectories(project);
+				if(project != null){
+					ElementListSelectionDialog dialog = new ElementListSelectionDialog(getSection().getShell(), new JavaElementLabelProvider(1));
+					dialog.setTitle(WizardConstants.PACKAGE_SELECTION_DIALOG_TITLE);
+					dialog.setMessage(WizardConstants.PACKAGE_SELECTION_DIALOG_DESC);
+					dialog.setEmptyListMessage(WizardConstants.PACKAGE_SELECTION_DIALOG_MSG_NONE);
+					dialog.setElements(list.toArray(new IJavaElement[0]));
+					if (dialog.open() == Window.OK) {
+						IPackageFragment fragment = (IPackageFragment) dialog.getFirstResult();
+						String newBundleName = fragment.getElementName();
+						List<String> tmp = model.getPackageList();
+						if(newBundleName != null && !newBundleName.equals("")&& !tmp.contains(newBundleName)){
+							List<String> added = new LinkedList<String>();
+							model.addPackageByPath(newBundleName);
+							added.add(newBundleName);
+							
+							// Update the model and view
+							if(!added.isEmpty()) {
+								viewer.add(added.toArray(new String[added.size()]));
+								markDirty();
+							}
 						}
-					}	
+					}
 				}
+				
+				/*InputDialog input = new InputDialog(getSection().getShell(),
+						"Add new custom components package", "Please input packages which includes Tapestry custom components:",
+						"", null);*/
 			}
 		});
 		removeItem.addSelectionListener(new SelectionAdapter() {
