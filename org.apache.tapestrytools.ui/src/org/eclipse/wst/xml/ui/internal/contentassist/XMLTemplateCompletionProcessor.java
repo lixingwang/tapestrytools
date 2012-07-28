@@ -323,6 +323,9 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			List<Template> rootComponents = tapestryRootComponentsProposalComputer.getRootComponentsTemplates(this.getCurrentProject(), contextTypeId, type);
 			if(rootComponents != null && rootComponents.size() > 0)
 				components.addAll(rootComponents);
+			List<Template> customComponents = tapestryRootComponentsProposalComputer.getCustomComponentsTemplates(this.getCurrentProject(), contextTypeId, type);
+			if(customComponents != null && customComponents.size() > 0)
+				components.addAll(customComponents);
 			return components.toArray(new Template[0]);
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesContextTypeId)){
 			List<Template> tapestryTemplates = CoreComponentsUtil.getAttributeList(coreList, contextTypeId, currentTapestryComponent);

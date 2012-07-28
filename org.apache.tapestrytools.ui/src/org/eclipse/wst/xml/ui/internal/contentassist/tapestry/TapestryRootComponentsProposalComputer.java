@@ -9,6 +9,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.tapestrytools.ui.internal.tcc.editor.ComponentPackage;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -16,6 +18,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
@@ -28,7 +31,6 @@ import org.eclipse.jdt.core.dom.MarkerAnnotation;
 import org.eclipse.jdt.core.dom.MemberValuePair;
 import org.eclipse.jdt.core.dom.NormalAnnotation;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
-import org.eclipse.jdt.internal.core.PackageFragment;
 import org.eclipse.jface.text.templates.Template;
 import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.travelpackage.TapestryCoreComponents;
 import org.w3c.dom.Document;
@@ -51,8 +53,6 @@ public class TapestryRootComponentsProposalComputer {
 					if( ("t:" + name).toLowerCase().equals(currentTapestryComponent.getNodeName().toLowerCase())){
 						goThroughClass((ICompilationUnit) ele, contextTypeId);
 					}
-					
-					//components.add(new Template(component.getName(), buildDescription(component, "root package"), contextTypeId, buildInsertCode(component, type), true));
 				}
 			}
 			return components;
@@ -107,16 +107,6 @@ public class TapestryRootComponentsProposalComputer {
 					components.add(template);
 				}
 			}
-			
-			/*public void endVisit(FieldDeclaration node) {
-				System.out.println("FieldDeclaration" + node.toString());
-			}
-
-			public void endVisit(VariableDeclarationFragment node) {
-				System.out.println("VariableDeclarationFragment"
-						+ node.getName().toString());
-				super.endVisit(node);
-			}*/
 		});
 	}
 	
@@ -154,7 +144,7 @@ public class TapestryRootComponentsProposalComputer {
 		if(rootPackage == null || rootPackage.isEmpty())
 			return null;
 		rootPackage = rootPackage + ".components";
-		PackageFragment pack = getTapestryRootComponentsPackage(project, rootPackage);
+		IPackageFragment pack = getTapestryRootComponentsPackage(project, rootPackage);
 		IJavaElement[] elements = pack.getChildren();
 		return elements;
 	}
@@ -183,19 +173,15 @@ public class TapestryRootComponentsProposalComputer {
 		return ret;
 	}
 	
-	public PackageFragment getTapestryRootComponentsPackage(IProject project, String packageName) {
+	public IPackageFragment getTapestryRootComponentsPackage(IProject project, String packageName) {
 		IPackageFragmentRoot[] roots2;
 		try {
 			roots2 = JavaCore.create(project).getAllPackageFragmentRoots();
 			for (IPackageFragmentRoot root : roots2) {
-				String dir = root.getPath().toString();
-				if (!dir.endsWith(".jar")){
-					for (IJavaElement pack : root.getChildren()) {
-						PackageFragment packInstance = (PackageFragment) pack;
-						if (packageName.equals(packInstance.getElementName())){
-							return packInstance;
-						}
-					}
+				if (!root.isArchive()){
+					IPackageFragment packInstance = root.getPackageFragment(packageName);
+					if(packInstance != null)
+						return packInstance;
 				}
 			}
 		} catch (JavaModelException e) {
@@ -273,5 +259,97 @@ public class TapestryRootComponentsProposalComputer {
 			
 		}
 		return null;
+	}
+	
+	public List<Template> getCustomComponentsTemplates(IProject project, String contextTypeId, int type){
+		List<Template> templateList = new ArrayList<Template>();
+		final IFile res = project.getFile(TapestryContants.CUSTOM_COMPONENTS_FILE);
+		if(res == null)
+			return templateList;
+		List<ComponentPackage> packageList = loadPackageList(res);
+		try {
+			IPackageFragmentRoot[] roots = JavaCore.create(project).getAllPackageFragmentRoots();
+			for(ComponentPackage cp : packageList){
+				loadCustomComponentsFromPackage(roots, contextTypeId, type, templateList, cp);
+			}
+		} catch (JavaModelException e) {
+			e.printStackTrace();
+		}
+		
+		return templateList;
+	}
+	
+	private void loadCustomComponentsFromPackage(IPackageFragmentRoot[] roots, String contextTypeId, int type, List<Template> templateList, ComponentPackage cp){
+			try {
+				for (IPackageFragmentRoot root : roots) {
+					if (!root.isArchive()){
+						IPackageFragment packInstance = root.getPackageFragment(cp.getPath());
+						if(packInstance != null){
+							IJavaElement[] elements = packInstance.getChildren();
+							for(IJavaElement ele : elements){
+								if(ele.getElementType() == IJavaElement.COMPILATION_UNIT && ele.getElementName().endsWith(".java")){
+									TapestryCoreComponents component = new TapestryCoreComponents();
+									String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
+									component.setName(name);
+									component.setElementLabel(cp.getPrefix() + ":" + name.toLowerCase());
+									templateList.add(new Template(component.getName(), buildDescription(component, cp.getPath()), contextTypeId, buildInsertCode(component, type), true));
+								}
+							}
+						}
+						break;
+					}
+				}
+			} catch (JavaModelException e) {
+				e.printStackTrace();
+			}
+	}
+	
+	private List<ComponentPackage> loadPackageList(IFile res){
+		List<ComponentPackage> packageList = new ArrayList<ComponentPackage>();
+		DocumentBuilder db = null;
+		try {
+			db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document document=db.parse(res.getContents());
+			Element root = document.getDocumentElement();
+			NodeList bundles = root.getChildNodes();
+			if (bundles != null) {
+				for (int i = 0; i < bundles.getLength(); i++) {
+					Node classCycles = bundles.item(i);
+					if (classCycles.getNodeType() == Node.ELEMENT_NODE
+							&& classCycles.getNodeName().trim().equals(TapestryContants.CUSTOM_COMPONENTS_PACKAGES)) {
+						NodeList classes = classCycles.getChildNodes();
+						for(int j=0; j<classes.getLength(); j++){
+							Node classItem = classes.item(j);
+							if(classItem.getNodeType() == Node.ELEMENT_NODE && classItem.getNodeName().trim().equals(TapestryContants.CUSTOM_COMPONENTS_PACKAGE)){
+								ComponentPackage ci = new ComponentPackage();
+								getPackageBasicInfo(ci, classItem);
+								packageList.add(ci);
+							}
+						}
+						break;
+					}
+				}
+			}
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
+		
+		return packageList;
+	}
+	
+	private void getPackageBasicInfo(ComponentPackage ci, Node classItem){
+		Node prefix = classItem.getAttributes().getNamedItem(TapestryContants.CUSTOM_COMPONENTS_PREFIX);
+		if (prefix != null)
+			ci.setPrefix(prefix.getNodeValue());
+		Node path = classItem.getAttributes().getNamedItem(TapestryContants.CUSTOM_COMPONENTS_PATH);
+		if (path != null)
+			ci.setPath(path.getNodeValue());
+		
 	}
 }

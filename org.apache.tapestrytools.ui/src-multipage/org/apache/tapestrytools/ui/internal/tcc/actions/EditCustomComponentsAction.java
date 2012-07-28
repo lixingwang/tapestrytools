@@ -29,7 +29,7 @@ public class EditCustomComponentsAction extends Action implements
 	 * The constructor.
 	 */
 	public EditCustomComponentsAction() {
-		setId("org.eclipse.jst.tapestry.ui.actions.EditCustomComponentsAction");
+		setId("org.eclipse.tapestrytools.ui.actions.EditCustomComponentsAction");
 	}
 
 	/**
