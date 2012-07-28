@@ -177,6 +177,9 @@ public class CustomComponentsModel  {
 			cc.setPath(path.getNodeValue());
 	}
 	
+	public List<ComponentPackage> getCustomPackageList(){
+		return this.packageList;
+	}
 	
 	public List<String> getPackageList() {
 		List<String> classesList = new ArrayList<String>();

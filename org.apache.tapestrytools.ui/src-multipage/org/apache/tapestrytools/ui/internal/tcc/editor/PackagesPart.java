@@ -43,8 +43,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
@@ -53,7 +51,6 @@ import org.eclipse.ui.forms.SectionPart;
 import org.eclipse.ui.forms.editor.IFormPage;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.internal.Workbench;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
@@ -177,15 +174,7 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 		collectItem.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				IEditorPart editorPart = Workbench.getInstance()
-						.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-
-				if (editorPart != null) {
-					IFileEditorInput input = (IFileEditorInput) editorPart
-							.getEditorInput();
-					IFile file = input.getFile();
-					collectCustomComponents(file.getProject());
-				}
+				collectCustomComponents(Utils.getCurrentProject());
 			}
 		});
 
@@ -206,8 +195,8 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 				IPackageFragmentRoot root = roots[i];{
 					if(!root.isArchive()) {
 						String srcPath = root.getElementName();
-						for(String pi : model.getPackageList()){
-							String wholePath = "/" + srcPath + "/" + pi.replace(".", "/");
+						for(ComponentPackage pi : model.getCustomPackageList()){
+							String wholePath = "/" + srcPath + "/" + pi.getPath().replace(".", "/");
 							IFolder folder = project.getFolder(wholePath);
 							if(folder.exists()){
 								IResource[] fileList = folder.members();
@@ -224,9 +213,9 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 											if(componentName.startsWith("/")) componentName = componentName.substring(1);
 											ComponentInstance ci = new ComponentInstance();
 											ci.setId(componentName);
-											ci.setName("t:" + componentName);
-											ci.setPath(pi);
-											ci.setPrefix("t");
+											ci.setName(pi.getPrefix() + ":" + componentName);
+											ci.setPath(pi.getPath());
+											ci.setPrefix(pi.getPrefix());
 											ci.setText(componentName);
 											componentList.add(ci);
 										}

@@ -6,8 +6,8 @@ import java.beans.PropertyChangeListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.KeyEvent;
+import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -62,13 +62,17 @@ public class PackageItemGeneralInfoPart extends SectionPart implements PropertyC
 		gd = new GridData(SWT.FILL, SWT.TOP, true, false);
 		gd.horizontalIndent = 5;
 		pathField.setLayoutData(gd);
-		
-		ModifyListener modifyListener = new ModifyListener() {
-			public void modifyText(ModifyEvent e) {
+
+		prefixField.addKeyListener(new KeyListener(){
+
+			public void keyPressed(KeyEvent e) {
 				markDirty();
 			}
-		};
-		prefixField.addModifyListener(modifyListener);
+
+			public void keyReleased(KeyEvent e) {
+				
+			}
+		});
 	}
 	
 	public void propertyChange(PropertyChangeEvent arg0) {
