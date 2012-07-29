@@ -3,7 +3,9 @@ package org.eclipse.wst.xml.ui.internal.contentassist.tapestry;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -165,8 +167,9 @@ public class TapestryRootComponentsProposalComputer {
 			break;
 		case 3:
 			ret = insertLabel+"></"+insertLabel+">";
-			if(ret.length() > 2)
-				ret = ret.substring(2);
+			int prefixLength = insertLabel.indexOf(':') + 1;
+			if(ret.length() > prefixLength)
+				ret = ret.substring(prefixLength);
 			break;
 		}
 		
@@ -261,12 +264,40 @@ public class TapestryRootComponentsProposalComputer {
 		return null;
 	}
 	
-	public List<Template> getCustomComponentsTemplates(IProject project, String contextTypeId, int type){
+	/**
+	 * Get all the prefixes including "t:" in current project
+	 * 
+	 * @param project
+	 * @return
+	 */
+	public Set<String> getComponentsPrefixList(IProject project){
+		Set<String> prefixList = new HashSet<String>();
+		prefixList.add("t:");
+		final IFile res = project.getFile(TapestryContants.CUSTOM_COMPONENTS_FILE);
+		if(res == null)
+			return prefixList;
+		List<ComponentPackage> packageList = loadPackageList(res, 1, "");
+		for(ComponentPackage cp : packageList){
+			prefixList.add(cp.getPrefix() + ":");
+		}
+		return prefixList;
+	}
+	
+	/**
+	 * Get all the template list(including core templates, root templates and custom component templates) in current project
+	 * 
+	 * @param project
+	 * @param contextTypeId
+	 * @param type
+	 * @param prefix
+	 * @return
+	 */
+	public List<Template> getCustomComponentsTemplates(IProject project, String contextTypeId, int type, String prefix){
 		List<Template> templateList = new ArrayList<Template>();
 		final IFile res = project.getFile(TapestryContants.CUSTOM_COMPONENTS_FILE);
 		if(res == null)
 			return templateList;
-		List<ComponentPackage> packageList = loadPackageList(res);
+		List<ComponentPackage> packageList = loadPackageList(res, type, prefix);
 		try {
 			IPackageFragmentRoot[] roots = JavaCore.create(project).getAllPackageFragmentRoots();
 			for(ComponentPackage cp : packageList){
@@ -304,7 +335,7 @@ public class TapestryRootComponentsProposalComputer {
 			}
 	}
 	
-	private List<ComponentPackage> loadPackageList(IFile res){
+	private List<ComponentPackage> loadPackageList(IFile res, int type, String prefix){
 		List<ComponentPackage> packageList = new ArrayList<ComponentPackage>();
 		DocumentBuilder db = null;
 		try {
@@ -323,7 +354,8 @@ public class TapestryRootComponentsProposalComputer {
 							if(classItem.getNodeType() == Node.ELEMENT_NODE && classItem.getNodeName().trim().equals(TapestryContants.CUSTOM_COMPONENTS_PACKAGE)){
 								ComponentPackage ci = new ComponentPackage();
 								getPackageBasicInfo(ci, classItem);
-								packageList.add(ci);
+								if(type != 3 || (ci.getPrefix() + ":").equals(prefix))
+									packageList.add(ci);
 							}
 						}
 						break;

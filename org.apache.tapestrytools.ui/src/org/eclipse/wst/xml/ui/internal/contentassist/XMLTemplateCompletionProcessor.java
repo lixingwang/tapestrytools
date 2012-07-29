@@ -315,15 +315,21 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 		
 		if(contextTypeId.equals(TapestryElementCollection.componentsContextTypeId) ){
 			int type = 1;
-			if(currentTapestryComponent.getNodeName().equals("t:"))//if(preChar2 == 't' && preChar == ':')//
-				type = 3;
-			else if(preChar == '<')//else if(preNode != null && preNode.getTextContent().trim().equals("<"))
+			if(preChar == '<')//else if(preNode != null && preNode.getTextContent().trim().equals("<"))
 				type = 2;
-			List<Template> components = CoreComponentsUtil.buildTemplateListFromComponents(coreList, contextTypeId, type);
-			List<Template> rootComponents = tapestryRootComponentsProposalComputer.getRootComponentsTemplates(this.getCurrentProject(), contextTypeId, type);
-			if(rootComponents != null && rootComponents.size() > 0)
-				components.addAll(rootComponents);
-			List<Template> customComponents = tapestryRootComponentsProposalComputer.getCustomComponentsTemplates(this.getCurrentProject(), contextTypeId, type);
+			else if(tapestryRootComponentsProposalComputer.getComponentsPrefixList(this.getCurrentProject()).contains(currentTapestryComponent.getNodeName()))//if(preChar2 == 't' && preChar == ':')//
+				type = 3;
+			List<Template> components = new ArrayList<Template>();
+			if(type!=3 || currentTapestryComponent.getNodeName().equals("t:")){
+				List<Template> buildInList = CoreComponentsUtil.buildTemplateListFromComponents(coreList, contextTypeId, type);
+				if(buildInList != null && buildInList.size() > 0)
+					components.addAll(buildInList);
+				List<Template> rootComponents = tapestryRootComponentsProposalComputer.getRootComponentsTemplates(this.getCurrentProject(), contextTypeId, type);
+				if(rootComponents != null && rootComponents.size() > 0)
+					components.addAll(rootComponents);
+			}
+			
+			List<Template> customComponents = tapestryRootComponentsProposalComputer.getCustomComponentsTemplates(this.getCurrentProject(), contextTypeId, type, currentTapestryComponent.getNodeName());
 			if(customComponents != null && customComponents.size() > 0)
 				components.addAll(customComponents);
 			return components.toArray(new Template[0]);
