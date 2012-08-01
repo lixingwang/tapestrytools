@@ -36,7 +36,7 @@ public class CoreComponentsUtil {
 	}
 	
 	private static String buildAttributeInsertCode(String parameter){
-		String ret = parameter + "=\"\"";
+		String ret = parameter + "=\"${cursor}\"";
 		return ret;
 	}
 	
