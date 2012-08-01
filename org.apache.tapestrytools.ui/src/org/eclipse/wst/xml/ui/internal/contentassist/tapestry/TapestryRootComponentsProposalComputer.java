@@ -113,7 +113,7 @@ public class TapestryRootComponentsProposalComputer {
 	}
 	
 	private static String buildAttributeInsertCode(String parameter){
-		String ret = parameter + "=\"\"";
+		String ret = parameter + "=\"${cursor}\"";
 		return ret;
 	}
 	
@@ -272,15 +272,49 @@ public class TapestryRootComponentsProposalComputer {
 	 */
 	public Set<String> getComponentsPrefixList(IProject project){
 		Set<String> prefixList = new HashSet<String>();
-		prefixList.add("t:");
+		prefixList.add("t");
 		final IFile res = project.getFile(TapestryContants.CUSTOM_COMPONENTS_FILE);
 		if(res == null)
 			return prefixList;
 		List<ComponentPackage> packageList = loadPackageList(res, 1, "");
 		for(ComponentPackage cp : packageList){
-			prefixList.add(cp.getPrefix() + ":");
+			prefixList.add(cp.getPrefix());
 		}
 		return prefixList;
+	}
+	
+	public List<Template> getCustomComponentsAttributes(IProject project, String contextTypeId, Node currentTapestryComponent){
+		components.clear();
+		try {
+			final IFile res = project.getFile(TapestryContants.CUSTOM_COMPONENTS_FILE);
+			if(res == null)
+				return components;
+			List<ComponentPackage> packageList = loadPackageList(res, 3, currentTapestryComponent.getPrefix());
+			IPackageFragmentRoot[] roots = JavaCore.create(project).getAllPackageFragmentRoots();
+			for(ComponentPackage cp : packageList){
+				for (IPackageFragmentRoot root : roots) {
+					if (!root.isArchive()){
+						IPackageFragment packInstance = root.getPackageFragment(cp.getPath());
+						if(packInstance != null){
+							IJavaElement[] elements = packInstance.getChildren();
+							for(IJavaElement ele : elements){
+								if(ele.getElementType() == IJavaElement.COMPILATION_UNIT && ele.getElementName().endsWith(".java")){
+									String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
+									if( (currentTapestryComponent.getPrefix() + ":" + name).toLowerCase().equals(currentTapestryComponent.getNodeName().toLowerCase())){
+										goThroughClass((ICompilationUnit) ele, contextTypeId);
+										return components;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		} catch (JavaModelException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 	/**
@@ -354,7 +388,7 @@ public class TapestryRootComponentsProposalComputer {
 							if(classItem.getNodeType() == Node.ELEMENT_NODE && classItem.getNodeName().trim().equals(TapestryContants.CUSTOM_COMPONENTS_PACKAGE)){
 								ComponentPackage ci = new ComponentPackage();
 								getPackageBasicInfo(ci, classItem);
-								if(type != 3 || (ci.getPrefix() + ":").equals(prefix))
+								if(type != 3 || ci.getPrefix().equals(prefix))
 									packageList.add(ci);
 							}
 						}
