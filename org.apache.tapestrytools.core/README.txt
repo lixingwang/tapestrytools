@@ -1,1 +1,1 @@
-THe XML specific model implementation.
+The XML specific model implementation.
