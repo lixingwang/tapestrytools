@@ -1507,18 +1507,6 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 		return (Template[])result.toArray(new Template[0]);
 	}
 	
-	public Template[] getTapestryComponentNameList(String contextTypeId){
-		List result = new ArrayList();
-		for(int i=0; i< this.getLength(); i++){
-			CMNode node = this.item(i);
-			if(node instanceof ElemDecl){
-				ElemDecl element = (ElemDecl) node;
-				Template template = new Template(element.getElementLabel(), buildDescription(element), contextTypeId, element.getElementLabel(), true);
-				result.add(template);
-			}
-		}
-		return (Template[])result.toArray(new Template[0]);
-	}
 	
 	public Template[] getAttributeList(String contextTypeId, Node currentTapestryComponent){
 		String name = currentTapestryComponent.getNodeName();
@@ -1538,7 +1526,7 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 		return (Template[])result.toArray(new Template[0]);
 	}
 	
-	public Template[] getAttributeValueList(String contextTypeId, Node currentTapestryComponent){
+	public List<Template> getAttributeValueList(String contextTypeId, Node currentTapestryComponent){
 		//String name = currentTapestryComponent.getNodeName();
 		//CMNode node = this.getNamedItem(name);
 		List result = new ArrayList();
@@ -1552,7 +1540,7 @@ public class TapestryElementCollection extends DeclCollection implements Tapestr
 				result.add(template);
 			}
 		}*/
-		return (Template[])result.toArray(new Template[0]);
+		return result;
 	}
 	
 	/**

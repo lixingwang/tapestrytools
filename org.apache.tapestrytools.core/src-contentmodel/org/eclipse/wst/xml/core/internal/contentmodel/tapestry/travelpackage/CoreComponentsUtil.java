@@ -22,7 +22,29 @@ public class CoreComponentsUtil {
 		return result;
 	}
 	
+	/**
+	 * Get Tapestry root components in situation: <span t:type="${component name here}"></span>
+	 * 
+	 * @param contextTypeId
+	 * @return
+	 */
+	public static List<Template> getTapestryComponentNameList(TapestryCoreComponents[] components, String contextTypeId){
+		List result = new ArrayList();
+		for(TapestryCoreComponents comp : components){
+			Template template = new Template(comp.getName(), buildDescription(comp), contextTypeId, comp.getName(), true);
+			result.add(template);
+		}
+		return result;
+	}
 	
+	/**
+	 * Get Tapestry root components in normal auto-complete list
+	 * 
+	 * @param components
+	 * @param contextTypeId
+	 * @param type
+	 * @return
+	 */
 	public static List<Template> buildTemplateListFromComponents(TapestryCoreComponents[] components, String contextTypeId, int type){
 		List<Template> result = new ArrayList<Template>();
 		for(TapestryCoreComponents comp : components)
