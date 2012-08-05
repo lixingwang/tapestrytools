@@ -348,15 +348,21 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 				tapestryTemplates = tapestryRootComponentsProposalComputer.getCustomComponentsAttributes(project, contextTypeId, currentTapestryComponent);
 			return tapestryTemplates.toArray(new Template[0]);
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesValueContextTypeId)){
-			Template[] tapestryTemplates = null;
+			List<Template> tapestryTemplates = null;
 			if(isComponentTypeContentAssist(node, offset)){
-				tapestryTemplates = collection.getTapestryComponentNameList(contextTypeId);
+				tapestryTemplates = CoreComponentsUtil.getTapestryComponentNameList(coreList, contextTypeId);
+				List<Template> rootComponents = tapestryRootComponentsProposalComputer.getRootComponentsNameTemplates(this.getCurrentProject(), contextTypeId);
+				if(rootComponents != null && rootComponents.size() > 0)
+					tapestryTemplates.addAll(rootComponents);
+				List<Template> customComponents = tapestryRootComponentsProposalComputer.getCustomComponentsNameTemplates(this.getCurrentProject(), contextTypeId);
+				if(customComponents != null && customComponents.size() > 0)
+					tapestryTemplates.addAll(customComponents);
 			}else if(isComponentContentassist(node, offset)){
-				tapestryTemplates = (Template[]) TapestryComponentCompletionProposalComputer.getInstance().computeCompletionProposals("", node, offset).toArray(new Template[0]);
+				tapestryTemplates = TapestryComponentCompletionProposalComputer.getInstance().computeCompletionProposals("", node, offset);
 			}else{
 				tapestryTemplates = collection.getAttributeValueList(contextTypeId, currentTapestryComponent);
 			}
-			return tapestryTemplates;
+			return tapestryTemplates.toArray(new Template[0]);
 		}
 		else{
 			Template templates[] = null;

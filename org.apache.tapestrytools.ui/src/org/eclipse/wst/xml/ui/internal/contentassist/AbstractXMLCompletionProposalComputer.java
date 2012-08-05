@@ -118,8 +118,6 @@ public abstract class AbstractXMLCompletionProposalComputer implements
 			node = node.getParentNode();
 		}
 
-		//System.out.println("-----------------" + node + "  instance:" + node.getClass() + " name:" + node.getNodeName());
-
 		IDOMNode xmlnode = (IDOMNode) node;
 		ContentAssistRequest contentAssistRequest = null;
 		IStructuredDocumentRegion sdRegion = getStructuredDocumentRegion(documentPosition);

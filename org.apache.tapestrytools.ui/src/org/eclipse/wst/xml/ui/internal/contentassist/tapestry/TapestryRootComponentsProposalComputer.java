@@ -117,6 +117,34 @@ public class TapestryRootComponentsProposalComputer {
 		return ret;
 	}
 	
+	/**
+	 * Get components template list in situation:<span t:type="${component name here}"></span>
+	 * 
+	 * @param project
+	 * @param contextTypeId
+	 * @return
+	 */
+	public List<Template> getRootComponentsNameTemplates(IProject project, String contextTypeId){
+		try {
+			IJavaElement[] elements = getComponentsJavaElements(project);
+			List<Template> components = new ArrayList<Template>();
+			for(IJavaElement ele : elements){
+				if(ele.getElementType() == IJavaElement.COMPILATION_UNIT && ele.getElementName().endsWith(".java")){
+					TapestryCoreComponents component = new TapestryCoreComponents();
+					String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
+					component.setName(name);
+					component.setElementLabel("t:" + name.toLowerCase());
+					components.add(new Template(component.getName(), buildDescription(component, "root package"), contextTypeId, component.getName(), true));
+				}
+			}
+			return components;
+		} catch (JavaModelException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
 	public List<Template> getRootComponentsTemplates(IProject project, String contextTypeId, int type){
 		try {
 			IJavaElement[] elements = getComponentsJavaElements(project);
@@ -318,6 +346,33 @@ public class TapestryRootComponentsProposalComputer {
 	}
 	
 	/**
+	 * Get Tapestry custom components in situation: <span t:type="${component name here}"></span>
+	 * 
+	 * @param project
+	 * @param contextTypeId
+	 * @param type
+	 * @param prefix
+	 * @return
+	 */
+	public List<Template> getCustomComponentsNameTemplates(IProject project, String contextTypeId){
+		List<Template> templateList = new ArrayList<Template>();
+		final IFile res = project.getFile(TapestryContants.CUSTOM_COMPONENTS_FILE);
+		if(res == null)
+			return templateList;
+		List<ComponentPackage> packageList = loadPackageList(res, 1, "*");
+		try {
+			IPackageFragmentRoot[] roots = JavaCore.create(project).getAllPackageFragmentRoots();
+			for(ComponentPackage cp : packageList){
+				loadCustomComponentsNameFromPackage(roots, contextTypeId, templateList, cp);
+			}
+		} catch (JavaModelException e) {
+			e.printStackTrace();
+		}
+		
+		return templateList;
+	}
+	
+	/**
 	 * Get all the template list(including core templates, root templates and custom component templates) in current project
 	 * 
 	 * @param project
@@ -343,6 +398,40 @@ public class TapestryRootComponentsProposalComputer {
 		
 		return templateList;
 	}
+	
+	/**
+	 * Load component name template list, used in situation:<span t:type="${component name here}"></span>
+	 * 
+	 * @param roots
+	 * @param contextTypeId
+	 * @param type
+	 * @param templateList
+	 * @param cp
+	 */
+	private void loadCustomComponentsNameFromPackage(IPackageFragmentRoot[] roots, String contextTypeId, List<Template> templateList, ComponentPackage cp){
+		try {
+			for (IPackageFragmentRoot root : roots) {
+				if (!root.isArchive()){
+					IPackageFragment packInstance = root.getPackageFragment(cp.getPath());
+					if(packInstance != null){
+						IJavaElement[] elements = packInstance.getChildren();
+						for(IJavaElement ele : elements){
+							if(ele.getElementType() == IJavaElement.COMPILATION_UNIT && ele.getElementName().endsWith(".java")){
+								TapestryCoreComponents component = new TapestryCoreComponents();
+								String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
+								component.setName(name);
+								component.setElementLabel(cp.getPrefix() + ":" + name.toLowerCase());
+								templateList.add(new Template(component.getName(), buildDescription(component, cp.getPath()), contextTypeId, cp.getPrefix()+ "/" +component.getName(), true));
+							}
+						}
+					}
+					break;
+				}
+			}
+		} catch (JavaModelException e) {
+			e.printStackTrace();
+		}
+}
 	
 	private void loadCustomComponentsFromPackage(IPackageFragmentRoot[] roots, String contextTypeId, int type, List<Template> templateList, ComponentPackage cp){
 			try {
