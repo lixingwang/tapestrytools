@@ -59,6 +59,7 @@ import org.eclipse.wst.xml.ui.internal.contentassist.tapestry.TapestryComponentC
 import org.eclipse.wst.xml.ui.internal.contentassist.tapestry.TapestryRootComponentsProposalComputer;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImageHelper;
 import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImages;
+import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 
@@ -253,7 +254,14 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	}
 	
 	/**
-	 * TODO: 修改这个方法,从TapestryElementCollection中获取 Template[]
+	 * Get templates entrance method
+	 * 
+	 * @param node
+	 * @param offset
+	 * @param contextTypeId
+	 * @param preChar
+	 * @param preChar2
+	 * @return
 	 */
 	protected Template[] getTemplates(IDOMNode node, int offset, String contextTypeId, char preChar, char preChar2) {
 		IProject project = getCurrentProject();
@@ -336,17 +344,30 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 					components.addAll(rootComponents);
 			}
 			
-			List<Template> customComponents = tapestryRootComponentsProposalComputer.getCustomComponentsTemplates(this.getCurrentProject(), contextTypeId, type, currentTapestryComponent.getPrefix());
-			if(customComponents != null && customComponents.size() > 0)
-				components.addAll(customComponents);
-			return components.toArray(new Template[0]);
+			if(currentTapestryComponent.getPrefix() == null || (currentTapestryComponent.getPrefix() + ":").equals(currentTapestryComponent.getNodeName())){
+				List<Template> customComponents = tapestryRootComponentsProposalComputer.getCustomComponentsTemplates(this.getCurrentProject(), contextTypeId, type, currentTapestryComponent.getPrefix());
+				if(customComponents != null && customComponents.size() > 0)
+					components.addAll(customComponents);
+			}
+			
+			return components == null ? null : components.toArray(new Template[0]);
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesContextTypeId)){
-			List<Template> tapestryTemplates = CoreComponentsUtil.getAttributeList(coreList, contextTypeId, currentTapestryComponent);
+			String tapestryComponentName = getTapestryComponentName(node);
+			//In condition <t:ActionLink
+			if(tapestryComponentName == null)
+				tapestryComponentName = currentTapestryComponent.getNodeName().toLowerCase();
+			//In condition <t:html.Message
+			if(tapestryComponentName.indexOf('.') > -1 && currentTapestryComponent.getPrefix()!= null && currentTapestryComponent.getPrefix().equals("t"))
+				tapestryComponentName = tapestryComponentName.substring(2).replace('.', ':');
+				
+			
+			List<Template> tapestryTemplates = CoreComponentsUtil.getAttributeList(coreList, contextTypeId, tapestryComponentName);
 			if(tapestryTemplates == null || tapestryTemplates.size() ==0)
-				tapestryTemplates = tapestryRootComponentsProposalComputer.getRootComponentsAttributes(project, contextTypeId, currentTapestryComponent);
+				tapestryTemplates = tapestryRootComponentsProposalComputer.getRootComponentsAttributes(project, contextTypeId, tapestryComponentName);
 			if(tapestryTemplates == null || tapestryTemplates.size() ==0)
-				tapestryTemplates = tapestryRootComponentsProposalComputer.getCustomComponentsAttributes(project, contextTypeId, currentTapestryComponent);
-			return tapestryTemplates.toArray(new Template[0]);
+				tapestryTemplates = tapestryRootComponentsProposalComputer.getCustomComponentsAttributes(project, contextTypeId, tapestryComponentName);
+			
+			return tapestryTemplates == null ? null : tapestryTemplates.toArray(new Template[0]);
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesValueContextTypeId)){
 			List<Template> tapestryTemplates = null;
 			if(isComponentTypeContentAssist(node, offset)){
@@ -362,7 +383,7 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			}else{
 				tapestryTemplates = collection.getAttributeValueList(contextTypeId, currentTapestryComponent);
 			}
-			return tapestryTemplates.toArray(new Template[0]);
+			return tapestryTemplates == null ? null : tapestryTemplates.toArray(new Template[0]);
 		}
 		else{
 			Template templates[] = null;
@@ -373,6 +394,28 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 
 			return templates;
 		}
+	}
+	
+	/**
+	 * Get component name such as "ActionLink" in this condition <a t:type="ActionLink"></a>
+	 * 
+	 * @param node
+	 * @return
+	 */
+	private String getTapestryComponentName(IDOMNode node){
+		NamedNodeMap attributes = node.getAttributes();
+		if(attributes != null && attributes.getLength() > 0){
+			for(int i=0; i<attributes.getLength(); i++){
+				if(attributes.item(i).getNodeName().equals("t:type")){
+					String value = attributes.item(i).getNodeValue();
+					if(value.indexOf('/') > -1){
+						return value.replace('/', ':').toLowerCase();
+					}else
+						return "t:" + value.toLowerCase();
+				}
+			}
+		}
+		return null;
 	}
 	
 	//Decide whether in condition <span t:id="

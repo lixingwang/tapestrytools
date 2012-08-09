@@ -111,13 +111,11 @@ public abstract class AbstractXMLCompletionProposalComputer implements
 		try{
 			treeNode = ContentAssistUtils.getNodeAt(textViewer, documentPosition);
 		}catch(Exception e){}
-
 		Node node = (Node) treeNode;
 		while ((node != null) && (node.getNodeType() == Node.TEXT_NODE)
 				&& (node.getParentNode() != null)) {
 			node = node.getParentNode();
 		}
-
 		IDOMNode xmlnode = (IDOMNode) node;
 		ContentAssistRequest contentAssistRequest = null;
 		IStructuredDocumentRegion sdRegion = getStructuredDocumentRegion(documentPosition);
