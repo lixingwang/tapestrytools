@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jface.text.templates.Template;
-import org.w3c.dom.Node;
 
 public class CoreComponentsUtil {
-	public static List<Template> getAttributeList(TapestryCoreComponents[] components, String contextTypeId, Node currentTapestryComponent){
-		String name = currentTapestryComponent.getNodeName();
+	public static List<Template> getAttributeList(TapestryCoreComponents[] components, String contextTypeId, String currentTapestryComponentName){
+		//String name = currentTapestryComponent.getNodeName();
 		List<Template> result = new ArrayList<Template>();
 		for(TapestryCoreComponents comp : components){
-			if(comp.getElementLabel().equals(name)){
+			if(comp.getElementLabel().equals(currentTapestryComponentName)){
 				for(String parameter : comp.getPamameters()){
 					Template template = new Template(parameter, buildAttributeDescription(comp.getName(), parameter), contextTypeId, buildAttributeInsertCode(parameter), true);
 					result.add(template);
