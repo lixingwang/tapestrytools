@@ -65,7 +65,12 @@ public class CustomComponentsModel  {
 		Node path = classItem.getAttributes().getNamedItem("path");
 		if (path != null)
 			ci.setPath(path.getNodeValue());
-		
+		Node isArchive = classItem.getAttributes().getNamedItem("isArchive");
+		if(isArchive != null)
+			ci.setArchive(isArchive.getNodeValue().equals("true"));
+		Node fragmentRoot = classItem.getAttributes().getNamedItem("fragmentRoot");
+		if(fragmentRoot != null)
+			ci.setFragmentRoot(fragmentRoot.getNodeValue());
 	}
 	
 	public void removePackageByPath(String path){
@@ -76,10 +81,12 @@ public class CustomComponentsModel  {
 			}
 	}
 	
-	public void addPackageByPath(String path){
+	public void addPackageByPath(String path, boolean isArchive, String fragmentRoot){
 		ComponentPackage cp = new ComponentPackage();
 		cp.setPath(path);
 		cp.setPrefix("t");
+		cp.setArchive(isArchive);
+		cp.setFragmentRoot(fragmentRoot);
 		this.packageList.add(cp);
 	}
 	
@@ -232,9 +239,11 @@ public class CustomComponentsModel  {
 	
 	
 	private String getPackagesContent(ComponentPackage cp){
-		String ret ="<package prefix=\"$prefix$\" path=\"$path$\"/>\n";
+		String ret ="<package prefix=\"$prefix$\" path=\"$path$\" isArchive=\"$isArchive$\" fragmentRoot=\"$fragmentRoot$\" />\n";
 		ret = ret.replace("$prefix$", cp.getPrefix());
 		ret = ret.replace("$path$", cp.getPath());
+		ret = ret.replace("$isArchive$", String.valueOf(cp.isArchive()));
+		ret = ret.replace("$fragmentRoot$", cp.getFragmentRoot() == null ? "" : cp.getFragmentRoot());
 		return ret;
 	}
 	private String getCustomComponentContent(ComponentInstance ci){

@@ -32,8 +32,10 @@ public class Utils {
 			IPackageFragmentRoot[] sourceFolders = JavaCore.create(project)
 					.getAllPackageFragmentRoots();
 			for (int i = 0; i < sourceFolders.length; i++) {
-				if (sourceFolders[i].getResource() != null
-						&& !sourceFolders[i].isArchive()) {
+				IPackageFragmentRoot item = sourceFolders[i];
+ 				String projectPath = project.getFullPath().toString();
+ 				String jarPath = item.getPath().toString();
+				if (sourceFolders[i].getResource() != null && !sourceFolders[i].isArchive() || item.isArchive() && jarPath.endsWith(".jar") && jarPath.startsWith(projectPath)) {
 					IJavaElement[] eles = sourceFolders[i].getChildren();
 					for (IJavaElement ele : eles) {
 						if (!ele.getElementName().trim().isEmpty())

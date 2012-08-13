@@ -25,6 +25,9 @@ import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jdt.internal.core.ClassFile;
+import org.eclipse.jdt.internal.core.JarPackageFragmentRoot;
+import org.eclipse.jdt.internal.core.PackageFragment;
 import org.eclipse.jdt.ui.JavaElementLabelProvider;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -132,10 +135,12 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 					if (dialog.open() == Window.OK) {
 						IPackageFragment fragment = (IPackageFragment) dialog.getFirstResult();
 						String newBundleName = fragment.getElementName();
+						boolean isArchive = fragment.getParent() instanceof JarPackageFragmentRoot;
+						String fragmentRoot = fragment.getParent().getElementName();
 						List<String> tmp = model.getPackageList();
 						if(newBundleName != null && !newBundleName.equals("")&& !tmp.contains(newBundleName)){
 							List<String> added = new LinkedList<String>();
-							model.addPackageByPath(newBundleName);
+							model.addPackageByPath(newBundleName, isArchive, fragmentRoot);
 							added.add(newBundleName);
 							
 							// Update the model and view
@@ -192,25 +197,29 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 		try {
 			IPackageFragmentRoot[] roots = JavaCore.create(project).getAllPackageFragmentRoots();
 			for (int i = 0; i < roots.length; i++) {
-				IPackageFragmentRoot root = roots[i];{
-					if(!root.isArchive()) {
-						String srcPath = root.getElementName();
-						for(ComponentPackage pi : model.getCustomPackageList()){
+				IPackageFragmentRoot root = roots[i];
+				String srcPath = root.getElementName();
+				for (ComponentPackage pi : model.getCustomPackageList()) {
+					if (pi.isArchive() == root.isArchive() && srcPath.equals(pi.getFragmentRoot())) {
+						if (!root.isArchive()) {
+							//Load custom components from source directory
 							String wholePath = "/" + srcPath + "/" + pi.getPath().replace(".", "/");
 							IFolder folder = project.getFolder(wholePath);
-							if(folder.exists()){
+							if (folder.exists()) {
 								IResource[] fileList = folder.members();
-								for(IResource file : fileList){
+								for (IResource file : fileList) {
 									String fullPath = file.getFullPath().toString();
 									String classFile = fullPath.replace(".tml", ".java").substring(1);
 									classFile = classFile.substring(classFile.indexOf("/"));
-									if(fullPath.endsWith(".tml") && file.getType() == IResource.FILE && project.getFile(classFile).exists()){
+									if (fullPath.endsWith(".tml") && file.getType() == IResource.FILE
+											&& project.getFile(classFile).exists()) {
 										IFile componentFile = (IFile) file;
 										Element rootElement = getRootElementOfXML(componentFile.getContents());
-										if(rootElement.getNodeName().trim().equals("t:container")){
+										if (rootElement.getNodeName().trim().equals("t:container")) {
 											String componentName = classFile.substring(classFile.lastIndexOf("/"));
 											componentName = componentName.substring(0, componentName.indexOf("."));
-											if(componentName.startsWith("/")) componentName = componentName.substring(1);
+											if (componentName.startsWith("/"))
+												componentName = componentName.substring(1);
 											ComponentInstance ci = new ComponentInstance();
 											ci.setId(componentName);
 											ci.setName(pi.getPrefix() + ":" + componentName);
@@ -220,6 +229,27 @@ public class PackagesPart extends SectionPart implements PropertyChangeListener{
 											componentList.add(ci);
 										}
 									}
+								}
+							}
+						} else {
+							// Load custom components from jar files
+							for (IJavaElement pack : root.getChildren()) {
+								if (pack != null && pack instanceof PackageFragment && pack.getElementName().equals(pi.getPath())) {
+									for(Object packo : ((PackageFragment) pack).getChildrenOfType(IJavaElement.CLASS_FILE)){
+										ClassFile packi = (ClassFile) packo;
+										String itemName = packi.getElementName();
+										if(itemName.indexOf('$') < 0 && itemName.endsWith(".class")){
+											ComponentInstance ci = new ComponentInstance();
+											String componentName = itemName.substring(0, itemName.length()-6);
+											ci.setId(componentName);
+											ci.setName(pi.getPrefix() + ":" + componentName);
+											ci.setPath(pi.getPath());
+											ci.setPrefix(pi.getPrefix());
+											ci.setText(componentName);
+											componentList.add(ci);
+										}
+									}
+									break;
 								}
 							}
 						}
