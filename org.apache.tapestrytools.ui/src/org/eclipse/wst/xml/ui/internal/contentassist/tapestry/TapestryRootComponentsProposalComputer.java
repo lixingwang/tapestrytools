@@ -33,7 +33,12 @@ import org.eclipse.jdt.core.dom.MarkerAnnotation;
 import org.eclipse.jdt.core.dom.MemberValuePair;
 import org.eclipse.jdt.core.dom.NormalAnnotation;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
+import org.eclipse.jdt.internal.compiler.classfmt.ClassFormatException;
+import org.eclipse.jdt.internal.core.ClassFile;
+import org.eclipse.jdt.internal.core.JarPackageFragmentRoot;
+import org.eclipse.jdt.internal.core.PackageFragment;
 import org.eclipse.jface.text.templates.Template;
+import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.travelpackage.TapestryClassLoader;
 import org.eclipse.wst.xml.core.internal.contentmodel.tapestry.travelpackage.TapestryCoreComponents;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -311,26 +316,59 @@ public class TapestryRootComponentsProposalComputer {
 		return prefixList;
 	}
 	
-	public List<Template> getCustomComponentsAttributes(IProject project, String contextTypeId, String nodeName){
+	/**
+	 * Get custom component attribute templates
+	 * 
+	 * @param project
+	 * @param contextTypeId
+	 * @param nodeName
+	 * @param tapestryClassLoader
+	 * @return
+	 */
+	public List<Template> getCustomComponentsAttributes(IProject project, String contextTypeId, String nodeName, TapestryClassLoader tapestryClassLoader){
 		components.clear();
 		String prefix = nodeName.substring(0, nodeName.indexOf(':'));
 		try {
 			final IFile res = project.getFile(TapestryContants.CUSTOM_COMPONENTS_FILE);
 			if(res == null || prefix == null)
 				return components;
-			List<ComponentPackage> packageList = loadPackageList(res, 3, prefix);
+			List<ComponentPackage> packageList = loadCustomComponentsPackageListWithPrefix(res, prefix);
 			IPackageFragmentRoot[] roots = JavaCore.create(project).getAllPackageFragmentRoots();
 			for(ComponentPackage cp : packageList){
 				for (IPackageFragmentRoot root : roots) {
-					if (!root.isArchive()){
+					if(cp.isArchive() == root.isArchive() && cp.getFragmentRoot().equals(root.getElementName())){
 						IPackageFragment packInstance = root.getPackageFragment(cp.getPath());
-						if(packInstance != null){
-							IJavaElement[] elements = packInstance.getChildren();
-							for(IJavaElement ele : elements){
-								if(ele.getElementType() == IJavaElement.COMPILATION_UNIT && ele.getElementName().endsWith(".java")){
-									String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
-									if((prefix + ":" + name).toLowerCase().equals(nodeName)){
-										goThroughClass((ICompilationUnit) ele, contextTypeId);
+						if (!root.isArchive()){
+							//If current custom component is in source directory
+							if(packInstance != null){
+								IJavaElement[] elements = packInstance.getChildren();
+								for(IJavaElement ele : elements){
+									if(ele.getElementType() == IJavaElement.COMPILATION_UNIT && ele.getElementName().endsWith(".java")){
+										String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
+										if((prefix + ":" + name).toLowerCase().equals(nodeName)){
+											goThroughClass((ICompilationUnit) ele, contextTypeId);
+											return components;
+										}
+									}
+								}
+							}
+						}else if(packInstance instanceof PackageFragment){
+							//Current custom component is in jar files
+							for(Object packo : ((PackageFragment) packInstance).getChildrenOfType(IJavaElement.CLASS_FILE)){
+								ClassFile packi = (ClassFile) packo;
+								String className = packi.getElementName().substring(0, packi.getElementName().indexOf('.'));
+								if(className.indexOf('$') < 0 && (prefix + ":" + className.toLowerCase()).equals(nodeName)){
+									TapestryCoreComponents component = null;
+									try {
+										component = tapestryClassLoader.loadComponentAttributesFromClassFile(root, prefix, packi);
+									} catch (ClassFormatException e) {
+										e.printStackTrace();
+									}
+									if(component != null){
+										for(String paramName : component.getPamameters()){
+											Template template = new Template(paramName, "add attribute " + paramName, contextTypeId, buildAttributeInsertCode(paramName), true);
+											components.add(template);
+										}
 										return components;
 									}
 								}
@@ -437,22 +475,45 @@ public class TapestryRootComponentsProposalComputer {
 	private void loadCustomComponentsFromPackage(IPackageFragmentRoot[] roots, String contextTypeId, int type, List<Template> templateList, ComponentPackage cp, String prefix){
 			try {
 				for (IPackageFragmentRoot root : roots) {
-					if (!root.isArchive()){
-						IPackageFragment packInstance = root.getPackageFragment(cp.getPath());
-						if(packInstance != null){
-							IJavaElement[] elements = packInstance.getChildren();
-							for(IJavaElement ele : elements){
-								if(ele.getElementType() == IJavaElement.COMPILATION_UNIT && ele.getElementName().endsWith(".java")){
-									TapestryCoreComponents component = new TapestryCoreComponents();
-									String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
-									component.setName(name);
-									if(prefix == null || prefix.equals("t"))
-										component.setElementLabel("t:" + cp.getPrefix() + "." + name.toLowerCase());
-									else
-										component.setElementLabel(cp.getPrefix() + ":" + name.toLowerCase());
-									templateList.add(new Template(component.getName(), buildDescription(component, cp.getPath()), contextTypeId, buildInsertCode(component, type), true));
+					if(root instanceof JarPackageFragmentRoot == cp.isArchive() && root.getElementName().equals(cp.getFragmentRoot())) {
+						List<String> componentNameList = new ArrayList<String>();
+						if (!root.isArchive()) {
+							// Load custom components from source directory
+							IPackageFragment packInstance = root.getPackageFragment(cp.getPath());
+							if (packInstance != null) {
+								IJavaElement[] elements = packInstance.getChildren();
+								for (IJavaElement ele : elements) {
+									if (ele.getElementType() == IJavaElement.COMPILATION_UNIT
+											&& ele.getElementName().endsWith(".java")) {
+										String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
+										componentNameList.add(name);
+									}
 								}
 							}
+						} else {
+							// Load custom components from jar files
+							for (IJavaElement pack : root.getChildren()) {
+								if (pack != null && pack instanceof PackageFragment && pack.getElementName().equals(cp.getPath())) {
+									for(Object packo : ((PackageFragment) pack).getChildrenOfType(IJavaElement.CLASS_FILE)){
+										ClassFile packi = (ClassFile) packo;
+										String itemName = packi.getElementName();
+										if(itemName.indexOf('$') < 0 && itemName.endsWith(".class"))
+											componentNameList.add(itemName.substring(0, itemName.length()-6));
+									}
+									break;
+								}
+							}
+						}
+						//Build templates from name list
+						for(String componentName : componentNameList){
+							TapestryCoreComponents component = new TapestryCoreComponents();
+							component.setName(componentName);
+							if (prefix == null || prefix.equals("t"))
+								component.setElementLabel("t:" + cp.getPrefix() + "." + componentName.toLowerCase());
+							else
+								component.setElementLabel(cp.getPrefix() + ":" + componentName.toLowerCase());
+							templateList.add(new Template(component.getName(), buildDescription(component,
+									cp.getPath()), contextTypeId, buildInsertCode(component, type), true));
 						}
 						break;
 					}
@@ -502,6 +563,46 @@ public class TapestryRootComponentsProposalComputer {
 		return packageList;
 	}
 	
+	private List<ComponentPackage> loadCustomComponentsPackageListWithPrefix(IFile res, String prefix){
+		List<ComponentPackage> packageList = new ArrayList<ComponentPackage>();
+		DocumentBuilder db = null;
+		try {
+			db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document document=db.parse(res.getContents());
+			Element root = document.getDocumentElement();
+			NodeList bundles = root.getChildNodes();
+			if (bundles != null) {
+				for (int i = 0; i < bundles.getLength(); i++) {
+					Node classCycles = bundles.item(i);
+					if (classCycles.getNodeType() == Node.ELEMENT_NODE
+							&& classCycles.getNodeName().trim().equals(TapestryContants.CUSTOM_COMPONENTS_PACKAGES)) {
+						NodeList classes = classCycles.getChildNodes();
+						for(int j=0; j<classes.getLength(); j++){
+							Node classItem = classes.item(j);
+							if(classItem.getNodeType() == Node.ELEMENT_NODE && classItem.getNodeName().trim().equals(TapestryContants.CUSTOM_COMPONENTS_PACKAGE)){
+								ComponentPackage ci = new ComponentPackage();
+								getPackageBasicInfo(ci, classItem);
+								if(ci.getPrefix().equals(prefix))
+									packageList.add(ci);
+							}
+						}
+						break;
+					}
+				}
+			}
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
+		
+		return packageList;
+	}
+	
 	private void getPackageBasicInfo(ComponentPackage ci, Node classItem){
 		Node prefix = classItem.getAttributes().getNamedItem(TapestryContants.CUSTOM_COMPONENTS_PREFIX);
 		if (prefix != null)
@@ -509,6 +610,11 @@ public class TapestryRootComponentsProposalComputer {
 		Node path = classItem.getAttributes().getNamedItem(TapestryContants.CUSTOM_COMPONENTS_PATH);
 		if (path != null)
 			ci.setPath(path.getNodeValue());
-		
+		Node isArchive = classItem.getAttributes().getNamedItem(TapestryContants.CUSTOM_COMPONENTS_ISARCHIVE);
+		if(isArchive != null)
+			ci.setArchive(isArchive.getNodeValue().equals("true"));
+		Node fragmentRoot = classItem.getAttributes().getNamedItem(TapestryContants.CUSTOM_COMPONENTS_FRAGMENTROOT);
+		if(fragmentRoot != null)
+			ci.setFragmentRoot(fragmentRoot.getNodeValue());
 	}
 }

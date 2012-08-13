@@ -26,4 +26,6 @@ public class TapestryContants {
 	public static final String CUSTOM_COMPONENTS_PACKAGE="package";
 	public static final String CUSTOM_COMPONENTS_PREFIX="prefix";
 	public static final String CUSTOM_COMPONENTS_PATH="path";
+	public static final String CUSTOM_COMPONENTS_ISARCHIVE = "isArchive";
+	public static final String CUSTOM_COMPONENTS_FRAGMENTROOT = "fragmentRoot";
 }

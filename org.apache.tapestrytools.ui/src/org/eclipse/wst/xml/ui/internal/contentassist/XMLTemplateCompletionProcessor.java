@@ -23,10 +23,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaModelException;
-import org.eclipse.jdt.internal.compiler.classfmt.ClassFileReader;
 import org.eclipse.jdt.internal.compiler.classfmt.ClassFormatException;
-import org.eclipse.jdt.internal.compiler.env.IBinaryAnnotation;
-import org.eclipse.jdt.internal.compiler.env.IBinaryField;
 import org.eclipse.jdt.internal.core.ClassFile;
 import org.eclipse.jdt.internal.core.PackageFragment;
 import org.eclipse.jface.text.IDocument;
@@ -235,10 +232,8 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 	
 	private PackageFragment getTapestryCoreLibrary() {
 		IPackageFragmentRoot root = tapestryClassLoader.getTapestryCoreJar(getCurrentProject());
-		
 		if(root == null)
 			return null;
-		
 		try {
 			for (IJavaElement pack : root.getChildren()) {
 				if (pack.getElementName().equals("org.apache.tapestry5.corelib.components")
@@ -276,35 +271,9 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 					for(Object packo : tapestryCorePackage.getChildrenOfType(IJavaElement.CLASS_FILE)){
 						ClassFile packi = (ClassFile) packo;
 						if(packi.getElementName().indexOf('$') < 0){
-							ClassFileReader reader = new ClassFileReader(packi.getBytes(), null);	
-							TapestryCoreComponents component = new TapestryCoreComponents();
-							component.setName(String.valueOf(reader.getSourceName()));
-							component.setElementLabel("t:" + component.getName().toLowerCase());
-							if(reader.getFields() != null)
-							for(IBinaryField  field : reader.getFields()){
-								boolean parameter = false;
-								if(field.getAnnotations() == null)
-									continue;
-								for(IBinaryAnnotation anno : field.getAnnotations()){
-									if(String.valueOf(anno.getTypeName()).endsWith("/Parameter;")){
-										parameter = true;
-										break;
-									}
-								}
-								if(parameter){
-									component.addParameter(String.valueOf(field.getName()));
-								}
-							}
-							
-							String parentClassName = String.valueOf(reader.getSuperclassName());
-							if(parentClassName != null && !parentClassName.isEmpty() && !parentClassName.equals("java/lang/Object")){
-								List<String> parameters = tapestryClassLoader.loadComponentsFromClassFile(tapestryClassLoader.getTapestryCoreJar(getCurrentProject()), parentClassName);
-								for(String parameter : parameters){
-									component.addParameter(parameter);
-								}
-							}
-							
-							list.add(component);
+							TapestryCoreComponents component = tapestryClassLoader.loadComponentAttributesFromClassFile(tapestryClassLoader.getTapestryCoreJar(project), "t", packi);
+							if(component != null)
+								list.add(component);
 						}
 					}
 			} catch (JavaModelException e) {
@@ -365,7 +334,7 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			if(tapestryTemplates == null || tapestryTemplates.size() ==0)
 				tapestryTemplates = tapestryRootComponentsProposalComputer.getRootComponentsAttributes(project, contextTypeId, tapestryComponentName);
 			if(tapestryTemplates == null || tapestryTemplates.size() ==0)
-				tapestryTemplates = tapestryRootComponentsProposalComputer.getCustomComponentsAttributes(project, contextTypeId, tapestryComponentName);
+				tapestryTemplates = tapestryRootComponentsProposalComputer.getCustomComponentsAttributes(project, contextTypeId, tapestryComponentName, tapestryClassLoader);
 			
 			return tapestryTemplates == null ? null : tapestryTemplates.toArray(new Template[0]);
 		}else if(contextTypeId.equals(TapestryElementCollection.attributesValueContextTypeId)){
