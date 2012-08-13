@@ -34,6 +34,38 @@ public class TapestryClassLoader extends ClassLoader {
 		return null;
 	}
 
+	public TapestryCoreComponents loadComponentAttributesFromClassFile(IPackageFragmentRoot fragmentRoot, String prefix, ClassFile packi) throws JavaModelException, ClassFormatException{
+		ClassFileReader reader = new ClassFileReader(packi.getBytes(), null);	
+		TapestryCoreComponents component = new TapestryCoreComponents();
+		component.setName(String.valueOf(reader.getSourceName()));
+		component.setElementLabel(prefix + ":" + component.getName().toLowerCase());
+		if(reader.getFields() != null)
+		for(IBinaryField  field : reader.getFields()){
+			boolean parameter = false;
+			if(field.getAnnotations() == null)
+				continue;
+			for(IBinaryAnnotation anno : field.getAnnotations()){
+				if(String.valueOf(anno.getTypeName()).endsWith("/Parameter;")){
+					parameter = true;
+					break;
+				}
+			}
+			if(parameter){
+				component.addParameter(String.valueOf(field.getName()));
+			}
+		}
+		
+		String parentClassName = String.valueOf(reader.getSuperclassName());
+		if(parentClassName != null && !parentClassName.isEmpty() && !parentClassName.equals("java/lang/Object")){
+			List<String> parameters =loadComponentsFromClassFile(fragmentRoot, parentClassName);
+			for(String parameter : parameters){
+				component.addParameter(parameter);
+			}
+		}
+		
+		return component;
+	}
+	
 	public List<String> loadComponentsFromClassFile(IPackageFragmentRoot root,
 			String classFileName) {
 		List<String> list = new ArrayList<String>();
