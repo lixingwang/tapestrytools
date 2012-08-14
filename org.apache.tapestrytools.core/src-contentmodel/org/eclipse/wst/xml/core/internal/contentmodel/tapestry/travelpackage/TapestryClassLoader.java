@@ -22,6 +22,8 @@ public class TapestryClassLoader extends ClassLoader {
 		try {
 			roots2 = JavaCore.create(project).getAllPackageFragmentRoots();
 			for (IPackageFragmentRoot root : roots2) {
+				if(!root.isArchive())
+					continue;
 				String jarName = root.getPath().toString()
 						.substring(root.getPath().toString().lastIndexOf('/'));
 				if (jarName.startsWith("/tapestry-core")
@@ -57,7 +59,7 @@ public class TapestryClassLoader extends ClassLoader {
 		
 		String parentClassName = String.valueOf(reader.getSuperclassName());
 		if(parentClassName != null && !parentClassName.isEmpty() && !parentClassName.equals("java/lang/Object")){
-			List<String> parameters =loadComponentsFromClassFile(fragmentRoot, parentClassName);
+			List<String> parameters =loadParametersFromParentClass(fragmentRoot, parentClassName);
 			for(String parameter : parameters){
 				component.addParameter(parameter);
 			}
@@ -66,7 +68,7 @@ public class TapestryClassLoader extends ClassLoader {
 		return component;
 	}
 	
-	public List<String> loadComponentsFromClassFile(IPackageFragmentRoot root,
+	public List<String> loadParametersFromParentClass(IPackageFragmentRoot root,
 			String classFileName) {
 		List<String> list = new ArrayList<String>();
 		if (classFileName.indexOf('/') < 0)
@@ -76,43 +78,40 @@ public class TapestryClassLoader extends ClassLoader {
 		String className = classFileName.substring(classFileName
 				.lastIndexOf('/') + 1) + ".class";
 		try {
-			for (IJavaElement pack : root.getChildren()) {
-				PackageFragment packInstance = (PackageFragment) pack;
-				if (packageName.equals(packInstance.getElementName()))
-					for (Object packo : packInstance.getChildrenOfType(IJavaElement.CLASS_FILE)) {
-						ClassFile packi = (ClassFile) packo;
-						if (packi.getElementName().equals(className)) {
-							ClassFileReader reader = null;
-							try {
-								reader = new ClassFileReader(packi.getBytes(),
-										null);
-							} catch (ClassFormatException e) {
-								e.printStackTrace();
-							}
+			PackageFragment packInstance = (PackageFragment) root.getPackageFragment(packageName);
+			for (Object packo : packInstance.getChildrenOfType(IJavaElement.CLASS_FILE)) {
+				ClassFile packi = (ClassFile) packo;
+				if (packi.getElementName().equals(className)) {
+					ClassFileReader reader = null;
+					try {
+						reader = new ClassFileReader(packi.getBytes(),
+								null);
+					} catch (ClassFormatException e) {
+						e.printStackTrace();
+					}
 
-							if (reader.getFields() != null)
-								for (IBinaryField field : reader.getFields()) {
-									boolean parameter = false;
-									if (field.getAnnotations() == null)
-										continue;
-									for (IBinaryAnnotation anno : field.getAnnotations()) {
-										if (String.valueOf(anno.getTypeName()).endsWith("/Parameter;")) {
-											parameter = true;
-											break;
-										}
-									}
-									if (parameter) {
-										list.add(String.valueOf(field.getName()));
-									}
+					if (reader.getFields() != null)
+						for (IBinaryField field : reader.getFields()) {
+							boolean parameter = false;
+							if (field.getAnnotations() == null)
+								continue;
+							for (IBinaryAnnotation anno : field.getAnnotations()) {
+								if (String.valueOf(anno.getTypeName()).endsWith("/Parameter;")) {
+									parameter = true;
+									break;
 								}
-							String parentClassName = String.valueOf(reader.getSuperclassName()); 
-							if(parentClassName != null && !parentClassName.isEmpty() && !parentClassName.equals("java/lang/Object")){
-								list.addAll(loadComponentsFromClassFile(root, parentClassName));
+							}
+							if (parameter) {
+								list.add(String.valueOf(field.getName()));
 							}
 						}
+					String parentClassName = String.valueOf(reader.getSuperclassName()); 
+					if(parentClassName != null && !parentClassName.isEmpty() && !parentClassName.equals("java/lang/Object")){
+						list.addAll(loadParametersFromParentClass(root, parentClassName));
 					}
+					return list;
+				}
 			}
-
 		} catch (JavaModelException e) {
 			e.printStackTrace();
 		}
