@@ -450,21 +450,26 @@ public class TapestryRootComponentsProposalComputer {
 	private void loadCustomComponentsNameFromPackage(IPackageFragmentRoot[] roots, String contextTypeId, List<Template> templateList, ComponentPackage cp){
 		try {
 			for (IPackageFragmentRoot root : roots) {
-				if (!root.isArchive()){
-					IPackageFragment packInstance = root.getPackageFragment(cp.getPath());
-					if(packInstance != null){
-						IJavaElement[] elements = packInstance.getChildren();
-						for(IJavaElement ele : elements){
-							if(ele.getElementType() == IJavaElement.COMPILATION_UNIT && ele.getElementName().endsWith(".java")){
-								TapestryCoreComponents component = new TapestryCoreComponents();
-								String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
-								component.setName(name);
-								component.setElementLabel(cp.getPrefix() + ":" + name.toLowerCase());
-								templateList.add(new Template(component.getName(), buildDescription(component, cp.getPath()), contextTypeId, cp.getPrefix()+ "/" +component.getName(), true));
+				if(root instanceof JarPackageFragmentRoot == cp.isArchive() && root.getElementName().equals(cp.getFragmentRoot())){
+					if (!root.isArchive()){
+						IPackageFragment packInstance = root.getPackageFragment(cp.getPath());
+						if(packInstance != null){
+							IJavaElement[] elements = packInstance.getChildren();
+							for(IJavaElement ele : elements){
+								if(ele.getElementType() == IJavaElement.COMPILATION_UNIT && ele.getElementName().endsWith(".java")){
+									TapestryCoreComponents component = new TapestryCoreComponents();
+									String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
+									component.setName(name);
+									component.setElementLabel(cp.getPrefix() + ":" + name.toLowerCase());
+									templateList.add(new Template(component.getName(), buildDescription(component, cp.getPath()), contextTypeId, cp.getPrefix()+ "/" +component.getName(), true));
+								}
 							}
 						}
+						return;
+					}else{
+						//Load component name template from 
+						return;
 					}
-					break;
 				}
 			}
 		} catch (JavaModelException e) {

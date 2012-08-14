@@ -21,6 +21,7 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jdt.internal.compiler.classfmt.ClassFormatException;
@@ -234,17 +235,9 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 		IPackageFragmentRoot root = tapestryClassLoader.getTapestryCoreJar(getCurrentProject());
 		if(root == null)
 			return null;
-		try {
-			for (IJavaElement pack : root.getChildren()) {
-				if (pack.getElementName().equals("org.apache.tapestry5.corelib.components")
-						&& (pack instanceof PackageFragment)) {
-					return (PackageFragment) pack;
-				}
-			}
-		} catch (JavaModelException e) {
-			e.printStackTrace();
-		}
-
+		IPackageFragment pack = root.getPackageFragment("org.apache.tapestry5.corelib.components");
+		if(pack != null && pack instanceof PackageFragment)
+			return (PackageFragment) pack;
 		return null;
 	}
 	
