@@ -8,6 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *     Jens Lukowski/Innoopract - initial renaming/restructuring
+ *     gavingui2011@gmail.com - Add TapestryTools features
  *     
  *******************************************************************************/
 package org.eclipse.wst.xml.ui.internal.contentassist;
@@ -322,7 +323,6 @@ class XMLTemplateCompletionProcessor extends TemplateCompletionProcessor {
 			if(tapestryComponentName.indexOf('.') > -1 && currentTapestryComponent.getPrefix()!= null && currentTapestryComponent.getPrefix().equals("t"))
 				tapestryComponentName = tapestryComponentName.substring(2).replace('.', ':');
 				
-			
 			List<Template> tapestryTemplates = CoreComponentsUtil.getAttributeList(coreList, contextTypeId, tapestryComponentName);
 			if(tapestryTemplates == null || tapestryTemplates.size() ==0)
 				tapestryTemplates = tapestryRootComponentsProposalComputer.getRootComponentsAttributes(project, contextTypeId, tapestryComponentName);

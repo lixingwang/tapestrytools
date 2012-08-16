@@ -1,3 +1,15 @@
+/*******************************************************************************
+ * Copyright (c) 2012 gavingui2011@gmail.com
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     gavingui2011@gmail.com  - initial API and implementation
+ *     
+ *******************************************************************************/
+
 package org.eclipse.wst.xml.ui.internal.contentassist.tapestry;
 
 import java.io.IOException;
@@ -399,8 +411,9 @@ public class TapestryRootComponentsProposalComputer {
 		if(res == null)
 			return templateList;
 		List<ComponentPackage> packageList = loadPackageList(res, 1, "*");
+		IPackageFragmentRoot[] roots;
 		try {
-			IPackageFragmentRoot[] roots = JavaCore.create(project).getAllPackageFragmentRoots();
+			roots = JavaCore.create(project).getAllPackageFragmentRoots();
 			for(ComponentPackage cp : packageList){
 				loadCustomComponentsNameFromPackage(roots, contextTypeId, templateList, cp);
 			}
@@ -408,6 +421,7 @@ public class TapestryRootComponentsProposalComputer {
 			e.printStackTrace();
 		}
 		
+
 		return templateList;
 	}
 	
@@ -448,84 +462,79 @@ public class TapestryRootComponentsProposalComputer {
 	 * @param cp
 	 */
 	private void loadCustomComponentsNameFromPackage(IPackageFragmentRoot[] roots, String contextTypeId, List<Template> templateList, ComponentPackage cp){
+		List<String> componentNameList = getCustomComponentsNameList(roots, cp);	
+		for(String componentName : componentNameList){
+			TapestryCoreComponents component = new TapestryCoreComponents();
+			component.setName(componentName);
+			component.setElementLabel(cp.getPrefix() + ":" + componentName.toLowerCase());
+			templateList.add(new Template(component.getName(), buildDescription(component, cp.getPath()), contextTypeId, cp.getPrefix()+ "/" +component.getName(), true));
+		}
+	}
+	
+	/**
+	 * Load custom component template list, used in situation:<t:prefix/compName
+	 * 
+	 * @param roots
+	 * @param contextTypeId
+	 * @param type
+	 * @param templateList
+	 * @param cp
+	 * @param prefix
+	 */
+	private void loadCustomComponentsFromPackage(IPackageFragmentRoot[] roots, String contextTypeId, int type, List<Template> templateList, ComponentPackage cp, String prefix){
+		List<String> componentNameList = getCustomComponentsNameList(roots, cp);	
+		//Build templates from name list
+		for(String componentName : componentNameList){
+			TapestryCoreComponents component = new TapestryCoreComponents();
+			component.setName(componentName);
+			if (prefix == null || prefix.equals("t"))
+				component.setElementLabel("t:" + cp.getPrefix() + "." + componentName.toLowerCase());
+			else
+				component.setElementLabel(cp.getPrefix() + ":" + componentName.toLowerCase());
+			templateList.add(new Template(component.getName(), buildDescription(component,
+					cp.getPath()), contextTypeId, buildInsertCode(component, type), true));
+		}
+	}
+	
+	private List<String> getCustomComponentsNameList(IPackageFragmentRoot[] roots, ComponentPackage cp){
+		List<String> componentNameList = new ArrayList<String>();
 		try {
 			for (IPackageFragmentRoot root : roots) {
-				if(root instanceof JarPackageFragmentRoot == cp.isArchive() && root.getElementName().equals(cp.getFragmentRoot())){
-					if (!root.isArchive()){
+				if(root instanceof JarPackageFragmentRoot == cp.isArchive() && root.getElementName().equals(cp.getFragmentRoot())) {
+					if (!root.isArchive()) {
+						// Load custom components from source directory
 						IPackageFragment packInstance = root.getPackageFragment(cp.getPath());
-						if(packInstance != null){
+						if (packInstance != null) {
 							IJavaElement[] elements = packInstance.getChildren();
-							for(IJavaElement ele : elements){
-								if(ele.getElementType() == IJavaElement.COMPILATION_UNIT && ele.getElementName().endsWith(".java")){
-									TapestryCoreComponents component = new TapestryCoreComponents();
+							for (IJavaElement ele : elements) {
+								if (ele.getElementType() == IJavaElement.COMPILATION_UNIT
+										&& ele.getElementName().endsWith(".java")) {
 									String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
-									component.setName(name);
-									component.setElementLabel(cp.getPrefix() + ":" + name.toLowerCase());
-									templateList.add(new Template(component.getName(), buildDescription(component, cp.getPath()), contextTypeId, cp.getPrefix()+ "/" +component.getName(), true));
+									componentNameList.add(name);
 								}
 							}
 						}
-						return;
-					}else{
-						//Load component name template from 
-						return;
+					} else {
+						// Load custom components from jar files
+						for (IJavaElement pack : root.getChildren()) {
+							if (pack != null && pack instanceof PackageFragment && pack.getElementName().equals(cp.getPath())) {
+								for(Object packo : ((PackageFragment) pack).getChildrenOfType(IJavaElement.CLASS_FILE)){
+									ClassFile packi = (ClassFile) packo;
+									String itemName = packi.getElementName();
+									if(itemName.indexOf('$') < 0 && itemName.endsWith(".class"))
+										componentNameList.add(itemName.substring(0, itemName.length()-6));
+								}
+								break;
+							}
+						}
 					}
+					return componentNameList;
 				}
 			}
 		} catch (JavaModelException e) {
 			e.printStackTrace();
 		}
-}
-	
-	private void loadCustomComponentsFromPackage(IPackageFragmentRoot[] roots, String contextTypeId, int type, List<Template> templateList, ComponentPackage cp, String prefix){
-			try {
-				for (IPackageFragmentRoot root : roots) {
-					if(root instanceof JarPackageFragmentRoot == cp.isArchive() && root.getElementName().equals(cp.getFragmentRoot())) {
-						List<String> componentNameList = new ArrayList<String>();
-						if (!root.isArchive()) {
-							// Load custom components from source directory
-							IPackageFragment packInstance = root.getPackageFragment(cp.getPath());
-							if (packInstance != null) {
-								IJavaElement[] elements = packInstance.getChildren();
-								for (IJavaElement ele : elements) {
-									if (ele.getElementType() == IJavaElement.COMPILATION_UNIT
-											&& ele.getElementName().endsWith(".java")) {
-										String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
-										componentNameList.add(name);
-									}
-								}
-							}
-						} else {
-							// Load custom components from jar files
-							for (IJavaElement pack : root.getChildren()) {
-								if (pack != null && pack instanceof PackageFragment && pack.getElementName().equals(cp.getPath())) {
-									for(Object packo : ((PackageFragment) pack).getChildrenOfType(IJavaElement.CLASS_FILE)){
-										ClassFile packi = (ClassFile) packo;
-										String itemName = packi.getElementName();
-										if(itemName.indexOf('$') < 0 && itemName.endsWith(".class"))
-											componentNameList.add(itemName.substring(0, itemName.length()-6));
-									}
-									break;
-								}
-							}
-						}
-						//Build templates from name list
-						for(String componentName : componentNameList){
-							TapestryCoreComponents component = new TapestryCoreComponents();
-							component.setName(componentName);
-							if (prefix == null || prefix.equals("t"))
-								component.setElementLabel("t:" + cp.getPrefix() + "." + componentName.toLowerCase());
-							else
-								component.setElementLabel(cp.getPrefix() + ":" + componentName.toLowerCase());
-							templateList.add(new Template(component.getName(), buildDescription(component,
-									cp.getPath()), contextTypeId, buildInsertCode(component, type), true));
-						}
-						break;
-					}
-				}
-			} catch (JavaModelException e) {
-				e.printStackTrace();
-			}
+		return componentNameList;
 	}
 	
 	private List<ComponentPackage> loadPackageList(IFile res, int type, String prefix){
@@ -608,6 +617,12 @@ public class TapestryRootComponentsProposalComputer {
 		return packageList;
 	}
 	
+	/**
+	 * Parse XML node
+	 * 
+	 * @param ci
+	 * @param classItem
+	 */
 	private void getPackageBasicInfo(ComponentPackage ci, Node classItem){
 		Node prefix = classItem.getAttributes().getNamedItem(TapestryContants.CUSTOM_COMPONENTS_PREFIX);
 		if (prefix != null)
