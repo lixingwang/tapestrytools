@@ -24,7 +24,9 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExecutableExtension;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
 import org.eclipse.jdt.core.IPackageFragmentRoot;
@@ -113,7 +115,6 @@ public class AddTapestryPageWizard extends Wizard implements INewWizard,
          * or just replace its contents, and open the editor on the newly created
          * file.
          */
-
         private void doFinish(String projectName, String folderName,
                         String packageName, String className, IProgressMonitor monitor)
                         throws CoreException {
@@ -121,11 +122,8 @@ public class AddTapestryPageWizard extends Wizard implements INewWizard,
     			IJavaProject javaProject = JavaCore.create(project);
                 IPackageFragmentRoot src = null;
                 IPackageFragmentRoot[] roots = javaProject.getPackageFragmentRoots();
-                //Get a writeable IPackageFragmentRoot instance
-                String[] steps = folderName.split("/");
-                String srcName = steps[steps.length-1];
                 for(IPackageFragmentRoot pfr : roots){
-                        if(pfr.getElementName().equals(srcName)) {
+                	if(pfr.getPath().toString().equals(folderName)) {
                                 src = pfr;
                                 break;
                         }
@@ -135,12 +133,27 @@ public class AddTapestryPageWizard extends Wizard implements INewWizard,
                 String classContent="package "+packageName+";\n\n";
                 classContent+="public class "+className+" {\n\n";
                 classContent+="}";
+                
                 aimPackage.createCompilationUnit(className+".java", classContent, false, null);
                 monitor.worked(1);
 
+                IPath templatePath = aimPackage.getPath();
+                if(TapestryWizardUtils.isMavenProject(project)){
+                	String javaPath = aimPackage.getPath().toString();
+                	String temPath = javaPath;
+                	if(javaPath.indexOf("/main/java/") > -1){
+                		temPath = javaPath.replace("/main/java/", "/main/resources/");
+                	}else if(javaPath.indexOf("/test/java/") > -1){
+                		temPath = javaPath.replace("/test/java/", "/test/resources/");
+                	}
+                	IPath tmpPath = new Path(temPath);
+                	if(tmpPath.isValidPath(temPath)){
+                		templatePath = tmpPath;
+                	}
+                }
+                
                 IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
-                IFile pageFile = root.getFile(aimPackage.getPath().append(
-                                        className + ".tml"));
+                IFile pageFile = root.getFile(templatePath.append(className + ".tml"));
                 
                 final IFile file = pageFile;
                 try {
