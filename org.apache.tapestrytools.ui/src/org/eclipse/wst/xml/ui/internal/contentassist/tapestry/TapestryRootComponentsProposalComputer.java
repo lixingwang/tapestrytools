@@ -151,7 +151,7 @@ public class TapestryRootComponentsProposalComputer {
 					String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
 					component.setName(name);
 					component.setElementLabel("t:" + name.toLowerCase());
-					components.add(new Template(component.getName(), buildDescription(component, "root package"), contextTypeId, component.getName(), true));
+					components.add(new Template("t:" + component.getName(), buildDescription(component, "root package"), contextTypeId, component.getName(), true));
 				}
 			}
 			return components;
@@ -172,7 +172,7 @@ public class TapestryRootComponentsProposalComputer {
 					String name = ele.getElementName().substring(0, ele.getElementName().indexOf('.'));
 					component.setName(name);
 					component.setElementLabel("t:" + name.toLowerCase());
-					components.add(new Template(component.getName(), buildDescription(component, "root package"), contextTypeId, buildInsertCode(component, type), true));
+					components.add(new Template("t:" + component.getName(), buildDescription(component, "root package"), contextTypeId, buildInsertCode(component, type), true));
 				}
 			}
 			return components;
@@ -467,7 +467,7 @@ public class TapestryRootComponentsProposalComputer {
 			TapestryCoreComponents component = new TapestryCoreComponents();
 			component.setName(componentName);
 			component.setElementLabel(cp.getPrefix() + ":" + componentName.toLowerCase());
-			templateList.add(new Template(component.getName(), buildDescription(component, cp.getPath()), contextTypeId, cp.getPrefix()+ "/" +component.getName(), true));
+			templateList.add(new Template(cp.getPrefix() + ":" + component.getName(), buildDescription(component, cp.getPath()), contextTypeId, cp.getPrefix()+ "/" +component.getName(), true));
 		}
 	}
 	
@@ -491,7 +491,7 @@ public class TapestryRootComponentsProposalComputer {
 				component.setElementLabel("t:" + cp.getPrefix() + "." + componentName.toLowerCase());
 			else
 				component.setElementLabel(cp.getPrefix() + ":" + componentName.toLowerCase());
-			templateList.add(new Template(component.getName(), buildDescription(component,
+			templateList.add(new Template(cp.getPrefix() + ":" + component.getName(), buildDescription(component,
 					cp.getPath()), contextTypeId, buildInsertCode(component, type), true));
 		}
 	}
