@@ -42,7 +42,7 @@ public class CoreComponentsUtil {
 	public static List<Template> getTapestryComponentNameList(TapestryCoreComponents[] components, String contextTypeId){
 		List result = new ArrayList();
 		for(TapestryCoreComponents comp : components){
-			Template template = new Template(comp.getName(), buildDescription(comp), contextTypeId, comp.getName(), true);
+			Template template = new Template("t:" + comp.getName(), buildDescription(comp), contextTypeId, comp.getName(), true);
 			result.add(template);
 		}
 		return result;
@@ -59,12 +59,12 @@ public class CoreComponentsUtil {
 	public static List<Template> buildTemplateListFromComponents(TapestryCoreComponents[] components, String contextTypeId, int type){
 		List<Template> result = new ArrayList<Template>();
 		for(TapestryCoreComponents comp : components)
-			result.add(createComponentTemplate(comp, contextTypeId, type));
+			result.add(createComponentTemplate("t", comp, contextTypeId, type));
 		return result;
 	}
 	
-	public static Template createComponentTemplate(TapestryCoreComponents comp, String contextTypeId, int type){
-		Template template = new Template(comp.getName(), buildDescription(comp), contextTypeId, buildInsertCode(comp, type), true);
+	public static Template createComponentTemplate(String prefix, TapestryCoreComponents comp, String contextTypeId, int type){
+		Template template = new Template(prefix + ":" + comp.getName(), buildDescription(comp), contextTypeId, buildInsertCode(comp, type), true);
 		return template;
 	}
 	
