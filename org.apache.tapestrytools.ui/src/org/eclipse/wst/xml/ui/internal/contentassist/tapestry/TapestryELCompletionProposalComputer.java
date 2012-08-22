@@ -56,8 +56,8 @@ import org.eclipse.wst.xml.ui.internal.editor.XMLEditorPluginImages;
 public class TapestryELCompletionProposalComputer {
 
 	private String partenerFile = null;
-	private ArrayList propList = new ArrayList();
-	private ArrayList methodList = new ArrayList();
+	private ArrayList<String> propList = new ArrayList<String>();
+	private ArrayList<String> methodList = new ArrayList<String>();
 
 	/**
 	 * @see org.eclipse.jst.jsp.ui.internal.contentassist.JSPJavaCompletionProposalComputer#computeCompletionProposals(org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext,
@@ -155,10 +155,10 @@ public class TapestryELCompletionProposalComputer {
 				XMLEditorPluginImages.IMG_TAPESTRY_ENTITY);
 	}
 
-	private List getTapestryPropProposals(String prefix, ITextViewer viewer,
+	private List<CustomCompletionProposal> getTapestryPropProposals(String prefix, ITextViewer viewer,
 			int offset, Image image, int replacementLength, int cursorPosition,
 			IPath classFile, String suffix) {
-		ArrayList completionList = new ArrayList();
+		ArrayList<CustomCompletionProposal> completionList = new ArrayList<CustomCompletionProposal>();
 		try {
 			propList.clear();
 			methodList.clear();
@@ -169,14 +169,14 @@ public class TapestryELCompletionProposalComputer {
 		}
 
 		for (int i = 0; i < propList.size(); i++) {
-			String prop = (String) propList.get(i);
+			String prop = propList.get(i);
 			CustomCompletionProposal each = new CustomCompletionProposal(
 					prefix + prop + suffix, offset, replacementLength,
 					cursorPosition, image, prop, null, "Tapestry page property: " + prop, 1);
 			completionList.add(each);
 		}
 		for (int i = 0; i < methodList.size(); i++) {
-			String method = (String) methodList.get(i);
+			String method = methodList.get(i);
 			CustomCompletionProposal each = new CustomCompletionProposal(
 					prefix + method + suffix, offset, replacementLength,
 					cursorPosition, image, method, null, "method " + method, 1);
