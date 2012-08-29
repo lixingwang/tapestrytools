@@ -63,41 +63,35 @@ public class TapestryELCompletionProposalComputer {
 	 * @see org.eclipse.jst.jsp.ui.internal.contentassist.JSPJavaCompletionProposalComputer#computeCompletionProposals(org.eclipse.wst.sse.ui.contentassist.CompletionProposalInvocationContext,
 	 *      org.eclipse.core.runtime.IProgressMonitor)
 	 */
-	public List computeCompletionProposals(String prefix, CompletionProposalInvocationContext context, IDOMNode node, int cursoroffset) {
+	public List computeCompletionProposals(String prefix, CompletionProposalInvocationContext context, IDOMNode node,
+			int cursoroffset) {
 		List results = new ArrayList();
 		String suffix = computeSuffix(context, node);
 
-		IEditorPart editorPart = Workbench.getInstance()
-				.getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		IEditorPart editorPart = Workbench.getInstance().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
 		if (editorPart != null) {
-			IFileEditorInput input = (IFileEditorInput) editorPart
-					.getEditorInput();
+			IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
 			IFile file = input.getFile();
 			String fileName = file.getFullPath().toString();
 			if (fileName.endsWith(".tml")) {
 				String aimFileName = null;
 				String aimNameShort = null;
 				IProject activeProject = file.getProject();
-				aimFileName = fileName.substring(0, fileName.length() - 4)
-						+ ".java";
+				aimFileName = fileName.substring(0, fileName.length() - 4) + ".java";
 				IResource res = null;
 				if (aimFileName.indexOf("/") > -1)
-					aimNameShort = aimFileName.substring(aimFileName
-							.lastIndexOf("/") + 1);
-				res = activeProject.findMember(aimFileName
-						.substring(("/" + activeProject.getName()).length()));
+					aimNameShort = aimFileName.substring(aimFileName.lastIndexOf("/") + 1);
+				res = activeProject.findMember(aimFileName.substring(("/" + activeProject.getName()).length()));
 				if (res == null) {
 					searchPartenerFile(activeProject, aimNameShort);
 					if (this.partenerFile != null) {
-						res = activeProject.findMember(partenerFile
-								.substring(("/" + activeProject.getName())
-										.length()));
+						res = activeProject
+								.findMember(partenerFile.substring(("/" + activeProject.getName()).length()));
 					}
 				}
 
 				if (res != null && res.getType() == IResource.FILE)
-					results.addAll(getTapestryPropProposals(prefix,
-							context.getViewer(), context.getInvocationOffset(),
+					results.addAll(getTapestryPropProposals(prefix, context.getViewer(), context.getInvocationOffset(),
 							getTapestryImage(), 0, cursoroffset, res.getFullPath(), suffix));
 			}
 		}
@@ -105,8 +99,7 @@ public class TapestryELCompletionProposalComputer {
 		return results;
 	}
 
-	private String computeSuffix(CompletionProposalInvocationContext context,
-			IDOMNode node) {
+	private String computeSuffix(CompletionProposalInvocationContext context, IDOMNode node) {
 		String suffix = "}";
 		int documentPosition = context.getInvocationOffset();
 		for (int i = documentPosition; i < node.getSource().length(); i++) {
@@ -114,8 +107,7 @@ public class TapestryELCompletionProposalComputer {
 			if (temp == '}') {
 				suffix = "";
 				break;
-			} else if (temp == 32 || temp >= 48 && temp <= 57 || temp >= 65
-					&& temp <= 90 || temp >= 97 && temp <= 122)
+			} else if (temp == 32 || temp >= 48 && temp <= 57 || temp >= 65 && temp <= 90 || temp >= 97 && temp <= 122)
 				continue;
 			else {
 				suffix = "}";
@@ -136,12 +128,10 @@ public class TapestryELCompletionProposalComputer {
 		}
 	}
 
-	private void travelAllFolder(IResource[] fileList, String fileName)
-			throws CoreException {
+	private void travelAllFolder(IResource[] fileList, String fileName) throws CoreException {
 		for (int i = 0; i < fileList.length; i++) {
 			IResource eachFile = fileList[i];
-			if (eachFile.getType() == IResource.FILE
-					&& eachFile.getName().equals(fileName)) {
+			if (eachFile.getType() == IResource.FILE && eachFile.getName().equals(fileName)) {
 				this.partenerFile = eachFile.getFullPath().toString();
 			} else if (eachFile.getType() == IResource.FOLDER) {
 				IFolder file = (IFolder) eachFile;
@@ -151,35 +141,30 @@ public class TapestryELCompletionProposalComputer {
 	}
 
 	private Image getTapestryImage() {
-		return XMLEditorPluginImageHelper.getInstance().getImage(
-				XMLEditorPluginImages.IMG_TAPESTRY_ENTITY);
+		return XMLEditorPluginImageHelper.getInstance().getImage(XMLEditorPluginImages.IMG_TAPESTRY_ENTITY);
 	}
 
-	private List<CustomCompletionProposal> getTapestryPropProposals(String prefix, ITextViewer viewer,
-			int offset, Image image, int replacementLength, int cursorPosition,
-			IPath classFile, String suffix) {
+	private List<CustomCompletionProposal> getTapestryPropProposals(String prefix, ITextViewer viewer, int offset,
+			Image image, int replacementLength, int cursorPosition, IPath classFile, String suffix) {
 		ArrayList<CustomCompletionProposal> completionList = new ArrayList<CustomCompletionProposal>();
 		try {
 			propList.clear();
 			methodList.clear();
-			goThroughClass(inputStream2String(ResourcesPlugin.getWorkspace()
-					.getRoot().getFile(classFile).getContents()));
+			goThroughClass(inputStream2String(ResourcesPlugin.getWorkspace().getRoot().getFile(classFile).getContents()));
 		} catch (CoreException e) {
 			e.printStackTrace();
 		}
 
 		for (int i = 0; i < propList.size(); i++) {
 			String prop = propList.get(i);
-			CustomCompletionProposal each = new CustomCompletionProposal(
-					prefix + prop + suffix, offset, replacementLength,
-					cursorPosition, image, prop, null, "Tapestry page property: " + prop, 1);
+			CustomCompletionProposal each = new CustomCompletionProposal(prefix + prop + suffix, offset,
+					replacementLength, cursorPosition, image, prop, null, "Tapestry page property: " + prop, 1);
 			completionList.add(each);
 		}
 		for (int i = 0; i < methodList.size(); i++) {
 			String method = methodList.get(i);
-			CustomCompletionProposal each = new CustomCompletionProposal(
-					prefix + method + suffix, offset, replacementLength,
-					cursorPosition, image, method, null, "method " + method, 1);
+			CustomCompletionProposal each = new CustomCompletionProposal(prefix + method + suffix, offset,
+					replacementLength, cursorPosition, image, method, null, "method " + method, 1);
 			completionList.add(each);
 		}
 		return completionList;
@@ -200,21 +185,16 @@ public class TapestryELCompletionProposalComputer {
 				intoEL = false;
 				node.accept(new ASTVisitor() {
 					public void endVisit(MarkerAnnotation node) {
-						intoEL = node.getTypeName().toString()
-								.equals(TapestryContants.ANNOTATION_PROPERTY);
+						intoEL = node.getTypeName().toString().equals(TapestryContants.ANNOTATION_PROPERTY);
 						super.endVisit(node);
 					}
 
 					public void endVisit(NormalAnnotation node) {
-						intoEL = node.getTypeName().toString()
-								.equals(TapestryContants.ANNOTATION_PROPERTY);
+						intoEL = node.getTypeName().toString().equals(TapestryContants.ANNOTATION_PROPERTY);
 						List values = node.values();
 						for (int i = 0; i < values.size(); i++) {
-							MemberValuePair pair = (MemberValuePair) values
-									.get(i);
-							if (pair.getName().toString().equals("read")
-									&& pair.getValue().toString()
-											.equals("false"))
+							MemberValuePair pair = (MemberValuePair) values.get(i);
+							if (pair.getName().toString().equals("read") && pair.getValue().toString().equals("false"))
 								intoEL = false;
 						}
 						super.endVisit(node);
@@ -233,23 +213,18 @@ public class TapestryELCompletionProposalComputer {
 			public boolean visit(MethodDeclaration node) {
 				SimpleName name = node.getName();
 				String methodName = name.toString();
-				if (node.getModifiers() == Modifier.PUBLIC
-						&& methodName.startsWith("get")
-						&& methodName.length() > 3) {
-					String propName = getPropertyName(methodName.substring(3));
-					addIfNotExist(propName, propList);
-					// methodList.add(methodName + "()");
-				}
-
-				if (node.getReturnType2().isPrimitiveType()) {
-					PrimitiveType type = (PrimitiveType) node.getReturnType2();
-					if (type.getPrimitiveTypeCode() == PrimitiveType.BOOLEAN
-							&& node.getModifiers() == Modifier.PUBLIC
-							&& methodName.startsWith("is")
-							&& methodName.length() > 2) {
-						String propName = getPropertyName(methodName
-								.substring(2));
+				
+				if (node.getReturnType2() != null && node.getModifiers() == Modifier.PUBLIC && !(node.getReturnType2().isPrimitiveType() && ((PrimitiveType) node.getReturnType2()).getPrimitiveTypeCode() == PrimitiveType.VOID)) {
+					if (methodName.startsWith("is") && methodName.length() > 2) {
+						String propName = getPropertyName(methodName.substring(2));
 						addIfNotExist(propName, propList);
+						//methodList.add(methodName + "()");
+					} else if (methodName.startsWith("get") && methodName.length() > 3) {
+						String propName = getPropertyName(methodName.substring(3));
+						addIfNotExist(propName, propList);
+						//methodList.add(methodName + "()");
+					}else {
+						methodList.add(methodName + "()");
 					}
 				}
 				return false;
@@ -257,8 +232,7 @@ public class TapestryELCompletionProposalComputer {
 
 			private String getPropertyName(String name) {
 				if (name.length() > 1)
-					return name.substring(0, 1).toLowerCase()
-							+ name.substring(1);
+					return name.substring(0, 1).toLowerCase() + name.substring(1);
 				else
 					return name.toLowerCase();
 			}
